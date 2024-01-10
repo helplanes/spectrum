@@ -35,7 +35,7 @@ export function Navigation() {
                       Spectrum
                       </div>
                       <p className="text-sm leading-tight text-muted-foreground">  
-                      Temp boilerplate for Spectrum&apos; 24
+                      Someone forgor to add the link, it wont click
                       </p>
                     </a>
                   </NavigationMenuLink>

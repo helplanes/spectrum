@@ -1,13 +1,14 @@
 export default function Footer() {
   return (
-    <main className="p-4 bg-slate-300">
-      <footer className="bg-border rounded-lg align-baseline shadow m-4 dark:bg-gray-800 mt-auto">
-        <div className="w-full mx-auto p-4 flex items-center justify-center">
-          <span className="text-sm text-gray-500 dark:text-gray-400">
-            Made with love by FY Pccoe {'<3'}
-          </span>
-        </div>
+      <footer className="overflow-hidden bg-[url(https://i.imgur.com/27WcFgu.jpg)] bg-cover bg-top bg-no-repeat">
+          <div className="relative">
+              <div>
+                <hr/>
+                  <p className="mx-auto max-w-7xl text-center text-xs/relaxed text-gray-200 px-4 py-8 sm:px-4 lg:pt-8">
+                      Built with Love from FY Pccoe kids {'<'}3
+                  </p>
+              </div>
+          </div>
       </footer>
-    </main>
   )
 }

@@ -8,7 +8,7 @@ export default function Home() {
     <main className="overflow-hidden">
       <Hero/>
       <div className="bg-white flex flex-col items-center justify-center w-screen h-screen text-gray-600 ">
-        yolo
+        Build in Progress
       </div>
     </main>
   );
