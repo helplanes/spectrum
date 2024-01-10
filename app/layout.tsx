@@ -18,13 +18,13 @@ const calSans = LocalFont({
 export const metadata: Metadata = {
   metadataBase: new URL('http://localhost:3000'),
   title: {
-    default: "pccoespectrum.tech",
+    default: "Pccoe Spectrum'24",
     template: "%s | pccoespectrum.tech",
   },
-  description: "Tech event for freshmen year students",
+  description: "Tech event for first year students",
   openGraph: {
-    title: "pccoespectrum.tech",
-    description: "Tech event for freshman year students",
+    title: "Pccoe Spectrum'24",
+    description: "Tech event for first year students",
     url: "https://pccoespectrum.tech",
     siteName: "pccoespectrum.tech",
     images: [

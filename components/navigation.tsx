@@ -15,7 +15,7 @@ import Link from "next/link"
 
 export function Navigation() {
   return (
-    <NavigationMenu>
+    <NavigationMenu className="">
       <Avatar className="mx-auto max-w-7xl flex flex-1 justify-items-start">
         <AvatarImage src="https://spectrumpccoe.github.io/Spectrum-23/image/SpectrumLogo1.png" />
       </Avatar>
