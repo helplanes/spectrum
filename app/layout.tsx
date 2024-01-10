@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     default: "pccoespectrum.tech",
     template: "%s | pccoespectrum.tech",
   },
-  description: "Tech event for freshman year students",
+  description: "Tech event for freshmen year students",
   openGraph: {
     title: "pccoespectrum.tech",
     description: "Tech event for freshman year students",
@@ -29,9 +29,9 @@ export const metadata: Metadata = {
     siteName: "pccoespectrum.tech",
     images: [
       {
-        url: "#",
-        width: 1920,
-        height: 1080,
+        url: "https://i.imgur.com/rmVmQ7C.png",
+        width: 548,
+        height: 253,
         alt: 'Image',
       },
     ],
