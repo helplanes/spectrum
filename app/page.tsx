@@ -9,7 +9,7 @@ export default function Home() {
       <div className="bg-white flex flex-col items-center justify-center w-screen h-screen text-gray-600 ">
         Build in Progress
       </div>
+
     </main>
   );
-
 }

@@ -20,8 +20,18 @@ export function Navigation() {
         <AvatarImage src="https://spectrumpccoe.github.io/Spectrum-23/image/SpectrumLogo1.png" />
       </Avatar>
         <NavigationMenuList>
+        <NavigationMenuItem>
+            <NavigationMenuTrigger>Events</NavigationMenuTrigger>
+            <NavigationMenuContent>
+              <ul className="p-10 md:w-[350px] space-y-2 ">
+                <ListItem href="/electrica" title="Electrica' 24">
+                  Electrica is based on knowledge of Electrical and Electronics Engineering concepts
+                </ListItem>
+              </ul>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
           <NavigationMenuItem>
-            <NavigationMenuTrigger>Github</NavigationMenuTrigger>
+            <NavigationMenuTrigger>Misc</NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="gap-3 space-y-2 p-6 md:w-[300px] lg:grid-cols-[.75fr_1fr]">
                 <li className="row-span-3">
@@ -40,22 +50,6 @@ export function Navigation() {
                     </a>
                   </NavigationMenuLink>
                 </li>
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <NavigationMenuTrigger>Temp</NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <ul className="p-6 md:w-[300px] space-y-2 ">
-                <ListItem href="/ments/first" title="Spectrum">
-                  Temp boilerplate for Spectrum&apos; 24
-                </ListItem>
-                <ListItem href="/ments/second" title="Spectrum">
-                  Temp boilerplate for Spectrum&apos; 24
-                </ListItem>
-                <ListItem href="/ments/third" title="Spectrum">
-                  Temp boilerplate for Spectrum&apos; 24
-                </ListItem>
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>

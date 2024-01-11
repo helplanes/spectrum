@@ -4,6 +4,7 @@ import LocalFont from "next/font/local";
 import Navigation from '@/components/navigation'
 import Footer  from '@/components/footer'
 import './globals.css'
+import Script from 'next/script'
 
 const inter = Inter({
   subsets: ["latin"],
@@ -64,6 +65,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Navigation />
           {children}
+          <Script src='https://www.cssscript.com/demo/cat-follow-cursor-oneko/oneko.js' />
         <Footer />
       </body>
     </html>
