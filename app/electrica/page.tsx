@@ -1,5 +1,6 @@
 import { TableInfo } from "@/app/electrica/components/info";
 import { Rules } from "@/app/electrica/components/accordian"
+import { Electrica_registarion } from "@/app/electrica/components/registration";
 
 export default function Home() {
   return (
@@ -7,10 +8,20 @@ export default function Home() {
       <div className="bg-white flex flex-col items-center justify-center h-screen text-gray-600 ">
         Build in Progress
       </div>
-      <div className="p-20">
-     {/*    <Rules /> 
-        <TableInfo /> */}
-      </div>
+      <hr/>
+      <Electrica_registarion />
+      <hr/>
+        <Rules /> 
+    <hr/>
+    
+    <div className="text-gray-700 leading-7 mb-4  p-8">
+        <h1>Note :</h1>
+        <p className="leading-7">
+            1.This rules are tentative. <br/>
+            2. If any changes are there it will inform to you on the Whatsapp group.
+        </p>
+        </div>
+        {/* <TableInfo /> */}
     </main>
   );
 

@@ -10,15 +10,17 @@ import {
   NavigationMenuTrigger
 } from "@/components/ui/navigation-menu"
 import { Avatar, AvatarImage  } from "@/components/ui/avatar"
-import { Star } from 'lucide-react'
+import { Terminal } from 'lucide-react'
 import Link from "next/link"
 
 export function Navigation() {
   return (
     <NavigationMenu className="">
-      <Avatar className="mx-auto max-w-7xl flex flex-1 justify-items-start">
-        <AvatarImage src="https://spectrumpccoe.github.io/Spectrum-23/image/SpectrumLogo1.png" />
-      </Avatar>
+      <a className="mx-auto max-w-7xl flex flex-1 justify-items-start" href="/">
+        <Avatar>
+          <AvatarImage src="https://spectrumpccoe.github.io/Spectrum-23/image/SpectrumLogo1.png" />
+        </Avatar>
+      </a>
         <NavigationMenuList>
         <NavigationMenuItem>
             <NavigationMenuTrigger>Events</NavigationMenuTrigger>
@@ -40,12 +42,12 @@ export function Navigation() {
                       className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                       href="#"
                     >
-                      <Star className="h-6 w-6" />
-                      <div className="mb-2 mt-4 text-lg font-medium">
-                      Spectrum
+                      <Terminal className="h-6 w-6" />
+                      <div className="mb-2 mt-2 text-lg font-medium">
+                      Team
                       </div>
                       <p className="text-sm leading-tight text-muted-foreground">  
-                      Someone forgor to add the link, it wont click
+                      The team behind Spectrum!
                       </p>
                     </a>
                   </NavigationMenuLink>
