@@ -5,6 +5,7 @@ import Navigation from '@/components/navigation'
 import Footer  from '@/components/footer'
 import './globals.css'
 import Script from 'next/script'
+import { GoogleTagManager } from '@next/third-parties/google'
 
 const inter = Inter({
   subsets: ["latin"],
@@ -66,6 +67,7 @@ export default function RootLayout({
         <Navigation />
           {children}
           <Script src='https://www.cssscript.com/demo/cat-follow-cursor-oneko/oneko.js' />
+          <GoogleTagManager gtmId="G-0WEDSQL3ZX" />
         <Footer />
       </body>
     </html>

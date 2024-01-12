@@ -3,7 +3,7 @@
 const nextConfig = {
     
     images: {
-      domains: ['i.imgur.com'],
+      domains: ['i.imgur.com','images.unsplash.com'],
     },
   }
 
