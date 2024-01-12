@@ -38,13 +38,16 @@ export function Navigation() {
                 <ListItem href="/" title="C paradox' 24" className="bg-yellow-400">
                   Coming Soon
                 </ListItem>
-                <ListItem href="/" title="IKS' 24" className="bg-green-400">
+                <ListItem href="/" title="Chem Prastuti' 24" className="bg-green-400">
                   Coming Soon
                 </ListItem>
                 <ListItem href="/" title="Debate' 24" className="bg-blue-400">
                   Coming Soon
                 </ListItem>
                 <ListItem href="/" title="Bottle Rocket' 24" className="bg-purple-400">
+                  Coming Soon
+                </ListItem>
+                <ListItem href="/" title="Video Games '24" className="bg-stone-500">
                   Coming Soon
                 </ListItem>
               </ul>

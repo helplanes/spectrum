@@ -6,6 +6,9 @@ const shippinganddelivery: React.FC = () => {
             <p className="text-gray-600 mb-6">
                 spectrum@pccoepune.org
             </p>
+            <p className="text-gray-600 mb-6">
+               Timings - 9:00 AM to 5:00 PM IST, Monday to Friday
+            </p>
         </div>
       </div>
     );
