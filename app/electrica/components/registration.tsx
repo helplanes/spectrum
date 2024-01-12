@@ -4,8 +4,11 @@ import { Button } from "@/components/ui/button"
 export function Electrica_registarion() {
     return (
             <div className="w-full max-w-sm bg-white mx-auto">
-                <a href="#">
-                    <Image className="p-8 rounded-t-lg" src="https://i.imgur.com/rmVmQ7C.png" alt="product image" width={1200} height={1000} />
+                <h1 className="scroll-m-20 p-8 text-4xl font-extrabold text-black tracking-tight lg:text-5xl">
+                    Registration Page :
+                </h1>
+                <a>
+                    <Image className="px-8 pb-8 rounded-t-lg" src="https://i.imgur.com/rmVmQ7C.png" alt="product image" width={1200} height={1000} />
                 </a>
                 <div className="px-5 pb-5">
                     <a href="#">

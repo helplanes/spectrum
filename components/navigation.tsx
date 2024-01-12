@@ -25,9 +25,27 @@ export function Navigation() {
         <NavigationMenuItem>
             <NavigationMenuTrigger>Events</NavigationMenuTrigger>
             <NavigationMenuContent>
-              <ul className="p-10 md:w-[350px] space-y-2 ">
-                <ListItem href="/electrica" title="Electrica' 24">
+              <ul className="p-10 md:w-[350px] space-y-2">
+                <ListItem href="/electrica" title="Electrica' 24" className="bg-stone-300">
                   Electrica is based on knowledge of Electrical and Electronics Engineering concepts
+                </ListItem>
+                <ListItem href="/" title="Brain Dasher' 24" className="bg-red-300">
+                  Coming Soon
+                </ListItem>
+                <ListItem href="/" title="Treasure Hunt' 24" className="bg-orange-500">
+                  Coming Soon
+                </ListItem>
+                <ListItem href="/" title="C paradox' 24" className="bg-yellow-400">
+                  Coming Soon
+                </ListItem>
+                <ListItem href="/" title="IKS' 24" className="bg-green-400">
+                  Coming Soon
+                </ListItem>
+                <ListItem href="/" title="Debate' 24" className="bg-blue-400">
+                  Coming Soon
+                </ListItem>
+                <ListItem href="/" title="Bottle Rocket' 24" className="bg-purple-400">
+                  Coming Soon
                 </ListItem>
               </ul>
             </NavigationMenuContent>
