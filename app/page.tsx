@@ -49,7 +49,7 @@ export default function Home() {
                 fill
                 sizes="(max-width: 768px) 213px, 33vw"
                 priority
-                className="rounded-lg object-cover object-[-16px] sm:object-center"
+                className="rounded-lg object-cover  sm:object-center"
               />
             </div>
             <div className="relative h-40 sm:h-80 sm:mb-4">
