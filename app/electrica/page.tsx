@@ -10,16 +10,16 @@ export const metadata: Metadata = {
 }
 export default function Home() {
   return (
-    <main className="overflow-hidden max-w-7xl mx-auto bg-white">
-      <div className="bg-white flex flex-col items-center justify-center h-screen text-gray-600 ">
+    <main className="overflow-hidden max-w-7xl mx-auto bg-[#EBE9E0]">
+      <div className="bg-[#EBE9E0] flex flex-col items-center justify-center h-screen text-gray-600 ">
         Build in Progress
       </div>
-      <hr/>
+      <hr className="border-2 border-gray-100"/>
       <Electrica_registarion />
-      <hr/>
+      <hr className="border-2 border-gray-700"/>
         <Rules /> 
     <hr/>
-    
+    <hr className="border-2 border-gray-700"/>
     <div className="text-gray-700 leading-7 mb-4  p-8">
         <h1>Note :</h1>
         <p className="leading-7">
