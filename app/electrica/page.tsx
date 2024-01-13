@@ -17,7 +17,7 @@ export default function Home() {
     <div className="text-gray-700 leading-7 mb-4  p-8">
         <h1>Note :</h1>
         <p className="leading-7">
-            1.This rules are tentative. <br/>
+            1. This rules are tentative. <br/>
             2. If any changes are there it will inform to you on the Whatsapp group.
         </p>
         </div>
