@@ -63,7 +63,7 @@
 .card-icon {
   color: rgba(255, 255, 255, 0.25);
   font-size: 3em;
-  opacity: 0.4;
+  opacity: 0.8;
   place-self: center;
   transition: transform 250ms, opacity 250ms;
 }

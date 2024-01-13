@@ -2,6 +2,12 @@ import { TableInfo } from "@/app/electrica/components/info";
 import { Rules } from "@/app/electrica/components/accordian"
 import { Electrica_registarion } from "@/app/electrica/components/registration";
 
+import { Metadata } from 'next'
+ 
+export const metadata: Metadata = {
+  title: 'Spectrum x Electrica',
+  
+}
 export default function Home() {
   return (
     <main className="overflow-hidden max-w-7xl mx-auto bg-white">
