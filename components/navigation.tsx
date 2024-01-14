@@ -26,28 +26,28 @@ export function Navigation() {
             <NavigationMenuTrigger>Events</NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="p-10 md:w-[350px] space-y-2">
-                <ListItem href="/Eparadox" title="E paradox' 24" className="bg-pink-300">
-                  <p> A fun activity-based game in which you must find the clues and lead forward to the ultimate prize by cracking codes.  </p>
+                <ListItem href="/Eparadox" title="E paradox' 24" className="bg-pink-300 text-gray-900">
+                  <p className="text-gray-100"> A fun activity-based game in which you must find the clues and lead forward to the ultimate prize by cracking codes.  </p>
                 </ListItem>
-                <ListItem href="/electrica" title="Electrica' 24" className="bg-blue-400">
-                  <p> Electrica is based on knowledge of Electrical and Electronics Engineering concepts </p>
+                <ListItem href="/electrica" title="Electrica' 24" className="bg-blue-400 text-gray-900">
+                  <p className="text-gray-100"> Electrica is based on knowledge of Electrical and Electronics Engineering concepts </p>
                 </ListItem>
-                <ListItem href="/" title="Brain Dasher' 24" className="bg-red-500">
+                <ListItem href="/" title="Brain Dasher' 24" className="bg-red-500 text-gray-900">
                   Coming Soon
                 </ListItem>
-                <ListItem href="/" title="Treasure Hunt' 24" className="bg-orange-500">
+                <ListItem href="/" title="Treasure Hunt' 24" className="bg-orange-500 text-gray-900">
                   Coming Soon
                 </ListItem>
-                <ListItem href="/" title="Chem Prastuti' 24" className="bg-yellow-400">
+                <ListItem href="/" title="Chem Prastuti' 24" className="bg-yellow-400 text-gray-900">
                   Coming Soon
                 </ListItem>
-                <ListItem href="/" title="Bottle Rocket' 24" className="bg-green-400">
+                <ListItem href="/" title="Bottle Rocket' 24" className="bg-green-400 text-gray-900">
                   Coming Soon
                 </ListItem>
-                <ListItem href="/" title="Debate' 24" className="bg-blue-400">
+                <ListItem href="/" title="Debate' 24" className="bg-blue-400 text-gray-900">
                   Coming Soon
                 </ListItem>
-                <ListItem href="/" title="Video Games '24" className="bg-purple-400">
+                <ListItem href="/" title="Video Games '24" className="bg-purple-400 text-gray-900">
                   Coming Soon
                 </ListItem>
               </ul>
