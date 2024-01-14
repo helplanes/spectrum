@@ -5,7 +5,8 @@ export default function Footer() {
                 <div>
                     <hr/>
                     <p className="mx-auto max-w-7xl text-center text-xs/relaxed text-gray-200 px-4 py-8 sm:px-4 lg:pt-8">
-                        Built with Love from FY Pccoe kids {'<'}3
+                        Built with Love from FY Pccoe kids {'<'}3 <br/>
+                        {/* Website Developed by Kartik <a href=""></a> & Mayank <a href=""></a>from FY IT : {')'} */}
                     </p>
                 </div>
             </div>
