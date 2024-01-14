@@ -59,6 +59,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
+        jacques: ['Jacques_Francois_Shadow', 'sans-serif'],
       },
       keyframes: {
         "accordion-down": {

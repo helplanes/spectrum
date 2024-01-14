@@ -17,6 +17,7 @@ const calSans = LocalFont({
   variable: "--font-calsans",
 });
 
+
 export const metadata: Metadata = {
   metadataBase: new URL('http://localhost:3000'),
   title: {

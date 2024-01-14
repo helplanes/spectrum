@@ -27,7 +27,7 @@ export default function hero() {
                       <h2 className="text-sm via-zinc-300/50 ">
                         Coming Soon
                       </h2>
-                    </div>
+                  </div>
       </div>
     </main>
   );
