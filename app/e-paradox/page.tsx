@@ -66,7 +66,6 @@ export default function Home() {
           7. Final decision making would be done by Coordinators based on computerized results.
         </p>
         </div>
-        {/* <TableInfo /> */}
     </main>
   );
 

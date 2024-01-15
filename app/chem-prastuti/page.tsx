@@ -8,7 +8,21 @@ import { Metadata } from 'next'
  
 export const metadata: Metadata = {
   title: 'Spectrum x Electrica',
-  
+  description: "Tech event for first year students",  
+  openGraph: {
+    title: 'Spectrum x Electrica',
+    description: "Tech event for first year students",  
+    url: "https://pccoespectrum.tech",
+    siteName: "pccoespectrum.tech",
+    images: [
+      {
+        url: "https://i.imgur.com/rmVmQ7C.png",
+        width: 548,
+        height: 253,
+        alt: 'Image',
+      },
+    ],
+  }, 
 }
 
 const korna = Krona_One({

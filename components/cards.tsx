@@ -12,7 +12,7 @@ export default function Cards() {
             <Image className="mx-auto mt-4 rounded-xl" width="210" height="300" alt="image" src="https://i.imgur.com/sWzLWIW.jpg" />
             </i>
             <Button className="bg-pink-300 hover:bg-pink-200 mx-auto m-4" style={{ height: '30px' }}>
-            Register (Coming Soon)
+              <a href="/e-paradox">Register</a>
             </Button>
         </div>
         </div>
@@ -23,7 +23,7 @@ export default function Cards() {
             <Image className="mx-auto mt-4 rounded-xl" width="210" height="300" alt="image" src="https://i.imgur.com/iHJRiHD.jpg" />
             </i>
             <Button className="bg-blue-500 hover:bg-blue-300 mx-auto m-4" style={{ height: '30px' }}>
-            Register (Coming Soon)
+            <a href="/electrica">Register</a>
             </Button>
         </div>
         </div>
