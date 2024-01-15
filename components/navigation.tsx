@@ -32,14 +32,14 @@ export function Navigation() {
                 <ListItem href="/electrica" title="Electrica' 24" className="bg-blue-400 text-gray-900">
                   <p className="text-gray-100"> Electrica is based on knowledge of Electrical and Electronics Engineering concepts </p>
                 </ListItem>
-                <ListItem href="/" title="Brain Dasher' 24" className="bg-red-500 text-gray-900">
-                  Coming Soon
+                <ListItem href="/brain-dasher" title="Brain Dasher' 24" className="bg-red-500 text-gray-900">
+                  Mathematical Puzzles
                 </ListItem>
-                <ListItem href="/" title="Treasure Hunt' 24" className="bg-orange-500 text-gray-900">
-                  Coming Soon
+                <ListItem href="/treasure-hunt" title="Treasure Hunt' 24" className="bg-orange-500 text-gray-900">
+                  Treasure Hunt
                 </ListItem>
-                <ListItem href="/" title="Chem Prastuti' 24" className="bg-yellow-400 text-gray-900">
-                  Coming Soon
+                <ListItem href="/chem-prastuti" title="Chem Prastuti' 24" className="bg-yellow-400 text-gray-900">
+                  Chem Prastuti
                 </ListItem>
                 <ListItem href="/" title="Bottle Rocket' 24" className="bg-green-400 text-gray-900">
                   Coming Soon

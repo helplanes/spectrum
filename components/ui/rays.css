@@ -15,6 +15,7 @@
         transparent 10%,
         transparent 12%,
         #000 16%
+        
     );
     --rainbow: repeating-linear-gradient(
         100deg,
@@ -32,7 +33,7 @@
 
     mask-image: radial-gradient(ellipse at 100% 0%, black 40%, transparent 70%);
 
-    pointer-events: none;
+    pointer-events: auto;
 }
 
 .jumbo::after {
@@ -44,4 +45,9 @@
     animation: jumbo 60s linear infinite;
     background-attachment: fixed;
     mix-blend-mode: difference;
+}
+
+.dark .jumbo {
+    background-image: var(--stripesDark), var(--rainbow);
+    filter: blur(10px) opacity(50%) saturate(200%);
 }

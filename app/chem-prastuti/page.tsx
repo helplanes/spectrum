@@ -1,16 +1,15 @@
-import { TableInfo } from "@/app/electrica/components/info";
-import { Rules } from "@/app/electrica/components/accordian"
-import { Electrica_registarion } from "@/app/electrica/components/registration";
+import { Rules } from "@/app/chem-prastuti/components/accordian"
+import { Chem_prastuti_registarion } from "@/app/chem-prastuti/components/registration";
 import { Krona_One } from 'next/font/google'
 import Image from "next/image";
 
 import { Metadata } from 'next'
  
 export const metadata: Metadata = {
-  title: 'Spectrum x Electrica',
+  title: 'Spectrum x Chem Prastuti',
   description: "Tech event for first year students",  
   openGraph: {
-    title: 'Spectrum x Electrica',
+    title: 'Spectrum x Chem Prastuti',
     description: "Tech event for first year students",  
     url: "https://pccoespectrum.tech",
     siteName: "pccoespectrum.tech",
@@ -36,34 +35,53 @@ export default function Home() {
     <main className="overflow-hidden max-w-7xl mx-auto px-8 bg-[#EBE9E0]">
       <div className={korna.className}>
         <h1 className="font-jacques_francois_shadow scroll-m-20 pt-8 text-4xl md:text-7xl font-extrabold text-gray-800 tracking-tight lg:text-9xl">
-        Electrica &apos;24
+        Chem Prastuti
         </h1>
         <br/>
         <h2 className="font-jacques_francois_shadow scroll-m-20 pl-2 text-2xl font-extrabold text-gray-800 tracking-tight lg:text-5xl">
           brought to you by AS&H, PCCOE
         </h2>
       </div>
-      <Image className="mx-auto mt-4" width="500" height="450" alt="image" src="https://i.imgur.com/d4vCa0X.png" />
+      <Image className="mx-auto mt-4" width="500" height="450" alt="image" src="https://i.imgur.com/HDSxk4q.png" />
       <div>
       <h3 className="font-jacques_francois_shadow scroll-m-20 my-4 pl-2 text-xl font-extrabold text-gray-800 tracking-tight md:text-3xl lg:text-5xl">
-        -	A fun event  which tests your knowledge on basic electronics while having fun at the same time <br/>
-        -	Have an unforgettable experience in our Circuit Safari game.
+        -	Activity name: Presentation
       </h3>
       </div>
       <Image className="mx-auto my-16" width="800" height="50" alt="image" src="https://i.imgur.com/lbNfJM2.png" />
-      <Electrica_registarion />
+      <Chem_prastuti_registarion />
       <Image className="mx-auto my-16" width="800" height="50" alt="image" src="https://i.imgur.com/lbNfJM2.png" />
         <Rules /> 
     <hr/>
     <Image className="mx-auto my-8" width="800" height="50" alt="image" src="https://i.imgur.com/lbNfJM2.png" />
     <div className="text-gray-700 leading-7 mb-4 p-8">
-        <h1>Note :</h1>
+        <h1>Team Formation :</h1>
         <p className="leading-7">
-            1. This rules are tentative. <br/>
-            2. If any changes are there it will inform to you on the Whatsapp group.
+        1. Team can have maximum of 2 participants from FY. B.Tech.
+        2. Registration fee for each group will be 200/- 
+        </p>
+        <h1 className="pt-12">Team Formation :</h1>
+        <p className="leading-7">
+          1. The paper submitted will have to be presented during the event. <br/>
+          2. Hard as well as soft copies of the paper are to be submitted well in advance to the coordinators before presentation on mail id: engg.chem2010@gmail.com<br/>
+          3. The Teams will get 8 minutes to present their paper. And 2 minutes will be for questioning by judges.<br/>
+          4. The participants will have to present their papers in MS-Power Point (ppt) format only.<br/>
+          5. Violation of any rule can result in rejection of paper.<br/>
+          6. Spot Entries will not accept.<br/>
+          7. Directly copying from the Internet is strongly discouraged and will not be entertained. (Plagiarism up to 20% will be accepted).<br/>
+          8. Decision of the judges and the event heads shall be treated as final and binding on all and cannot be contested.<br/>
+          9. The organizers reserve the right to change/update the rules of the contest at any point of time and will do their best to inform to participants of the same. However, it is ultimately the responsibility of the teams to keep themselves updated
+        </p>
+        <h1 className="pt-12">Paper/Presentation Format Rules :</h1>
+        <p className="leading-7">
+        The presentation (PPT) should be in proper format.<br/>
+        1. Font style for text: Times New Roman.<br/>
+        2. Font size for text: 18 points.<br/>
+        3. Font size for headings: 22 points bold.<br/>
+        3. Font size for sub-headings: 20 points.<br/>
+        4. Margin of 1 inches from all sides.
         </p>
         </div>
-        {/* <TableInfo /> */}
     </main>
   );
 
