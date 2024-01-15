@@ -54,7 +54,7 @@ export default function Home() {
         <Rules /> 
     <hr/>
     <Image className="mx-auto my-8" width="800" height="50" alt="image" src="https://i.imgur.com/lbNfJM2.png" />
-    <div className="text-gray-700 leading-7 mb-4 p-8">
+    <div className="text-gray-700 leading-7 mb-4 p-2 sm:p-4 md:p-6 lg:p-8">
         <h1>Rule Book :</h1>
         <p className="leading-7">
           1. Online platforms like Hackerrank and CodeChef would be used. No personal computers will be allowed. <br />

@@ -7,8 +7,8 @@ import {
   
   export function Rules() {
     return (
-      <Accordion type="single" collapsible className="w-full text-gray-700 p-6">
-        <h1 className="scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-5xl">Rules of Electrica : </h1>
+      <Accordion type="single" collapsible className="w-full text-gray-700 p-4">
+        <h1 className="scroll-m-20 text-3xl sm:text-4xl font-extrabold tracking-tight lg:text-5xl">Rules of E-Paradox</h1>
         <p className="leading-7 mb-4">
             Total 5 rounds
         </p>
