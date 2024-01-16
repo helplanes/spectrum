@@ -13,7 +13,7 @@ export function Bottle_rocket_registarion() {
                     </a>
                     <div className="px-5 pb-5">
                         <a>
-                            <h5 className="text-xl font-semibold tracking-tight text-black">Bottle Rocket </h5>
+                            <h5 className="text-xl font-semibold tracking-tight text-black">Water Rocket </h5>
                         </a>
                         <div className="flex items-center justify-between pt-4 ">
                             <span className="text-3xl font-bold text-gray-900">&#8377;TBD</span>

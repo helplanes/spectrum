@@ -41,7 +41,7 @@ export function Navigation() {
                 <ListItem href="/chem-prastuti" title="Chem Prastuti' 24" className="bg-blue-400 text-gray-900">
                   <p className="text-gray-100"> A Chemistry presentation event! </p>
                 </ListItem>
-                <ListItem href="/bottle-rocket" title="Bottle Rocket' 24" className="bg-purple-400 text-gray-900">
+                <ListItem href="/bottle-rocket" title="Water Rocket' 24" className="bg-purple-400 text-gray-900">
                   <p className="text-gray-100"> A rocket propelled by water and air pressure! </p>
                 </ListItem>
                 <ListItem href="/debate" title="War of Words' 24" className="bg-pink-300 text-gray-900">

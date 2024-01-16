@@ -69,7 +69,7 @@ export default function Cards() {
         </div>
         <div className="card">
           <div className="card-content">
-                Bottle Rocket &apos;24
+                Water Rocket &apos;24
                 <i className="card-icon fa-regular fa-cat-space">
             <Image className="mx-auto mt-4 rounded-xl" width="205" height="300" alt="image" src="https://i.imgur.com/oIA4Cya.jpg" />
             </i>

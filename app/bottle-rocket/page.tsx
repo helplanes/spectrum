@@ -6,10 +6,10 @@ import Image from "next/image";
 import { Metadata } from 'next'
  
 export const metadata: Metadata = {
-  title: 'Spectrum x Bottle Rocket',
+  title: 'Spectrum x Water Rocket',
   description: "Tech event for first year students",  
   openGraph: {
-    title: 'Spectrum x Bottle Rocket',
+    title: 'Spectrum x Water Rocket',
     description: "Tech event for first year students",  
     url: "https://pccoespectrum.tech",
     siteName: "pccoespectrum.tech",
@@ -35,7 +35,7 @@ export default function Home() {
     <main className="overflow-hidden max-w-7xl mx-auto px-8 bg-[#EBE9E0]">
       <div className={korna.className}>
         <h1 className="font-jacques_francois_shadow scroll-m-20 pt-8 text-4xl md:text-7xl font-extrabold text-gray-800 tracking-tight lg:text-9xl">
-          Bottle Rocket
+          Water Rocket
         </h1>
         <br/>
         <h2 className="font-jacques_francois_shadow scroll-m-20 pl-2 text-2xl font-extrabold text-gray-800 tracking-tight lg:text-5xl">
