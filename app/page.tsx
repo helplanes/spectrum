@@ -25,8 +25,7 @@ export default function Home() {
       <Cards />
       
       <div className="bg-white text-black">
-        <div className="pt-8">
-          <hr className="border-2"/>
+        <div className="pt-2">
           <h1 className="scroll-m-20 text-center text-4xl font-extrabold tracking-tight lg:text-5xl p-4">
             Glimpse of Spectrum&apos;23 <Image className="mx-auto pb-8 display: inline" width="70" height="70" alt="image" src="https://i.imgur.com/zOrZlKk.png" />
           </h1>
