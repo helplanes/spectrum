@@ -33,7 +33,7 @@ export default function Home() {
           <div className="columns-2 sm:columns-3 gap-4 my-8 mx-auto max-w-4xl pt-16 px-4">
             <div className="relative h-40 mb-4">
               <Image
-                alt="Me speaking on stage at React Summit about the future of Next.js"
+                alt="A picture of the team"
                 src="https://i.imgur.com/cBNoOE9.jpg"
                 fill
                 sizes="(max-width: 768px) 213px, 33vw"
@@ -43,7 +43,7 @@ export default function Home() {
             </div>
             <div className="relative h-80 mb-4 sm:mb-0">
               <Image
-                alt="Me, Lydia, and Delba filming the Next.js Conf keynote"
+                alt="A man looking at a robot a spectrum 2023"
                 src="https://i.imgur.com/escfJ52.jpg"
                 fill
                 sizes="(max-width: 768px) 213px, 33vw"
@@ -53,7 +53,7 @@ export default function Home() {
             </div>
             <div className="relative h-40 sm:h-80 sm:mb-4">
               <Image
-                alt="Me standing on stage at Reactathon delivering the keynote"
+                alt="A robo race in action at spectrum 2023"
                 src="https://i.imgur.com/yB3NJh7.jpg"
                 fill
                 sizes="(max-width: 768px) 213px, 33vw"
@@ -63,7 +63,7 @@ export default function Home() {
             </div>
             <div className="relative h-40 mb-4 sm:mb-0">
               <Image
-                alt="Me standing on stage at SmashingConf giving a talk about my optimism for the web"
+                alt="A minature plane kept on display at spectrum 2023"
                 src="https://i.imgur.com/z1nMI5p.jpg"
                 fill
                 sizes="(max-width: 768px) 213px, 33vw"
@@ -73,7 +73,7 @@ export default function Home() {
             </div>
             <div className="relative h-40 mb-4">
               <Image
-                alt="Me and Guillermo Rauch on stage for Vercel Ship, answering questions from the Next.js community"
+                alt="Robo Race cards kept in a pile at spectrum 2023"
                 src="https://i.imgur.com/ChxIC6v.jpg"
                 fill
                 sizes="(max-width: 768px) 213px, 33vw"
