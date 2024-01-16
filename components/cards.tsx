@@ -52,7 +52,7 @@ export default function Cards() {
         <div className="card">
           <div className="card-content">
                 <i className="card-icon fa-regular fa-cat-space">
-                Spectrum
+               <Image className="" width="200" height="200" src="https://i.imgur.com/HKZuMdo.png" alt="logo"/>
             </i>
         </div>
         </div>
