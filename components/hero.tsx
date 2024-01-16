@@ -21,34 +21,34 @@ export default function hero() {
                     <div className="text-center animate-fade-in">    
                       <ul className="mt-10 flex flex-wrap justify-center gap-6 md:gap-8">
                         <li>
-                          <a className="text-gray-700 transition hover:text-gray-700/75" href="/e-paradox"> E-paradox </a>
+                          <a className="text-gray-700 transition hover:text-gray-700/75" href="#"> E-paradox </a>
                         </li>
                         <li>
-                          <a className="text-gray-700 transition hover:text-gray-700/75" href="/electric"> Electrica </a>
-                        </li>
-
-                        <li>
-                          <a className="text-gray-700 transition hover:text-gray-700/75" href="/brain-dasher"> Brain Dasher </a>
+                          <a className="text-gray-700 transition hover:text-gray-700/75" href="#"> Electrica </a>
                         </li>
 
                         <li>
-                          <a className="text-gray-700 transition hover:text-gray-700/75" href="/treasure-hunt"> Treasure Hunt </a>
+                          <a className="text-gray-700 transition hover:text-gray-700/75" href="#"> Brain Dasher </a>
                         </li>
 
                         <li>
-                          <a className="text-gray-700 transition hover:text-gray-700/75" href="/chem-prastuti"> Chem Prastuti </a>
+                          <a className="text-gray-700 transition hover:text-gray-700/75" href="#"> Treasure Hunt </a>
                         </li>
 
                         <li>
-                          <a className="text-gray-700 transition hover:text-gray-700/75" href="/bottle-rocket"> Bottle Rocket </a>
+                          <a className="text-gray-700 transition hover:text-gray-700/75" href="#"> Chem Prastuti </a>
                         </li>
 
                         <li>
-                          <a className="text-gray-700 transition hover:text-gray-700/75" href="/debate"> Battle of Words </a>
+                          <a className="text-gray-700 transition hover:text-gray-700/75" href="#"> Bottle Rocket </a>
                         </li>
 
                         <li>
-                          <a className="text-gray-700 transition hover:text-gray-700/75" href="/"> Video Games </a>
+                          <a className="text-gray-700 transition hover:text-gray-700/75" href="#"> Battle of Words </a>
+                        </li>
+
+                        <li>
+                          <a className="text-gray-700 transition hover:text-gray-700/75" href="#"> Video Games </a>
                         </li>
                       </ul>
                   </div>
