@@ -45,7 +45,7 @@ export default function Home() {
       <Image className="mx-auto mt-4" width="500" height="450" alt="image" src="https://i.imgur.com/HDSxk4q.png" />
       <div>
       <h3 className="font-jacques_francois_shadow scroll-m-20 my-4 pl-2 text-xl font-extrabold text-gray-800 tracking-tight md:text-3xl lg:text-5xl">
-        -	Activity name: Presentation
+        / Event Description /
       </h3>
       </div>
       <Image className="mx-auto my-16" width="800" height="50" alt="image" src="https://i.imgur.com/lbNfJM2.png" />

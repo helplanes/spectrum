@@ -41,11 +41,11 @@ export function Navigation() {
                 <ListItem href="/chem-prastuti" title="Chem Prastuti' 24" className="bg-yellow-400 text-gray-900">
                   Chem Prastuti
                 </ListItem>
-                <ListItem href="/" title="Bottle Rocket' 24" className="bg-green-400 text-gray-900">
-                  Coming Soon
+                <ListItem href="/bottle-rocket" title="Bottle Rocket' 24" className="bg-green-400 text-gray-900">
+                  Bottle Rocket
                 </ListItem>
-                <ListItem href="/" title="Debate' 24" className="bg-blue-400 text-gray-900">
-                  Coming Soon
+                <ListItem href="/debate" title="Debate' 24" className="bg-blue-400 text-gray-900">
+                  Battle of Words
                 </ListItem>
                 <ListItem href="/" title="Video Games '24" className="bg-purple-400 text-gray-900">
                   Coming Soon

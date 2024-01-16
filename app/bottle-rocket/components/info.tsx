@@ -11,75 +11,50 @@ import {
 
 const invoices = [
   {
-    invoice: "INV001",
-    paymentStatus: "Paid",
-    totalAmount: "$250.00",
-    paymentMethod: "Credit Card",
+    zone: "A",
+    bonus_seconds: "15",
+    distance: "50",
+    depth: "15",
   },
   {
-    invoice: "INV002",
-    paymentStatus: "Pending",
-    totalAmount: "$150.00",
-    paymentMethod: "PayPal",
+    zone: "B",
+    bonus_seconds: "30",
+    distance: "65",
+    depth: "10"
   },
   {
-    invoice: "INV003",
-    paymentStatus: "Unpaid",
-    totalAmount: "$350.00",
-    paymentMethod: "Bank Transfer",
-  },
-  {
-    invoice: "INV004",
-    paymentStatus: "Paid",
-    totalAmount: "$450.00",
-    paymentMethod: "Credit Card",
-  },
-  {
-    invoice: "INV005",
-    paymentStatus: "Paid",
-    totalAmount: "$550.00",
-    paymentMethod: "PayPal",
-  },
-  {
-    invoice: "INV006",
-    paymentStatus: "Pending",
-    totalAmount: "$200.00",
-    paymentMethod: "Bank Transfer",
-  },
-  {
-    invoice: "INV007",
-    paymentStatus: "Unpaid",
-    totalAmount: "$300.00",
-    paymentMethod: "Credit Card",
+    zone: "C",
+    bonus_seconds: "20",
+    distance: "75",
+    depth: "15",
   },
 ]
 
 export function TableInfo() {
   return (
     <Table className="text-gray-600">
-      <TableCaption>A list of your recent invoices.</TableCaption>
+      <TableCaption>Bonus seconds will be awarded according to this table :</TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-[100px]">Invoice</TableHead>
-          <TableHead>Status</TableHead>
-          <TableHead>Method</TableHead>
-          <TableHead className="text-right">Amount</TableHead>
+          <TableHead className="w-[100px]">Zone</TableHead>
+          <TableHead>Bonus Seconds</TableHead>
+          <TableHead>* Distance from firing line /m</TableHead>
+          <TableHead className="text-right">Depth of the Zone /m</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
         {invoices.map((invoice) => (
-          <TableRow key={invoice.invoice}>
-            <TableCell className="font-medium">{invoice.invoice}</TableCell>
-            <TableCell>{invoice.paymentStatus}</TableCell>
-            <TableCell>{invoice.paymentMethod}</TableCell>
-            <TableCell className="text-right">{invoice.totalAmount}</TableCell>
+          <TableRow key={invoice.zone}>
+            <TableCell className="font-medium">{invoice.zone}</TableCell>
+            <TableCell>{invoice.bonus_seconds}</TableCell>
+            <TableCell>{invoice.distance}</TableCell>
+            <TableCell className="text-right">{invoice.depth}</TableCell>
           </TableRow>
         ))}
       </TableBody>
       <TableFooter>
         <TableRow>
-          <TableCell colSpan={3}>Total</TableCell>
-          <TableCell className="text-right">$2,500.00</TableCell>
+          <TableCell colSpan={4}>* so eg. zone A starts 50m and ends 65m from the firing line.</TableCell>
         </TableRow>
       </TableFooter>
     </Table>
