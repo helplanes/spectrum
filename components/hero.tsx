@@ -13,11 +13,11 @@ export default function hero() {
           </div>
         </div>
         <div className="hidden w-screen h-px z-2 animate-glow md:block animate-fade-left bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0" />   
-              <p className="animate-fade-in text-center">PCET&apos;s Pimpri Chinchwad College of Engineering, Pune&apos;s <br/>Department of AS&H presents</p>
+              <p className="animate-fade-in text-center px-4">PCET&apos;s Pimpri Chinchwad College of Engineering, Pune <br/>Department of AS&H presents</p>
               <h1 className="text-5xl text-transparent duration-1500 bg-white cursor-default text-edge-outline animate-title font-display sm:text-7xl md:text-9xl whitespace-nowrap bg-clip-text ">
                 Spectrum&apos; 24
               </h1>
-                  <div className="hidden w-screen h-px animate-glow md:block animate-fade-right bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0 z-100" />
+                  <div className="hidden w-screen h-px px-4 animate-glow md:block animate-fade-right bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0 z-100" />
                     <div className="text-center animate-fade-in">    
                       <ul className="mt-10 flex flex-wrap justify-center gap-6 md:gap-8">
                         <li>

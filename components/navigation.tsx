@@ -18,7 +18,7 @@ export function Navigation() {
     <NavigationMenu className="">
       <a className="mx-auto max-w-7xl flex flex-1 justify-items-start" href="/">
         <Avatar>
-          <AvatarImage src="https://spectrumpccoe.github.io/Spectrum-23/image/SpectrumLogo1.png" />
+          <AvatarImage src="https://i.imgur.com/gz9XncO.png" />
         </Avatar>
       </a>
         <NavigationMenuList>
@@ -61,7 +61,7 @@ export function Navigation() {
                   <NavigationMenuLink asChild>
                     <a
                       className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                      href="#"
+                      href="/team-behind-spectrum"
                     >
                       <Terminal className="h-6 w-6 text-white" />
                       <div className="mb-2 mt-2 text-lg font-medium text-white">

@@ -45,7 +45,7 @@ export default function Home() {
       <Image className="mx-auto mt-4" width="700" height="450" alt="image" src="https://i.imgur.com/W5W9DYW.png" />
       <div>
       <h3 className="font-jacques_francois_shadow scroll-m-20 my-4 pl-2 text-xl font-extrabold text-gray-800 tracking-tight md:text-3xl lg:text-5xl">
-      -	Each team should consist of 5 people. <br/>
+      -	Each team should consist of 4 people. <br/>
       - The competition will be conducted in hybrid mode.
       </h3>
       </div>
@@ -58,7 +58,7 @@ export default function Home() {
     <div className="text-gray-700 leading-7 mb-4 p-8">
         <h1>Note :</h1>
         <p className="leading-7">
-          1.	Each team should consist of 5 people.  <br/>
+          1.	Each team should consist of 4 people.  <br/>
           2.	The competition will be conducted in hybrid mode. <br/>
           3.	The use of A.I. chatbots like ChatGPT is strictly prohibited. <br/>
           4.	Participants are not allowed to use laptops, smartwatches. <br/>
