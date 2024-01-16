@@ -34,7 +34,7 @@ export default function Cards() {
             <Image className="mx-auto mt-4 rounded-xl" width="210" height="300" alt="image" src="https://i.imgur.com/iOTNbx0.jpg" />
             </i>
             <Button className="bg-red-400 hover:bg-red-300 mx-auto m-4" style={{ height: '30px' }}>
-            Register (Coming Soon)
+            <a href="/brain-dasher">Register</a>
             </Button>
         </div>
         </div>
@@ -45,7 +45,7 @@ export default function Cards() {
             <Image className="mx-auto mt-4 rounded-xl" width="210" height="300" alt="image" src="https://i.imgur.com/NDUkMk9.jpg" />
             </i>
             <Button className="bg-orange-500 hover:bg-orange-400 mx-auto m-4" style={{ height: '30px' }}>
-            Register (Coming Soon)
+            <a href="/treasure-hunt">Register</a>
             </Button>
         </div>
         </div>
@@ -63,7 +63,7 @@ export default function Cards() {
             <Image className="mx-auto mt-4 rounded-xl" width="210" height="300" alt="image" src="https://i.imgur.com/yJKEW8L.jpg" />
             </i>
             <Button className="bg-yellow-500 hover:bg-yellow-400 mx-auto m-4" style={{ height: '30px' }}>
-            Register (Coming Soon)
+            <a href="/chem-prastuti">Register</a>
             </Button>
         </div>
         </div>
@@ -74,7 +74,7 @@ export default function Cards() {
             <Image className="mx-auto mt-4 rounded-xl" width="205" height="300" alt="image" src="https://i.imgur.com/oIA4Cya.jpg" />
             </i>
             <Button className="bg-green-500 hover:bg-green-400 mx-auto m-4" style={{ height: '30px' }}>
-            Register (Coming Soon)
+            <a href="/bottle-rocket">Register</a>
             </Button>
         </div>
         </div>
@@ -85,7 +85,7 @@ export default function Cards() {
             <Image className="mx-auto mt-4 rounded-xl" width="220" height="300" alt="image" src="https://i.imgur.com/mOpydMo.jpg" />
             </i>
             <Button className="bg-blue-500 hover:bg-blue-400 mx-auto m-4" style={{ height: '30px' }}>
-            Register (Coming Soon)
+            <a href="/debate">Register</a>
             </Button>
         </div>
         </div>

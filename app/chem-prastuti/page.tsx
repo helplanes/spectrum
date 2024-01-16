@@ -45,7 +45,7 @@ export default function Home() {
       <Image className="mx-auto mt-4" width="500" height="450" alt="image" src="https://i.imgur.com/HDSxk4q.png" />
       <div>
       <h3 className="font-jacques_francois_shadow scroll-m-20 my-4 pl-2 text-xl font-extrabold text-gray-800 tracking-tight md:text-3xl lg:text-5xl">
-        / Event Description /
+        A Chemistry presentation event!
       </h3>
       </div>
       <Image className="mx-auto my-16" width="800" height="50" alt="image" src="https://i.imgur.com/lbNfJM2.png" />
@@ -57,10 +57,10 @@ export default function Home() {
     <div className="text-gray-700 leading-7 mb-4 p-8">
         <h1>Team Formation :</h1>
         <p className="leading-7">
-        1. Team can have maximum of 2 participants from FY. B.Tech.
+        1. Team can have maximum of 2 participants from FY. B.Tech. <br/>
         2. Registration fee for each group will be 200/- 
         </p>
-        <h1 className="pt-12">Team Formation :</h1>
+        <h1 className="pt-12">Presentation Rules :</h1>
         <p className="leading-7">
           1. The paper submitted will have to be presented during the event. <br/>
           2. Hard as well as soft copies of the paper are to be submitted well in advance to the coordinators before presentation on mail id: engg.chem2010@gmail.com<br/>
