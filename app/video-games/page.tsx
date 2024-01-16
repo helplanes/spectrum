@@ -36,21 +36,20 @@ export default function Home() {
     <main className="overflow-hidden max-w-7xl mx-auto px-8 bg-[#EBE9E0]">
       <div className={korna.className}>
         <h1 className="font-jacques_francois_shadow scroll-m-20 pt-8 text-4xl md:text-7xl font-extrabold text-gray-800 tracking-tight lg:text-9xl">
-        Electrica &apos;24
+        High Ping
         </h1>
         <br/>
         <h2 className="font-jacques_francois_shadow scroll-m-20 pl-2 text-2xl font-extrabold text-gray-800 tracking-tight lg:text-5xl">
           brought to you by AS&H, PCCOE
         </h2>
       </div>
-      <Image className="mx-auto mt-4" width="500" height="450" alt="image" src="https://i.imgur.com/d4vCa0X.png" />
+ <Image className="mx-auto mt-4" width="500" height="450" alt="image" src="https://i.imgur.com/d4vCa0X.png" />
       <div>
       <h3 className="font-jacques_francois_shadow scroll-m-20 my-4 pl-2 text-xl font-extrabold text-gray-800 tracking-tight md:text-3xl lg:text-5xl">
-        -	A fun event  which tests your knowledge on basic electronics while having fun at the same time <br/>
-        -	Have an unforgettable experience in our Circuit Safari game.
+        -	Coming Soon
       </h3>
       </div>
-      <Image className="mx-auto my-16" width="800" height="50" alt="image" src="https://i.imgur.com/lbNfJM2.png" />
+     {/*}      <Image className="mx-auto my-16" width="800" height="50" alt="image" src="https://i.imgur.com/lbNfJM2.png" />
       <Electrica_registarion />
       <Image className="mx-auto my-16" width="800" height="50" alt="image" src="https://i.imgur.com/lbNfJM2.png" />
         <Rules /> 
@@ -63,7 +62,7 @@ export default function Home() {
             2. If any changes are there it will inform to you on the Whatsapp group.
         </p>
         </div>
-        {/* <TableInfo /> */}
+*/}
     </main>
   );
 

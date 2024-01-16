@@ -80,7 +80,7 @@ export default function Cards() {
         </div>
         <div className="card">
           <div className="card-content">
-                Debate &apos;24
+              War of Words &apos;24
                 <i className="card-icon fa-regular fa-cat-space">
             <Image className="mx-auto mt-4 rounded-xl" width="220" height="300" alt="image" src="https://i.imgur.com/mOpydMo.jpg" />
             </i>
@@ -91,7 +91,7 @@ export default function Cards() {
         </div>
         <div className="card">
           <div className="card-content">
-                Video Games &apos;24
+              High Ping &apos;24
                 <i className="card-icon fa-regular fa-cat-space">
             <Image className="mx-auto mt-4 rounded-xl" width="200" height="300" alt="image" src="https://i.imgur.com/xvGbpGx.jpg" />
             </i>

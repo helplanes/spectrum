@@ -47,7 +47,7 @@ export function Navigation() {
                 <ListItem href="/debate" title="War of Words' 24" className="bg-pink-300 text-gray-900">
                   <p className="text-gray-100">  War of Words - Debate Competition 2024 </p>
                 </ListItem>
-                <ListItem href="/" title="Video Games '24" className="bg-blue-400 text-gray-900">
+                <ListItem href="/" title="High Ping '24" className="bg-blue-400 text-gray-900">
                   <p className="text-gray-100"> Coming Soon </p>
                 </ListItem>
               </ul>

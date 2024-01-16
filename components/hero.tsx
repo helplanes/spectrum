@@ -44,11 +44,11 @@ export default function hero() {
                         </li>
 
                         <li>
-                          <a className="text-gray-700 transition hover:text-gray-700/75" href="#"> Battle of Words </a>
+                          <a className="text-gray-700 transition hover:text-gray-700/75" href="#"> War of Words </a>
                         </li>
 
                         <li>
-                          <a className="text-gray-700 transition hover:text-gray-700/75" href="#"> Video Games </a>
+                          <a className="text-gray-700 transition hover:text-gray-700/75" href="#"> High Ping </a>
                         </li>
                       </ul>
                   </div>
