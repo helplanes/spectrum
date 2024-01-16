@@ -58,7 +58,7 @@ export default function Cards() {
         </div>
         <div className="card">
           <div className="card-content">
-                Chem Prasturti &apos;24
+                Chem Prastuti &apos;24
                 <i className="card-icon fa-regular fa-cat-space">
             <Image className="mx-auto mt-4 rounded-xl" width="210" height="300" alt="image" src="https://i.imgur.com/yJKEW8L.jpg" />
             </i>
