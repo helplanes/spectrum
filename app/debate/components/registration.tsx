@@ -17,7 +17,7 @@ export function Debate_registarion() {
                         </a>
                         <div className="flex items-center justify-between pt-4 ">
                             <span className="text-3xl font-bold text-gray-900">&#8377;100/-</span>
-                            <Button className="px-8">Register</Button>
+                            <a href="https://forms.gle/sj4jQV6atFBhJjT27"><Button className="">Register</Button></a>
                         </div>
                     </div>
                 </div>

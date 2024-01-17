@@ -17,7 +17,7 @@ export function Treasurehunt_registarion() {
                         </a>
                         <div className="flex items-center justify-between pt-4 ">
                             <span className="text-3xl font-bold text-gray-900">&#8377;400/-</span>
-                            <Button className="">Register</Button>
+                            <a href="https://forms.gle/NcYUzXgTeVT8nYV28"><Button className="">Register</Button></a>
                         </div>
                     </div>
                 </div>

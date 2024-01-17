@@ -17,7 +17,7 @@ export function Chem_prastuti_registarion() {
                         </a>
                         <div className="flex items-center justify-between pt-4 ">
                             <span className="text-3xl font-bold text-gray-900">&#8377;200/- group</span>
-                            <Button className="">Register</Button>
+                            <a href="https://forms.gle/Z8HsjcssBPdiPuYe6"><Button className="">Register</Button></a>
                         </div>
                     </div>
                 </div>

@@ -13,11 +13,19 @@ export function Electrica_registarion() {
                     </a>
                     <div className="px-5 pb-5">
                         <a>
-                            <h5 className="text-xl font-semibold tracking-tight text-black">High Ping </h5>
+                            <h5 className="text-xl font-semibold tracking-tight text-black">High Ping (Valorant)</h5>
+                        </a>
+                        <div className="flex items-center justify-between pt-4 pb-6">
+                            <span className="text-3xl font-bold text-gray-900">&#8377;500/-</span>
+                            <a href="https://forms.gle/eGkPho6w6aVHjyb67"><Button className="">Register</Button></a>
+                        </div>
+                        <hr className="border-black"/>
+                        <a>
+                            <h5 className="text-xl font-semibold tracking-tight pt-2 text-black">High Ping (BGMI) </h5>
                         </a>
                         <div className="flex items-center justify-between pt-4 ">
-                            <span className="text-3xl font-bold text-gray-900">&#8377;500/-</span>
-                            <Button className="">Register</Button>
+                            <span className="text-3xl font-bold text-gray-900">&#8377;400/-</span>
+                            <a href="https://forms.gle/xV8BMThn8MqBqBWh8"><Button className="">Register</Button></a>
                         </div>
                     </div>
                 </div>
