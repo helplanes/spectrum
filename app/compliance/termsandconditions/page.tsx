@@ -4,7 +4,7 @@ const TermsandConditions: React.FC = () => {
     return (
         <div className="min-h-screen flex items-center justify-center bg-black">
         <div className="max-w-md p-8 bg-black rounded shadow-md">
-       {/*  <Image className="mx-auto pb-8" width="200" height="200" alt="image" src="https://i.imgur.com/EfDRB29.jpg" /> */}
+           <Image className="mx-auto pb-8" width="200" height="200" alt="image" src="https://i.imgur.com/EfDRB29.jpg" /> 
             <h1 className="text-2xl font-bold mb-6">Terms and Conditions</h1>
   
             <p className="mb-4">

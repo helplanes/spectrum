@@ -9,7 +9,7 @@ export function Bottle_rocket_registarion() {
                         Registration Page :
                     </h1>
                     <a>
-                        <Image className="px-8 pb-8 rounded-t-lg" src="https://i.imgur.com/pygqYit.png" alt="product image" width={1200} height={1000} />
+                        <Image className="px-8 pb-8 rounded-t-lg" src="https://i.imgur.com/dJU3K6F.pngg" alt="product image" width={1200} height={1000} />
                     </a>
                     <div className="px-5 pb-5">
                         <a>

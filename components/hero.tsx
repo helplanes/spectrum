@@ -21,7 +21,7 @@ export default function hero() {
                     <div className="text-center animate-fade-in">    
                       <ul className="mt-10 flex flex-wrap justify-center gap-6 md:gap-8">
                         <li>
-                          <a className="text-gray-700 transition hover:text-gray-700/75" href="#"> E-paradox </a>
+                          <a className="text-gray-700 transition hover:text-gray-700/75" href="#"> E-Paradox </a>
                         </li>
                         <li>
                           <a className="text-gray-700 transition hover:text-gray-700/75" href="#"> Electrica </a>
