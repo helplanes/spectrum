@@ -50,7 +50,7 @@ export default function team_behind_spectrum() {
                                     </div> 
                                     <h1 className="mt-16 text-2xl font-semibold  capitalize text-gray-400 group-hover:text-white">Dr. Leena Sharma</h1>
                     
-                                    <p className="mt-2 capitalize text-gray-500 group-hover:text-white">Faculty Coordinator</p>
+                                    <p className="mt-2 capitalize text-gray-500 group-hover:text-white">Faculty Mentor</p>
                     
                      
                                     <div className="flex mt-3 -mx-2">
