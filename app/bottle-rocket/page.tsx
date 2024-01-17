@@ -65,7 +65,7 @@ export default function Home() {
         9. No external metal parts are allowed on the rocket but are allowed on the launch mechanism. <br/>
         10. You are only allowed to use plastic bottles specifically designed for holding pressure, or that have been pressure tested (for example carbonated drink bottles). <br/>
         11. Your launch apparatus must be secure and must be able to robustly control the rocket’s flight direction. <br/>
-        12. No glass or sharp objects to be used in/on the rocke <br/>
+        12. No glass or sharp objects to be used in/on the rocket <br/>
         13. Particular care must be taken so that the rocket’s launch direction is not changed when the launch mechanism is released. This means that handheld launches, systems requiring human support, or launches guided by flexible wire rods will not be allowed. <br/>
         14. You will need a launcher capable of launching a rocket at a variable vertical angle of up to 60˚ to the horizontal. The maximum launch angle will be decided on the day. You may launch at angles less than the maximum. <br/>
         15. If your rocket has fixed wings then a maximum variable launch angle of 30˚ to the horizontal is allowed. The maximum launch angle will be decided on the day. <br/>
