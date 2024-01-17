@@ -16,7 +16,7 @@ export function Treasurehunt_registarion() {
                             <h5 className="text-xl font-semibold tracking-tight text-black">Treasure Hunt</h5>
                         </a>
                         <div className="flex items-center justify-between pt-4 ">
-                            <span className="text-3xl font-bold text-gray-900">&#8377;TBD</span>
+                            <span className="text-3xl font-bold text-gray-900">&#8377;400/-</span>
                             <Button className="">Register</Button>
                         </div>
                     </div>

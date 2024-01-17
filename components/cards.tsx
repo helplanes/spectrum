@@ -96,7 +96,7 @@ export default function Cards() {
             <Image className="mx-auto mt-4 rounded-xl" width="200" height="300" alt="image" src="https://i.imgur.com/xvGbpGx.jpg" />
             </i>
             <Button className="bg-purple-500 hover:bg-purple-400 mx-auto m-4" style={{ height: '30px' }}>
-            Register (Coming Soon)
+            Register
             </Button>
         </div>
         </div>

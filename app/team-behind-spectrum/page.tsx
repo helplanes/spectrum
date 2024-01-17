@@ -24,7 +24,7 @@ export default function team_behind_spectrum() {
                                     </div> 
                                     <h1 className="mt-16 text-2xl font-semibold  capitalize text-gray-400 group-hover:text-white">Dr. Sanjivani Sonar</h1>
                     
-                                    <p className="mt-2 capitalize text-gray-500 group-hover:text-white">Organiser</p>
+                                    <p className="mt-2 capitalize text-gray-500 group-hover:text-white">HOD</p>
                     
                                     <div className="flex mt-3 -mx-2">
                                         <a href="#" className="mx-2  text-gray-500  group-hover:text-white" aria-label="Reddit">
@@ -44,13 +44,13 @@ export default function team_behind_spectrum() {
                                         <div className="absolute flex h-full w-full justify-center rounded-xl bg-cover" style={{ background: "linear-gradient(146deg, rgba(221,235,82,1) 8%, rgba(37,255,102,1) 39%, rgba(28,190,47,1) 65%, rgba(83,234,255,1) 89%)" }}></div>
                                         <div className=" absolute flex h-full w-full justify-center rounded-xl bg-cover transition-colors duration-300 transform bg-gray-950/30  group-hover:bg-transparent"></div>
                                         <div className="absolute -bottom-12 flex h-32 w-32 items-center justify-center rounded-full border-[4px] border-white bg-pink-400 dark:!border-navy-700">
-                                            <Image width="100" height="100" className="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300" src="https://drsandeeppatil.weebly.com/uploads/3/1/2/9/31290621/published/untitled.jpg?1704449115" alt="No Data"/>
+                                            <Image width="100" height="100" className="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300" src="https://fe.pccoepune.com/People/images/faculty/sharma.png" alt="No Data"/>
                     
                                         </div>
                                     </div> 
-                                    <h1 className="mt-16 text-2xl font-semibold  capitalize text-gray-400 group-hover:text-white">Dr. Sandeep Patil</h1>
+                                    <h1 className="mt-16 text-2xl font-semibold  capitalize text-gray-400 group-hover:text-white">Dr. Leena Sharma</h1>
                     
-                                    <p className="mt-2 capitalize text-gray-500 group-hover:text-white">Organiser</p>
+                                    <p className="mt-2 capitalize text-gray-500 group-hover:text-white">Faculty Coordinator</p>
                     
                      
                                     <div className="flex mt-3 -mx-2">
@@ -76,7 +76,7 @@ export default function team_behind_spectrum() {
                                     </div> 
                                     <h1 className="mt-16 text-2xl font-semibold  capitalize text-gray-400 group-hover:text-white">Dr. Shaziya Sheikh</h1>
                     
-                                    <p className="mt-2 capitalize text-gray-500 group-hover:text-white">Organiser</p>
+                                    <p className="mt-2 capitalize text-gray-500 group-hover:text-white">Faculty Coordinator</p>
                     
                     
                                     <div className="flex mt-3 -mx-2">
@@ -88,6 +88,33 @@ export default function team_behind_spectrum() {
                                         </a>
                     
                                     </div>
+                                </div>
+                                
+                                <div className="flex flex-col bg-gray-900 items-center p-8 transition border duration-300 transform  animation:1s ease-in-out cursor-pointer rounded-xl  group  border-gray-700 hover:border-transparent min-h-[360px] shadow-lg shadow-indigo-500/20 min-w-[300px]              hover:scale-105   ">
+                                    <div className="relative flex h-36 w-full justify-center rounded-xl bg-cover" >
+                                        <p className="absolute top-[18px] w-full text-center z-10 font-bold text-xl ">Core Team</p>
+                                    
+                                        <div className="absolute flex h-full w-full justify-center rounded-xl bg-cover" style={{ background: "linear-gradient(146deg, rgba(221,235,82,1) 8%, rgba(37,255,102,1) 39%, rgba(28,190,47,1) 65%, rgba(83,234,255,1) 89%)" }}></div>
+                                        <div className=" absolute flex h-full w-full justify-center rounded-xl bg-cover transition-colors duration-300 transform bg-gray-950/30  group-hover:bg-transparent"></div>
+                                        <div className="absolute -bottom-12 flex h-32 w-32 items-center justify-center rounded-full border-[4px] border-white bg-pink-400 dark:!border-navy-700">
+                                            <Image width="100" height="100" className="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300" src="https://drsandeeppatil.weebly.com/uploads/3/1/2/9/31290621/published/untitled.jpg?1704449115" alt="No Data"/>
+                    
+                                        </div>
+                                    </div> 
+                                    <h1 className="mt-16 text-2xl font-semibold  capitalize text-gray-400 group-hover:text-white">Dr. Sandeep Patil</h1>
+                    
+                                    <p className="mt-2 capitalize text-gray-500 group-hover:text-white">Faculty Coordinator</p>
+                    
+                     
+                                    <div className="flex mt-3 -mx-2">
+                                        <a href="#" className="mx-2  text-gray-500  group-hover:text-white" aria-label="Reddit">
+                                            <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M19,3H5C3.895,3,3,3.895,3,5v14c0,1.105,0.895,2,2,2h14c1.105,0,2-0.895,2-2V5C21,3.895,20.105,3,19,3z M9,17H6.477v-7H9 V17z M7.694,8.717c-0.771,0-1.286-0.514-1.286-1.2s0.514-1.2,1.371-1.2c0.771,0,1.286,0.514,1.286,1.2S8.551,8.717,7.694,8.717z M18,17h-2.442v-3.826c0-1.058-0.651-1.302-0.895-1.302s-1.058,0.163-1.058,1.302c0,0.163,0,3.826,0,3.826h-2.523v-7h2.523v0.977 C13.93,10.407,14.581,10,15.802,10C17.023,10,18,10.977,18,13.174V17z"></path>
+                                            </svg>
+                                        </a>
+                    
+                                    </div> 
                                 </div>
                                 <div className="flex flex-col bg-gray-900 items-center p-8 transition border duration-300 transform  animation:1s ease-in-out cursor-pointer rounded-xl  group  border-gray-700 hover:border-transparent min-h-[360px] shadow-lg shadow-indigo-500/20 min-w-[300px]              hover:scale-105   ">
                                     <div className="relative flex h-36 w-full justify-center rounded-xl bg-cover" >
@@ -102,7 +129,7 @@ export default function team_behind_spectrum() {
                                     </div> 
                                     <h1 className="mt-16 text-2xl font-semibold  capitalize text-gray-400 group-hover:text-white">Dr. Amol kharche</h1>
                     
-                                    <p className="mt-2 capitalize text-gray-500 group-hover:text-white">Organiser</p>
+                                    <p className="mt-2 capitalize text-gray-500 group-hover:text-white">Faculty Coordinator</p>
                     
                                     <div className="flex mt-3 -mx-2">
                                         <a href="#" className="mx-2  text-gray-500  group-hover:text-white" aria-label="Reddit">

@@ -48,7 +48,7 @@ export default function hero() {
                         </li>
 
                         <li>
-                          <a className="text-gray-700 transition hover:text-gray-700/75" href="#"> High Ping </a>
+                          <a className="text-gray-700 transition hover:text-gray-700/75" href="/video-games"> High Ping </a>
                         </li>
                       </ul>
                   </div>

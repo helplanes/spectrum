@@ -16,7 +16,7 @@ export function Debate_registarion() {
                             <h5 className="text-xl font-semibold tracking-tight text-black">War of Words (Debate) </h5>
                         </a>
                         <div className="flex items-center justify-between pt-4 ">
-                            <span className="text-3xl font-bold text-gray-900">&#8377;TBD</span>
+                            <span className="text-3xl font-bold text-gray-900">&#8377;100/-</span>
                             <Button className="px-8">Register</Button>
                         </div>
                     </div>

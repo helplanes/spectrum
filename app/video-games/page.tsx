@@ -1,6 +1,6 @@
-import { TableInfo } from "@/app/electrica/components/info";
-import { Rules } from "@/app/electrica/components/accordian"
-import { Electrica_registarion } from "@/app/electrica/components/registration";
+
+import { Rules } from "@/app/video-games/components/accordian"
+import { Electrica_registarion } from "@/app/video-games/components/registration";
 import { Krona_One } from 'next/font/google'
 import Image from "next/image";
 
@@ -43,26 +43,41 @@ export default function Home() {
           brought to you by AS&H, PCCOE
         </h2>
       </div>
- <Image className="mx-auto mt-4" width="500" height="450" alt="image" src="https://i.imgur.com/d4vCa0X.png" />
+ <Image className="mx-auto mt-4" width="500" height="450" alt="image" src="https://i.imgur.com/U42KHTH.png" />
       <div>
       <h3 className="font-jacques_francois_shadow scroll-m-20 my-4 pl-2 text-xl font-extrabold text-gray-800 tracking-tight md:text-3xl lg:text-5xl">
-        -	Coming Soon
+      High Ping PCCOE E-Sports Event <br/>
+        1) Valorant Tournament <br/>
+        2) BGMI Tournament
+
       </h3>
       </div>
-     {/*}      <Image className="mx-auto my-16" width="800" height="50" alt="image" src="https://i.imgur.com/lbNfJM2.png" />
+    <Image className="mx-auto my-16" width="800" height="50" alt="image" src="https://i.imgur.com/lbNfJM2.png" />
       <Electrica_registarion />
-      <Image className="mx-auto my-16" width="800" height="50" alt="image" src="https://i.imgur.com/lbNfJM2.png" />
-        <Rules /> 
+      <Image className="mx-auto my-16" width="800" height="50" alt="image" src="https://i.imgur.com/lbNfJM2.png" /> 
     <hr/>
-    <Image className="mx-auto my-8" width="800" height="50" alt="image" src="https://i.imgur.com/lbNfJM2.png" />
     <div className="text-gray-700 leading-7 mb-4 p-8">
         <h1>Note :</h1>
         <p className="leading-7">
-            1. This rules are tentative. <br/>
-            2. If any changes are there it will inform to you on the Whatsapp group.
+        1.	Each team should consist of 5 people for Valorant and 4 people for BGMI. <br/>
+        2.	Leader of each team will be primary person of contact.<br/>
+        3.	Usernames and Team names should not contain Vulgarities.<br/>
+        4.	External gaming accessories like triggers are not allowed.<br/>
+        5.  No abuse of any kind will be tolerated.<br/>
+        6.  Any kind of malpractices will result in disqualification of team.<br/>
+        7.	Registration fee is not refundable.<br/>
+        8.	On-Spot Entries are not acceptable.<br/>
+        9.	Qualifying rounds will take place in online mode, Semi-final and Final matches will be conducted offline in our college campus.
         </p>
         </div>
-*/}
+        <div className="text-gray-700 leading-7 mb-4 p-8">
+        <h1>Registration Fee: </h1>
+        <p className="leading-7">
+          1. Valorant – Rs 500 per team <br/>
+          2. BGMI – Rs 400 per team 
+
+        </p>
+        </div>
     </main>
   );
 
