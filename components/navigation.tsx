@@ -10,7 +10,6 @@ import {
   NavigationMenuTrigger
 } from "@/components/ui/navigation-menu"
 import { Avatar, AvatarImage  } from "@/components/ui/avatar"
-import { Terminal } from 'lucide-react'
 import Link from "next/link"
 
 export function Navigation() {
@@ -53,29 +52,12 @@ export function Navigation() {
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
-          <NavigationMenuItem>
-            <NavigationMenuTrigger>Misc</NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <ul className="gap-3 space-y-2 p-6 md:w-[300px] lg:grid-cols-[.75fr_1fr]">
-                <li className="row-span-3">
-                  <NavigationMenuLink asChild>
-                    <a
-                      className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                      href="/team-behind-spectrum"
-                    >
-                      <Terminal className="h-6 w-6 text-white" />
-                      <div className="mb-2 mt-2 text-lg font-medium text-white">
-                      Team
-                      </div>
-                      <p className="text-sm leading-tight text-muted-foreground">  
-                      The team behind Spectrum!
-                      </p>
-                    </a>
-                  </NavigationMenuLink>
-                </li>
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
+            <a className="group relative inline-block text-sm font-medium text-indigo-600 focus:outline-none focus:ring active:text-indigo-500" href="/team-behind-spectrum">
+              <span className="absolute inset-0 translate-x-0.5 translate-y-0.5 bg-indigo-600 transition-transform group-hover:translate-x-0 group-hover:translate-y-0">
+
+              </span>
+              <span className="relative block border border-current bg-black text-white px-8 py-3"> Team </span>
+            </a>
         </NavigationMenuList>
     </NavigationMenu>
   )

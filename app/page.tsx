@@ -5,9 +5,7 @@ import Cards from "@/components/cards";
 { /* import EmblaCarousel from '@/components/parallax/EmblaCarousel' */}
 import { EmblaOptionsType } from 'embla-carousel'
 import '@/components/parallax/embla.css'
-
 import EmblaCarousels from '@/components/thumbs/EmblaCarousels'
-
 const OPTIONS: EmblaOptionsType = { dragFree: true }
 const SLIDE_COUNT = 5
 const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
@@ -23,7 +21,6 @@ export default function Home() {
       </h1>
       <hr/>
       <Cards />
-      
       <div className="bg-white text-black">
         <div className="pt-2">
           <h1 className="scroll-m-20 text-center text-4xl font-extrabold tracking-tight lg:text-5xl p-4">
