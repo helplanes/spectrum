@@ -17,7 +17,7 @@ export function Navigation() {
     <NavigationMenu className="">
       <a className="mx-auto max-w-7xl flex flex-1 justify-items-start" href="/">
         <Avatar>
-          <AvatarImage src="https://i.imgur.com/gz9XncO.png" />
+          <AvatarImage width="auto" height="100" src="https://i.imgur.com/gz9XncO.png"  alt="main logo"/>
         </Avatar>
       </a>
         <NavigationMenuList>
