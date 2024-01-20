@@ -17,7 +17,7 @@ import {
         Total 4 rounds : <br/>
         </p>
         <AccordionItem value="item-1">
-          <AccordionTrigger>ROUND 1: Resistance is Futile</AccordionTrigger>
+          <AccordionTrigger>ROUND 1: RESISTANCE IS FUTILE</AccordionTrigger>
           <AccordionContent>
           1.	This round is going to be an Aptitude Test.<br/>
           2.	1 mark for correct question. There will not be any negative marking.<br/>
@@ -30,7 +30,7 @@ import {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-2">
-          <AccordionTrigger>ROUND 2: Buzzer Battle</AccordionTrigger>
+          <AccordionTrigger>ROUND 2: FAST AND FURIOUS</AccordionTrigger>
           <AccordionContent>
           1. This game is a buzzer game in which teams have to answer questions quickly and accurately in a given frame of time. <br/>
           2. Questions will be based on basic knowledge of electronics engineering. <br/>
@@ -41,7 +41,7 @@ import {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-3">
-          <AccordionTrigger>ROUND 3: Simulated Era</AccordionTrigger>
+          <AccordionTrigger>ROUND 3: SIMULATED ERA</AccordionTrigger>
           <AccordionContent>
           1.	In this round each team would be given a circuit to build <br/>
           2.	The circuits will have to be built on multi-sim or digital trainer kit.<br/>
@@ -60,7 +60,7 @@ import {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-4">
-          <AccordionTrigger>ROUND 4: Circuit Safari</AccordionTrigger>
+          <AccordionTrigger>ROUND 4: CIRCUIT SAFARI</AccordionTrigger>
           <AccordionContent>
           1.	This will be the Final Showdown of the event.<br/>
           2.	Each team has to send one member to play in a game of real-life snakes and ladders with a twist of electronics.<br/>
