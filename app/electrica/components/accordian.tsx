@@ -32,12 +32,10 @@ import {
         <AccordionItem value="item-2">
           <AccordionTrigger>ROUND 2: FAST AND FURIOUS</AccordionTrigger>
           <AccordionContent>
-          1. This game is a buzzer game in which teams have to answer questions quickly and accurately in a given frame of time. <br/>
-          2. Questions will be based on basic knowledge of electronics engineering. <br/>
-          3. The number of questions would be a surprise. <br/>
-          4. 5 Teams would be allowed to play this game at once, out of which 1 of them would be selected. <br/>
-          5. Difficulty: Medium to hard. <br/>
-          6. 50% will be eliminated <br/>
+          1.	This round will be a Buzzer Battle where each team have to answer the questions quickly and accurately<br/>
+          2.	Team which hits the button first and answers the question correctly would be rewarded with 5 points. At the same time if a team hits the question and fails to answer correctly 3 points would be deducted.<br/>
+          3.	Number of questions will be a surprise.<br/>
+          4.	Team with the most points in a group will advance into the next round.<br/>
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-3">

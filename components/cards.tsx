@@ -101,7 +101,7 @@ export default function Cards() {
 
         <div className="max-w-sm rounded-lg shadow bg-gray-900 border-purple-700">
             <a href="/bottle-rocket">
-                <Image className="rounded-t-lg" width="350" height="300" alt="image" src="https://i.imgur.com/yJKEW8L.jpg" />
+                <Image className="rounded-t-lg mx-auto" width="350" height="300" alt="image" src="https://i.imgur.com/oIA4Cya.jpg" />
             </a>
             <div className="p-5">
                 <a href="/bottle-rocket">
