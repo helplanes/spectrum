@@ -5,7 +5,6 @@ import { EmblaOptionsType } from 'embla-carousel'
 import useEmblaCarousel from 'embla-carousel-react'
 import { Thumb } from './EmblaCarouselThumbsButton'
 import imageByIndex from './imageByIndex'
-import Image from 'next/image'
 
 type PropType = {
   slides: number[]
@@ -51,13 +50,15 @@ const EmblaCarousels: React.FC<PropType> = (props) => {
               <div className="embla__slide__number">
                 <span>{index + 1}</span>
               </div>
-              <Image
-                width={800}
-                height={800}
-                className="embla__slide__img"
-                src={imageByIndex(index)}
-                alt="Your alt text"
-              />
+              <picture>
+                <img
+                  width={800}
+                  height={800}
+                  className="embla__slide__img"
+                  src={imageByIndex(index)}
+                  alt="Your alt text"
+                />
+              </picture>
             </div>
           ))}
         </div>

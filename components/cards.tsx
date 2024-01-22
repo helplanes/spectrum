@@ -1,13 +1,13 @@
 import "../components/pag.css"
-import Image from "next/image"
-import { Button } from "./ui/button"
 
 export default function Cards() {
     return (
         <div id="cards" className="mx-auto">
         <div className="max-w-sm rounded-lg shadow bg-gray-900 border-red-700">
             <a href="/e-paradox">
-                <Image className="rounded-t-lg" width="350" height="300" alt="image" src="https://i.imgur.com/sWzLWIW.jpg" />
+                <picture>
+                    <img className="rounded-t-lg" width="350" height="300" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913636/Spectrum/Homepage/eparadox_xmuoej.jpg" />
+                </picture>
             </a>
             <div className="p-5">
                 <a href="/e-paradox">
@@ -25,7 +25,9 @@ export default function Cards() {
 
         <div className="max-w-sm rounded-lg shadow bg-gray-900 border-orange-700">
             <a href="/electrica">
-                <Image className="rounded-t-lg" width="350" height="300" alt="image" src="https://i.imgur.com/iHJRiHD.jpg" />
+                <picture>
+                    <img className="rounded-t-lg" width="350" height="300" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913635/Spectrum/Homepage/electrica_oc2dm6.jpg" />
+                </picture>
             </a>
             <div className="p-5">
                 <a href="/electrica">
@@ -43,7 +45,9 @@ export default function Cards() {
 
         <div className="max-w-sm rounded-lg shadow bg-gray-900 border-yellow-700">
             <a href="/brain-dasher">
-                <Image className="rounded-t-lg" width="350" height="300" alt="image" src="https://i.imgur.com/iOTNbx0.jpg" />
+                <picture>
+                    <img className="rounded-t-lg" width="350" height="300" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913635/Spectrum/Homepage/braindasher_ssnsl9.jpg" />
+                </picture>
             </a>
             <div className="p-5">
                 <a href="/brain-dasher">
@@ -61,7 +65,9 @@ export default function Cards() {
 
         <div className="max-w-sm rounded-lg shadow bg-gray-900 border-green-700">
             <a href="/treasure-hunt">
-                <Image className="rounded-t-lg" width="350" height="300" alt="image" src="https://i.imgur.com/iOTNbx0.jpg" />
+                <picture>
+                    <img className="rounded-t-lg" width="350" height="300" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913637/Spectrum/Homepage/treasure_imfqwg.jpg" />
+                </picture>
             </a>
             <div className="p-5">
                 <a href="/treasure-hunt">
@@ -78,12 +84,16 @@ export default function Cards() {
         </div>
 
         <div className="max-w-sm rounded-lg shadow bg-gray-900 border-orange-700">
-            <Image className="mx-auto" width="400" height="200" src="https://i.imgur.com/HKZuMdo.png" alt="logo"/>
+            <picture>
+                <img className="mx-auto" width="400" height="200" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913782/Spectrum/Homepage/HKZuMdo_w2bis3.png" alt="logo"/>
+            </picture>
         </div>
 
         <div className="max-w-sm rounded-lg shadow bg-gray-900 border-blue-700">
             <a href="/chem-prastuti">
-                <Image className="rounded-t-lg" width="350" height="300" alt="image" src="https://i.imgur.com/yJKEW8L.jpg" />
+                <picture>
+                    <img className="rounded-t-lg" width="350" height="300" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913635/Spectrum/Homepage/chemprastuti_qfiz2s.jpg" />
+                </picture>
             </a>
             <div className="p-5">
                 <a href="/chem-prastuti">
@@ -101,7 +111,9 @@ export default function Cards() {
 
         <div className="max-w-sm rounded-lg shadow bg-gray-900 border-purple-700">
             <a href="/bottle-rocket">
-                <Image className="rounded-t-lg mx-auto" width="350" height="300" alt="image" src="https://i.imgur.com/oIA4Cya.jpg" />
+                <picture>
+                    <img className="rounded-t-lg mx-auto" width="350" height="300" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913635/Spectrum/Homepage/bottlerocket_gv6w0e.jpg" />
+                </picture>    
             </a>
             <div className="p-5">
                 <a href="/bottle-rocket">
@@ -119,7 +131,9 @@ export default function Cards() {
 
         <div className="max-w-sm rounded-lg shadow bg-gray-900 border-pink-700">
             <a href="/debate">
-                <Image className="rounded-t-lg" width="350" height="300" alt="image" src="https://i.imgur.com/mOpydMo.jpg" />
+                <picture>
+                    <img className="rounded-t-lg" width="350" height="300" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913635/Spectrum/Homepage/warofwords_njqikn.jpg" />
+                </picture>
             </a>
             <div className="p-5">
                 <a href="/debate">
@@ -137,7 +151,9 @@ export default function Cards() {
 
         <div className="max-w-sm rounded-lg shadow bg-gray-900 border-blue-700">
             <a href="/video-games">
-                <Image className="rounded-t-lg" width="350" height="300" alt="image" src="https://i.imgur.com/xvGbpGx.jpg" />
+                <picture>
+                    <img className="rounded-t-lg" width="350" height="300" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913637/Spectrum/Homepage/videogames_rs9ubb.jpg" />
+                </picture>
             </a>
             <div className="p-5">
                 <a href="/video-games">

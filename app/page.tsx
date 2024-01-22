@@ -34,7 +34,6 @@ export default function Home() {
                 src="https://i.imgur.com/cBNoOE9.jpg"
                 fill
                 sizes="(max-width: 768px) 213px, 33vw"
-                priority
                 className="rounded-lg object-cover"
               />
             </div>
@@ -44,7 +43,6 @@ export default function Home() {
                 src="https://i.imgur.com/escfJ52.jpg"
                 fill
                 sizes="(max-width: 768px) 213px, 33vw"
-                priority
                 className="rounded-lg object-cover  sm:object-center"
               />
             </div>
@@ -54,7 +52,6 @@ export default function Home() {
                 src="https://i.imgur.com/yB3NJh7.jpg"
                 fill
                 sizes="(max-width: 768px) 213px, 33vw"
-                priority
                 className="rounded-lg object-cover object-top sm:object-center"
               />
             </div>
@@ -64,7 +61,6 @@ export default function Home() {
                 src="https://i.imgur.com/z1nMI5p.jpg"
                 fill
                 sizes="(max-width: 768px) 213px, 33vw"
-                priority
                 className="rounded-lg object-cover"
               />
             </div>
@@ -74,7 +70,6 @@ export default function Home() {
                 src="https://i.imgur.com/ChxIC6v.jpg"
                 fill
                 sizes="(max-width: 768px) 213px, 33vw"
-                priority
                 className="rounded-lg object-cover"
               />
             </div>
@@ -84,7 +79,6 @@ export default function Home() {
                 src="https://i.imgur.com/jM0tA67.jpg"
                 fill
                 sizes="(min-width: 768px) 213px, 33vw"
-                priority
                 className="rounded-lg object-cover"
               />
             </div>

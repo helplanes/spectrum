@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-      <footer className="overflow-hidden bg-[url(https://i.imgur.com/27WcFgu.jpg)] bg-cover bg-top bg-no-repeat">
+      <footer className="overflow-hidden bg-[url(https://res.cloudinary.com/dfyrk32ua/image/upload/v1705914169/Spectrum/Homepage/footer_jfdqtg.jpg)] bg-cover bg-top bg-no-repeat">
             <div className="relative">
                 <div>
                     <hr/>
