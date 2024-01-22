@@ -42,18 +42,26 @@ export default function Home() {
           brought to you by AS&H, PCCOE
         </h2>
       </div>
-      <Image className="mx-auto mt-4" width="500" height="450" alt="image" src="https://i.imgur.com/MJ4C1aA.png" />
+      <picture> 
+        <img className="mx-auto mt-4" width="600" height="450" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705931688/Spectrum/shapes/MJ4C1aA-min_z9q3gr.png" />
+      </picture> 
       <div>
       <h3 className="font-jacques_francois_shadow scroll-m-20 my-6 pl-2 text-xl font-extrabold text-gray-800 tracking-tight md:text-3xl lg:text-5xl">
         Its time to put your brain to the test!
       </h3>
       </div>
-      <Image className="mx-auto my-16" width="800" height="50" alt="image" src="https://i.imgur.com/lbNfJM2.png" />
+      <picture> 
+        <img className="mx-auto my-16" width="800" height="50" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705931875/Spectrum/global/lbNfJM2-min_n0yrof.webp" />
+      </picture> 
       <BrainDashers_registarion />
-      <Image className="mx-auto my-16" width="800" height="50" alt="image" src="https://i.imgur.com/lbNfJM2.png" />
-        <Rules /> 
+      <picture> 
+        <img className="mx-auto my-16" width="800" height="50" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705931875/Spectrum/global/lbNfJM2-min_n0yrof.webp" />
+      </picture> 
+      <Rules /> 
     <hr/>
-    <Image className="mx-auto my-8" width="800" height="50" alt="image" src="https://i.imgur.com/lbNfJM2.png" />
+      <picture> 
+        <img className="mx-auto my-8" width="800" height="50" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705931875/Spectrum/global/lbNfJM2-min_n0yrof.webp" />
+      </picture> 
     <div className="text-gray-700 leading-7 mb-4 p-8">
         <h1>Rules and Regulations of the events: </h1>
           <p className="leading-7">

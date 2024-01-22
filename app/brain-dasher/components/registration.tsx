@@ -9,7 +9,9 @@ export function BrainDashers_registarion() {
                         Registration Page :
                     </h1>
                     <a>
-                        <Image className="px-8 pb-8 rounded-t-lg" src="https://i.imgur.com/dmGEOn5_d.webp?maxwidth=760&fidelity=grand" alt="product image" width={1200} height={1000} />
+                        <picture> 
+                            <img className="px-8 pb-8 rounded-t-lg" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705932899/Spectrum/posters-for-event-page/dmGEOn5_d_swbrhm.webp" alt="product image" width={1200} height={1000} />
+                        </picture> 
                     </a>
                     <div className="px-5 pb-5">
                         <a>

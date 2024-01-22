@@ -9,7 +9,9 @@ export function Chem_prastuti_registarion() {
                         Registration Page :
                     </h1>
                     <a>
-                        <Image className="px-8 pb-8 rounded-t-lg" src="https://i.imgur.com/GpMClGl_d.webp?maxwidth=760&fidelity=grand" alt="product image" width={1200} height={1000} />
+                        <picture>
+                            <img className="px-8 pb-8 rounded-t-lg" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705932901/Spectrum/posters-for-event-page/GpMClGl_d_ealwje.webp" alt="product image" width={1200} height={1000} />
+                        </picture>
                     </a>
                     <div className="px-5 pb-5">
                         <a>

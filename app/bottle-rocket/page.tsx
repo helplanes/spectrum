@@ -42,15 +42,21 @@ export default function Home() {
           brought to you by AS&H, PCCOE
         </h2>
       </div>
-      <Image className="mx-auto mt-4" width="500" height="450" alt="image" src="https://i.imgur.com/QMQf6Xn.png" />
+      <picture> 
+        <img className="mx-auto mt-4" width="500" height="450" alt="image" src="https://i.imgur.com/QMQf6Xn.png" />
+      </picture>
       <div>
       <h3 className="font-jacques_francois_shadow scroll-m-20 my-4 pl-2 text-xl font-extrabold text-gray-800 tracking-tight md:text-3xl lg:text-5xl">
         A rocket propelled by water and air pressure!
       </h3>
       </div>
-      <Image className="mx-auto my-16" width="800" height="50" alt="image" src="https://i.imgur.com/lbNfJM2.png" />
+      <picture> 
+        <img className="mx-auto my-16" width="800" height="50" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705931875/Spectrum/global/lbNfJM2-min_n0yrof.webp" />
+      </picture> 
       <Bottle_rocket_registarion />
-      <Image className="mx-auto my-16" width="800" height="50" alt="image" src="https://i.imgur.com/lbNfJM2.png" />
+      <picture> 
+        <img className="mx-auto my-16" width="800" height="50" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705931875/Spectrum/global/lbNfJM2-min_n0yrof.webp" />
+      </picture> 
       <div className="text-gray-700 leading-7 mb-4 p-8">
         <h1 className="scroll-m-20 text-2xl font-semibold tracking-tight">Rules :</h1>
         <p className="leading-7">
@@ -86,7 +92,9 @@ export default function Home() {
             </div>
         </div>
     <hr/>
-    <Image className="mx-auto my-8" width="800" height="50" alt="image" src="https://i.imgur.com/lbNfJM2.png" />
+    <picture> 
+      <img className="mx-auto my-8" width="800" height="50" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705931875/Spectrum/global/lbNfJM2-min_n0yrof.webp" />
+    </picture> 
     </main>
   );
 

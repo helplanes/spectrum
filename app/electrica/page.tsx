@@ -50,12 +50,18 @@ export default function Home() {
         -	Play real-life snake and ladders in our Circuit Safari game for an unforgettable and fun-filled experience! <br/>
       </h3>
       </div>
-      <Image className="mx-auto my-16" width="800" height="50" alt="image" src="https://i.imgur.com/lbNfJM2.png" />
+      <picture> 
+        <img className="mx-auto my-16" width="800" height="50" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705931875/Spectrum/global/lbNfJM2-min_n0yrof.webp" />
+      </picture> 
       <Electrica_registarion />
-      <Image className="mx-auto my-16" width="800" height="50" alt="image" src="https://i.imgur.com/lbNfJM2.png" />
+      <picture> 
+      <img className="mx-auto my-16" width="800" height="50" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705931875/Spectrum/global/lbNfJM2-min_n0yrof.webp" />
+      </picture> 
         <Rules /> 
     <hr/>
-    <Image className="mx-auto my-8" width="800" height="50" alt="image" src="https://i.imgur.com/lbNfJM2.png" />
+    <picture> 
+      <img className="mx-auto my-8" width="800" height="50" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705931875/Spectrum/global/lbNfJM2-min_n0yrof.webp" />
+    </picture> 
     <div className="text-gray-700 leading-7 mb-4 p-8">
         <h1>Note :</h1>
         <p className="leading-7">
