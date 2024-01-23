@@ -12,7 +12,6 @@ import {
         <p className="leading-7 mb-4">
             Total 3 rounds
         </p>
-        
         <AccordionItem value="item-1">
           <AccordionTrigger>ROUND 1: Basic Aptitude Test (Offline mode)</AccordionTrigger>
           <AccordionContent>

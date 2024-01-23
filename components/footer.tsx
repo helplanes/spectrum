@@ -4,8 +4,8 @@ export default function Footer() {
             <div className="relative">
                 <div>
                     <hr/>
-                    <p className="mx-auto max-w-7xl text-center text-xs/relaxed text-gray-200 px-4 py-8 sm:px-4 lg:pt-8">
-                        Built with Love by FY Pccoe Students{'<'}3 <br/>
+                    <p className="mx-auto max-w-7xl font-semibold text-center text-xs/relaxed text-gray-200 px-4 py-8 sm:px-4 lg:pt-8">
+                        Built with Love by FY Pccoe Students{' <'}3 <br/>
                         {/* Website Developed by Kartik <a href=""></a> & Mayank <a href=""></a>from FY IT : {')'} */}
                     </p>
                 </div>

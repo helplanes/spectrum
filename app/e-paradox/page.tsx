@@ -63,13 +63,24 @@ export default function Home() {
     <div className="text-gray-700 leading-7 mb-4 p-2 sm:p-4 md:p-6 lg:p-8">
         <h1>Rule Book :</h1>
         <p className="leading-7">
-          1. Online platforms like Hackerrank and CodeChef would be used. No personal computers will be allowed. <br />
-          2. Changing of tabs during the competition will be considered as an act of cheating and the participant will be disqualified immediately. <br />
-          3. Use of A.I. chatbots like ChatGPT is strictly prohibited. <br />
-          4. Use of Mobile phone, smartwatches, any other electronic device during the competition is prohibited. <br />
-          5. Participants would be strictly monitored, help of volunteers can be considered. <br />
-          6. Each round will have a certain time limit, participants are needed to bound to it. <br />
-          7. Final decision making would be done by Coordinators based on computerized results.
+          <ul>
+            <li>1. The competition will be conducted on online platforms such as HackerRank.</li>
+            <li>2. Personal computers are not allowed for use during the event.</li>
+            <li>3. Changing tabs during the competition is considered cheating and may lead to disqualification.</li>
+            <li>4. The use of A.I. chatbots like ChatGPT is strictly prohibited.</li>
+            <li>5. Participants are not allowed to use mobile phones, smart watches, or any other electronic devices.</li>
+            <li>6. Strict monitoring of participants will be implemented, with assistance from volunteers if necessary.</li>
+            <li>7. Each round will have a specified time limit that participants must adhere to.</li>
+            <li>8. The final decision will be based on computerized results and made by the event coordinators.</li>
+            <li>9. The decision of the event coordinators is final and binding, not subject to contestation.</li>
+            <li>10. The organizers reserve the right to change or update the contest rules, and participants are responsible for staying informed.</li>
+            <li>11. Violation of any rule may result in immediate disqualification.</li>
+            <li>12. Spot entries will not be accepted.</li>
+            <li>13. All the rounds will be held offline at the venue.</li>
+            <li>14. Participants should have their own HackerRank account.</li>
+            <li>15. For team rounds, coordinators will assign the team on the basis of computerized results.</li>
+            <li>16. Participants will be solely responsible for any damage/harm caused due to his/her recklessness.</li>
+          </ul>
         </p>
         </div>
     </main>

@@ -82,7 +82,9 @@ export default function Home() {
         <div className="text-gray-700 leading-7 my-4 p-8">
           <h1 className="scroll-m-20 text-2xl font-semibold tracking-tight">Field :</h1>
             <p className="leading-7">
-            <Image className="px-8 p-8 rounded-t-lg mx-auto" src="https://i.imgur.com/AF35KS7.png" alt="product image" width={400} height={100} />
+            <picture>
+              <img className="px-8 p-8 rounded-t-lg mx-auto" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705991583/Spectrum/global/AF35KS7-min_qn2qrn.png" alt="product image" width={400} height={100} />
+            </picture>
             </p>
             <div className="text-gray-700 leading-7 my-4">
               <h1 className="scroll-m-20 text-2xl font-semibold tracking-tight">Bonus seconds will be awarded according to this table :</h1>
