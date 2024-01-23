@@ -7,10 +7,10 @@ import Image from "next/image";
 import { Metadata } from 'next'
  
 export const metadata: Metadata = {
-  title: 'Spectrum x Electrica',
+  title: 'Spectrum x High Ping',
   description: "Tech event for first year students",  
   openGraph: {
-    title: 'Spectrum x Electrica',
+    title: 'Spectrum x High Ping',
     description: "Tech event for first year students",  
     url: "https://pccoespectrum.tech",
     siteName: "pccoespectrum.tech",
