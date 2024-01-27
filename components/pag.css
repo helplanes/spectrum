@@ -77,5 +77,6 @@
 @media(max-width: 600px) {
   #cards {
     grid-template-columns: 1fr;
+    gap: 2em;
   }
 }

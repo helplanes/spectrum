@@ -45,9 +45,9 @@ export default function Home() {
       </div>
       <Image className="mx-auto mt-4" width="500" height="450" alt="image" src="https://i.imgur.com/d4vCa0X.png" />
       <div>
-      <h3 className="font-jacques_francois_shadow scroll-m-20 my-4 pl-2 text-xl font-extrabold text-gray-800 tracking-tight md:text-3xl lg:text-5xl">
-        -	Embark on an entertaining journey that blends exploring basic and fun electronics with an enjoyable twist <br/>
-        -	Play real-life snake and ladders in our Circuit Safari game for an unforgettable and fun-filled experience! <br/>
+      <h3 className="font-jacques_francois_shadow text-center scroll-m-20 my-4 pl-2 text-xl font-extrabold text-gray-800 tracking-tight md:text-3xl lg:text-5xl">
+        Embark on an entertaining journey that blends exploring basic and fun electronics with an enjoyable twist! <br/>
+        Play real-life snake and ladders in our Circuit Safari game for an unforgettable and fun-filled experience! <br/>
       </h3>
       </div>
       <picture> 

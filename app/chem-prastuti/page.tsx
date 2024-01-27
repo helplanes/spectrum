@@ -46,7 +46,7 @@ export default function Home() {
         <img className="mx-auto mt-4" width="500" height="450" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705931668/Spectrum/shapes/HDSxk4q-min_q2zc7k.png" />
       </picture>
       <div>
-      <h3 className="font-jacques_francois_shadow scroll-m-20 my-4 pl-2 text-xl font-extrabold text-gray-800 tracking-tight md:text-3xl lg:text-5xl">
+      <h3 className="font-jacques_francois_shadow text-center scroll-m-20 my-4 pl-2 text-xl font-extrabold text-gray-800 tracking-tight md:text-3xl lg:text-5xl">
         A Chemistry presentation event!
       </h3>
       </div>

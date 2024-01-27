@@ -45,7 +45,7 @@ export default function Home() {
       </div>
       <Image className="mx-auto mt-4" width="500" height="450" alt="image" src="https://i.imgur.com/U42KHTH.png" />
       <div>
-      <h3 className="font-jacques_francois_shadow scroll-m-20 my-4 pl-2 text-xl font-extrabold text-gray-800 tracking-tight md:text-3xl lg:text-5xl">
+      <h3 className="font-jacques_francois_shadow text-center scroll-m-20 my-4 pl-2 text-xl font-extrabold text-gray-800 tracking-tight md:text-3xl lg:text-5xl">
       High Ping PCCOE E-Sports Event <br/>
         1) Valorant Tournament <br/>
         2) BGMI Tournament

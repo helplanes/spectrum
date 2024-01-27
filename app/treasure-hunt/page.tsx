@@ -44,9 +44,9 @@ export default function Home() {
       </div>
       <Image className="mx-auto mt-4" width="700" height="450" alt="image" src="https://i.imgur.com/W5W9DYW.png" />
       <div>
-      <h3 className="font-jacques_francois_shadow scroll-m-20 my-4 pl-2 text-xl font-extrabold text-gray-800 tracking-tight md:text-3xl lg:text-5xl">
-      -	Each team should consist of 4 people. <br/>
-      - The competition will be conducted in hybrid mode.
+      <h3 className="font-jacques_francois_shadow text-center scroll-m-20 my-4 pl-2 text-xl font-extrabold text-gray-800 tracking-tight md:text-3xl lg:text-5xl">
+      Each team should consist of 4 people. <br/>
+      The competition will be conducted in hybrid mode.
       </h3>
       </div>
       <picture> 

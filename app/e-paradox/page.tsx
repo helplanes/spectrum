@@ -44,8 +44,8 @@ export default function Home() {
       </div>
       <Image className="mx-auto mt-4" width="500" height="450" alt="image" src="https://i.imgur.com/GPIvn8s.png" />
       <div>
-      <h3 className="font-jacques_francois_shadow scroll-m-20 my-4 pl-2 text-xl font-extrabold text-gray-800 tracking-tight md:text-3xl lg:text-5xl">
-        -	A fun activity-based game in which you must find the clues and lead forward to the ultimate prize by cracking codes <br/>
+      <h3 className="font-jacques_francois_shadow text-center scroll-m-20 my-4 pl-2 text-xl font-extrabold text-gray-800 tracking-tight md:text-3xl lg:text-5xl">
+        A fun activity-based game in which you must find the clues and lead forward to the ultimate prize by cracking codes <br/>
       </h3>
       </div>
       <picture> 

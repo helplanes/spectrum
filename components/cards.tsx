@@ -6,7 +6,7 @@ export default function Cards() {
         <div className="max-w-sm rounded-lg shadow bg-gray-900 border-red-700">
             <a href="/e-paradox">
                 <picture>
-                    <img className="rounded-t-lg" width="350" height="300" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913636/Spectrum/Homepage/eparadox_xmuoej.jpg" />
+                    <img className="rounded-t-lg mx-auto" width="350" height="300" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913636/Spectrum/Homepage/eparadox_xmuoej.jpg" />
                 </picture>
             </a>
             <div className="p-5">
@@ -26,7 +26,7 @@ export default function Cards() {
         <div className="max-w-sm rounded-lg shadow bg-gray-900 border-orange-700">
             <a href="/electrica">
                 <picture>
-                    <img className="rounded-t-lg" width="350" height="300" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913635/Spectrum/Homepage/electrica_oc2dm6.jpg" />
+                    <img className="rounded-t-lg mx-auto" width="350" height="300" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913635/Spectrum/Homepage/electrica_oc2dm6.jpg" />
                 </picture>
             </a>
             <div className="p-5">
@@ -46,7 +46,7 @@ export default function Cards() {
         <div className="max-w-sm rounded-lg shadow bg-gray-900 border-yellow-700">
             <a href="/brain-dasher">
                 <picture>
-                    <img className="rounded-t-lg" width="350" height="300" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913635/Spectrum/Homepage/braindasher_ssnsl9.jpg" />
+                    <img className="rounded-t-lg mx-auto" width="350" height="300" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913635/Spectrum/Homepage/braindasher_ssnsl9.jpg" />
                 </picture>
             </a>
             <div className="p-5">
@@ -66,7 +66,7 @@ export default function Cards() {
         <div className="max-w-sm rounded-lg shadow bg-gray-900 border-green-700">
             <a href="/treasure-hunt">
                 <picture>
-                    <img className="rounded-t-lg" width="350" height="300" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913637/Spectrum/Homepage/treasure_imfqwg.jpg" />
+                    <img className="rounded-t-lg mx-auto" width="350" height="300" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913637/Spectrum/Homepage/treasure_imfqwg.jpg" />
                 </picture>
             </a>
             <div className="p-5">
@@ -92,7 +92,7 @@ export default function Cards() {
         <div className="max-w-sm rounded-lg shadow bg-gray-900 border-blue-700">
             <a href="/chem-prastuti">
                 <picture>
-                    <img className="rounded-t-lg" width="350" height="300" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913635/Spectrum/Homepage/chemprastuti_qfiz2s.jpg" />
+                    <img className="rounded-t-lg mx-auto" width="350" height="300" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913635/Spectrum/Homepage/chemprastuti_qfiz2s.jpg" />
                 </picture>
             </a>
             <div className="p-5">
@@ -132,7 +132,7 @@ export default function Cards() {
         <div className="max-w-sm rounded-lg shadow bg-gray-900 border-pink-700">
             <a href="/debate">
                 <picture>
-                    <img className="rounded-t-lg" width="350" height="300" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913635/Spectrum/Homepage/warofwords_njqikn.jpg" />
+                    <img className="rounded-t-lg mx-auto" width="350" height="300" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913635/Spectrum/Homepage/warofwords_njqikn.jpg" />
                 </picture>
             </a>
             <div className="p-5">
@@ -152,7 +152,7 @@ export default function Cards() {
         <div className="max-w-sm rounded-lg shadow bg-gray-900 border-blue-700">
             <a href="/video-games">
                 <picture>
-                    <img className="rounded-t-lg" width="350" height="300" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913637/Spectrum/Homepage/videogames_rs9ubb.jpg" />
+                    <img className="rounded-t-lg mx-auto" width="350" height="300" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913637/Spectrum/Homepage/videogames_rs9ubb.jpg" />
                 </picture>
             </a>
             <div className="p-5">
