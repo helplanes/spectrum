@@ -57,7 +57,7 @@ export default function Home() {
       <picture> 
         <img className="mx-auto my-16" width="800" height="50" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705931875/Spectrum/global/lbNfJM2-min_n0yrof.webp" />
       </picture> 
-      <div className="text-gray-700 leading-7 mb-4 p-8">
+      <div className="text-gray-700 leading-7 mb-4 p-4 md:p-6 lg:p-8">
         <h1 className="scroll-m-20 text-2xl font-semibold tracking-tight">Rules :</h1>
         <p className="leading-7">
         1. Each team should consist of 2-4 people. <br/>
@@ -79,7 +79,7 @@ export default function Home() {
         17. For safety’s sake any fast falling rockets must land in the landing zone or you will get no points for that round. If softlanding rockets (e.g. rockets with parachutes) land outside the landing zone their time will be counted for the longest time in the air award.
         </p>
         </div>
-        <div className="text-gray-700 leading-7 my-4 p-8">
+        <div className="text-gray-700 leading-7 my-4 p-4 lg:p-8">
           <h1 className="scroll-m-20 text-2xl font-semibold tracking-tight">Field :</h1>
             <p className="leading-7">
             <picture>

@@ -232,7 +232,7 @@ export default function team_behind_spectrum() {
                     
                     <section >
                         <div className="container px-6 py-20 mx-auto">
-                            <h1 className="text-2xl font-semibold text-center  capitalize lg:text-3xl text-white mb-8">Design, Finance, Registration Team</h1>
+                            <h1 className="text-2xl font-semibold text-center  capitalize lg:text-3xl text-white mb-8">Design, Finance, & Registration Team</h1>
                                      
                     
                             <div className="flex flex-wrap gap-8 justify-center items-center">

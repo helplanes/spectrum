@@ -55,7 +55,7 @@ export default function Home() {
       <picture> 
         <img className="mx-auto my-16" width="800" height="50" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705931875/Spectrum/global/lbNfJM2-min_n0yrof.webp" />
       </picture> 
-      <div className="text-gray-700 leading-7 mb-4 p-8">
+      <div className="text-gray-700 leading-7 mb-4 p-4 lg:p-8">
         <h1 className="scroll-m-20 text-2xl font-semibold tracking-tight">Rules :</h1>
           <p className="leading-7 pt-4">
           Elimination Round: <br/>

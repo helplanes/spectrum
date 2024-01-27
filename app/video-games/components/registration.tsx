@@ -5,7 +5,7 @@ export function Electrica_registarion() {
     return (
             <div className="p-4 lg:p-8">
                 <div className="w-full max-w-sm bg-white mx-auto">
-                    <h1 className="scroll-m-20 p-8 text-4xl font-extrabold text-black tracking-tight lg:text-5xl">
+                    <h1 className="scroll-m-20 p-6 text-4xl font-extrabold text-black tracking-tight lg:text-5xl lg:p-8">
                         Registration Page :
                     </h1>
                     <a>

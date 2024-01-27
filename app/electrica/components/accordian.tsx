@@ -7,14 +7,14 @@ import {
   
   export function Rules() {
     return (
-      <Accordion type="single" collapsible className="w-full text-gray-700 p-6">
+      <Accordion type="single" collapsible className="w-full text-gray-700 lg:p-8">
         <h1 className="scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-5xl">Rules of Electrica : </h1>
         <p className="leading-7 mb-4">
         This event is going to be team-based. <br/>
         A team should have a minimum of 2 and maximum of 5 members <br/>
         Entry fee: Rs 100/- per person <br/>
-        <hr className="pt-4"/>
-        Total 4 rounds : <br/>
+        Total 4 rounds <br/>
+        <hr className="pt-4"/>  
         </p>
         <AccordionItem value="item-1">
           <AccordionTrigger>ROUND 1: RESISTANCE IS FUTILE</AccordionTrigger>

@@ -1,4 +1,3 @@
-import { TableInfo } from "@/app/electrica/components/info";
 import { Rules } from "@/app/electrica/components/accordian"
 import { Electrica_registarion } from "@/app/electrica/components/registration";
 import { Krona_One } from 'next/font/google'
@@ -62,7 +61,7 @@ export default function Home() {
     <picture> 
       <img className="mx-auto my-8" width="800" height="50" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705931875/Spectrum/global/lbNfJM2-min_n0yrof.webp" />
     </picture> 
-    <div className="text-gray-700 leading-7 mb-4 p-8">
+    <div className="text-gray-700 leading-7 mb-4 p-2 lg:p-8">
         <h1>Note :</h1>
         <p className="leading-7">
             1. This rules are tentative. <br/>

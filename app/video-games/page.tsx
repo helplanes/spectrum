@@ -59,7 +59,7 @@ export default function Home() {
         <img className="mx-auto my-16" width="800" height="50" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705931875/Spectrum/global/lbNfJM2-min_n0yrof.webp" /> 
       </picture> 
     <hr/>
-    <div className="text-gray-700 leading-7 mb-4 p-8">
+    <div className="text-gray-700 leading-7 mb-4 p-4 lg:p-8">
         <h1>Note :</h1>
         <p className="leading-7">
         1.	Each team should consist of 5 people for Valorant and 4 people for BGMI. <br/>
@@ -73,7 +73,7 @@ export default function Home() {
         9.	Qualifying rounds will take place in online mode, Semi-final and Final matches will be conducted offline in our college campus.
         </p>
         </div>
-        <div className="text-gray-700 leading-7 mb-4 p-8">
+        <div className="text-gray-700 leading-7 mb-4 p-4 lg:p-8">
         <h1>Registration Fee: </h1>
         <p className="leading-7">
           1. Valorant – Rs 500 per team <br/>
