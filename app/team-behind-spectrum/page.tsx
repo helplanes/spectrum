@@ -232,7 +232,7 @@ export default function team_behind_spectrum() {
                     
                     <section >
                         <div className="container px-6 py-20 mx-auto">
-                            <h1 className="text-2xl font-semibold text-center  capitalize lg:text-3xl text-white mb-8">Design, Finance, & Registration Team</h1>
+                            <h1 className="text-2xl font-semibold text-center  capitalize lg:text-3xl text-white mb-8">Design, Finance & Registration Team</h1>
                                      
                     
                             <div className="flex flex-wrap gap-8 justify-center items-center">
@@ -423,7 +423,7 @@ export default function team_behind_spectrum() {
 
                     <section >
                         <div className="container px-6 py-20 mx-auto">
-                            <h1 className="text-2xl font-semibold text-center  capitalize lg:text-3xl text-white mb-8">Photography and Videography, Printing, Inauguration & Decore & Support System</h1>
+                            <h1 className="text-2xl font-semibold text-center  capitalize lg:text-3xl text-white mb-8">Photography and Videography, Printing, Inauguration & Support System</h1>
                                      
                     
                             <div className="flex flex-wrap gap-8 justify-center items-center">
@@ -480,7 +480,7 @@ export default function team_behind_spectrum() {
 
                                 <div className="flex flex-col bg-gray-900 items-center p-8 transition border duration-300 transform  animation:1s ease-in-out cursor-pointer rounded-xl  group  border-gray-700 hover:border-transparent min-h-[350px] shadow-lg shadow-indigo-500/20 min-w-[300px] hover:scale-105">
                                     <div className="relative flex h-36 w-full justify-center rounded-xl bg-cover" >
-                                        <p className="absolute top-[18px] w-full text-center z-10 font-bold text-xl ">Inauguration & Decore</p>
+                                        <p className="absolute top-[18px] w-full text-center z-10 font-bold text-xl ">Inauguration</p>
                                     
                                         <Image width="100" height="100" src='https://horizon-tailwind-react-git-tailwind-components-horizon-ui.vercel.app/static/media/banner.ef572d78f29b0fee0a09.png' alt="image" className="absolute flex h-full w-full justify-center rounded-xl bg-cover"/> 
                                         <div className=" absolute flex h-full w-full justify-center rounded-xl bg-cover transition-colors duration-300 transform bg-gray-950/30  group-hover:bg-transparent"></div>
@@ -491,7 +491,7 @@ export default function team_behind_spectrum() {
                                     </div> 
                                     <h1 className="mt-16 text-2xl font-semibold  capitalize text-gray-400 group-hover:text-white">Shravani Pajgade</h1>
                     
-                                    <p className="mt-2 capitalize text-gray-500 group-hover:text-white">Inauguration & Decore</p>
+                                    <p className="mt-2 capitalize text-gray-500 group-hover:text-white">Inauguration</p>
                     
                                     <div className="flex mt-3 -mx-2">
                                         <a target="_blank" href="https://www.instagram.com/shravanipajgade" className="mx-2 text-gray-500  group-hover:text-white" aria-label="Instagram">

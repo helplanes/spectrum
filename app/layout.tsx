@@ -19,10 +19,10 @@ const calSans = LocalFont({
 
 
 export const metadata: Metadata = {
-  metadataBase: new URL('http://localhost:3000'),
+  metadataBase: new URL('https://www.spectrumpccoe.tech/'),
   title: {
     default: "Pccoe Spectrum'24",
-    template: "%s | pccoespectrum.tech",
+    template: "%s | spectrumpccoe.tech",
   },
   description: "Pccoe Spectrum'24 | PCET's PIMPRI CHINCHWAD COLLEGE OF ENGINEERING, Pune | Department of Applied Science and Humanities presents | Tech event for first year students | Annual State Level Technical Symposium for Extra Oridinary First Year Engineering Students!",
   openGraph: {

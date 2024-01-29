@@ -2,8 +2,6 @@
   --card-color: rgb(25, 25, 25);
 }
 
-
-
 #cards {
   display: grid;
   gap: 1em;
