@@ -809,7 +809,7 @@ export default function team_behind_spectrum() {
                     
                                         </div>
                                     </div> 
-                                    <h1 className="mt-16 text-2xl font-semibold  capitalize text-gray-400 group-hover:text-white">Dr. Shaziya Sheikh</h1>
+                                    <h1 className="mt-16 text-2xl font-semibold  capitalize text-gray-400 group-hover:text-white">Dr. Shaziya Shaikh</h1>
                     
                                     <p className="mt-2 capitalize text-gray-500 group-hover:text-white">Faculty Coordinator</p>
                                 </div>
