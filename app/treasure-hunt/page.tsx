@@ -56,8 +56,8 @@ export default function Home() {
       <picture> 
         <img className="mx-auto my-16" width="800" height="50" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705931875/Spectrum/global/lbNfJM2-min_n0yrof.webp" />
       </picture> 
-        {/* <Rules /> */} 
-        {/* <hr/>*/} 
+        <Rules /> 
+         <hr/>
         {/*  <Image className="mx-auto my-8" width="800" height="50" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705931875/Spectrum/global/lbNfJM2-min_n0yrof.webp" />*/} 
     <div className="text-gray-700 leading-7 mb-4 p-4 lg:p-8">
         <h1>Note :</h1>
