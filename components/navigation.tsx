@@ -52,9 +52,7 @@ export function Navigation() {
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
-            <a className="group relative inline-block text-sm font-medium text-indigo-600 focus:outline-none focus:ring active:text-indigo-500" href="/team-behind-spectrum">
-              <span className="relative block border border-current bg-black text-white px-4 py-2"> Team </span>
-            </a>
+
         </NavigationMenuList>
     </NavigationMenu>
   )
