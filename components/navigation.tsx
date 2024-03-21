@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/navigation-menu"
 import { Avatar, AvatarImage  } from "@/components/ui/avatar"
 import Link from "next/link"
+import { Button } from "./ui/button"
 
 export function Navigation() {
   return (
@@ -52,7 +53,9 @@ export function Navigation() {
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
-
+          <NavigationMenuItem>
+            <Button><a href="/team-behind-spectrum">Team</a></Button>
+          </NavigationMenuItem>
         </NavigationMenuList>
     </NavigationMenu>
   )
