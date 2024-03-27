@@ -133,7 +133,7 @@ export default function team_behind_spectrum() {
                                         <Image width="100" height="100" src='https://horizon-tailwind-react-git-tailwind-components-horizon-ui.vercel.app/static/media/banner.ef572d78f29b0fee0a09.png' alt="image" className="absolute flex h-full w-full justify-center rounded-xl bg-cover"/> 
                                         <div className=" absolute flex h-full w-full justify-center rounded-xl bg-cover transition-colors duration-300 transform bg-gray-950/30  group-hover:bg-transparent"></div>
                                         <div className="absolute -bottom-12 flex h-32 w-32 items-center justify-center rounded-full border-[4px] border-white bg-pink-400 dark:!border-navy-700">
-                                            <Image width="100" height="100" className="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300" src="https://instagram.fpnq7-2.fna.fbcdn.net/v/t51.2885-19/418476075_2114480572225490_4763022306254366411_n.jpg?stp=dst-jpg_s150x150&efg=e30&_nc_ht=instagram.fpnq7-2.fna.fbcdn.net&_nc_cat=102&_nc_ohc=1IUxlqwCHeYAX-Vf2BD&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfA1l7kgAdNMZ38rzIq5ZO_ZSQcXEBo_675OfGZ7avXyQQ&oe=65B3C45D&_nc_sid=8b3546" alt="No Data"/>
+                                            <Image width="100" height="100" className="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300" src="https://i.imgur.com/mZOmf3d.png" alt="No Data"/>
                     
                                         </div>
                                     </div> 
