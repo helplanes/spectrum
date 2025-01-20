@@ -1,6 +1,7 @@
 
 import React from "react";
 import "@/components/ui/rays.css"
+import Link from "next/link";
 
 
 export default function hero() {
@@ -21,34 +22,34 @@ export default function hero() {
                     <div className="text-center animate-fade-in">    
                       <ul className="mt-10 flex flex-wrap justify-center gap-6 md:gap-8">
                         <li>
-                          <a className="text-gray-700 transition hover:text-gray-700/75" href="#"> E-Paradox </a>
+                          <Link className="text-gray-700 transition hover:text-gray-700/75" href="/e-paradox"> E-Paradox </Link>
                         </li>
                         <li>
-                          <a className="text-gray-700 transition hover:text-gray-700/75" href="#"> Electrica </a>
-                        </li>
-
-                        <li>
-                          <a className="text-gray-700 transition hover:text-gray-700/75" href="#"> Brain Dasher </a>
+                          <Link className="text-gray-700 transition hover:text-gray-700/75" href="/electrica"> Electrica </Link>
                         </li>
 
                         <li>
-                          <a className="text-gray-700 transition hover:text-gray-700/75" href="#"> Treasure Hunt </a>
+                          <Link className="text-gray-700 transition hover:text-gray-700/75" href="/brain-dasher"> Brain Dasher </Link>
                         </li>
 
                         <li>
-                          <a className="text-gray-700 transition hover:text-gray-700/75" href="#"> Chem Prastuti </a>
+                          <Link className="text-gray-700 transition hover:text-gray-700/75" href="/treasure-hunt"> Treasure Hunt </Link>
                         </li>
 
                         <li>
-                          <a className="text-gray-700 transition hover:text-gray-700/75" href="#"> Water Rocket </a>
+                          <Link className="text-gray-700 transition hover:text-gray-700/75" href="/chem-prastuti"> Chem Prastuti </Link>
                         </li>
 
                         <li>
-                          <a className="text-gray-700 transition hover:text-gray-700/75" href="#"> War of Words </a>
+                          <Link className="text-gray-700 transition hover:text-gray-700/75" href="/bottle-rocket"> Water Rocket </Link>
                         </li>
 
                         <li>
-                          <a className="text-gray-700 transition hover:text-gray-700/75" href="/video-games"> High Ping </a>
+                          <Link className="text-gray-700 transition hover:text-gray-700/75" href="/debate"> War of Words </Link>
+                        </li>
+
+                        <li>
+                          <Link className="text-gray-700 transition hover:text-gray-700/75" href="/video-games"> High Ping </Link>
                         </li>
                       </ul>
                   </div>
