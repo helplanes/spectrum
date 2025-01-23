@@ -21,12 +21,12 @@ export default function Home() {
       </h1>
       <hr/>
       <Cards />
-      <div className="bg-white text-black">
+      <div className="bg-[#EBE9E0] text-black">
         <div className="pt-2">
           <h1 className="scroll-m-20 text-center text-4xl font-extrabold tracking-tight lg:text-5xl p-4">
             Glimpse of Spectrum&apos;23 <Image className="mx-auto pb-8 display: inline" width="70" height="70" alt="image" src="https://i.imgur.com/zOrZlKk.png" />
           </h1>
-          <hr className="border-2"/>
+          <hr className="border-2 border-gray-400"/>
           <div className="columns-2 sm:columns-3 gap-4 my-8 mx-auto max-w-4xl pt-16 px-4">
             <div className="relative h-40 mb-4">
               <Image
@@ -88,11 +88,11 @@ export default function Home() {
               <EmblaCarousel slides={SLIDES} options={OPTIONS} />
             </section> */}
         <div className="pt-16">
-          <hr className="border-2"/>
+          <hr className="border-2 border-gray-400"/>
             <h1 className="scroll-m-20 text-center text-4xl font-extrabold tracking-tight lg:text-5xl p-8">
               Events for Spectrum&apos;24 <Image className="mx-auto pb-8 display: inline" width="70" height="70" alt="image" src="https://i.imgur.com/zOrZlKk.png" />
             </h1>
-          <hr className="border-2"/>
+          <hr className="border-2 border-gray-400"/>
         </div>
         <section className="sandbox__carousel">
           <EmblaCarousels slides={SLIDES} options={OPTIONS} />

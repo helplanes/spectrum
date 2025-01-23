@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function Footer() {
   return (
       <footer className="overflow-hidden bg-[url(https://res.cloudinary.com/dfyrk32ua/image/upload/v1705914169/Spectrum/Homepage/footer_jfdqtg.jpg)] bg-cover bg-top bg-no-repeat">
@@ -6,7 +8,6 @@ export default function Footer() {
                     <hr/>
                     <p className="mx-auto max-w-7xl font-semibold text-center text-xs/relaxed text-gray-200 px-4 py-8 sm:px-4 lg:pt-8">
                         Built with Love by FY Pccoe Students{' <'}3 <br/>
-                        {/* Website Developed by Kartik <a href=""></a> & Mayank <a href=""></a>from FY IT : {')'} */}
                     </p>
                 </div>
             </div>
@@ -14,23 +15,33 @@ export default function Footer() {
             <div className="mx-auto max-w-5xl px-4 py-4 sm:px-6 lg:px-8">
                 <ul className="flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12">
                 <li>
-                    <a className="text-gray-200 transition hover:text-gray-200/75" href="/compliance/privacypolicy"> Privacy Policy </a>
+                    <Link href="/compliance/privacypolicy" className="text-gray-200 transition hover:text-gray-200/75">
+                        Privacy Policy
+                    </Link>
                 </li>
 
                 <li>
-                    <a className="text-gray-200 transition hover:text-gray-200/75" href="/compliance/termsandconditions"> Terms and Conditions </a>
+                    <Link href="/compliance/termsandconditions" className="text-gray-200 transition hover:text-gray-200/75">
+                        Terms and Conditions
+                    </Link>
                 </li>
 
                 <li>
-                    <a className="text-gray-200 transition hover:text-gray-200/75" href="/compliance/cancelationandrefund"> Cancellation and Refund </a>
+                    <Link href="/compliance/cancelationandrefund" className="text-gray-200 transition hover:text-gray-200/75">
+                        Cancellation and Refund
+                    </Link>
                 </li>
 
                 <li>
-                    <a className="text-gray-200 transition hover:text-gray-200/75" href="/compliance/shippinganddelivery"> Shipping and Delivery </a>
+                    <Link href="/compliance/shippinganddelivery" className="text-gray-200 transition hover:text-gray-200/75">
+                        Shipping and Delivery
+                    </Link>
                 </li>
 
                 <li>
-                    <a className="text-gray-200 transition hover:text-gray-200/75" href="/compliance/contact"> Contact Us </a>
+                    <Link href="/compliance/contact" className="text-gray-200 transition hover:text-gray-200/75">
+                        Contact Us
+                    </Link>
                 </li>
                 </ul>
             </div>

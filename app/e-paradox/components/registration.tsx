@@ -4,8 +4,8 @@ import { Button } from "@/components/ui/button"
 export function Eparadox_registarion() {
     return (
         <div className="p-4 sm:p-6 lg:p-8 mx-auto">
-            <div className="p-2 sm:p-4 border-2 sm:border-4 border-dashed border-gray-300 rounded-lg sm:rounded-[2rem]">
-                <div className="bg-white rounded-lg sm:rounded-xl shadow-lg overflow-hidden border border-gray-200 relative">
+            <div className="p-4 border-4 border-dashed border-gray-300 rounded-[2rem]">
+                <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200 relative">
                     {/* Dots for ticket effect */}
                     <div className="absolute left-0 top-1/2 -translate-y-1/2 w-2 sm:w-4 h-6 sm:h-8 bg-[#EBE9E0] rounded-r-full"></div>
                     <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 sm:w-4 h-6 sm:h-8 bg-[#EBE9E0] rounded-l-full"></div>
