@@ -113,8 +113,6 @@
   --ring: 240 4.9% 83.9%;
 }
 
-
-
 @layer base {
   .text-edge-outline {
     -webkit-text-stroke: 1px rgba(255,255,255,0.3);
@@ -129,4 +127,39 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+/* Add these styles for smooth accordion animations */
+.accordion-content-animation {
+  transition: all 0.3s ease-in-out;
+}
+
+[data-state="open"] .accordion-content-animation {
+  animation: slideDown 0.3s ease-out;
+}
+
+[data-state="closed"] .accordion-content-animation {
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    opacity: 0;
+  }
 }
