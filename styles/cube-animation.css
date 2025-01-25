@@ -1,0 +1,255 @@
+@import url(https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap);
+
+/* Scope all cube and hero styles */
+.hero-container {
+  min-height: 10vh;
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+  background: black;
+}
+
+.hero-container .content {
+  position: relative;
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-container .container-full {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: 200s linear infinite zoom-in;
+}
+
+.hero-container .backgroundImage {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Text styles */
+.hero-container p {
+  white-space: nowrap;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: calc(3em + 2vw);
+  color: #fff;
+  padding: 0 2em;
+}
+
+/* Face animations with adjusted timing and spacing */
+.hero-container .left p {
+  margin-left: 480px;
+  animation: 50s linear infinite left;
+}
+
+.hero-container .back p {
+  margin-left: -390px;
+  animation: 50s linear infinite back;
+}
+
+.hero-container .right p {
+  margin-left: -1260px;
+  animation: 50s linear infinite right;
+}
+
+@keyframes left {
+  0% { margin-left: 480px; }
+  100% { margin-left: -6000px; }
+}
+
+@keyframes back {
+  0% { margin-left: -390px; }
+  100% { margin-left: -6870px; }
+}
+
+@keyframes right {
+  0% { margin-left: -1260px; }
+  100% { margin-left: -7740px; }
+}
+
+.card, .content, body { overflow: hidden; }
+
+body {
+  min-height: 100vh;
+  overflow-y: auto;
+}
+
+.hero-container .cube-container {
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: black;
+  overflow: hidden;
+}
+
+.hero-container .content-wrapper {
+  width: 1000px;
+  height: 562px;
+  position: relative;
+}
+
+.hero-container .cube {
+  position: relative;
+  transform-style: preserve-3d;
+  perspective: 480px;
+  perspective-origin: 51% 70%;
+  width: 870px;
+  height: 190px;
+}
+
+.hero-container .face {
+  position: absolute;
+  width: 870px;
+  height: 190px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  opacity: 0.5;
+  background: transparent;
+}
+
+/* Remove or comment out the .text-content class */
+/* .text-content { ... } */
+
+/* Update text styles */
+.hero-container p {
+  white-space: nowrap;
+  overflow: hidden;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-size: calc(4em + (190px / 10) * 0.7); /* Adjusted font size */
+  padding-top: 20px;
+  color: #fff;
+  position: relative;
+  width: max-content;
+}
+
+.hero-container span {
+  color: red;
+}
+
+.hero-container .front { transform: translateZ(435px); display: none; }
+.hero-container .back { transform: translateZ(-435px) rotateY(180deg) scaleX(-1); }
+.hero-container .left { transform: translateX(-435px) rotateY(-90deg) scaleX(-1); }
+.hero-container .right { transform: translateX(435px) rotateY(90deg) scaleX(-1); }
+.hero-container .top { transform: translateY(-435px) rotateX(90deg) scaleY(-1); }
+.hero-container .bottom { transform: translateY(-245px) rotateX(-90deg) scaleY(-1); }
+
+.hero-container .container-reflect {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 380px;
+  filter: blur(10px);
+}
+
+.hero-container .container-reflect .cube {
+  perspective-origin: 51% -30%;
+}
+
+.hero-container .container-reflect .text-content {
+  transform: scaleY(70%);
+}
+
+/* Remove the scrollText animation */
+/* @keyframes scrollText { ... } */
+
+.hero-container .container-full, .hero-container .content {
+  width: 1000px;
+  height: 562px;
+}
+
+.hero-container .backgroundImage {
+  position: absolute;
+  width: 1000px;
+  border-radius: 2rem 2rem 0 0; /* Only curve top corners */
+}
+
+.hero-container .content {
+  position: relative;
+  border-radius: 2rem; /* Increased curve */
+  animation: 200s linear infinite brightness;
+  overflow: visible;
+}
+
+.hero-container .left p {
+  margin-left: 480px;
+  animation: 50s linear infinite left;
+}
+
+.hero-container .back p {
+  margin-left: -390px;
+  animation: 50s linear infinite back;
+}
+
+.hero-container .right p {
+  margin-left: -1260px;
+  animation: 50s linear infinite right;
+}
+
+@keyframes leftSlide {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+@keyframes backSlide {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+@keyframes rightSlide {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+.hero-container .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-container .container-full {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: scale(1);
+  animation: 200s linear infinite zoom-in;
+}
+
+/* Add hue animation */
+.hero-container .hue {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  mix-blend-mode: overlay;
+  background: radial-gradient(ellipse at center, #1e5799 0, #7db9e8 100%);
+  opacity: 0.5;
+  z-index: 3;
+  border-radius: 2rem 2rem 0 0; /* Only curve top corners */
+  animation: 8s infinite filter-animation;
+}
+
+@keyframes filter-animation {
+  0%, 100% { filter: hue-rotate(0deg); }
+  50% { filter: hue-rotate(100deg); }
+}

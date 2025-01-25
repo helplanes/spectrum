@@ -1,60 +1,74 @@
+"use client";
 
-import React from "react";
-import "@/components/ui/rays.css"
+import React, { useEffect } from "react";
+import "@/styles/cube-animation.css"
 import Link from "next/link";
 
+const spectrumText = `<p>PCET's <span>PIMPRI</span> CHINCHWAD COLLEGE OF ENGINEERING, Pune |&nbsp&nbsp&nbsp|
+Department of <span>Applied Science</span> and Humanities presents 
+|&nbsp&nbsp&nbsp|<span>Spectrum' 25</span> |&nbsp&nbsp&nbsp| Annual State Level Technical Symposium 
+for Extra <span>Ordinary</span>&nbsp| First Year Engineering Students!&nbsp|</p>`;
 
-export default function hero() {
+export default function Hero() {
+  useEffect(() => {
+    const insertTextContent = () => {
+      const textDivs = document.querySelectorAll(".text");
+      textDivs.forEach((div) => {
+        div.innerHTML = spectrumText;
+      });
+    };
+
+    const contentDiv = document.querySelector(".content");
+    const adjustContentSize = () => {
+      const viewportWidth = window.innerWidth;
+      const baseWidth = 1000;
+      // Adjust scale factor calculation for better mobile display
+      const scaleFactor = viewportWidth < baseWidth 
+        ? Math.max((viewportWidth / baseWidth) * 0.95, 0.5) // Minimum scale of 0.5
+        : 1;
+      if (contentDiv) {
+        (contentDiv as HTMLElement).style.transform = `scale(${scaleFactor})`;
+      }
+    };
+
+    insertTextContent();
+    adjustContentSize();
+    window.addEventListener("resize", adjustContentSize);
+    return () => window.removeEventListener("resize", adjustContentSize);
+  }, []);
+
   return (
-    <main className="overflow-hidden">
-      <div className="flex flex-col h-[100vh] pb-36 items-center justify-center bg-black transition-bg">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="jumbo absolute -inset-[10px] opacity-50">
-       
+    <div className="hero-container">  {/* Add this wrapper class */}
+      <div className="container">
+        <div className="content">
+          <div className="container-full">
+            <div className="animated hue"></div>
+            <img className="backgroundImage" 
+                 src="https://drive.google.com/thumbnail?id=1_ZMV_LcmUXLsRokuz6WXGyN9zVCGfAHp&sz=w1920" 
+                 alt="" />
+            <div className="container">
+              <div className="cube">
+                <div className="face top"></div>
+                <div className="face bottom"></div>
+                <div className="face left text"></div>
+                <div className="face right text"></div>
+                <div className="face front"></div>
+                <div className="face back text"></div>
+              </div>
+            </div>
+            <div className="container-reflect">
+              <div className="cube">
+                <div className="face top"></div>
+                <div className="face bottom"></div>
+                <div className="face left text"></div>
+                <div className="face right text"></div>
+                <div className="face front"></div>
+                <div className="face back text"></div>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="hidden w-screen h-px z-2 animate-glow md:block animate-fade-left bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0" />   
-              <p className="animate-fade-in text-center px-4">PCET&apos;s PIMPRI CHINCHWAD COLLEGE OF ENGINEERING, Pune <br/>Department of Applied Science and Humanities presents</p>
-              <h1 className="text-5xl text-transparent duration-1500 bg-white cursor-default text-edge-outline animate-title font-display sm:text-7xl md:text-9xl whitespace-nowrap bg-clip-text ">
-                Spectrum&apos; 24
-              </h1> <p className="animate-fade-in text-center p-2 pb-4">Annual State Level Technical Symposium for Extra Ordinary First Year Engineering Students!</p>
-                  <div className="hidden w-screen h-px px-4 animate-glow md:block animate-fade-right bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0 z-100" />
-                    <div className="text-center animate-fade-in">    
-                      <ul className="mt-10 flex flex-wrap justify-center gap-6 md:gap-8">
-                        <li>
-                          <Link className="text-gray-700 transition hover:text-gray-700/75" href="/e-paradox"> E-Paradox </Link>
-                        </li>
-                        <li>
-                          <Link className="text-gray-700 transition hover:text-gray-700/75" href="/electrica"> Electrica </Link>
-                        </li>
-
-                        <li>
-                          <Link className="text-gray-700 transition hover:text-gray-700/75" href="/brain-dasher"> Brain Dasher </Link>
-                        </li>
-
-                        <li>
-                          <Link className="text-gray-700 transition hover:text-gray-700/75" href="/treasure-hunt"> Treasure Hunt </Link>
-                        </li>
-
-                        <li>
-                          <Link className="text-gray-700 transition hover:text-gray-700/75" href="/chem-prastuti"> Chem Prastuti </Link>
-                        </li>
-
-                        <li>
-                          <Link className="text-gray-700 transition hover:text-gray-700/75" href="/bottle-rocket"> Water Rocket </Link>
-                        </li>
-
-                        <li>
-                          <Link className="text-gray-700 transition hover:text-gray-700/75" href="/debate"> War of Words </Link>
-                        </li>
-
-                        <li>
-                          <Link className="text-gray-700 transition hover:text-gray-700/75" href="/video-games"> High Ping </Link>
-                        </li>
-                      </ul>
-                  </div>
-          </div>
-    </main>
+      </div>
+    </div>
   );
-
 }

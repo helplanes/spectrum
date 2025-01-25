@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -60,11 +63,58 @@
   --radius: 0.5rem;
 }
 
-
-
 @layer base {
   .text-edge-outline {
     -webkit-text-stroke: 1px rgba(255,255,255,0.3);
+  }
+  
+  h1, p {
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  h1 {
+    font-family: 'Montserrat', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    text-shadow: 0 0 40px rgba(255,255,255,0.2);
+    letter-spacing: -0.02em;
+  }
+
+  /* Add animation for the title */
+  .text-6xl, .text-8xl, .text-9xl {
+    animation: titleReveal 1s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+    text-shadow: none !important;
+    color: white !important;
+    background: none !important;
+    -webkit-text-fill-color: white !important;
+  }
+
+  /* Add specific style for Spectrum'25 heading */
+  .spectrum-title {
+    font-family: 'Geist', sans-serif !important;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1 !important; /* Ensure consistent line height */
+    margin: 0; /* Remove all margins */
+  }
+
+  @media (max-width: 640px) {
+    .spectrum-title {
+      letter-spacing: -0.02em;
+    }
+  }
+
+  /* Add styles for curved image borders */
+  img {
+    border-radius: 0.75rem; /* Adds curved borders to all images */
+    transition: transform 0.2s ease;
+  }
+
+  img:hover {
+    transform: scale(1.02); /* Subtle zoom on hover */
   }
 } 
 
@@ -111,4 +161,21 @@ body {
     height: 0;
     opacity: 0;
   }
+}
+
+@keyframes titleReveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Add subtle hover effect on the title */
+h1:hover {
+  text-shadow: none;
+  transition: text-shadow 0.3s ease;
 }
