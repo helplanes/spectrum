@@ -16,11 +16,11 @@ import { Button } from "./ui/button"
 export function Navigation() {
   return (
     <NavigationMenu className="">
-      <a className="mx-auto max-w-7xl flex flex-1 justify-items-start" href="/">
+      <Link className="mx-auto max-w-7xl flex flex-1 justify-items-start" href="/">
         <Avatar>
           <AvatarImage width="auto" height="100" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705914025/Spectrum/Homepage/logo_qb4lcm.png"  alt="main logo"/>
         </Avatar>
-      </a>
+      </Link>
         <NavigationMenuList>
         <NavigationMenuItem>
             <NavigationMenuTrigger>Events</NavigationMenuTrigger>

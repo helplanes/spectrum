@@ -1,0 +1,13 @@
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.25;
+  z-index: 9999;
+  pointer-events: none;
+  background: url('https://res.cloudinary.com/dfyrk32ua/image/upload/v1737663104/Spectrum/bh_edfqtk.webp')
+    no-repeat center center/cover;
+}

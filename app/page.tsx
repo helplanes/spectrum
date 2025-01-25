@@ -14,6 +14,21 @@ const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
 export default function Home() {
   return (
     <main className="overflow-hidden overflow-x-hidden">
+      <div className="text-center bg-gradient-to-b from-black via-black to-gray-900"> {/* Removed py-4 md:py-6 */}
+        <div className="max-w-6xl mx-auto px-4 pt-20">
+          <div className="space-y-0"> {/* Changed from space-y-1 and removed mb-1 */}
+            <p className="text-xs sm:text-sm md:text-base font-light tracking-wider text-gray-300">
+              PCET&apos;s <span className="text-red-500 font-medium">PIMPRI</span> CHINCHWAD COLLEGE OF ENGINEERING, PUNE
+            </p>
+            <p className="text-xs sm:text-sm md:text-base font-light tracking-wider text-gray-400">
+              Department of <span className="text-red-500 font-medium">Applied Science</span> and Humanities presents
+            </p>
+          </div>
+          <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-black text-white tracking-tight antialiased spectrum-title"> {/* Removed mb-2 */}
+            SPECTRUM&apos;25
+          </h1>
+        </div>
+      </div>
       <Hero/>
       <hr/>
       <h1 className="scroll-m-20 text-center text-4xl font-extrabold tracking-tight lg:text-5xl p-8">
@@ -21,12 +36,12 @@ export default function Home() {
       </h1>
       <hr/>
       <Cards />
-      <div className="bg-white text-black">
+      <div className="bg-[#EBE9E0] text-black">
         <div className="pt-2">
           <h1 className="scroll-m-20 text-center text-4xl font-extrabold tracking-tight lg:text-5xl p-4">
             Glimpse of Spectrum&apos;23 <Image className="mx-auto pb-8 display: inline" width="70" height="70" alt="image" src="https://i.imgur.com/zOrZlKk.png" />
           </h1>
-          <hr className="border-2"/>
+          <hr className="border-2 border-gray-400"/>
           <div className="columns-2 sm:columns-3 gap-4 my-8 mx-auto max-w-4xl pt-16 px-4">
             <div className="relative h-40 mb-4">
               <Image
@@ -88,11 +103,11 @@ export default function Home() {
               <EmblaCarousel slides={SLIDES} options={OPTIONS} />
             </section> */}
         <div className="pt-16">
-          <hr className="border-2"/>
+          <hr className="border-2 border-gray-400"/>
             <h1 className="scroll-m-20 text-center text-4xl font-extrabold tracking-tight lg:text-5xl p-8">
               Events for Spectrum&apos;24 <Image className="mx-auto pb-8 display: inline" width="70" height="70" alt="image" src="https://i.imgur.com/zOrZlKk.png" />
             </h1>
-          <hr className="border-2"/>
+          <hr className="border-2 border-gray-400"/>
         </div>
         <section className="sandbox__carousel">
           <EmblaCarousels slides={SLIDES} options={OPTIONS} />

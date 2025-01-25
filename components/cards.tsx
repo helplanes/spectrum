@@ -1,174 +1,186 @@
 import "../components/pag.css"
 import Link from 'next/link'
+import { Krona_One } from 'next/font/google'
+
+const korna = Krona_One({
+  subsets: ['latin'],
+  variable: '--font-sans',
+  weight: '400', 
+});
 
 export default function Cards() {
-    return (
-        <div id="cards" className="mx-auto">
-        <div className="max-w-sm rounded-lg shadow bg-gray-900 border-red-700">
-            <Link href="/e-paradox">
-                <picture>
-                    <img className="rounded-t-lg mx-auto" width="350" height="300" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913636/Spectrum/Homepage/eparadox_xmuoej.jpg" />
-                </picture>
-            </Link>
-            <div className="p-5">
-                <Link href="/e-paradox">
-                    <h1 className="mb-2 text-2xl font-bold tracking-tighttext-white">E-Paradox &apos;24</h1>
-                </Link>
-                <p className="mb-3 font-normal text-gray-400">A fun activity-based game of cracking codes.</p>
-                <Link href="/e-paradox" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-500 rounded-lg hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-blue-300">
-                    Read more
-                    <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                    </svg>
-                </Link>
-            </div>
-        </div>
+  const cardsData = [
+    {
+      href: "/e-paradox",
+      image: "https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913636/Spectrum/Homepage/eparadox_xmuoej.jpg",
+      alt: "image",
+      title: "E-Paradox '24",
+      description: "A fun activity-based game of cracking codes.",
+      borderColor: "border-red-700",
+      buttonBgColor: "bg-red-500",
+      buttonHoverBgColor: "hover:bg-red-600",
+      width: 350,
+      height: 300,
+    },
+    {
+      href: "/electrica",
+      image: "https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913635/Spectrum/Homepage/electrica_oc2dm6.jpg",
+      alt: "image",
+      title: "Electrica '24",
+      description: "A fun event which tests your knowledge on basic electronics.",
+      borderColor: "border-orange-700",
+      buttonBgColor: "bg-orange-500",
+      buttonHoverBgColor: "hover:bg-orange-600",
+      width: 350,
+      height: 300,
+    },
+    {
+      href: "/brain-dasher",
+      image: "https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913635/Spectrum/Homepage/braindasher_ssnsl9.jpg",
+      alt: "image",
+      title: "Brain Dasher '24",
+      description: "A fun event to put your brain to the test!",
+      borderColor: "border-yellow-700",
+      buttonBgColor: "bg-yellow-500",
+      buttonHoverBgColor: "hover:bg-yellow-600",
+      width: 350,
+      height: 300,
+    },
+    {
+      href: "/treasure-hunt",
+      image: "https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913637/Spectrum/Homepage/treasure_imfqwg.jpg",
+      alt: "image",
+      title: "Treasure Hunt '24",
+      description: "A fun event of Treasure Hunt!",
+      borderColor: "border-green-700",
+      buttonBgColor: "bg-green-500",
+      buttonHoverBgColor: "hover:bg-green-600",
+      width: 350,
+      height: 300,
+    },
+    {
+      image: "https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913782/Spectrum/Homepage/HKZuMdo_w2bis3.png",
+      alt: "logo",
+      borderColor: "border-orange-700",
+      width: 400,
+      height: 200,
+    },
+    {
+      href: "/chem-prastuti",
+      image: "https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913635/Spectrum/Homepage/chemprastuti_qfiz2s.jpg",
+      alt: "image",
+      title: "Chem Prastuti '24",
+      description: "A Chemistry presentation event!",
+      borderColor: "border-blue-700",
+      buttonBgColor: "bg-blue-500",
+      buttonHoverBgColor: "hover:bg-blue-600",
+      width: 350,
+      height: 300,
+    },
+    {
+      href: "/bottle-rocket",
+      image: "https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913635/Spectrum/Homepage/bottlerocket_gv6w0e.jpg",
+      alt: "image",
+      title: "Water Rocket '24",
+      description: "A rocket propelled by water and air pressure!",
+      borderColor: "border-purple-700",
+      buttonBgColor: "bg-purple-500",
+      buttonHoverBgColor: "hover:bg-purple-600",
+      width: 350,
+      height: 300,
+    },
+    {
+      href: "/debate",
+      image: "https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913635/Spectrum/Homepage/warofwords_njqikn.jpg",
+      alt: "image",
+      title: "War of Words '24",
+      description: "War of Words - Debate Competition 2024!",
+      borderColor: "border-pink-700",
+      buttonBgColor: "bg-pink-500",
+      buttonHoverBgColor: "hover:bg-pink-600",
+      width: 350,
+      height: 300,
+    },
+    {
+      href: "/video-games",
+      image: "https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913637/Spectrum/Homepage/videogames_rs9ubb.jpg",
+      alt: "image",
+      title: "High Ping '24",
+      description: "High Ping PCCOE E-Sports Event 2024!",
+      borderColor: "border-blue-700",
+      buttonBgColor: "bg-blue-300",
+      buttonHoverBgColor: "hover:bg-blue-400",
+      width: 350,
+      height: 300,
+    },
+  ];
 
-        <div className="max-w-sm rounded-lg shadow bg-gray-900 border-orange-700">
-            <Link href="/electrica">
-                <picture>
-                    <img className="rounded-t-lg mx-auto" width="350" height="300" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913635/Spectrum/Homepage/electrica_oc2dm6.jpg" />
-                </picture>
-            </Link>
-            <div className="p-5">
-                <Link href="/electrica">
-                    <h1 className="mb-2 text-2xl font-bold tracking-tighttext-white">Electrica &apos;24</h1>
-                </Link>
-                <p className="mb-3 font-normal text-gray-400">A fun event which tests your knowledge on basic electronics.</p>
-                <Link href="/electrica" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-orange-500 rounded-lg hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-blue-300">
-                    Read more
-                    <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                    </svg>
-                </Link>
-            </div>
-        </div>
+  return (
+    <div className="relative min-h-screen bg-black">
+      <div className="absolute inset-0" style={{
+        backgroundImage: `linear-gradient(#EBE9E0 1px, transparent 1px), linear-gradient(90deg, #EBE9E0 1px, transparent 1px)`,
+        backgroundSize: '35px 35px',
+        opacity: 0.2
+      }}></div>
+      <div className="container mx-auto px-4 py-8 max-w-2xl relative">
+        {cardsData.map((card, idx) => (
+          <div key={idx} className="mb-6 w-full relative">
+            <div className={`rounded-lg shadow-lg ${card.borderColor} relative`} style={{ backgroundColor: '#EBE9E0' }}>
+              {/* Ticket dots */}
+              <div className="absolute left-0 top-1/2 -translate-y-1/2 w-3 h-6 bg-black rounded-r-full"></div>
+              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-6 bg-black rounded-l-full"></div>
 
-        <div className="max-w-sm rounded-lg shadow bg-gray-900 border-yellow-700">
-            <Link href="/brain-dasher">
-                <picture>
-                    <img className="rounded-t-lg mx-auto" width="350" height="300" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913635/Spectrum/Homepage/braindasher_ssnsl9.jpg" />
-                </picture>
-            </Link>
-            <div className="p-5">
-                <Link href="/brain-dasher">
-                    <h1 className="mb-2 text-2xl font-bold tracking-tighttext-white">Brain Dasher &apos;24</h1>
-                </Link>
-                <p className="mb-3 font-normal text-gray-400">A fun event to put your brain to the test!</p>
-                <Link href="/brain-dasher" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-yellow-500 rounded-lg hover:bg-yellow-600 focus:ring-4 focus:outline-none focus:ring-blue-300">
-                    Read more
-                    <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                    </svg>
-                </Link>
-            </div>
-        </div>
+              <div className="flex">
+                {/* Image section */}
+                <div className={`${!card.title ? 'w-full' : 'w-1/4'}`}>
+                  {card.href ? (
+                    <Link href={card.href}>
+                      <img
+                        className="w-full h-[140px] object-cover rounded-l-lg"
+                        alt={card.alt}
+                        src={card.image}
+                      />
+                    </Link>
+                  ) : (
+                    <img
+                      className="w-full h-[180px] object-contain px-4"
+                      alt={card.alt}
+                      src={card.image}
+                    />
+                  )}
+                </div>
 
-        <div className="max-w-sm rounded-lg shadow bg-gray-900 border-green-700">
-            <Link href="/treasure-hunt">
-                <picture>
-                    <img className="rounded-t-lg mx-auto" width="350" height="300" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913637/Spectrum/Homepage/treasure_imfqwg.jpg" />
-                </picture>
-            </Link>
-            <div className="p-5">
-                <Link href="/treasure-hunt">
-                    <h1 className="mb-2 text-2xl font-bold tracking-tighttext-white">Treasure Hunt &apos;24</h1>
-                </Link>
-                <p className="mb-3 font-normal text-gray-400">A fun event of Treasure Hunt!</p>
-                <Link href="/treasure-hunt" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-500 rounded-lg hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300">
-                    Read more
-                    <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                {/* Content section */}
+                {card.title && (
+                  <>
+                    <div className="w-3/5 relative">
+                      <div className={`absolute inset-0 opacity-10 ${card.buttonBgColor}`}></div>
+                      <div className="relative p-4">
+                        <Link href={card.href}>
+                          <h1 className={`${korna.className} mb-2 text-xl font-bold tracking-tight text-gray-900 hover:opacity-80 transition-opacity`}>
+                            {card.title}
+                          </h1>
+                        </Link>
+                        <p className="text-sm text-gray-700">{card.description}</p>
+                      </div>
+                    </div>
+                    
+                    {/* Full-height button section */}
+                    <Link
+                      href={card.href}
+                      className={`w-1/6 flex items-center justify-center ${card.buttonBgColor} ${card.buttonHoverBgColor} transition-colors duration-200 rounded-r-lg`}
+                    >
+                      <svg className="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                    </svg>
-                </Link>
+                      </svg>
+                    </Link>
+                  </>
+                )}
+              </div>
             </div>
-        </div>
-
-        <div className="max-w-sm rounded-lg shadow bg-gray-900 border-orange-700">
-            <picture>
-                <img className="mx-auto" width="400" height="200" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913782/Spectrum/Homepage/HKZuMdo_w2bis3.png" alt="logo"/>
-            </picture>
-        </div>
-
-        <div className="max-w-sm rounded-lg shadow bg-gray-900 border-blue-700">
-            <Link href="/chem-prastuti">
-                <picture>
-                    <img className="rounded-t-lg mx-auto" width="350" height="300" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913635/Spectrum/Homepage/chemprastuti_qfiz2s.jpg" />
-                </picture>
-            </Link>
-            <div className="p-5">
-                <Link href="/chem-prastuti">
-                    <h1 className="mb-2 text-2xl font-bold tracking-tighttext-white">Chem Prastuti &apos;24</h1>
-                </Link>
-                <p className="mb-3 font-normal text-gray-400">A Chemistry presentation event!</p>
-                <Link href="/chem-prastuti" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300">
-                    Read more
-                    <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                    </svg>
-                </Link>
-            </div>
-        </div>
-
-        <div className="max-w-sm rounded-lg shadow bg-gray-900 border-purple-700">
-            <Link href="/bottle-rocket">
-                <picture>
-                    <img className="rounded-t-lg mx-auto" width="350" height="300" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913635/Spectrum/Homepage/bottlerocket_gv6w0e.jpg" />
-                </picture>    
-            </Link>
-            <div className="p-5">
-                <Link href="/bottle-rocket">
-                    <h1 className="mb-2 text-2xl font-bold tracking-tighttext-white">Water Rocket &apos;24</h1>
-                </Link>
-                <p className="mb-3 font-normal text-gray-400">A rocket propelled by water and air pressure!</p>
-                <Link href="/bottle-rocket" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-purple-500 rounded-lg hover:bg-purple-600 focus:ring-4 focus:outline-none focus:ring-blue-300">
-                    Read more
-                    <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                    </svg>
-                </Link>
-            </div>
-        </div>
-
-        <div className="max-w-sm rounded-lg shadow bg-gray-900 border-pink-700">
-            <Link href="/debate">
-                <picture>
-                    <img className="rounded-t-lg mx-auto" width="350" height="300" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913635/Spectrum/Homepage/warofwords_njqikn.jpg" />
-                </picture>
-            </Link>
-            <div className="p-5">
-                <Link href="/debate">
-                    <h1 className="mb-2 text-2xl font-bold tracking-tighttext-white">War of Words &apos;24</h1>
-                </Link>
-                <p className="mb-3 font-normal text-gray-400">War of Words - Debate Competition 2024!</p>
-                <Link href="/debate" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-pink-500 rounded-lg hover:bg-pink-600 focus:ring-4 focus:outline-none focus:ring-blue-300">
-                    Read more
-                    <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                    </svg>
-                </Link>
-            </div>
-        </div>
-
-        <div className="max-w-sm rounded-lg shadow bg-gray-900 border-blue-700">
-            <Link href="/video-games">
-                <picture>
-                    <img className="rounded-t-lg mx-auto" width="350" height="300" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913637/Spectrum/Homepage/videogames_rs9ubb.jpg" />
-                </picture>
-            </Link>
-            <div className="p-5">
-                <Link href="/video-games">
-                    <h1 className="mb-2 text-2xl font-bold tracking-tighttext-white">High Ping &apos;24</h1>
-                </Link>
-                <p className="mb-3 font-normal text-gray-400">High Ping PCCOE E-Sports Event 2024!</p>
-                <Link href="/video-games" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-300 rounded-lg hover:bg-blue-400 focus:ring-4 focus:outline-none focus:ring-blue-300">
-                    Read more
-                    <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                    </svg>
-                </Link>
-            </div>
-        </div>
+          </div>
+        ))}
       </div>
-    )
-  }
+    </div>
+  );
+}
