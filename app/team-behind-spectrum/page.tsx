@@ -931,9 +931,6 @@ export default function team_behind_spectrum() {
                         </div>
                     </section>
 
-
-
-                    
                 </div>
             </div>
         )

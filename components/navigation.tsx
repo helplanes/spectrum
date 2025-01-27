@@ -23,7 +23,7 @@ export function Navigation() {
       </Link>
         <NavigationMenuList>
         <NavigationMenuItem>
-            <NavigationMenuTrigger>Events</NavigationMenuTrigger>
+            <NavigationMenuTrigger className="text-white">Events</NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="p-10 md:w-[350px] space-y-2">
                 <ListItem href="/e-paradox" title="E paradox' 24" className="bg-red-500 text-gray-900">
