@@ -31,7 +31,7 @@ export default function Home() {
       </div>
       <Hero/>
       <hr/>
-      <h1 className="scroll-m-20 text-center text-4xl font-extrabold tracking-tight lg:text-5xl p-8">
+      <h1 className="scroll-m-20 text-center text-4xl text-white font-extrabold tracking-tight lg:text-5xl p-8">
         Events <Image className="mx-auto pb-8 display: inline" width="70" height="70" alt="image" src="https://i.imgur.com/zOrZlKk.png" />
       </h1>
       <hr/>

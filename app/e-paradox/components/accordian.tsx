@@ -22,12 +22,12 @@ export function Rules() {
             value={`item-${index + 1}`} 
             className="border-none rounded-lg sm:rounded-xl md:rounded-2xl bg-white shadow-sm hover:shadow-md transition-all duration-300 mx-1 sm:mx-2 md:mx-0"
           >
-            <AccordionTrigger className="px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 hover:no-underline data-[state=open]:bg-[#EBE9E0] rounded-lg sm:rounded-xl md:rounded-2xl group transition-all duration-300">
-              <div className="flex items-center gap-2 sm:gap-3 md:gap-6">
-                <span className="flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 md:w-12 md:h-12 rounded-full bg-[#EBE9E0] group-data-[state=open]:bg-white text-gray-800 font-bold text-sm sm:text-base md:text-lg transition-all duration-300">
+            <AccordionTrigger className="px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 hover:no-underline data-[state=open]:bg-[#EBE9E0] rounded-lg  shadow-md sm:rounded-xl md:rounded-2xl group transition-all duration-300 w-full">
+              <div className="flex items-center gap-2 sm:gap-3 md:gap-6 w-full">
+                <span className="flex-shrink-0 flex items-center justify-center w-8 h-8 sm:w-8 sm:h-8 md:w-12 md:h-12 rounded-full bg-[#EBE9E0] group-data-[state=open]:bg-white text-gray-800 font-bold text-sm sm:text-base md:text-lg transition-all duration-300">
                   {index + 1}
                 </span>
-                <h3 className="text-sm sm:text-base md:text-xl font-semibold group-hover:text-gray-900 text-left">
+                <h3 className="text-sm sm:text-base md:text-xl font-semibold group-hover:text-gray-900 text-left flex-1">
                   {round.title}
                 </h3>
               </div>

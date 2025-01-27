@@ -51,7 +51,7 @@ const ruleList = [
 
 export default function Home() {
   return (
-    <main className="overflow-hidden max-w-7xl mx-auto px-8 bg-[#EBE9E0]">
+    <main className="overflow-hidden max-w-7xl mx-auto px-6 bg-[#EBE9E0]">
       <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-4 md:gap-8 py-6 md:py-12 px-4 md:px-8">
         <div className="w-full md:w-1/3 flex justify-center md:justify-start">
           <Image  
@@ -67,10 +67,10 @@ export default function Home() {
         
         <div className={`${korna.className} w-full md:w-2/3 text-left`}>
           <div className="space-y-2 md:space-y-4">
-            <h1 className="font-jacques_francois_shadow scroll-m-20 text-3xl sm:text-6xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-gray-800 tracking-tight">
-              E-Paradox &apos;24
+            <h1 className="font-jacques_francois_shadow scroll-m-20 text-3xl sm:text-6xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-black tracking-tight">
+              E-Paradox &apos;25
             </h1>
-            <h2 className="font-jacques_francois_shadow scroll-m-20 text-md sm:text-3xl md:text-3xl lg:text-4xl font-extrabold text-gray-700 tracking-tight">
+            <h2 className="font-jacques_francois_shadow scroll-m-20 text-md sm:text-3xl md:text-3xl lg:text-4xl font-extrabold text-black tracking-tight">
               brought to you by AS&H, PCCOE
             </h2>
           </div>
@@ -97,11 +97,11 @@ export default function Home() {
       </div>
 
       <picture> 
-        <img className="mx-auto my-16" width="800" height="50" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705931875/Spectrum/global/lbNfJM2-min_n0yrof.webp" draggable="false" />
+        <img className="mx-auto my-4 sm:my-8" width="800" height="50" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705931875/Spectrum/global/lbNfJM2-min_n0yrof.webp" draggable="false" />
       </picture> 
       <Eparadox_registarion />
       <picture> 
-        <img className="mx-auto my-16" width="800" height="50" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705931875/Spectrum/global/lbNfJM2-min_n0yrof.webp" draggable="false" />
+        <img className="mx-auto my-4 sm:my-8" width="800" height="50" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705931875/Spectrum/global/lbNfJM2-min_n0yrof.webp" draggable="false" />
       </picture> 
         <Rules /> 
     <hr/>
