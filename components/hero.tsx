@@ -46,6 +46,9 @@ export default function Hero() {
             <img className="backgroundImage" 
                  src="https://drive.google.com/thumbnail?id=1_ZMV_LcmUXLsRokuz6WXGyN9zVCGfAHp&sz=w1920" 
                  alt="" />
+            <img className="logoImage" 
+                 src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913782/Spectrum/Homepage/HKZuMdo_w2bis3.png" 
+                 alt="Spectrum Logo" />
             <div className="container">
               <div className="cube">
                 <div className="face top"></div>

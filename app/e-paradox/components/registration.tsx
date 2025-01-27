@@ -31,8 +31,8 @@ export function Eparadox_registarion() {
                                     <span className="inline-block px-2 py-1 rounded-full bg-blue-50 text-blue-600 text-[10px] sm:text-xs font-medium tracking-wide uppercase mb-1.5 sm:mb-3">
                                         Limited Spots Available
                                     </span>
-                                    <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-1.5 sm:mb-2">
-                                        E-Paradox &apos;24
+                                    <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-black mb-1.5 sm:mb-2">
+                                        E-Paradox &apos;25
                                     </h1>
                                     <p className="text-[11px] sm:text-sm text-gray-600 leading-relaxed">
                                         Join us for an exciting technical event featuring challenging rounds of coding, problem-solving, and innovative thinking.

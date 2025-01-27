@@ -176,6 +176,17 @@ body {
   border-radius: 2rem 2rem 0 0; /* Only curve top corners */
 }
 
+.hero-container .logoImage {
+  position: absolute;
+  width: 400px; /* Reduced from 600px to 400px */
+  z-index: 2;
+  left: 50%;
+  bottom: -60px; /* Changed from 20px to -60px */
+  transform: translateX(-50%);
+  /* Remove the blur animation */
+  animation: none;
+}
+
 .hero-container .content {
   position: relative;
   border-radius: 2rem; /* Increased curve */
@@ -211,6 +222,17 @@ body {
 @keyframes rightSlide {
   from { transform: translateX(0); }
   to { transform: translateX(-100%); }
+}
+
+/* You can remove or comment out this animation since we're not using it for the logo anymore */
+/* @keyframes blur {
+  0% { filter: blur(0px); }
+  100% { filter: blur(3px); }
+} */
+
+@keyframes blur {
+  0% { filter: blur(0px); }
+  100% { filter: blur(3px); }
 }
 
 .hero-container .container {

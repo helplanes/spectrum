@@ -120,11 +120,11 @@ export default function Cards() {
       <div className="absolute inset-0" style={{
         backgroundImage: `linear-gradient(#EBE9E0 1px, transparent 1px), linear-gradient(90deg, #EBE9E0 1px, transparent 1px)`,
         backgroundSize: '35px 35px',
-        opacity: 0.2
+        opacity: 0.2  
       }}></div>
-      <div className="container mx-auto px-4 py-8 max-w-2xl relative">
+      <div className="container mx-auto px-6 sm:px-8 py-8 sm:py-12 max-w-2xl relative">
         {cardsData.map((card, idx) => (
-          <div key={idx} className="mb-6 w-full relative">
+          <div key={idx} className="mb-6 sm:mb-8 w-full relative">
             <div className={`rounded-lg shadow-lg ${card.borderColor} relative`} style={{ backgroundColor: '#EBE9E0' }}>
               {/* Ticket dots */}
               <div className="absolute left-0 top-1/2 -translate-y-1/2 w-3 h-6 bg-black rounded-r-full"></div>
@@ -168,9 +168,9 @@ export default function Cards() {
                     {/* Full-height button section */}
                     <Link
                       href={card.href}
-                      className={`w-1/6 flex items-center justify-center ${card.buttonBgColor} ${card.buttonHoverBgColor} transition-colors duration-200 rounded-r-lg`}
+                      className={`w-1/6 flex items-center justify-center ${card.buttonBgColor} ${card.buttonHoverBgColor} transition-colors duration-200 rounded-r-lg p-2 sm:p-4`}
                     >
-                      <svg className="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                      <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                       </svg>
                     </Link>
