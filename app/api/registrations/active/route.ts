@@ -35,15 +35,15 @@ interface TeamMemberWithProfile {
   member_id: string | null;
   member_email: string;
   invitation_status: string;
-  profiles: Profile[];  // Change to array type
+  profiles: Profile;  // Change to single object since Supabase returns first match
 }
 
 interface TeamRegistration {
   teams: {
+    leader: any;
     id: string;
     team_name: string;
     leader_id: string;
-    event_id: string;
     registrations: Array<{
       id: string;
     }>;
@@ -78,6 +78,11 @@ export async function GET() {
           id,
           team_name,
           leader_id,
+          leader:leader_id (
+            id,
+            full_name,
+            email
+          ),
           registrations!inner (
             id
           ),
@@ -100,33 +105,26 @@ export async function GET() {
             profiles:member_id (
               id,
               full_name,
-              email,
-              avatar_url,
-              phone,
-              college_name,
-              prn,
-              branch,
-              class,
-              gender,
-              bio
+              email
             )
           `)
-          .eq('team_id', reg.teams.id);
+          .eq('team_id', reg.teams.id)
+          .eq('invitation_status', 'accepted') as { data: TeamMemberWithProfile[] | null };
 
+        const leader = reg.teams.leader;
+        
         return {
           ...reg,
           teams: {
             ...reg.teams,
-            members: (members || []).map((m) => {
-              const profile = m.profiles?.[0] || null;  // Get first profile or null
-              return {
-                id: m.member_id || m.member_email,
-                email: m.member_email || profile?.email,
-                name: profile?.full_name || null,
-                status: m.invitation_status,
-                isRegistered: !!m.member_id
-              };
-            })
+            members: (members || []).map((m) => ({
+              id: m.member_id || m.member_email,
+              email: m.member_email || (m.profiles?.email ?? ''),
+              name: m.profiles?.full_name ?? '',
+              status: m.invitation_status,
+              isRegistered: !!m.member_id,
+              isLeader: m.member_id === reg.teams.leader_id
+            }))
           }
         };
       })

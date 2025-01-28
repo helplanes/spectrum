@@ -7,6 +7,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
+import { cn } from '@/lib/utils';
 
 interface BreadcrumbItemType {
   label: string;
@@ -20,19 +21,22 @@ interface BreadcrumbsProps {
 
 export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
   return (
-    <Breadcrumb className={className}>
+    <Breadcrumb className={cn("bg-white/50 backdrop-blur-sm px-2 py-1.5 rounded-lg inline-block", className)}>
       <BreadcrumbList>
         {items.map((item, index) => (
           <BreadcrumbItem key={index}>
             {item.href ? (
               <>
-                <BreadcrumbLink href={item.href}>
+                <BreadcrumbLink 
+                  href={item.href}
+                  className="hover:text-primary/80"
+                >
                   {item.label}
                 </BreadcrumbLink>
                 {index < items.length - 1 && <BreadcrumbSeparator />}
               </>
             ) : (
-              <BreadcrumbPage>{item.label}</BreadcrumbPage>
+              <BreadcrumbPage className="text-primary">{item.label}</BreadcrumbPage>
             )}
           </BreadcrumbItem>
         ))}
