@@ -1,11 +1,12 @@
+import { createClient } from "@/app/utils/supabase/server";
 import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/app/components/breadcrumbs";
-import { fetchApi } from "@/app/utils/api";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import RegisterComponent from "./RegisterComponent";
 import { Suspense } from "react";
+import { slugify } from "@/app/utils/slugify";
 
 interface EventDetails {
   id: string;
@@ -23,22 +24,19 @@ interface EventDetails {
 }
 
 async function getEventDetails(eventName: string) {
-  try {
-    const res = await fetchApi(`/api/events/details?name=${encodeURIComponent(eventName)}`, {
-      cache: 'no-store'
-    });
-    
-    if (res.status === 404) return null;
-    
-    if (!res.ok) {
-      throw new Error(`HTTP error! status: ${res.status}`);
-    }
-    
-    return res.json();
-  } catch (error) {
-    console.error('Error fetching event details:', error);
-    return null;
+  const supabase = await createClient();
+  
+  const { data: events, error } = await supabase
+    .from("events")
+    .select("*");
+
+  if (error) {
+    console.error("Error fetching events:", error);
+    throw new Error("Failed to fetch event details");
   }
+
+  const event = events.find(e => slugify(e.name) === eventName);
+  return event || null;
 }
 
 export default async function EventPage({

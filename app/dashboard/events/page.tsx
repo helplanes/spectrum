@@ -1,36 +1,17 @@
+import { createClient } from "@/app/utils/supabase/server";
 import Link from "next/link";
 import { slugify } from "@/app/utils/slugify";
 import { Breadcrumbs } from "@/app/components/breadcrumbs";
-import { fetchApi } from "@/app/utils/api";
-
-interface Event {
-  id: number;
-  name: string;
-  event_type: string;
-  min_team_size: number;
-  max_team_size: number;
-  registration_start: string;
-  registration_end: string;
-  description?: string;
-  is_active: boolean;
-}
-
-async function getEvents(): Promise<Event[]> {
-  const res = await fetchApi('/api/events', {
-    cache: 'no-store'
-  });
-  
-  if (!res.ok) {
-    throw new Error(`Failed to fetch events (${res.status})`);
-  }
-  
-  return res.json();
-}
 
 export default async function EventsPage() {
-  const events = await getEvents();
+  const supabase = await createClient();
+  
+  const { data: events } = await supabase
+    .from("events")
+    .select("*")
+    .order('created_at', { ascending: false });
 
-  if (!events?.length) {
+  if (!events) {
     return <div className="text-center p-8">No events found</div>;
   }
 
@@ -54,7 +35,7 @@ export default async function EventsPage() {
               <h1 className="text-3xl font-bold mb-8">All Events</h1>
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {events.map((event: Event) => (
+                {events.map((event) => (
                   <Link 
                     key={event.id} 
                     href={`/dashboard/events/${slugify(event.name)}`}
