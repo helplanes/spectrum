@@ -6,7 +6,7 @@ export function getBaseUrl() {
     return `https://${process.env.VERCEL_URL}`;  // uses Vercel's deployment URL
   }
   // falls back to environment variable or hardcoded URL
-  return process.env.NEXT_PUBLIC_APP_URL || 'https://www.spectrumpccoe25.tech';
+  return process.env.NEXT_PUBLIC_APP_URL || 'https://www.spectrumpccoe25.tech/';
 }
 
 export async function fetchApi(endpoint: string, init?: RequestInit) {

@@ -70,6 +70,10 @@ export async function GET(
       members: formattedMembers,
       pendingCount: formattedMembers.filter(m => m.status === 'pending').length,
       maxTeamSize: team?.events?.max_team_size
+    }, {
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      }
     });
 
   } catch (error) {
@@ -126,6 +130,10 @@ export async function PATCH(
     return NextResponse.json({ 
       success: true,
       message: `Invitation ${action}ed successfully` 
+    }, {
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      }
     });
 
   } catch (error) {

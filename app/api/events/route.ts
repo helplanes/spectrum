@@ -18,7 +18,11 @@ export async function GET() {
       );
     }
 
-    return NextResponse.json(events || []);
+    return NextResponse.json(events || [], {
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      }
+    });
   } catch (error) {
     return NextResponse.json(
       { error: "Failed to fetch events" }, 

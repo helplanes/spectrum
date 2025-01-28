@@ -75,6 +75,10 @@ export async function POST(
     return NextResponse.json({ 
       success: true,
       message: "Invitation sent successfully"
+    }, {
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      }
     });
 
   } catch (error) {

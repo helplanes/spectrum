@@ -28,7 +28,11 @@ export async function GET(request: Request) {
       return NextResponse.json({ error: "Event not found" }, { status: 404 });
     }
 
-    return NextResponse.json(event);
+    return NextResponse.json(event, {
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      }
+    });
   } catch (error) {
     console.error("API error:", error);
     return NextResponse.json(
