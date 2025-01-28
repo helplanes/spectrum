@@ -21,10 +21,19 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Loader2 } from "lucide-react";
+import { Loader2, X } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { EventDetails, RegistrationStatusResponse, TeamMember } from "@/app/types/events";
+import {
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogCancel,
+  AlertDialogAction,
+} from "@/components/ui/alert-dialog";
 
 // ...existing interfaces...
 
@@ -53,6 +62,8 @@ export default function RegisterComponent({ eventDetails }: { eventDetails: Even
   const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
   const [teamData, setTeamData] = useState<TeamData | null>(null);
   const [isTeamStatusLoading, setIsTeamStatusLoading] = useState(true);
+  const [removingInvite, setRemovingInvite] = useState<string | null>(null);
+  const [isRemovingInvite, setIsRemovingInvite] = useState(false);
   
   const createTeamForm = useForm<z.infer<typeof createTeamSchema>>({
     resolver: zodResolver(createTeamSchema),
@@ -253,6 +264,31 @@ export default function RegisterComponent({ eventDetails }: { eventDetails: Even
     }
   };
 
+  const handleRemoveInvite = async (memberId: string) => {
+    setIsRemovingInvite(true);
+    try {
+      toast.loading("Removing invitation...");
+      const response = await fetch(`/api/teams/${currentTeamId}/invite/${memberId}`, {
+        method: "DELETE",
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error || "Failed to remove invitation");
+      }
+
+      await fetchTeamMembers();
+      toast.success("Invitation removed successfully");
+    } catch (error: any) {
+      toast.error("Failed to remove invitation", {
+        description: error.message || "Please try again",
+      });
+    } finally {
+      setIsRemovingInvite(false);
+      setRemovingInvite(null);
+    }
+  };
+
   // If registration status is null or team status is still loading, show loading
   if (registrationStatus === null || isTeamStatusLoading) {
     return <Button disabled className="w-full">Loading...</Button>;
@@ -412,12 +448,57 @@ export default function RegisterComponent({ eventDetails }: { eventDetails: Even
                               )}
                             </div>
                           </div>
-                          <span className="text-xs bg-yellow-100 text-yellow-700 px-2 py-1 rounded">
-                            Awaiting Response
-                          </span>
+                          <div className="flex items-center gap-2">
+                            <span className="text-xs bg-yellow-100 text-yellow-700 px-2 py-1 rounded">
+                              Awaiting Response
+                            </span>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              className="h-8 w-8 text-gray-500 hover:text-red-500"
+                              onClick={() => setRemovingInvite(member.id)}
+                              disabled={isRemovingInvite}
+                            >
+                              <X className="h-4 w-4" />
+                            </Button>
+                          </div>
                         </div>
                       ))}
                     </div>
+
+                    <AlertDialog open={!!removingInvite} onOpenChange={() => setRemovingInvite(null)}>
+                      <AlertDialogContent>
+                        <AlertDialogHeader>
+                          <AlertDialogTitle>Remove Invitation</AlertDialogTitle>
+                          <AlertDialogDescription>
+                            Are you sure you want to remove this invitation? This action cannot be undone.
+                          </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <div className="flex justify-end gap-4 mt-4">
+                          <AlertDialogCancel 
+                            disabled={isRemovingInvite}
+                            onClick={() => setRemovingInvite(null)}
+                          >
+                            Cancel
+                          </AlertDialogCancel>
+                          <AlertDialogAction
+                            disabled={isRemovingInvite}
+                            onClick={() => {
+                              if (removingInvite) {
+                                handleRemoveInvite(removingInvite);
+                              }
+                            }}
+                            className="bg-red-500 hover:bg-red-600"
+                          >
+                            {isRemovingInvite ? (
+                              <Loader2 className="h-4 w-4 animate-spin" />
+                            ) : (
+                              "Remove"
+                            )}
+                          </AlertDialogAction>
+                        </div>
+                      </AlertDialogContent>
+                    </AlertDialog>
                   </div>
                 )}
               </CardContent>
@@ -436,7 +517,7 @@ export default function RegisterComponent({ eventDetails }: { eventDetails: Even
                       <p>You can add up to {maxAllowed - totalMembers} more members</p>
                       {pendingMembers.length > 0 && (
                         <p className="text-yellow-600 text-xs">
-                          {pendingMembers.length} invitation{pendingMembers.length !== 1 ? 's' : ''} pending
+                          {pendingMembers.length} invitation{pendingMembers.length !== 1 ? 's' : ''} have been sent out and are pending.
                         </p>
                       )}
                     </>
