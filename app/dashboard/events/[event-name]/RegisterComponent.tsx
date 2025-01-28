@@ -21,7 +21,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Loader2, X } from "lucide-react";
+import { Loader2, X, AlertTriangle } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { EventDetails, RegistrationStatusResponse, TeamMember } from "@/app/types/events";
@@ -222,7 +222,7 @@ export default function RegisterComponent({ eventDetails }: { eventDetails: Even
       }
       
       toast.success("Successfully registered!", {
-        description: `You're now registered for ${eventDetails.name}`,
+        description: `You&apos;re now registered for ${eventDetails.name}`,
       });
       setShowConfirm(false);
       await checkRegistrationStatus();
@@ -299,8 +299,8 @@ export default function RegisterComponent({ eventDetails }: { eventDetails: Even
       <div className="bg-green-50 border border-green-200 rounded-lg p-4">
         <h3 className="text-green-800 font-medium">
           {registrationStatus.type === 'solo' 
-            ? "You're registered as an individual participant!" 
-            : "You're registered as part of a team!"}
+            ? "You&apos;re registered as an individual participant!" 
+            : "You&apos;re registered as part of a team!"}
         </h3>
         <p className="text-green-600 text-sm mt-1">
           Registration successful. Good luck!
@@ -313,6 +313,12 @@ export default function RegisterComponent({ eventDetails }: { eventDetails: Even
   if (eventDetails.max_team_size === 1) {
     return (
       <div className="space-y-4">
+        <div className="bg-red-50 border border-red-100 rounded-lg p-4 mb-2">
+          <p className="text-red-600 text-sm">
+            ⚠️ Please note: Once you click register, you&apos;ll be immediately enrolled.
+            This action cannot be undone, so make sure you&apos;re ready to commit!
+          </p>
+        </div>
         <div className="bg-blue-50 border border-blue-100 rounded-lg p-4">
           <p className="text-blue-700 text-sm">
             This is an individual event. Register now to participate!
@@ -336,9 +342,13 @@ export default function RegisterComponent({ eventDetails }: { eventDetails: Even
           </Button>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>Confirm Registration</DialogTitle>
-              <DialogDescription>
-                Are you sure you want to register for {eventDetails.name}?
+              <DialogTitle>Are you absolutely sure?</DialogTitle>
+              <DialogDescription className="space-y-2">
+                <p>You&apos;re about to register for {eventDetails.name} as an individual participant.</p>
+                <p className="font-medium">This action cannot be undone. Once registered:</p>
+                <ul className="list-disc list-inside text-sm">
+                  <li>You cannot withdraw your registration</li>
+                </ul>
               </DialogDescription>
             </DialogHeader>
             <div className="flex justify-end gap-4">
@@ -346,7 +356,7 @@ export default function RegisterComponent({ eventDetails }: { eventDetails: Even
                 Cancel
               </Button>
               <Button onClick={onSoloSubmit}>
-                Confirm Registration
+                Yes, Register Me
               </Button>
             </div>
           </DialogContent>
@@ -585,37 +595,49 @@ export default function RegisterComponent({ eventDetails }: { eventDetails: Even
   // Only show team creation form if user isn't part of any team
   if (!currentTeamId && !registrationStatus.teamId) {
     return (
-      <Form {...createTeamForm}>
-        <form onSubmit={createTeamForm.handleSubmit(onCreateTeam)} className="space-y-4">
-          <FormField
-            control={createTeamForm.control}
-            name="teamName"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Team Name</FormLabel>
-                <FormControl>
-                  <Input placeholder="Enter team name" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <Button 
-            type="submit" 
-            className="w-full"
-            disabled={isLoading}
-          >
-            {isLoading ? (
-              <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Creating Team...
-              </>
-            ) : (
-              "Create Team"
-            )}
-          </Button>
-        </form>
-      </Form>
+      <>
+        <div className="mb-4 p-4 bg-red-50 border border-red-100 rounded-lg">
+          <p className="text-red-700 text-sm font-medium mb-1 flex items-center gap-2">
+            <AlertTriangle className="h-4 w-4" />
+            Important Notice
+          </p>
+          <p className="text-red-600 text-sm">
+            Creating a team is a permanent decision. Once created, you won&apos;t be able to join any other teams for this event.
+            Please make sure you want to proceed before creating a team.
+          </p>
+        </div>
+        <Form {...createTeamForm}>
+          <form onSubmit={createTeamForm.handleSubmit(onCreateTeam)} className="space-y-4">
+            <FormField
+              control={createTeamForm.control}
+              name="teamName"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Team Name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Enter team name" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <Button 
+              type="submit" 
+              className="w-full"
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Creating Team...
+                </>
+              ) : (
+                "Create Team"
+              )}
+            </Button>
+          </form>
+        </Form>
+      </>
     );
   }
 
