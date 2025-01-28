@@ -149,6 +149,7 @@ export default function AcceptPage() {
         <div className="container mx-auto max-w-7xl">
           <Breadcrumbs
             items={[
+              { label: 'Home', href: '/' },
               { label: 'Dashboard', href: '/dashboard' },
               { label: 'Events', href: '/dashboard/events' },
               { label: 'Invitations' },
@@ -172,14 +173,15 @@ export default function AcceptPage() {
 
   return (
     <main className="min-h-screen bg-[#EBE9E0] p-4 sm:p-6 lg:p-8">
-      <div className="container mx-auto max-w-7xl">
+      <div className="max-w-7xl mx-auto">
         <Breadcrumbs
           items={[
+            { label: 'Home', href: '/' },
             { label: 'Dashboard', href: '/dashboard' },
             { label: 'Events', href: '/dashboard/events' },
             { label: 'Invitations' },
           ]}
-          className="mb-4"
+          className="mb-6"
         />
         
         <div className="p-2 sm:p-4 border-4 border-dashed border-gray-300 rounded-[2rem]">
