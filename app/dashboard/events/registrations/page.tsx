@@ -167,9 +167,8 @@ export default function RegistrationsPage() {
                           <CardDescription className="text-sm line-clamp-2">
                             {reg.event.description}
                           </CardDescription>
-                        </div>
+                        </div> 
                       </CardHeader>
-
                       <CardContent className="p-3 sm:p-4 lg:p-6 pt-3">
                         <Separator className="my-1.5" />
                         <div className="space-y-2 sm:space-y-3 mt-1.5">
