@@ -222,7 +222,7 @@ export default function RegisterComponent({ eventDetails }: { eventDetails: Even
       }
       
       toast.success("Successfully registered!", {
-        description: `You&apos;re now registered for ${eventDetails.name}`,
+        description: `You're now registered for ${eventDetails.name}`,
       });
       setShowConfirm(false);
       await checkRegistrationStatus();
@@ -299,8 +299,8 @@ export default function RegisterComponent({ eventDetails }: { eventDetails: Even
       <div className="bg-green-50 border border-green-200 rounded-lg p-4">
         <h3 className="text-green-800 font-medium">
           {registrationStatus.type === 'solo' 
-            ? "You&apos;re registered as an individual participant!" 
-            : "You&apos;re registered as part of a team!"}
+            ? "You're registered as an individual participant!" 
+            : "You're registered as part of a team!"}
         </h3>
         <p className="text-green-600 text-sm mt-1">
           Registration successful. Good luck!
