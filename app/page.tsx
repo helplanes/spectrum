@@ -36,7 +36,7 @@ export default function Home() {
       </h1>
       <hr/>
       <Cards />
-      <div className="bg-[#EBE9E0] text-black">
+      <div className="bg-[#EBE9E0] text-black pb-16"> {/* Added pb-16 for bottom padding */}
         <div className="pt-2">
           <h1 className="scroll-m-20 text-center text-4xl font-extrabold tracking-tight lg:text-5xl p-4">
             Glimpse of Spectrum &apos;24 <Image className="mx-auto pb-8 display: inline" width="70" height="70" alt="image" src="https://i.postimg.cc/sgDXDk2X/zOrZlKk.png" />
