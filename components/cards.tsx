@@ -158,9 +158,9 @@ export default function Cards() {
 
               <div className="flex">
                 {/* Image section */}
-                <div className={`${!card.title ? 'w-full' : 'w-1/3'}`}>
+                <div className={`${!card.title ? 'w-full' : 'w-1/3'} flex items-center justify-center`}>
                   {card.href ? (
-                    <Link href={card.href}>
+                    <Link href={card.href} className="flex items-center justify-center w-full">
                       <img
                         className="w-full h-[140px] object-contain p-2 rounded-l-lg"
                         alt={card.alt}
