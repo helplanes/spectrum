@@ -38,7 +38,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <div className="hero-container">  {/* Add this wrapper class */}
+    <div className="hero-container grid-background-flip">  {/* Add this wrapper class */}
       <div className="container">
         <div className="content">
           <div className="container-full">
