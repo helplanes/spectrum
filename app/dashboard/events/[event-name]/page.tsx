@@ -4,10 +4,11 @@ import { Breadcrumbs } from "@/app/components/breadcrumbs";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import RegisterComponent from "./RegisterComponent";
+import RegisterComponent from "./components/RegisterComponent";
 import { Suspense } from "react";
 import { slugify } from "@/app/utils/slugify";
 import EventLoading from "./loading";
+import { Image as ImageIcon } from "lucide-react"; // Add this import
 
 interface EventDetails {
   id: string;
@@ -46,8 +47,6 @@ export default async function EventPage({
 }: {
   params: Promise<{ "event-name": string }>;
 }) {
-  // Add loading delay to show the animation (remove in production)
-  await new Promise(resolve => setTimeout(resolve, 1000));
 
   const resolvedParams = await params;
   const eventName = resolvedParams["event-name"];
@@ -79,17 +78,23 @@ export default async function EventPage({
 
               <div className="flex flex-col md:flex-row h-auto">
                 <div className="md:w-[45%] relative h-[200px] md:h-full bg-[#EBE9E0]">
-                  <div className="relative w-full h-full">
-                    <Image 
-                      className="object-cover w-full h-full"
-                      src={eventDetails.img_url || 'https://i.imgur.com/FVfeMNp_d.webp?maxwidth=760&fidelity=grand'} 
-                      alt={eventDetails.name}
-                      width={800}
-                      height={600}
-                      priority
-                      draggable="false"
-                    />
-                  </div>
+                  {eventDetails.img_url ? (
+                    <div className="relative w-full h-full">
+                      <Image 
+                        className="object-cover w-full h-full"
+                        src={eventDetails.img_url} 
+                        alt={eventDetails.name}
+                        width={800}
+                        height={600}
+                        priority
+                        draggable="false"
+                      />
+                    </div>
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center">
+                      <ImageIcon className="w-20 h-20 text-gray-400" strokeWidth={1} />
+                    </div>
+                  )}
                 </div>
 
                 <div className="md:w-[55%] p-4 sm:p-6 lg:p-8 flex flex-col bg-gradient-to-br from-white to-gray-50">
@@ -143,8 +148,7 @@ export default async function EventPage({
                     </Suspense>
                   </div>
                 </div>
-              </div>
-            </div>
+              </div>            </div>
           </div>
         </div>
       </main>

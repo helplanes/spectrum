@@ -46,6 +46,8 @@ interface TeamRegistration {
     leader_id: string;
     registrations: Array<{
       id: string;
+      created_at: string;
+      registration_status: string;
     }>;
     events: Event;
   };
@@ -61,11 +63,20 @@ export async function GET() {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    // Fetch solo registrations
+    // Fetch user profile
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('*')
+      .eq('id', user.id)
+      .single();
+
+    // Fetch solo registrations with created_at and status
     const { data: soloRegistrations } = await supabase
       .from('registrations')
       .select(`
         id,
+        created_at,
+        registration_status,
         events (*)
       `)
       .eq('individual_id', user.id);
@@ -84,7 +95,9 @@ export async function GET() {
             email
           ),
           registrations!inner (
-            id
+            id,
+            created_at,
+            registration_status
           ),
           events (*)
         ),
@@ -105,7 +118,8 @@ export async function GET() {
             profiles:member_id (
               id,
               full_name,
-              email
+              email,
+              prn
             )
           `)
           .eq('team_id', reg.teams.id)
@@ -123,7 +137,10 @@ export async function GET() {
               name: m.profiles?.full_name ?? '',
               status: m.invitation_status,
               isRegistered: !!m.member_id,
-              isLeader: m.member_id === reg.teams.leader_id
+              isLeader: m.member_id === reg.teams.leader_id,
+              profile: {
+                prn: m.profiles?.prn
+              }
             }))
           }
         };
@@ -134,18 +151,36 @@ export async function GET() {
     const formattedRegistrations = [
       ...(soloRegistrations || []).map(reg => ({
         id: reg.id,
+        created_at: reg.created_at,
         event: reg.events,
         type: 'solo' as const,
+        status: reg.registration_status || 'pending',
+        profile: {
+          phone: profile?.phone,
+          college_name: profile?.college_name,
+          prn: profile?.prn,
+          branch: profile?.branch,
+          class: profile?.class,
+        }
       })),
       ...teamRegistrationsWithMembers.map(reg => ({
         id: reg.teams.registrations[0].id,
+        created_at: reg.teams.registrations[0].created_at,
         event: reg.teams.events,
         type: 'team' as const,
+        status: reg.teams.registrations[0].registration_status || 'pending',
         team: {
           id: reg.teams.id,
           name: reg.teams.team_name,
           members: reg.teams.members,
           isLeader: reg.teams.leader_id === user.id,
+        },
+        profile: {
+          phone: profile?.phone,
+          college_name: profile?.college_name,
+          prn: profile?.prn,
+          branch: profile?.branch,
+          class: profile?.class,
         }
       }))
     ];

@@ -11,6 +11,7 @@ export interface EventDetails {
   event_end: string;
   max_registrations: number | null;
   is_active: boolean;
+  img_url: string | null;
 }
 
 export type InvitationStatus = 'pending' | 'accepted' | 'rejected';
@@ -36,4 +37,11 @@ export interface TeamMember {
   name: string | null;
   status: InvitationStatus;
   isRegistered: boolean;
+  profile?: {
+    phone: string | null;
+    college_name: string | null;
+    prn: string | null;
+    branch: string | null;
+    class: string | null;
+  };
 }

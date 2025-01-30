@@ -55,9 +55,10 @@ export async function GET(request: Request) {
     // Check for solo registration
     const { data: soloReg } = await supabase
       .from('registrations')
-      .select('*')
+      .select('registration_status')
       .eq('event_id', eventId)
       .eq('individual_id', user.id)
+      .eq('registration_status', 'confirmed')
       .single();
 
     if (soloReg) {
@@ -82,6 +83,7 @@ export async function GET(request: Request) {
       .eq('member_id', user.id)
       .eq('invitation_status', 'accepted')
       .eq('teams.event_id', eventId)
+      .eq('teams.registrations.registration_status', 'confirmed')
       .single() as { data: TeamRegistration | null };
 
     if (teamMember?.teams?.registrations && teamMember.teams.registrations.length > 0) {

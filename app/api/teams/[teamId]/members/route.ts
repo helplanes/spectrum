@@ -125,7 +125,7 @@ export async function PATCH(
       return NextResponse.json({ error: "Team not found" }, { status: 404 });
     }
 
-    // Check if user already has a team for this event
+    // Check for existing team only if accepting
     if (action === 'accept') {
       const { data: existingTeam, error: queryError } = await supabase
         .from('team_members')
@@ -140,7 +140,7 @@ export async function PATCH(
         .eq('teams.event_id', team.event_id)
         .single() as { data: TeamQueryResult | null, error: any };
 
-      if (queryError && queryError.code !== 'PGRST116') { // PGRST116 is "not found" error
+      if (queryError && queryError.code !== 'PGRST116') {
         throw new Error('existing_team_check_failed');
       }
 
@@ -155,12 +155,12 @@ export async function PATCH(
     // Convert action to proper enum value
     const newStatus = action === 'accept' ? 'accepted' : 'rejected';
 
-    // Update the invitation status
+    // Update the invitation status - now storing member_id for both accept and reject
     const { error: updateError } = await supabase
       .from('team_members')
       .update({
         invitation_status: newStatus,
-        member_id: action === 'accept' ? user.id : null,
+        member_id: user.id, // Store member_id regardless of action
         updated_at: new Date().toISOString()
       })
       .eq('team_id', teamId)

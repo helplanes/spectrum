@@ -34,6 +34,7 @@ import {
   AlertDialogCancel,
   AlertDialogAction,
 } from "@/components/ui/alert-dialog";
+import Link from 'next/link';
 
 // ...existing interfaces...
 
@@ -221,11 +222,11 @@ export default function RegisterComponent({ eventDetails }: { eventDetails: Even
         throw new Error(result.error || "Registration failed");
       }
       
+      setShowConfirm(false);
+      await checkRegistrationStatus();
       toast.success("Successfully registered!", {
         description: `You're now registered for ${eventDetails.name}`,
       });
-      setShowConfirm(false);
-      await checkRegistrationStatus();
     } catch (error: any) {
       toast.error("Registration failed", {
         description: error.message || "Please try again later",
@@ -296,15 +297,31 @@ export default function RegisterComponent({ eventDetails }: { eventDetails: Even
 
   if (registrationStatus.isRegistered) {
     return (
-      <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-        <h3 className="text-green-800 font-medium">
-          {registrationStatus.type === 'solo' 
-            ? "You're registered as an individual participant!" 
-            : "You're registered as part of a team!"}
-        </h3>
-        <p className="text-green-600 text-sm mt-1">
-          Registration successful. Good luck!
-        </p>
+      <div className="space-y-3">
+        <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+          <h3 className="text-green-800 font-medium">
+            {registrationStatus.type === 'solo' 
+              ? "You're registered as an individual participant!" 
+              : "You're registered as part of a team!"}
+          </h3>
+          <p className="text-green-600 text-sm mt-1">
+            Registration successful. Good luck!
+          </p>
+        </div>
+        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 sm:p-4">
+          <p className="text-yellow-800 text-sm flex items-center gap-2">
+            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            View your registrations at{' '}
+            <Link 
+              href="/dashboard/events/registrations" 
+              className="font-medium text-yellow-900 hover:text-yellow-700 underline decoration-dashed underline-offset-4"
+            >
+              /dashboard/events/registrations
+            </Link>
+          </p>
+        </div>
       </div>
     );
   }
@@ -340,23 +357,79 @@ export default function RegisterComponent({ eventDetails }: { eventDetails: Even
               "Register Now"
             )}
           </Button>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Are you absolutely sure?</DialogTitle>
-              <DialogDescription className="space-y-2">
-                <p>You&apos;re about to register for {eventDetails.name} as an individual participant.</p>
-                <p className="font-medium">This action cannot be undone. Once registered:</p>
-                <ul className="list-disc list-inside text-sm">
-                  <li>You cannot withdraw your registration</li>
-                </ul>
+          <DialogContent className="sm:max-w-md w-[95%] rounded-lg p-4 sm:p-6 max-h-[90vh] overflow-y-auto bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80 text-left">
+            <DialogHeader className="space-y-3 pb-2 text-left">
+              <DialogTitle className="text-xl font-semibold">
+                Confirm Registration
+              </DialogTitle>
+              <DialogDescription asChild>
+                <div className="space-y-4">
+                  <div className="text-sm text-muted-foreground">
+                    You&apos;re about to register for{" "}
+                    <span className="font-medium text-foreground">
+                      {eventDetails.name}
+                    </span>{" "}
+                    as an individual participant.
+                  </div>
+                  <div className="bg-green-50/50 border border-green-100 p-4 rounded-lg">
+                    <h4 className="font-medium mb-3 text-sm sm:text-base flex items-center gap-2 text-green-800">
+                      <svg 
+                        className="h-5 w-5"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z" clipRule="evenodd" />
+                      </svg>
+                      Important Information
+                    </h4>
+                    <ul className="list-none text-xs sm:text-sm space-y-2.5 text-green-800">
+                      <li className="flex items-start gap-2">
+                        <svg className="h-4 w-4 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>By registering, you agree to follow all event guidelines</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <svg className="h-4 w-4 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>Make sure you can attend on the specified dates</span>
+                      </li>
+                      <li className="flex items-start gap-2 text-red-700">
+                        <svg className="h-4 w-4 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                        </svg>
+                        <span>This action cannot be undone or withdrawn</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </DialogDescription>
             </DialogHeader>
-            <div className="flex justify-end gap-4">
-              <Button variant="outline" onClick={() => setShowConfirm(false)}>
+            <div className="flex flex-col-reverse sm:flex-row justify-end gap-2.5 sm:gap-3 mt-6">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => setShowConfirm(false)}
+                disabled={isLoading}
+                className="w-full sm:w-auto bg-red-50/50 hover:bg-red-100/50 text-red-700 hover:text-red-800 border-red-200/50"
+              >
                 Cancel
               </Button>
-              <Button onClick={onSoloSubmit}>
-                Yes, Register Me
+              <Button
+                type="submit"
+                onClick={onSoloSubmit}
+                disabled={isLoading}
+                className="w-full sm:w-auto gap-2 bg-green-600 hover:bg-green-700 text-white transition-colors"
+              >
+                {isLoading ? (
+                  <>
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                    Processing...
+                  </>
+                ) : (
+                  "Confirm Registration"
+                )}
               </Button>
             </div>
           </DialogContent>

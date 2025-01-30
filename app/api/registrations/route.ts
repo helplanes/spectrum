@@ -51,6 +51,7 @@ export async function POST(request: Request) {
 
     const registration = {
       event_id: eventId,
+      registration_status: 'confirmed', // Set status as confirmed
       ...(type === 'solo' 
         ? { individual_id: user.id }
         : { team_id: teamId }
