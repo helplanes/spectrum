@@ -3,8 +3,8 @@ import Image from "next/image";
 const PrivacyPolicy: React.FC = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-black">
-      <div className="max-w-md p-8 bg-black rounded shadow-md">
-        <Image className="mx-auto pb-8" width="200" height="200" alt="image" src="https://i.imgur.com/92QxWmq.png" /> 
+      <div className="max-w-md p-8 bg-black rounded shadow-md text-white">
+        <Image className="mx-auto pb-8" width="200" height="200" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1738269594/Spectrum/2024/49bcedfb-eaca-4227-a394-0dcd4ac97e3d_blhcbt.jpg" /> 
 
         <h1 className="text-2xl font-bold mb-6">Privacy Policy</h1>
         

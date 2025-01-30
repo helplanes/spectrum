@@ -68,9 +68,8 @@ export default function Home() {
         4.	External gaming accessories like triggers are not allowed.<br/>
         5.  No abuse of any kind will be tolerated.<br/>
         6.  Any kind of malpractices will result in disqualification of team.<br/>
-        7.	Registration fee is not refundable.<br/>
-        8.	On-Spot Entries are not acceptable.<br/>
-        9.	Qualifying rounds will take place in online mode, Semi-final and Final matches will be conducted offline in our college campus.
+        7.	On-Spot Entries are not acceptable.<br/>
+        8.	Qualifying rounds will take place in online mode, Semi-final and Final matches will be conducted offline in our college campus.
         </p>
         </div>
         <div className="text-gray-700 leading-7 mb-4 p-4 lg:p-8">

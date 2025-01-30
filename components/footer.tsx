@@ -72,31 +72,35 @@ export default function Footer() {
                 <div className="flex flex-wrap gap-4">
                   {[
                     {
-                      name: 'Kartik',
-                      instagram: '#',
-                      linkedin: '#'
+                      name: 'Kartik Kulloi',
+                      instagram: 'https://www.instagram.com/kewonit',
+                      linkedin: 'https://www.linkedin.com/in/kartikkulloli/',
+                      github: 'https://github.com/kewonit'
                     },
                     {
-                      name: 'Mayank',
-                      instagram: '#',
-                      linkedin: '#'
+                      name: 'Mayank Kadam',
+                      instagram: 'https://www.instagram.com/mayank_kadam1039/',
+                      linkedin: 'https://www.linkedin.com/in/mayank-kadam-82a60227a/',
+                      github: 'https://github.com/msk1039/'
                     },
                     {
                       name: 'Ved',
                       instagram: '#',
-                      linkedin: '#'
+                      linkedin: '#',
+                      github: '#'
                     },
                     {
                       name: 'Aadi',
                       instagram: '#',
-                      linkedin: '#  '
+                      linkedin: '#',
+                      github: '#'
                     }
                   ].map((member) => (
                     <div key={member.name} className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2">
                       <span className="text-gray-200">{member.name}</span>
                       <div className="flex gap-2">
                         <a
-                          href={`https://instagram.com/${member.instagram}`}
+                          href={member.instagram}
                           target="_blank"
                           rel="noreferrer"
                           className="text-gray-200 hover:text-gray-200/75"
@@ -106,7 +110,17 @@ export default function Footer() {
                           </svg>
                         </a>
                         <a
-                          href={`https://linkedin.com/in/${member.linkedin}`}
+                          href={member.github}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-gray-200 hover:text-gray-200/75"
+                        >
+                          <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.164 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.341-3.369-1.341-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.271.098-2.65 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.379.202 2.397.1 2.65.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.137 20.164 22 16.42 22 12c0-5.523-4.477-10-10-10z" />
+                          </svg>
+                        </a>
+                        <a
+                          href={member.linkedin}
                           target="_blank"
                           rel="noreferrer"
                           className="text-gray-200 hover:text-gray-200/75"
@@ -154,7 +168,7 @@ export default function Footer() {
                 href="/compliance/cancelationandrefund"
                 className="text-gray-200 transition hover:text-gray-200/75"
               >
-                Cancellation and Refund
+                Cancellation
               </Link>
             </li>
 
@@ -205,6 +219,24 @@ export default function Footer() {
               </li>
               <li>
                 <a
+                  href="https://github.com/kewonit/spectrum"
+                  rel="noreferrer"
+                  target="_blank"
+                  className="group flex h-12 w-12 items-center justify-center rounded-full border-2 border-white/30 transition-all hover:border-white/60 hover:bg-white/10"
+                >
+                  <span className="sr-only">GitHub</span>
+                  <svg
+                    className="h-5 w-5 text-white/70 transition-all group-hover:text-white"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.164 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.341-3.369-1.341-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.271.098-2.65 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.379.202 2.397.1 2.65.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.137 20.164 22 16.42 22 12c0-5.523-4.477-10-10-10z" />
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a
                   href="https://in.linkedin.com/company/pccoe-pune"
                   rel="noreferrer"
                   target="_blank"
@@ -236,6 +268,24 @@ export default function Footer() {
                     aria-hidden="true"
                   >
                     <path d="M14.238 15.348c.085.084.085.221 0 .306-.465.462-1.194.687-2.231.687l-.008-.002-.008.002c-1.036 0-1.766-.225-2.231-.688-.085-.084-.085-.221 0-.305.084-.084.222-.084.307 0 .379.377 1.008.561 1.924.561l.008.002.008-.002c.915 0 1.544-.184 1.924-.561.085-.084.223-.084.307 0zm-3.44-2.418c0-.507-.414-.919-.922-.919-.509 0-.923.412-.923.919 0 .506.414.918.923.918.508.001.922-.411.922-.918zm13.202-.93c0 6.627-5.373 12-12 12s-12-5.373-12-12 5.373-12 12-12 12 5.373 12 12zm-5-.129c0-.851-.695-1.543-1.55-1.543-.417 0-.795.167-1.074.435-1.056-.695-2.485-1.137-4.066-1.194l.865-2.724 2.343.549-.003.034c0 .696.569 1.262 1.268 1.262.699 0 1.267-.566 1.267-1.262s-.568-1.262-1.267-1.262c-.537 0-.994.335-1.179.804l-2.525-.592c-.11-.027-.223.037-.257.145l-.965 3.038c-1.656.02-3.155.466-4.258 1.181-.277-.255-.644-.415-1.05-.415-.854.001-1.549.693-1.549 1.544 0 .566.311 1.056.768 1.325-.03.164-.05.331-.05.5 0 2.281 2.805 4.137 6.253 4.137s6.253-1.856 6.253-4.137c0-.16-.017-.317-.044-.472.486-.261.82-.766.82-1.353zm-4.872.141c-.509 0-.922.412-.922.919 0 .506.414.918.922.918s.922-.412.922-.918c0-.507-.413-.919-.922-.919z" />
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.youtube.com/@Spectrum_PCCoE"
+                  rel="noreferrer"
+                  target="_blank"
+                  className="group flex h-12 w-12 items-center justify-center rounded-full border-2 border-white/30 transition-all hover:border-white/60 hover:bg-white/10"
+                >
+                  <span className="sr-only">YouTube</span>
+                  <svg
+                    className="h-5 w-5 text-white/70 transition-all group-hover:text-white"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
                   </svg>
                 </a>
               </li>

@@ -35,10 +35,10 @@ const teamMembers = [
 const webDevTeam = [
   {
     name: "Kartik Kulloli",
-    image: "https://i.imgur.com/mZOmf3d.png",
+    image: "https://res.cloudinary.com/dfyrk32ua/image/upload/v1738266414/Spectrum/2024/kartik_xa7yaf.webp",
     role: "Team Lead",
     instagram: "https://www.instagram.com/kewonit/",
-    github: "https://github.com/kewkartik"
+    github: "https://github.com/kewonit"
   },
   {
     name: "Mayank Kadam",

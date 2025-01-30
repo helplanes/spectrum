@@ -12,7 +12,7 @@ export default function Cards() {
   const cardsData = [
     {
       href: "/e-paradox",
-      image: "https://i.postimg.cc/8ztgND1h/solid-color-image.png",
+      image: "https://res.cloudinary.com/dfyrk32ua/image/upload/v1738265444/Spectrum/main-icons-2025/1_2_1_1_upbgnz.png",
       alt: "image",
       title: "E-Paradox '25",
       description: "A code-breaking challenge that tests logic and problem-solving skills.",
@@ -24,7 +24,7 @@ export default function Cards() {
     },
     {
       href: "/blindcoding",
-      image: "https://i.postimg.cc/rFsSQNDM/solid-color-image-1.png",
+      image: "https://res.cloudinary.com/dfyrk32ua/image/upload/v1738265444/Spectrum/main-icons-2025/2_2_1_svvp9u.png",
       alt: "image",
       title: "Blind Coding '25",
       description: "A programming contest where coding is done without real-time visibility.",
@@ -36,7 +36,7 @@ export default function Cards() {
     },
     {
       href: "/brain-dasher",
-      image: "https://i.postimg.cc/k4wby292/solid-color-image-2.png",
+      image: "https://res.cloudinary.com/dfyrk32ua/image/upload/v1738265444/Spectrum/main-icons-2025/3_2_1_yiirfx.png",
       alt: "image",
       title: "Brain Dasher '25",
       description: "A logic and reasoning event that challenges critical thinking skills.",
@@ -48,7 +48,7 @@ export default function Cards() {
     },
     {
       href: "/treasure-hunt",
-      image: "https://i.postimg.cc/rF7tgX6N/solid-color-image-3.png",
+      image: "https://res.cloudinary.com/dfyrk32ua/image/upload/v1738265445/Spectrum/main-icons-2025/4_2_1_mhyx4u.png",
       alt: "image",
       title: "Treasure Hunt '25",
       description: "An adventurous quest to solve clues and uncover hidden treasures.",
@@ -60,7 +60,7 @@ export default function Cards() {
     },
     {
       href: "/chem-prastuti",
-      image: "https://i.postimg.cc/rsKKCgQH/solid-color-image-4.png",
+      image: "https://res.cloudinary.com/dfyrk32ua/image/upload/v1738265400/Spectrum/main-icons-2025/5_2_1_eikodn.png",
       alt: "image",
       title: "Chem Prastuti '25",
       description: "A chemistry-based presentation event to showcase scientific ideas.",
@@ -71,8 +71,15 @@ export default function Cards() {
       height: 300,
     },
     {
+      image: "https://res.cloudinary.com/dfyrk32ua/image/upload/v1738266205/Spectrum/main-icons-2025/invitation_2_7_a9ga7q.webp",
+      alt: "Spectrum Logo",
+      borderColor: "border-white",
+      width: 350,
+      height: 300,
+    },
+    {
       href: "/bottle-rocket",
-      image: "https://i.postimg.cc/rs0wtspX/solid-color-image-5.png",
+      image: "https://res.cloudinary.com/dfyrk32ua/image/upload/v1738265400/Spectrum/main-icons-2025/6_2_1_aofltr.png",
       alt: "image",
       title: "Water Rocket '25",
       description: "A physics-driven contest to design and launch water-propelled rockets.",
@@ -84,7 +91,7 @@ export default function Cards() {
     },
     {
       href: "/debate",
-      image: "https://i.postimg.cc/15Fzm8TD/solid-color-image-6.png",
+      image: "https://res.cloudinary.com/dfyrk32ua/image/upload/v1738265400/Spectrum/main-icons-2025/7_2_1_okg9fx.png",
       alt: "image",
       title: "War of Words '25",
       description: "A competitive debate event that tests persuasion and argumentation skills.",
@@ -96,7 +103,7 @@ export default function Cards() {
     },
     {
       href: "/video-games",
-      image: "https://i.postimg.cc/SRMmxPZm/solid-color-image-7.png",
+      image: "https://res.cloudinary.com/dfyrk32ua/image/upload/v1738265399/Spectrum/main-icons-2025/8_1_1_neplcb.png",
       alt: "image",
       title: "High Ping '25",
       description: "A thrilling e-sports tournament showcasing gaming skills and strategy.",
@@ -108,7 +115,7 @@ export default function Cards() {
     },
     {
       href: "/sharktank",
-      image: "https://i.postimg.cc/9QJ0SvKk/solid-color-image-8.png",
+      image: "https://res.cloudinary.com/dfyrk32ua/image/upload/v1738265400/Spectrum/main-icons-2025/10_2_1_oclzl1.png",
       alt: "image",
       title: "Shark Tank '25",
       description: "A business pitch competition to present innovative startup ideas.",
@@ -120,7 +127,7 @@ export default function Cards() {
     },
     {
       href: "/3d-modelling",
-      image: "https://i.postimg.cc/PfYxhL0Y/solid-color-image-9.png",
+      image: "https://res.cloudinary.com/dfyrk32ua/image/upload/v1738265400/Spectrum/main-icons-2025/9_2_1_fbm4uw.png",
       alt: "image",
       title: "Model Making '25",
       description: "A design competition to create cutting-edge 3D architectural models.",
@@ -140,6 +147,7 @@ export default function Cards() {
         backgroundSize: '35px 35px',
         opacity: 0.2  
       }}></div>
+
       <div className="container mx-auto px-6 sm:px-8 py-8 sm:py-12 max-w-2xl relative">
         {cardsData.map((card, idx) => (
           <div key={idx} className="mb-6 sm:mb-8 w-full relative">
@@ -150,20 +158,22 @@ export default function Cards() {
 
               <div className="flex">
                 {/* Image section */}
-                <div className={`${!card.title ? 'w-full' : 'w-1/4'}`}>
+                <div className={`${!card.title ? 'w-full' : 'w-1/3'}`}>
                   {card.href ? (
                     <Link href={card.href}>
                       <img
-                        className="w-full h-[140px] object-cover rounded-l-lg"
+                        className="w-full h-[140px] object-contain p-2 rounded-l-lg"
                         alt={card.alt}
                         src={card.image}
+                        draggable="false"
                       />
                     </Link>
                   ) : (
                     <img
-                      className="w-full h-[180px] object-contain px-4"
+                      className="w-full h-[140px] object-contain px-4 -mt-2"
                       alt={card.alt}
                       src={card.image}
+                      draggable="false"
                     />
                   )}
                 </div>
@@ -171,7 +181,7 @@ export default function Cards() {
                 {/* Content section */}
                 {card.title && (
                   <>
-                    <div className="w-3/5 relative">
+                    <div className="w-1/2 relative">
                       <div className={`absolute inset-0 opacity-10 ${card.buttonBgColor}`}></div>
                       <div className="relative p-4">
                         <Link href={card.href}>
