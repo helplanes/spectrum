@@ -23,6 +23,7 @@ import { Menu } from "lucide-react"
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
 import { useEffect, useState } from "react"
 import { useRouter } from 'next/navigation'
+import EventsMenu from "./EventsMenu"
 
 export function Navigation() {
   const [user, setUser] = useState<any>(null)
@@ -56,22 +57,10 @@ export function Navigation() {
 
   const NavigationItems = () => (
     <div className="flex items-center gap-4 md:gap-6">
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogTrigger asChild>
-          <Button variant="outline" className="h-10">Events</Button>
-        </DialogTrigger>
-        <DialogContent className="sm:max-w-[425px]">
-          <DialogHeader>
-            <DialogTitle>Spectrum Events 2025</DialogTitle>
-            <DialogDescription>
-              Explore our exciting events!
-            </DialogDescription>
-          </DialogHeader>
-          <ul className="p-10 space-y-2">
-            <EventsList onNavigate={handleNavigation} />
-          </ul>
-        </DialogContent>
-      </Dialog>
+
+      <EventsMenu />
+
+
 
       <Button variant="outline" asChild className="h-10" onClick={() => setSheetOpen(false)}>
         <Link href="/team-behind-spectrum">Team</Link>
@@ -116,13 +105,14 @@ export function Navigation() {
 
       <div className="space-y-3">
         <h4 className="text-sm font-medium text-muted-foreground px-2">MENU</h4>
-        <Dialog open={open} onOpenChange={setOpen}>
+        {/* <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
             <Button 
               variant="ghost" 
               className="w-full justify-start text-base font-normal"
             >
               📅 Events
+              <EventsMenu />
             </Button>
           </DialogTrigger>
           <DialogContent 
@@ -142,14 +132,17 @@ export function Navigation() {
               </ul>
             </div>
           </DialogContent>
-        </Dialog>
+        </Dialog> */}
+        <EventsMenu />
+
+
         <Button 
-          variant="ghost" 
+          variant="outline" 
           asChild 
-          className="w-full justify-start text-base font-normal"
+          className="w-full justify-center text-base font-normal"
           onClick={() => setSheetOpen(false)}
         >
-          <Link href="/team-behind-spectrum">👥 Team</Link>
+          <Link href="/team-behind-spectrum">Team</Link>
         </Button>
       </div>
 
