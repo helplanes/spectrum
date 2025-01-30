@@ -19,22 +19,22 @@ const calSans = LocalFont({
 
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.spectrumpccoe.tech/'),
+  metadataBase: new URL('https://www.spectrumpccoe25.tech/'),
   title: {
     default: "PCCOE Spectrum'25",
-    template: "%s | spectrumpccoe.tech",
+    template: "%s | spectrumpccoe25.tech",
   },
   description: "PCCOE Spectrum'25 | PCET's PIMPRI CHINCHWAD COLLEGE OF ENGINEERING, Pune | Department of Applied Sciences and Humanities presents | Tech event for first year students | Annual State Level Technical Symposium for Extra Oridinary First Year Engineering Students!",
   openGraph: {
     title: "PCCOE Spectrum'25",
     description: "PCCOE Spectrum'25 | PCET's PIMPRI CHINCHWAD COLLEGE OF ENGINEERING, Pune | Department of Applied Sciences and Humanities presents | Tech event for first year students | Annual State Level Technical Symposium for Extra Oridinary First Year Engineering Students!",
-    url: "https://pccoespectrum.tech",
-    siteName: "pccoespectrum.tech",
+    url: "https://pccoespectrum25.tech",
+    siteName: "spectrumpccoe25.tech",
     images: [
       {
-        url: "https://i.imgur.com/rmVmQ7C.png",
-        width: 548,
-        height: 253,
+        url: "https://res.cloudinary.com/dfyrk32ua/image/upload/v1738270628/Spectrum/2024/Frame_11_fkprme.webp",
+        width: 1548,
+        height: 715,
         alt: 'Image',
       },
     ],
