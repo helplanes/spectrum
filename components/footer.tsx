@@ -2,13 +2,7 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (<>
-  
-    <div className=" w-screen">
-
-
-        
-
-
+    <div className="w-full overflow-x-hidden">  {/* Changed from w-screen to w-full and added overflow-x-hidden */}
         <div className="relative mx-auto w-full max-w-6xl px-4 pt-16">
           <div className="relative rounded-3xl border-2 border-slate-400/30 p-8 shadow-2xl md:h-[300px] h-[400px] overflow-hidden mx-[10px]">
             <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
@@ -420,10 +414,11 @@ export default function Footer() {
           </div>
         </div> */}
         {/* <hr /> */}
-        <div className="px-4 pt-[10vmin] md:-bottom-72 backdrop-blur-lg">
+        <div className="px-4 pt-[10vmin] md:-bottom-72 backdrop-blur-lg w-full overflow-hidden"> {/* Added w-full and overflow-hidden */}
           <svg
             width="100%"
             viewBox="0 0 1756 275"
+            preserveAspectRatio="xMidYMid meet" // Added to maintain aspect ratio while scaling
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
