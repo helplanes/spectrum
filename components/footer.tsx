@@ -168,7 +168,7 @@ export default function Footer() {
                 href="/compliance/cancelationandrefund"
                 className="text-gray-200 transition hover:text-gray-200/75"
               >
-                Cancellation
+                Cancellation and Refund
               </Link>
             </li>
 
