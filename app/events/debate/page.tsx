@@ -1,5 +1,5 @@
-import { Rules } from "@/app/debate/components/accordian"
-import { Debate_registarion } from "@/app/debate/components/registration";
+import { Rules } from "@/app/events/debate/components/accordian"
+import { Debate_registarion } from "@/app/events/debate/components/registration";
 import { Krona_One } from 'next/font/google'
 import Image from "next/image";
 

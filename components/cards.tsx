@@ -11,7 +11,7 @@ const korna = Krona_One({
 export default function Cards() {
   const cardsData = [
     {
-      href: "/e-paradox",
+      href: "/events/e-paradox",
       image: "https://res.cloudinary.com/dfyrk32ua/image/upload/v1738265444/Spectrum/main-icons-2025/1_2_1_1_upbgnz.png",
       alt: "image",
       title: "E-Paradox '25",
@@ -23,7 +23,7 @@ export default function Cards() {
       height: 300,
     },
     {
-      href: "/blindcoding",
+      href: "/events/blindcoding",
       image: "https://res.cloudinary.com/dfyrk32ua/image/upload/v1738265444/Spectrum/main-icons-2025/2_2_1_svvp9u.png",
       alt: "image",
       title: "Blind Coding '25",
@@ -35,7 +35,7 @@ export default function Cards() {
       height: 300,
     },
     {
-      href: "/brain-dasher",
+      href: "/events/brain-dasher",
       image: "https://res.cloudinary.com/dfyrk32ua/image/upload/v1738265444/Spectrum/main-icons-2025/3_2_1_yiirfx.png",
       alt: "image",
       title: "Brain Dasher '25",
@@ -47,7 +47,7 @@ export default function Cards() {
       height: 300,
     },
     {
-      href: "/treasure-hunt",
+      href: "/events/treasure-hunt",
       image: "https://res.cloudinary.com/dfyrk32ua/image/upload/v1738265445/Spectrum/main-icons-2025/4_2_1_mhyx4u.png",
       alt: "image",
       title: "Treasure Hunt '25",
@@ -59,7 +59,7 @@ export default function Cards() {
       height: 300,
     },
     {
-      href: "/chem-prastuti",
+      href: "/events/chem-prastuti",
       image: "https://res.cloudinary.com/dfyrk32ua/image/upload/v1738265400/Spectrum/main-icons-2025/5_2_1_eikodn.png",
       alt: "image",
       title: "Chem Prastuti '25",
@@ -78,7 +78,7 @@ export default function Cards() {
       height: 300,
     },
     {
-      href: "/bottle-rocket",
+      href: "/events/bottle-rocket",
       image: "https://res.cloudinary.com/dfyrk32ua/image/upload/v1738265400/Spectrum/main-icons-2025/6_2_1_aofltr.png",
       alt: "image",
       title: "Water Rocket '25",
@@ -90,7 +90,7 @@ export default function Cards() {
       height: 300,
     },
     {
-      href: "/debate",
+      href: "/events/debate",
       image: "https://res.cloudinary.com/dfyrk32ua/image/upload/v1738265400/Spectrum/main-icons-2025/7_2_1_okg9fx.png",
       alt: "image",
       title: "War of Words '25",
@@ -102,7 +102,7 @@ export default function Cards() {
       height: 300,
     },
     {
-      href: "/video-games",
+      href: "/events/video-games",
       image: "https://res.cloudinary.com/dfyrk32ua/image/upload/v1738265399/Spectrum/main-icons-2025/8_1_1_neplcb.png",
       alt: "image",
       title: "High Ping '25",
@@ -114,7 +114,7 @@ export default function Cards() {
       height: 300,
     },
     {
-      href: "/sharktank",
+      href: "/events/sharktank",
       image: "https://res.cloudinary.com/dfyrk32ua/image/upload/v1738265400/Spectrum/main-icons-2025/10_2_1_oclzl1.png",
       alt: "image",
       title: "Shark Tank '25",
@@ -126,7 +126,7 @@ export default function Cards() {
       height: 300,
     },
     {
-      href: "/3d-modelling",
+      href: "/events/3d-modelling",
       image: "https://res.cloudinary.com/dfyrk32ua/image/upload/v1738265400/Spectrum/main-icons-2025/9_2_1_fbm4uw.png",
       alt: "image",
       title: "Model Making '25",

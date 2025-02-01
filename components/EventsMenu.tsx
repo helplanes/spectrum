@@ -48,16 +48,16 @@ const item = {
 
 // Event data
 const events: Event[] = [
-  { id: 1,href: "/e-paradox", title: "E paradox' 25", description: "Find clues, crack codes, win prizes", color: "text-red-500" },
-  { id: 2,href: "/blindcoding", title: "Blind Coding' 25", description: "Based on knowledge of Basic Programming concepts", color: "text-orange-500" },
-  { id: 3,href: "/brain-dasher", title: "Brain Dasher' 25", description: "Quick thinking quiz", color: "text-yellow-400" },
-  { id: 4,href: "/treasure-hunt", title: "Treasure Hunt' 25", description: "Hunt for treasures",  color: "text-green-400" },
-  { id: 5,href: "/chem-prastuti", title: "Chem Prastuti' 25", description: "Chemical engineering presentations", color: "text-blue-400" },
-  { id: 6,href: "/bottle-rocket", title: "Water Rocket' 25", description: "Build & launch water rockets",  color: "text-purple-400" },
-  { id: 7,href: "/debate", title: "War of Words' 25", description: "Debate competition",color: "text-pink-300" },
-  { id: 8,href: "/video-games", title: "High Ping '25", description: "Gaming tournament", color: "text-blue-400" },
-  { id: 9,href: "/3d-modelling", title: "Model Making '25", description: "Build 3D Models from Scratch", color: "text-[#11b9a8]" },
-  { id: 10,href: "/sharktank", title: "Shark Tank '25", description: "Mock Shark Tank",  color: "text-[#f4a141]" }
+  { id: 1,href: "/events/e-paradox", title: "E paradox' 25", description: "Find clues, crack codes, win prizes", color: "text-red-500" },
+  { id: 2,href: "/events/blindcoding", title: "Blind Coding' 25", description: "Based on knowledge of Basic Programming concepts", color: "text-orange-500" },
+  { id: 3,href: "/events/brain-dasher", title: "Brain Dasher' 25", description: "Quick thinking quiz", color: "text-yellow-400" },
+  { id: 4,href: "/events/treasure-hunt", title: "Treasure Hunt' 25", description: "Hunt for treasures",  color: "text-green-400" },
+  { id: 5,href: "/events/chem-prastuti", title: "Chem Prastuti' 25", description: "Chemical engineering presentations", color: "text-blue-400" },
+  { id: 6,href: "/events/bottle-rocket", title: "Water Rocket' 25", description: "Build & launch water rockets",  color: "text-purple-400" },
+  { id: 7,href: "/events/debate", title: "War of Words' 25", description: "Debate competition",color: "text-pink-300" },
+  { id: 8,href: "/events/video-games", title: "High Ping '25", description: "Gaming tournament", color: "text-blue-400" },
+  { id: 9,href: "/events/3d-modelling", title: "Model Making '25", description: "Build 3D Models from Scratch", color: "text-[#11b9a8]" },
+  { id: 10,href: "/events/sharktank", title: "Shark Tank '25", description: "Mock Shark Tank",  color: "text-[#f4a141]" }
 ];
 
 
