@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/select";
 import { toast } from "sonner";
 import React from "react";
+import { AlertTriangle } from "lucide-react";
 
 const BRANCH_OPTIONS = {
   cs: "Computer Science",
@@ -84,33 +85,40 @@ export function ProfileForm({ profile, onUpdate }: { profile: any; onUpdate: () 
   // Add state to track "other" selection
   const [isOtherBranch, setIsOtherBranch] = React.useState(!Object.keys(BRANCH_OPTIONS).includes(profile?.branch || ''));
   const [isOtherClass, setIsOtherClass] = React.useState(!(profile?.class || '').match(/^[A-Z]$/));
-  const [isOtherCollege, setIsOtherCollege] = React.useState(!Object.keys(COLLEGE_OPTIONS).includes(profile?.college_name || ''));
+  const [isOtherCollege, setIsOtherCollege] = React.useState(
+    !Object.keys(COLLEGE_OPTIONS).some(key => COLLEGE_OPTIONS[key as keyof typeof COLLEGE_OPTIONS] === profile?.college_name)
+  );
+
+  // Add a check for existing college name
+  const hasExistingCollege = Boolean(profile?.college_name);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    toast.promise(
-      async () => {
-        const response = await fetch('/api/user', {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(values),
-        });
-        
-        if (!response.ok) throw new Error('Failed to update profile');
-        onUpdate(); // Trigger refresh of profile data
-      },
-      {
-        loading: 'Updating profile...',
-        success: 'Profile updated successfully',
-        error: 'Failed to update profile',
-      }
-    );
+    try {
+      toast.loading('Updating profile...', { id: 'profileUpdate' });
+      
+      const response = await fetch('/api/user', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(values),
+      });
+      
+      if (!response.ok) throw new Error('Failed to update profile');
+      
+      toast.success('Profile updated successfully', { id: 'profileUpdate' });
+      onUpdate();
+    } catch (error) {
+      toast.error('Failed to update profile', {
+        id: 'profileUpdate',
+        description: 'Please try again',
+      });
+    }
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 px-4 sm:px-6 md:px-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 px-0 sm:px-6 md:px-8">
         {/* Email display section */}
-        <div className="bg-blue-50/70 px-4 py-3 sm:p-4 rounded-lg">
+        <div className="bg-blue-50/70 px-3 py-2.5 sm:p-4 rounded-lg">
           <div className="space-y-0.5 sm:space-y-1">
             <label className="text-xs sm:text-sm font-medium text-blue-800">Email Address</label>
             <p className="text-sm sm:text-base font-medium text-blue-600">{profile?.email}</p>
@@ -118,7 +126,7 @@ export function ProfileForm({ profile, onUpdate }: { profile: any; onUpdate: () 
           </div>
         </div>
 
-        <div className="grid gap-4 sm:gap-5 lg:gap-6 sm:grid-cols-2">
+        <div className="grid gap-4 sm:gap-5 lg:gap-6 grid-cols-1 sm:grid-cols-2">
           <FormField
             control={form.control}
             name="full_name"
@@ -182,49 +190,74 @@ export function ProfileForm({ profile, onUpdate }: { profile: any; onUpdate: () 
             render={({ field }) => (
               <FormItem className="space-y-3">
                 <FormLabel className="text-gray-900">College Name</FormLabel>
-                <div className="space-y-3">
-                  <Select 
-                    onValueChange={(value) => {
-                      if (value === "other") {
-                        setIsOtherCollege(true);
-                        return;
-                      }
-                      setIsOtherCollege(false);
-                      field.onChange(COLLEGE_OPTIONS[value as keyof typeof COLLEGE_OPTIONS]);
-                    }}
-                    value={isOtherCollege ? "other" : Object.entries(COLLEGE_OPTIONS).find(([_, label]) => label === field.value)?.[0] || "other"}
-                  >
-                    <FormControl>
-                      <SelectTrigger className="bg-gray-50">
-                        <SelectValue placeholder="Select college" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <div className="max-h-[300px] overflow-y-auto">
-                        {Object.entries(COLLEGE_OPTIONS).map(([key, label]) => (
-                          <SelectItem key={key} value={key}>
-                            {label}
-                          </SelectItem>
-                        ))}
-                        <SelectItem value="other">Other</SelectItem>
+                {hasExistingCollege ? (
+                  <div className="space-y-2">
+                    <div className="bg-blue-50/70 px-3 py-2.5 sm:p-4 rounded-lg">
+                      <div className="space-y-1">
+                        <p className="text-sm sm:text-base font-medium text-blue-600">
+                          {field.value}
+                        </p>
+                        <div className="flex items-center gap-1.5 text-[10px] sm:text-xs text-blue-400">
+                          <AlertTriangle className="h-3.5 w-3.5" />
+                          <p>College name cannot be changed once set</p>
+                        </div>
                       </div>
-                    </SelectContent>
-                  </Select>
-
-                  {isOtherCollege && (
-                    <div className="space-y-2">
-                      <FormControl>
-                        <Input
-                          placeholder="Enter your college name"
-                          className="text-gray-900 border-gray-300"
-                          value={field.value}
-                          onChange={(e) => field.onChange(e.target.value)}
-                        />
-                      </FormControl>
-                      <p className="text-xs text-gray-500">Please enter your complete college name</p>
                     </div>
-                  )}
-                </div>
+                  </div>
+                ) : (
+                  <div className="space-y-3">
+                    <Select 
+                      onValueChange={(value) => {
+                        if (value === "other") {
+                          setIsOtherCollege(true);
+                          return;
+                        }
+                        setIsOtherCollege(false);
+                        field.onChange(COLLEGE_OPTIONS[value as keyof typeof COLLEGE_OPTIONS]);
+                      }}
+                      value={
+                        isOtherCollege 
+                          ? "other" 
+                          : Object.entries(COLLEGE_OPTIONS).find(([_, label]) => label === field.value)?.[0] || "other"
+                      }
+                    >
+                      <FormControl>
+                        <SelectTrigger className="bg-gray-50">
+                          <SelectValue placeholder="Select college" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <div className="max-h-[300px] overflow-y-auto">
+                          {Object.entries(COLLEGE_OPTIONS).map(([key, label]) => (
+                            <SelectItem key={key} value={key}>
+                              {label}
+                            </SelectItem>
+                          ))}
+                          <SelectItem value="other">Other</SelectItem>
+                        </div>
+                      </SelectContent>
+                    </Select>
+
+                    {isOtherCollege && (
+                      <div className="space-y-2">
+                        <FormControl>
+                          <Input
+                            placeholder="Enter your college name"
+                            className="text-gray-900 border-gray-300"
+                            value={field.value}
+                            onChange={(e) => field.onChange(e.target.value)}
+                          />
+                        </FormControl>
+                        <div className="flex items-center gap-1.5">
+                          <AlertTriangle className="h-3.5 w-3.5 text-amber-500" />
+                          <p className="text-xs text-amber-600">
+                            College name cannot be changed once set. Please enter carefully.
+                          </p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
                 <FormMessage className="text-red-500" />
               </FormItem>
             )}
@@ -353,17 +386,26 @@ export function ProfileForm({ profile, onUpdate }: { profile: any; onUpdate: () 
           />
         </div>
 
-        <div className="border-t border-dashed border-gray-200 pt-6 -mx-4 sm:-mx-6 md:-mx-8"></div>
+        <div className="border-t border-dashed border-gray-200 pt-6 -mx-0 sm:-mx-6 md:-mx-8" />
 
-        <Button 
-          type="submit" 
-          className="w-full py-3 sm:py-3.5 text-sm sm:text-base font-medium bg-blue-50 hover:bg-blue-100 text-blue-600 transition-all duration-300 rounded-lg flex items-center justify-center gap-2 group"
-        >
-          <span>Save Changes</span>
-          <svg className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-          </svg>
-        </Button>
+        <div className="flex flex-col-reverse sm:flex-row gap-3 sm:gap-4">
+          <Button
+            type="button"
+            onClick={() => onUpdate()}
+            className="w-full sm:w-[25%] py-6 sm:py-2 text-base sm:text-sm bg-red-50 hover:bg-red-100 text-red-600 hover:text-red-700 transition-all duration-200 border border-red-200 hover:border-red-300 rounded-lg"
+          >
+            Cancel
+          </Button>
+          <Button 
+            type="submit" 
+            className="w-full sm:w-[75%] py-6 sm:py-2 text-base sm:text-sm bg-green-50 hover:bg-green-100 text-green-600 hover:text-green-700 transition-all duration-200 border border-green-200 hover:border-green-300 rounded-lg"
+          >
+            <span>Save Changes</span>
+            <svg className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </Button>
+        </div>
       </form>
     </Form>
   );

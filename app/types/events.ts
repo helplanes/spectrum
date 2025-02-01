@@ -43,5 +43,6 @@ export interface TeamMember {
     prn: string | null;
     branch: string | null;
     class: string | null;
+    is_pccoe_student: boolean | null;
   };
 }

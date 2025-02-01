@@ -1,4 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Pencil } from "lucide-react";
 
 // Add the same constants from profile-form for consistency
 const BRANCH_OPTIONS = {
@@ -29,9 +31,10 @@ interface ProfileViewProps {
     gender?: string;
     bio?: string;
   };
+  onEditClick: () => void;
 }
 
-export function ProfileView({ profile }: ProfileViewProps) {
+export function ProfileView({ profile, onEditClick }: ProfileViewProps) {
   // Helper function to get full college name
   const getFullCollegeName = (collegeName: string) => {
     // Check if it's a key in COLLEGE_OPTIONS
@@ -71,7 +74,7 @@ export function ProfileView({ profile }: ProfileViewProps) {
     <div className="space-y-6 px-4 sm:px-6 md:px-8">
       {/* Personal Information Section */}
       <section className="space-y-3">
-        <div className="flex items-center gap-2 mb-3">
+        <div className="flex items-center mb-3">
           <span className="inline-block px-2.5 py-1 rounded-full bg-blue-50 text-blue-600 text-[11px] sm:text-xs font-medium tracking-wide uppercase">
             Personal Details
           </span>

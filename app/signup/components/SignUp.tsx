@@ -93,6 +93,7 @@ export function SignUpForm() {
   const [token, setToken] = React.useState("");
   const [cooldown, setCooldown] = React.useState(0);
   const [formData, setFormData] = React.useState<any>(null);
+  const [selectedCollegeKey, setSelectedCollegeKey] = React.useState<string | null>(null);
 
   // Add cooldown effect
   React.useEffect(() => {
@@ -172,6 +173,9 @@ export function SignUpForm() {
       if (error) throw error;
 
       if (data?.session) {
+        // Determine PCCOE student status - ensure it's a proper boolean
+        const isPccoeValue = isPccoeStudent(formData.college_name, selectedCollegeKey);
+
         // Create profile after successful verification
         const { error: profileError } = await supabase
           .from('profiles')
@@ -185,6 +189,7 @@ export function SignUpForm() {
             branch: formData.branch,
             class: formData.class,
             gender: formData.gender,
+            is_pccoe_student: isPccoeValue, // This will be stored as true/false
             created_at: new Date().toISOString(),
             updated_at: new Date().toISOString(),
           });
@@ -206,6 +211,27 @@ export function SignUpForm() {
       setIsLoading(false);
     }
   }
+
+  const isPccoeStudent = (collegeName: string, collegeKey: string | null): boolean => {
+    // Normalize college name by removing spaces, special characters and converting to lowercase
+    const normalizedCollegeName = collegeName.toLowerCase().replace(/[^a-z0-9]/g, '');
+    
+    // Array of possible PCCOE variations
+    const pccoeVariations = [
+      'pccoe',
+      'pimprichinchwadcollegeofengineeringpune',
+      'pccoepune',
+      'pimprichinchwadcollegeofengineering',
+      'pccoepune'
+    ];
+
+    return (
+      // Check if collegeKey matches
+      collegeKey === 'pccoe' ||
+      // Check if any variation matches the normalized college name
+      pccoeVariations.some(variation => normalizedCollegeName.includes(variation))
+    );
+  };
 
   if (showVerification) {
     return (
@@ -400,12 +426,14 @@ export function SignUpForm() {
                           onValueChange={(value) => {
                             if (value === "_other") {
                               setIsOtherCollege(true);
+                              setSelectedCollegeKey(null);
+                              field.onChange(''); // Reset the value when switching to other
                               return;
                             }
                             setIsOtherCollege(false);
+                            setSelectedCollegeKey(value);
                             field.onChange(COLLEGE_OPTIONS[value as keyof typeof COLLEGE_OPTIONS]);
                           }}
-                          // Remove the default "other" value by checking for existing value first
                           value={isOtherCollege ? "_other" : Object.entries(COLLEGE_OPTIONS).find(([_, label]) => label === field.value)?.[0]}
                         >
                           <FormControl>
@@ -432,10 +460,34 @@ export function SignUpForm() {
                                 placeholder="Enter your college name"
                                 className="h-10 text-gray-900 border-gray-200 bg-white hover:border-blue-500 transition-colors"
                                 value={field.value}
-                                onChange={(e) => field.onChange(e.target.value)}
+                                onChange={(e) => {
+                                  setSelectedCollegeKey(null);
+                                  const value = e.target.value.replace(/^\s+/g, ''); // Remove leading spaces only
+                                  field.onChange(value);
+                                  form.setValue("college_name", value, { 
+                                    shouldValidate: true,
+                                    shouldDirty: true,
+                                    shouldTouch: true
+                                  });
+                                }}
                               />
                             </FormControl>
                             <p className="text-xs text-gray-500">Please enter your complete college name</p>
+                          </div>
+                        )}
+
+                        {/* Show selected value for verification */}
+                        {field.value && (
+                          <div className="mt-2 px-3 py-2 bg-gray-50 rounded-md border border-gray-200">
+                            <p className="text-xs text-gray-600">Selected College:</p>
+                            <p className="text-sm font-medium text-gray-900 break-words">
+                              {field.value}
+                              {selectedCollegeKey === 'pccoe' && (
+                                <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800">
+                                  PCCOE Main Branch
+                                </span>
+                              )}
+                            </p>
                           </div>
                         )}
                       </div>
@@ -474,13 +526,13 @@ export function SignUpForm() {
                           onValueChange={(value) => {
                             if (value === "_other") {
                               setIsOtherBranch(true);
-                              // Keep the existing custom value if there is one
+                              field.onChange(''); // Reset the value when switching to other
                               return;
                             }
                             setIsOtherBranch(false);
-                            field.onChange(value);
+                            field.onChange(BRANCH_OPTIONS[value as keyof typeof BRANCH_OPTIONS]);
                           }} 
-                          value={isOtherBranch ? "_other" : field.value}
+                          value={isOtherBranch ? "_other" : Object.entries(BRANCH_OPTIONS).find(([_, label]) => label === field.value)?.[0]}
                         >
                           <FormControl>
                             <SelectTrigger className="h-10 bg-white border-gray-200 hover:border-blue-500 transition-colors">
@@ -504,7 +556,15 @@ export function SignUpForm() {
                                 placeholder="Enter your branch name"
                                 className="h-10 text-gray-900 border-gray-200 bg-white hover:border-blue-500 transition-colors"
                                 value={field.value}
-                                onChange={(e) => field.onChange(e.target.value)}
+                                onChange={(e) => {
+                                  const value = e.target.value.replace(/^\s+/g, ''); // Remove leading spaces only
+                                  field.onChange(value);
+                                  form.setValue("branch", value, {
+                                    shouldValidate: true,
+                                    shouldDirty: true,
+                                    shouldTouch: true
+                                  });
+                                }}
                               />
                             </FormControl>
                             <p className="text-xs text-gray-500">Please enter your complete branch name</p>
@@ -529,6 +589,7 @@ export function SignUpForm() {
                           onValueChange={(value) => {
                             if (value === "_other") {
                               setIsOtherClass(true);
+                              field.onChange(''); // Reset the value when switching to other
                               return;
                             }
                             setIsOtherClass(false);
@@ -558,7 +619,10 @@ export function SignUpForm() {
                                 placeholder="Enter your division"
                                 className="h-10 text-gray-900 border-gray-200 bg-white hover:border-blue-500 transition-colors"
                                 value={field.value}
-                                onChange={(e) => field.onChange(e.target.value)}
+                                onChange={(e) => {
+                                  const value = e.target.value.replace(/^\s+/g, ''); // Remove leading spaces only
+                                  field.onChange(value);
+                                }}
                               />
                             </FormControl>
                             <p className="text-xs text-gray-500">Please enter your complete division/class name</p>
@@ -569,6 +633,33 @@ export function SignUpForm() {
                     </FormItem>
                   )}
                 />
+              </div> {/* End of grid */}
+
+              {/* College confirmation box */}
+              <div className="p-4 bg-blue-50 rounded-lg border border-blue-100 mb-6">
+                <div className="flex items-start gap-3">
+                  <input
+                    type="checkbox"
+                    required
+                    className="mt-1 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                    onChange={(e) => {
+                      if (!e.target.checked) {
+                        e.preventDefault();
+                      }
+                    }}
+                  />
+                  <div className="text-sm leading-relaxed text-blue-700">
+                    I understand that my college name cannot be changed later and confirm that{" "}
+                    <span className="font-medium">
+                      {form.watch("college_name") ? (
+                        `"${form.watch("college_name")}"`
+                      ) : (
+                        "no college"
+                      )}
+                    </span>{" "}
+                    is my current institution.
+                  </div>
+                </div>
               </div>
 
               <div className="border-t border-dashed border-gray-200 pt-6 -mx-4 sm:-mx-6 md:-mx-8" />

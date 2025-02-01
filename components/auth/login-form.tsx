@@ -16,6 +16,10 @@ const krona = Krona_One({
   weight: '400',
 });
 
+const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+const MAX_ATTEMPTS = 3;
+const COOLDOWN_TIME = 60;
+
 export function LoginForm() {
   const router = useRouter();
   const [email, setEmail] = useState("");
@@ -25,6 +29,8 @@ export function LoginForm() {
   const [cooldown, setCooldown] = useState(0);
   const [token, setToken] = useState("");
   const [showVerification, setShowVerification] = useState(false);
+  const [attempts, setAttempts] = useState(0);
+  const [isBlocked, setIsBlocked] = useState(false);
 
   useEffect(() => {
     if (cooldown > 0) {
@@ -35,10 +41,48 @@ export function LoginForm() {
     }
   }, [cooldown]);
 
+  useEffect(() => {
+    // Check if user is already logged in
+    const checkSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session) {
+        router.push('/dashboard');
+      }
+    };
+    checkSession();
+  }, [router]);
+
+  useEffect(() => {
+    if (attempts >= MAX_ATTEMPTS) {
+      setIsBlocked(true);
+      setTimeout(() => {
+        setIsBlocked(false);
+        setAttempts(0);
+      }, COOLDOWN_TIME * 1000);
+    }
+  }, [attempts]);
+
+  const validateEmail = (email: string): boolean => {
+    if (!email) {
+      toast.error("Email is required");
+      return false;
+    }
+    if (!EMAIL_REGEX.test(email)) {
+      toast.error("Please enter a valid email address");
+      return false;
+    }
+    return true;
+  };
+
   const handleSendEmail = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email.trim()) {
-      toast.error("Please enter your email address");
+    
+    if (isBlocked) {
+      toast.error(`Too many attempts. Please try again in ${COOLDOWN_TIME} seconds.`);
+      return;
+    }
+
+    if (!validateEmail(email)) {
       return;
     }
 
@@ -46,17 +90,34 @@ export function LoginForm() {
     setError(null);
 
     try {
-      const { error } = await supabase.auth.signInWithOtp({ email });
+      // Check if user exists with better error handling
+      const { data: user, error: userError } = await supabase
+        .from('profiles')
+        .select('email')
+        .eq('email', email.toLowerCase().trim())
+        .single();
 
-      if (error) {
-        throw error;
+      if (userError || !user) {
+        toast.error("No account found with this email. Please sign up first!");
+        return;
       }
+
+      const { error: otpError } = await supabase.auth.signInWithOtp({ 
+        email: email.toLowerCase().trim(),
+        options: {
+          emailRedirectTo: window.location.origin
+        }
+      });
+
+      if (otpError) throw otpError;
       
       setShowVerification(true);
-      setCooldown(60);
+      setCooldown(COOLDOWN_TIME);
       toast.success("Verification code sent successfully!");
       setSuccess(true);
     } catch (err: any) {
+      console.error("Login error:", err);
+      setAttempts(prev => prev + 1);
       toast.error(err.message || "Failed to send verification code");
       setError(err.message);
     } finally {
@@ -66,6 +127,12 @@ export function LoginForm() {
 
   const handleVerifyToken = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (isBlocked) {
+      toast.error(`Too many attempts. Please try again in ${COOLDOWN_TIME} seconds.`);
+      return;
+    }
+
     if (token.length !== 6) {
       toast.error("Please enter a valid 6-digit code");
       return;
@@ -76,8 +143,8 @@ export function LoginForm() {
 
     try {
       const { data, error } = await supabase.auth.verifyOtp({
-        email,
-        token,
+        email: email.toLowerCase().trim(),
+        token: token.trim(),
         type: 'email',
       });
 
@@ -85,22 +152,25 @@ export function LoginForm() {
 
       if (data?.session) {
         try {
-          await supabase
+          const { error: profileError } = await supabase
             .from('profiles')
             .upsert({
               id: data.session.user.id,
               email: data.session.user.email,
               updated_at: new Date().toISOString(),
+              last_login: new Date().toISOString(),
             }, {
               onConflict: 'id'
             });
+          
+          if (profileError) throw profileError;
           
           toast.success("Successfully logged in!");
           router.push('/dashboard');
           router.refresh();
         } catch (profileError) {
           console.error("Profile update failed:", profileError);
-          // Continue with login even if profile update fails
+          toast.error("Login successful but profile update failed");
           router.push('/dashboard');
           router.refresh();
         }
@@ -109,6 +179,8 @@ export function LoginForm() {
 
       throw new Error('Verification failed');
     } catch (err: any) {
+      console.error("Verification error:", err);
+      setAttempts(prev => prev + 1);
       toast.error(err.message || "Invalid or expired code");
       setError(err.message);
     } finally {
@@ -118,7 +190,7 @@ export function LoginForm() {
 
   return (
     <>
-      <Toaster position="top-center" richColors />
+      <Toaster position="top-right" richColors />
       <div className="p-2 sm:p-4 lg:p-8 mx-auto max-w-2xl bg-[#EBE9E0]">
         <div className="p-3 sm:p-4 border-4 border-dashed border-gray-300 rounded-[2rem]">
           <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200 relative">

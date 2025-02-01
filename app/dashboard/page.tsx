@@ -2,17 +2,19 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Tabs } from "@/app/dashboard/components/tabs";
 import { Button } from "@/components/ui/button";
 import { useRouter } from 'next/navigation';
 import { Breadcrumbs } from "@/app/components/breadcrumbs";
 import { toast } from "sonner";
-import { Loader2 } from "lucide-react";
+import { Loader2, Pencil, X } from "lucide-react";
+import { ProfileForm } from "./components/profile-form";
+import { ProfileView } from "./components/profile-view";
 
 export default function DashboardPage() {
   const [userData, setUserData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isEditing, setIsEditing] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -37,6 +39,17 @@ export default function DashboardPage() {
 
     fetchUserData();
   }, []);
+
+  const refreshUserData = async () => {
+    try {
+      const response = await fetch('/api/user');
+      if (!response.ok) throw new Error('Failed to fetch user data');
+      const data = await response.json();
+      setUserData(data);
+    } catch (error) {
+      console.error('Failed to refresh user data:', error);
+    }
+  };
 
   if (loading) {
     return (
@@ -126,7 +139,7 @@ export default function DashboardPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#EBE9E0] p-4 sm:p-6 lg:p-8">
+    <main className="min-h-screen bg-[#EBE9E0] p-2 sm:p-6 lg:p-8">
       <div className="max-w-7xl mx-auto">
         <Breadcrumbs
           items={[
@@ -137,7 +150,7 @@ export default function DashboardPage() {
         />
         
         {/* Quick Action Cards */}
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 mb-6">
+        <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-4 sm:mb-6">
           <div className="bg-white/80 backdrop-blur p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
             <h2 className="font-semibold text-lg mb-2">Events</h2>
             <p className="text-sm text-gray-600 mb-4">View and manage available events.</p>
@@ -173,25 +186,60 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        <div className="p-2 sm:p-4 border-4 border-dashed border-gray-300 rounded-3xl">
+        <div className="p-1 sm:p-4 border-4 border-dashed border-gray-300 rounded-3xl">
           <div className="bg-white rounded-3xl shadow-lg overflow-hidden relative">
             {/* Dots for ticket effect */}
             <div className="absolute left-0 top-1/2 -translate-y-1/2 w-3 sm:w-4 h-6 sm:h-8 bg-[#EBE9E0] rounded-r-full"></div>
             <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 sm:w-4 h-6 sm:h-8 bg-[#EBE9E0] rounded-l-full"></div>
 
-            <div className="p-4 sm:p-6 lg:p-8">
-              <div className="mb-6">
-                <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">
-                  Welcome back, {profile?.full_name || 'User'}!
-                </h1>
-                <p className="text-gray-600 mt-2">
-                  Manage your profile and check your event registrations
-                </p>
+            <div className="p-3 sm:p-6 lg:p-8">
+              <div className="flex items-start justify-between mb-6">
+                <div>
+                  <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">
+                    Welcome back, {profile?.full_name || 'User'}!
+                  </h1>
+                  <p className="text-gray-600 text-sm sm:text-base mt-2">
+                    Manage your profile and check your event registrations
+                  </p>
+                </div>
+                {isEditing ? (
+                  <Button
+                    onClick={() => setIsEditing(false)}
+                    variant="outline"
+                    size="default"
+                    className="shrink-0 w-full sm:w-auto py-6 sm:py-2 text-base sm:text-sm text-red-500 hover:text-red-600 border-red-200 hover:border-red-300 hover:bg-red-50/50 transition-all duration-200"
+                  >
+                    <X className="h-4 w-4 mr-2" />
+                    <span className="font-medium">Close Editor</span>
+                  </Button>
+                ) : (
+                  <Button
+                    onClick={() => setIsEditing(true)}
+                    variant="outline"
+                    size="default"
+                    className="shrink-0 w-full sm:w-auto py-6 sm:py-2 text-base sm:text-sm text-green-600 hover:text-green-700 border-green-200 hover:border-green-300 hover:bg-green-50/50 transition-all duration-200"
+                  >
+                    <Pencil className="h-4 w-4 mr-2" />
+                    <span className="font-medium">Edit Profile</span>
+                  </Button>
+                )}
               </div>
 
               <div className="space-y-6">
-                {/* Tabs component will now handle content within the card */}
-                <Tabs userData={userData} />
+                {isEditing ? (
+                  <ProfileForm 
+                    profile={userData.profile} 
+                    onUpdate={() => {
+                      refreshUserData();
+                      setIsEditing(false);
+                    }} 
+                  />
+                ) : (
+                  <ProfileView 
+                    profile={userData.profile} 
+                    onEditClick={() => setIsEditing(true)}
+                  />
+                )}
               </div>
 
               <div className="mt-6 border-t pt-6">
