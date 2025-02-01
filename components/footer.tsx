@@ -2,11 +2,11 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="relative bg-[url(https://res.cloudinary.com/dfyrk32ua/image/upload/v1737645290/Spectrum/side-images/s_gyjjy6.webp)] bg-cover bg-top bg-no-repeat">
-
+    <footer className="relative bg-cover bg-top bg-no-repeat new-footer overflow-hidden">
+      <img src="https://res.cloudinary.com/dvdcl3ozp/image/upload/v1738410511/spectrum/rainbow-color-1-min_zpk7f9.png" className='absolute -left-[120px] -top-[70px] md:-top-[20px] opacity-60 z-0  h-screen mx-auto rotate-45 md:rotate-0 md:left-0 md:w-full'></img>
       {/* Floating Island Section */}
-      <div className="relative mx-auto w-full max-w-6xl px-4 pt-16">
-        <div className="rounded-3xl bg-white/10 p-12 shadow-2xl backdrop-blur-lg">
+      <div className="relative mx-auto w-full max-w-6xl px-4 pt-16 ">
+        {/* <div className="rounded-3xl bg-white/10 p-12 shadow-2xl backdrop-blur-lg">
           <div className="flex flex-col items-center justify-between gap-12 md:flex-row">
             <div className="text-center md:text-left">
               <h3 className="text-3xl font-bold text-white">Meet Our Previous Team</h3>
@@ -32,7 +32,8 @@ export default function Footer() {
               </svg>
             </Link>
           </div>
-        </div>
+        </div> */}
+        {/* <div className='w-screen h-[20vh]'></div> */}
       </div>
 
       {/* Existing Footer Content */}
@@ -40,7 +41,7 @@ export default function Footer() {
         <div>
           <hr />
             {/* Open Source Alert */}
-            <div className="relative mx-auto w-full max-w-6xl px-4 pt-16">
+            {/* <div className="relative mx-auto w-full max-w-6xl px-4 pt-16">
                 <div className="rounded-3xl bg-blue-500/20 p-8 shadow-2xl backdrop-blur-lg">
                 <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
                     <div className="text-center md:text-left">
@@ -62,8 +63,12 @@ export default function Footer() {
                     </a>
                 </div>
                 </div>
-            </div>
-          <div className="mx-auto max-w-6xl px-4 py-12 sm:px-4 lg:pt-8">
+            </div> */}
+
+
+
+
+          {/* <div className="mx-auto max-w-6xl px-4 py-12 sm:px-4 lg:pt-8">
             <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
               <div className="space-y-4">
                 <p className="font-bold text-2xl text-gray-200">
@@ -126,11 +131,11 @@ export default function Footer() {
                 className="h-48 w-auto"
               />
             </div>
-          </div>
+          </div> */}
         </div>
-        <hr />
-        <div className="mx-auto max-w-6xl px-4 py-4 sm:px-6 lg:px-8">
-          <ul className="flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12">
+        <hr className=''/>
+        <div className="mx-auto  px-4 py-4 sm:px-6 lg:px-8 backdrop-blur-lg">
+          <ul className="flex flex-wrap max-w-6xl justify-center gap-6 md:gap-8 lg:gap-12">
             <li>
               <Link
                 href="/compliance/privacypolicy"
@@ -178,7 +183,7 @@ export default function Footer() {
           </ul>
         </div>
         <hr />
-        <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
+        {/* <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
           <div className="rounded-3xl bg-white/10 p-8 backdrop-blur-lg">    
             <ul className="flex justify-center gap-8">
               <li>
@@ -241,9 +246,9 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-        </div>
-        <hr />
-        <div className="px-4 pt-[10vmin] md:-bottom-72">
+        </div> */}
+        {/* <hr /> */}
+        <div className="px-4 pt-[10vmin] md:-bottom-72 backdrop-blur-lg">
           <svg
             width="100%"
             viewBox="0 0 1756 275"
