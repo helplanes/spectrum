@@ -1,5 +1,5 @@
-import { Rules } from "@/app/3d-modelling/components/accordian"
-import { ThreeModelling } from "@/app/3d-modelling/components/registration";
+import { Rules } from "@/app/events/3d-modelling/components/accordian"
+import { ThreeModelling } from "@/app/events/3d-modelling/components/registration";
 import { Krona_One } from 'next/font/google'
 import Image from "next/image";
 

@@ -1,5 +1,5 @@
-import { Rules } from "@/app/treasure-hunt/components/accordian"
-import { Treasurehunt_registarion } from "@/app/treasure-hunt/components/registration";
+import { Rules } from "@/app/events/treasure-hunt/components/accordian"
+import { Treasurehunt_registarion } from "@/app/events/treasure-hunt/components/registration";
 import { Krona_One } from 'next/font/google'
 import Image from "next/image";
 
