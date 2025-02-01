@@ -1,7 +1,129 @@
 import Link from 'next/link';
 
 export default function Footer() {
-  return (
+  return (<>
+  
+    <div className=" w-screen">
+
+
+        
+
+
+        <div className="relative mx-auto w-full max-w-6xl px-4 pt-16">
+          <div className="relative rounded-3xl border-2 border-slate-400/30 p-8 shadow-2xl md:h-[300px] h-[400px] overflow-hidden mx-[10px]">
+            <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
+              <div className="text-center md:text-left md:w-[50%] ">
+                <h3 className="text-2xl font-bold text-white">
+                  Open Source Project
+                </h3>
+                <p className="mt-2 text-lg text-gray-200">
+                  We have made this project open source and available on GitHub.
+                  Feel free to contribute!
+                </p>
+                <a
+                  href="https://github.com/kewonit/spectrum"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group flex justify-center items-center gap-4 rounded-full bg-white/20 px-8 py-4 text-lg text-white transition-all hover:bg-white/30 mt-4 md:mt-12 md:max-w-[250px] "
+                >
+                  <span>View on GitHub</span>
+                  <svg
+                    className="h-6 w-6 transition-transform group-hover:translate-x-2"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.164 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.341-3.369-1.341-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.271.098-2.65 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.379.202 2.397.1 2.65.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.137 20.164 22 16.42 22 12c0-5.523-4.477-10-10-10z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <img
+              src="https://res.cloudinary.com/dvdcl3ozp/image/upload/v1738410511/spectrum/rainbow-color-1-min_zpk7f9.png"
+              className="absolute -bottom-[100px] w-full right-[100px] md:top-0 md:-top-[130px] opacity-60 md:opacity-70 -z-10 -rotate-45 md:rotate-45 md:-right-[20px] md:w-[400px] md:h-[400px] "
+            ></img>
+            <img  
+              src="https://res.cloudinary.com/dvdcl3ozp/image/upload/v1738410424/spectrum/repo-ss_gkc0qv.png"
+              className="absolute -bottom-[80px] -right-[50px]  md:right-[50px] md:-bottom-[100px] z-0 mx-auto md:rotate-0 md:bottom-0 md:aspect-auto md:w-[400px] rounded-sm"
+            ></img>
+          </div>
+        </div>
+
+        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-4 lg:pt-8">
+          <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
+            <div className="space-y-4 px-4">
+              <p className="font-bold text-2xl text-gray-200">
+                Built by Our Team
+              </p>
+              <div className="flex flex-wrap gap-4">
+                {[
+                  {
+                    name: "Kartik",
+                    instagram: "#",
+                    linkedin: "#",
+                  },
+                  {
+                    name: "Mayank",
+                    instagram: "#",
+                    linkedin: "#",
+                  },
+                  {
+                    name: "Ved",
+                    instagram: "#",
+                    linkedin: "#",
+                  },
+                  {
+                    name: "Aadi",
+                    instagram: "#",
+                    linkedin: "#  ",
+                  },
+                ].map((member) => (
+                  <div
+                    key={member.name}
+                    className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2"
+                  >
+                    <span className="text-gray-200">{member.name}</span>
+                    <div className="flex gap-2">
+                      <a
+                        href={`https://instagram.com/${member.instagram}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-gray-200 hover:text-gray-200/75"
+                      >
+                        <svg
+                          className="h-4 w-4"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                      </a>
+                      <a
+                        href={`https://linkedin.com/in/${member.linkedin}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-gray-200 hover:text-gray-200/75"
+                      >
+                        <svg
+                          className="h-4 w-4"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <img
+              src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705913782/Spectrum/Homepage/HKZuMdo_w2bis3.png"
+              alt="Footer Image"
+              className="h-48 w-auto"
+            />
+          </div>
+        </div>
+      </div>
     <footer className="relative bg-cover bg-top bg-no-repeat new-footer overflow-hidden">
       <img src="https://res.cloudinary.com/dvdcl3ozp/image/upload/v1738410511/spectrum/rainbow-color-1-min_zpk7f9.png" className='absolute -left-[120px] -top-[70px] md:-top-[20px] opacity-60 z-0  h-screen mx-auto rotate-45 md:rotate-0 md:left-0 md:w-full'></img>
       {/* Floating Island Section */}
@@ -148,8 +270,8 @@ export default function Footer() {
           </div> */}
         </div>
         <hr className=''/>
-        <div className="mx-auto  px-4 py-4 sm:px-6 lg:px-8 backdrop-blur-lg">
-          <ul className="flex flex-wrap max-w-6xl justify-center gap-6 md:gap-8 lg:gap-12">
+        <div className="px-4 py-4 sm:px-6 lg:px-8 backdrop-blur-lg">
+          <ul className="mx-auto  flex flex-wrap max-w-6xl justify-center gap-6 md:gap-8 lg:gap-12">
             <li>
               <Link
                 href="/compliance/privacypolicy"
@@ -327,5 +449,6 @@ export default function Footer() {
         </div>
       </div>
     </footer>
+    </>
   );
 }
