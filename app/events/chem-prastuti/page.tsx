@@ -1,5 +1,5 @@
-import { Rules } from "@/app/chem-prastuti/components/accordian"
-import { Chem_prastuti_registarion } from "@/app/chem-prastuti/components/registration";
+import { Rules } from "@/app/events/chem-prastuti/components/accordian"
+import { Chem_prastuti_registarion } from "@/app/events/chem-prastuti/components/registration";
 import { Krona_One } from 'next/font/google'
 import Image from "next/image";
 

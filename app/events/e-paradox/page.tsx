@@ -1,5 +1,5 @@
-import { Rules } from "@/app/e-paradox/components/accordian"
-import { Eparadox_registarion } from "@/app/e-paradox/components/registration";
+import { Rules } from "@/app/events/e-paradox/components/accordian"
+import { Eparadox_registarion } from "@/app/events/e-paradox/components/registration";
 import { Krona_One } from 'next/font/google'
 import Image from "next/image";
 

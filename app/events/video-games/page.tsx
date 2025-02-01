@@ -1,6 +1,6 @@
 
-import { Rules } from "@/app/video-games/components/accordian"
-import { Electrica_registarion } from "@/app/video-games/components/registration";
+import { Rules } from "@/app/events/video-games/components/accordian"
+import { Electrica_registarion } from "@/app/events/video-games/components/registration";
 import { Krona_One } from 'next/font/google'
 import Image from "next/image";
 

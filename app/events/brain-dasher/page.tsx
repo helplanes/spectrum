@@ -1,5 +1,5 @@
-import { Rules } from "@/app/brain-dasher/components/accordian"
-import { BrainDashers_registarion } from "@/app/brain-dasher/components/registration";
+import { Rules } from "@/app/events/brain-dasher/components/accordian"
+import { BrainDashers_registarion } from "@/app/events/brain-dasher/components/registration";
 import { Krona_One } from 'next/font/google'
 import Image from "next/image";
 

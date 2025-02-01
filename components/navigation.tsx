@@ -230,16 +230,16 @@ export function Navigation() {
 }
 
 const events = [
-  { href: "/e-paradox", title: "E paradox' 25", bgColor: "bg-red-500", description: "Find clues, crack codes, win prizes" },
-  { href: "/blindcoding", title: "Blind Coding' 25", bgColor: "bg-orange-500", description: "Based on knowledge of Basic Programming concepts" },
-  { href: "/brain-dasher", title: "Brain Dasher' 25", bgColor: "bg-yellow-400", description: "Quick thinking quiz" },
-  { href: "/treasure-hunt", title: "Treasure Hunt' 25", bgColor: "bg-green-400", description: "Hunt for treasures" },
-  { href: "/chem-prastuti", title: "Chem Prastuti' 25", bgColor: "bg-blue-400", description: "Chemical engineering presentations" },
-  { href: "/bottle-rocket", title: "Water Rocket' 25", bgColor: "bg-purple-400", description: "Build & launch water rockets" },
-  { href: "/debate", title: "War of Words' 25", bgColor: "bg-pink-300", description: "Debate competition" },
-  { href: "/video-games", title: "High Ping '25", bgColor: "bg-blue-400", description: "Gaming tournament" },
-  { href: "/3d-modelling", title: "Model Making '25", bgColor: "bg-[#11b9a8]", description: "Build 3D Models from Scratch" },
-  { href: "/sharktank", title: "Shark Tank '25", bgColor: "bg-[#f4a141]", description: "Mock Shark Tank" },
+  { href: "/events/e-paradox", title: "E paradox' 25", bgColor: "bg-red-500", description: "Find clues, crack codes, win prizes" },
+  { href: "/events/blindcoding", title: "Blind Coding' 25", bgColor: "bg-orange-500", description: "Based on knowledge of Basic Programming concepts" },
+  { href: "/events/brain-dasher", title: "Brain Dasher' 25", bgColor: "bg-yellow-400", description: "Quick thinking quiz" },
+  { href: "/events/treasure-hunt", title: "Treasure Hunt' 25", bgColor: "bg-green-400", description: "Hunt for treasures" },
+  { href: "/events/chem-prastuti", title: "Chem Prastuti' 25", bgColor: "bg-blue-400", description: "Chemical engineering presentations" },
+  { href: "/events/bottle-rocket", title: "Water Rocket' 25", bgColor: "bg-purple-400", description: "Build & launch water rockets" },
+  { href: "/events/debate", title: "War of Words' 25", bgColor: "bg-pink-300", description: "Debate competition" },
+  { href: "/events/video-games", title: "High Ping '25", bgColor: "bg-blue-400", description: "Gaming tournament" },
+  { href: "/events/3d-modelling", title: "Model Making '25", bgColor: "bg-[#11b9a8]", description: "Build 3D Models from Scratch" },
+  { href: "/events/sharktank", title: "Shark Tank '25", bgColor: "bg-[#f4a141]", description: "Mock Shark Tank" },
 ];
 
 const EventsList = ({ onNavigate }: { onNavigate: (href: string) => void }) => (

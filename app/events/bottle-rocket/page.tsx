@@ -1,6 +1,6 @@
-import { Bottle_rocket_registarion } from "@/app/bottle-rocket/components/registration";
+import { Bottle_rocket_registarion } from "@/app/events/bottle-rocket/components/registration";
 import { Krona_One } from 'next/font/google'
-import { TableInfo } from "@/app/bottle-rocket/components/info"
+import { TableInfo } from "@/app/events/bottle-rocket/components/info"
 import Image from "next/image";
 
 import { Metadata } from 'next'

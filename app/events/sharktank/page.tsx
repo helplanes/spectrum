@@ -1,5 +1,5 @@
-import { Rules } from "@/app/sharktank/components/accordian"
-import { Sharktank_registarion } from "@/app/sharktank/components/registration";
+import { Rules } from "@/app/events/sharktank/components/accordian"
+import { Sharktank_registarion } from "@/app/events/sharktank/components/registration";
 import { Krona_One } from 'next/font/google'
 import Image from "next/image";
 
