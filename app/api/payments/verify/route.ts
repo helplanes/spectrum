@@ -1,5 +1,6 @@
 import { createClient } from "@/app/utils/supabase/server";
 import { NextResponse } from "next/server";
+import { SupabaseClient } from '@supabase/supabase-js';
 
 interface VerificationResult {
   orderData: {
@@ -58,12 +59,37 @@ async function verifyPaymentStatus(orderId: string): Promise<VerificationResult>
   return { orderData, paymentData: null };
 }
 
+async function updatePaymentRecord(supabase: SupabaseClient, payment: any, orderData: any) {
+  const paymentUpdateData = {
+    status: orderData.order_status === 'PAID' ? 'success' : 'failed',
+    payment_method: payment?.payment_group,
+    transaction_id: payment?.cf_payment_id,
+    bank_reference: payment?.bank_reference,
+    cf_payment_id: payment?.cf_payment_id,
+    payment_time: payment?.payment_time,
+    metadata: {
+      payment_details: payment,
+      order_details: orderData
+    },
+    error_details: payment?.error_details,
+    payment_gateway_details: payment?.payment_gateway_details,
+    updated_at: new Date().toISOString()
+  };
+
+  // ...existing update logic...
+}
+
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const orderId = searchParams.get('order_id');
   
   if (!orderId) {
     return NextResponse.json({ error: "Order ID required" }, { status: 400 });
+  }
+
+  // Add request validation
+  if (!orderId.match(/^ORD_\d+_[a-z0-9]+$/)) {
+    throw new Error("Invalid order ID format");
   }
 
   const supabase = await createClient();
@@ -137,6 +163,18 @@ export async function GET(request: Request) {
           timestamp: new Date().toISOString()
         }
       });
+
+    // Enhanced logging
+    await supabase.from('payment_logs').insert({
+      payment_id: existingPayment.id,
+      order_id: orderId,
+      event_type: 'verification_complete',
+      payload: {
+        final_status: mappedStatus,
+        verification_time: new Date().toISOString(),
+        payment_details: paymentData
+      }
+    });
 
     // Update payment record
     const paymentUpdateData = {

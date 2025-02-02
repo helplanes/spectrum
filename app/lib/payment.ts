@@ -56,6 +56,35 @@ export async function getProfile(
   }
 }
 
+export async function getUserProfile(
+  supabase: SupabaseClient,
+  userId: string
+): Promise<Profile | null> {
+  try {
+    const { data } = await supabase
+      .from('profiles')
+      .select(`
+        id,
+        full_name,
+        email,
+        phone,
+        college_name,
+        prn,
+        branch,
+        class,
+        gender,
+        is_pccoe_student
+      `)
+      .eq('id', userId)
+      .single();
+
+    return data;
+  } catch (error) {
+    console.error('Error fetching user profile:', error);
+    return null;
+  }
+}
+
 export async function calculatePaymentAmount(
   eventId: string,
   teamId?: string

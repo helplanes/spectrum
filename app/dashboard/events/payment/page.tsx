@@ -8,28 +8,23 @@ import {
   TableCell,
   TableHead,
 } from "@/components/ui/table";
-import { formatDate } from "@/app/lib/utils";
-import { Badge } from "@/components/ui/badge";
 import { redirect } from 'next/navigation';
 import { headers } from 'next/headers';
-
-interface PaymentRecord {
-  id: string;
-  order_id: string;
-  amount: number;
-  status: string;
-  payment_time: string;
-  created_at: string;
-  event: {
-    name: string;
-  };
-  team: {
-    team_name: string;
-  } | null;
-}
+import { PaymentRow } from "./components/PaymentRow";
+import { PaymentRecord } from "@/app/types/payment";
 
 export default async function PaymentsPage() {
   const supabase = await createClient();
+  
+  // Get the current user
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  
+  if (!user) {
+    redirect('/auth/login');
+  }
+
   const headersList = await headers();
   const url = new URL(headersList.get('x-url') || '', process.env.NEXT_PUBLIC_APP_URL);
   const orderId = url.searchParams.get('order_id');
@@ -52,18 +47,9 @@ export default async function PaymentsPage() {
       event:events(name),
       team:teams(team_name)
     `)
+    .eq('user_id', user.id) // Using user.id instead of session.user.id
     .order('payment_time', { ascending: false })
     .order('created_at', { ascending: false });
-
-  const getStatusColor = (status: string) => {
-    switch (status.toLowerCase()) {
-      case 'pending': return 'bg-yellow-100 text-yellow-800';
-      case 'paid':
-      case 'success': return 'bg-green-100 text-green-800';
-      case 'failed': return 'bg-red-100 text-red-800';
-      default: return 'bg-gray-100 text-gray-800';
-    }
-  };
 
   return (
     <main className="min-h-screen bg-[#EBE9E0] p-4 sm:p-6 lg:p-8">
@@ -84,51 +70,26 @@ export default async function PaymentsPage() {
             <Table>
               <TableHeader>
                 <TableRow>
+                  <TableHead></TableHead>
                   <TableHead>Event</TableHead>
                   <TableHead>Type</TableHead>
                   <TableHead>Amount</TableHead>
                   <TableHead>Status</TableHead>
-                  <TableHead>Date</TableHead>
-                  <TableHead>Order ID</TableHead>
+                  <TableHead>Payment Time</TableHead>
+                  <TableHead>Method</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {payments?.map((payment: PaymentRecord) => (
-                  <TableRow key={payment.id}>
-                    <TableCell className="font-medium">
-                      {payment.event?.name}
-                    </TableCell>
-                    <TableCell>
-                      {payment.team ? (
-                        <span title={payment.team.team_name}>Team Payment</span>
-                      ) : (
-                        "Individual"
-                      )}
-                    </TableCell>
-                    <TableCell>₹{payment.amount.toFixed(2)}</TableCell>
-                    <TableCell>
-                      <Badge 
-                        variant="secondary"
-                        className={getStatusColor(payment.status)}
-                      >
-                        {payment.status}
-                      </Badge>
-                    </TableCell>
-                    <TableCell>
-                      {payment.payment_time 
-                        ? formatDate(payment.payment_time)
-                        : formatDate(payment.created_at)
-                      }
-                    </TableCell>
-                    <TableCell className="font-mono text-sm">
-                      {payment.order_id}
-                    </TableCell>
-                  </TableRow>
+                  <PaymentRow 
+                    key={payment.id}
+                    payment={payment}
+                  />
                 ))}
                 {!payments?.length && (
                   <TableRow>
                     <TableCell 
-                      colSpan={6} 
+                      colSpan={7} 
                       className="text-center text-muted-foreground py-8"
                     >
                       No payments found

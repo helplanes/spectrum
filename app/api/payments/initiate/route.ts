@@ -1,5 +1,6 @@
 import { createClient } from "@/app/utils/supabase/server";
 import { NextResponse } from "next/server";
+import { getUserProfile } from "@/app/lib/payment";
 
 interface TeamMemberResponse {
   profiles: {
@@ -16,6 +17,12 @@ export async function POST(request: Request) {
 
     if (!user) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    // Fetch user profile
+    const profile = await getUserProfile(supabase, user.id);
+    if (!profile) {
+      return NextResponse.json({ error: "User profile not found" }, { status: 400 });
     }
 
     // Calculate amount
@@ -49,7 +56,7 @@ export async function POST(request: Request) {
 
     const orderId = `ORD_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`;
 
-    // Create Cashfree order
+    // Create Cashfree order with proper customer details
     const response = await fetch("https://sandbox.cashfree.com/pg/orders", {
       method: "POST",
       headers: {
@@ -64,8 +71,9 @@ export async function POST(request: Request) {
         order_currency: "INR",
         customer_details: {
           customer_id: user.id,
-          customer_email: user.email,
-          customer_phone: "9999999999" // Get from profile if available
+          customer_name: profile.full_name || undefined,
+          customer_email: profile.email || user.email,
+          customer_phone: profile.phone || undefined
         },
         order_meta: {
           return_url: `${process.env.NEXT_PUBLIC_APP_URL}/dashboard/events/payment?order_id={order_id}`
