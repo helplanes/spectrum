@@ -50,3 +50,9 @@ export interface TeamMember {
     is_pccoe_student: boolean | null;
   };
 }
+
+export interface PaymentDetails {
+  required: boolean;
+  amount: number;
+  nonPccoeCount: number;
+}

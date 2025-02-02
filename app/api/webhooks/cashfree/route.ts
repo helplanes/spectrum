@@ -27,7 +27,14 @@ interface PaymentUpdateData {
 }
 
 async function processWebhook(supabase: SupabaseClient, payload: CashfreeWebhookPayload) {
+  // Add validation
+  if (!payload?.data?.order?.order_id || !payload?.data?.payment) {
+    console.error('Invalid payload structure:', JSON.stringify(payload, null, 2));
+    throw new Error('Invalid webhook payload structure');
+  }
+
   const { order, payment } = payload.data;
+  console.log('Processing order:', order.order_id, 'with payment status:', payment.payment_status);
 
   // Validate webhook signature here if Cashfree provides it
 
@@ -167,6 +174,7 @@ async function processWebhook(supabase: SupabaseClient, payload: CashfreeWebhook
 export const dynamic = 'force-dynamic';
 
 export async function POST(request: Request) {
+  console.log('Received webhook request');
   const supabase = await createClient();
   let retries = 0;
   let lastError: Error | null = null;
@@ -178,7 +186,11 @@ export async function POST(request: Request) {
   // }
 
   try {
-    const payload = await request.json() as CashfreeWebhookPayload;
+    const rawBody = await request.text();
+    console.log('Raw webhook body:', rawBody);
+    
+    const payload = JSON.parse(rawBody) as CashfreeWebhookPayload;
+    console.log('Parsed webhook payload:', JSON.stringify(payload, null, 2));
 
     // Add CORS headers
     const headers = {
@@ -203,8 +215,12 @@ export async function POST(request: Request) {
 
     throw lastError;
   } catch (error: any) {
-    console.error("Webhook error:", error);
-
+    console.error("Webhook error details:", {
+      message: error.message,
+      stack: error.stack,
+      name: error.name
+    });
+    
     // Log error but don't expose internal details
     await supabase
       .from('payment_logs')

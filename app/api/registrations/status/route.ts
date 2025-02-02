@@ -14,52 +14,58 @@ interface TeamRegistration {
 export const revalidate = 0; // Disable cache
 
 export async function GET(request: Request) {
-  const supabase = await createClient();
-  const { searchParams } = new URL(request.url);
-  const eventId = searchParams.get('eventId');
-
-  if (!eventId) {
-    return NextResponse.json({ error: "Event ID is required" }, { status: 400 });
-  }
-
   try {
+    const supabase = await createClient();
+    const { searchParams } = new URL(request.url);
+    const eventId = searchParams.get('eventId');
+
+    if (!eventId) {
+      return NextResponse.json({ error: "Event ID is required" }, { status: 400 });
+    }
+
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    // Get user profile
+    // Get profile with payment info
     const { data: profile } = await supabase
       .from('profiles')
-      .select('*')
+      .select('*, payments(status, amount)')
       .eq('id', user.id)
       .single();
 
-    // Check registration status
-    const { data: registration } = await supabase
-      .from('registrations')
-      .select('*, teams(*)')
-      .or(`individual_id.eq.${user.id},teams.team_members.cs.{member_id: ${user.id}}`)
-      .eq('event_id', eventId)
+    // Check team registration status
+    const { data: teamMember } = await supabase
+      .from('team_members')
+      .select(`
+        *,
+        teams!inner(
+          id,
+          leader_id,
+          payments(status, amount)
+        )
+      `)
+      .eq('member_id', user.id)
+      .eq('teams.event_id', eventId)
       .single();
 
-    if (!registration) {
-      return NextResponse.json({
-        isRegistered: false,
-        type: null,
-        profile
-      });
-    }
-
     return NextResponse.json({
-      isRegistered: true,
-      type: registration.individual_id ? 'solo' : 'team',
-      teamId: registration.team_id,
-      isLeader: registration.teams?.leader_id === user.id,
-      profile
+      isRegistered: false, // Will be true if found in registrations
+      type: teamMember ? 'team' : null,
+      teamId: teamMember?.teams?.id || null,
+      isLeader: teamMember?.teams?.leader_id === user.id,
+      profile: {
+        is_pccoe_student: profile?.is_pccoe_student || false,
+        // Add other profile fields as needed
+      },
+      payment: {
+        required: !profile?.is_pccoe_student,
+        status: teamMember?.teams?.payments?.[0]?.status || 'pending'
+      }
     });
 
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error checking registration status:", error);
     return NextResponse.json(
       { error: "Failed to check registration status" },
