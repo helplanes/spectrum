@@ -94,8 +94,8 @@ export async function POST(request: Request) {
       customerDetails: {
         customerId: user.id,
         customerEmail: profile.email || user.email,
-        customerPhone: profile.phone || "0000000000",
-        customerName: profile.full_name || "User"
+        customerPhone: profile.phone,
+        customerName: profile.full_name
       }
     });
 

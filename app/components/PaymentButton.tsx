@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { load } from "@cashfreepayments/cashfree-js";
+import { useRouter } from 'next/navigation';
 
 interface PaymentButtonProps {
   eventId: string;
@@ -23,6 +24,7 @@ export default function PaymentButton({
   disabled
 }: PaymentButtonProps) {
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
   const handlePayment = async () => {
     if (amount <= 0) {
@@ -81,6 +83,14 @@ export default function PaymentButton({
           toast.error("Payment cancelled");
         }
       });
+
+      // After successful payment
+      if (onSuccess) {
+        await onSuccess();
+      }
+      
+      // Redirect to registrations page
+      router.push('/dashboard/events/registrations');
 
     } catch (error: any) {
       console.error("Payment error:", error);
