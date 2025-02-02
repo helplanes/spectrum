@@ -47,7 +47,7 @@ export default function Home() {
       </picture> 
       <div>
       <h3 className="font-jacques_francois_shadow text-center scroll-m-20 my-6 pl-2 text-xl font-extrabold text-gray-800 tracking-tight md:text-3xl lg:text-5xl">
-        Its time to put your brain to the test!
+       It&apos;s time to put your brain to the test!
       </h3>
       </div>
       <picture> 
@@ -62,20 +62,24 @@ export default function Home() {
       <picture> 
         <img className="mx-auto my-8" width="800" height="50" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705931875/Spectrum/global/lbNfJM2-min_n0yrof.webp" />
       </picture> 
-    <div className="text-gray-700 leading-7 mb-4 p-2 lg:p-8">
-        <h1>Rules and Regulations of the events: </h1>
-          <p className="leading-7">
-          1. Individual Participation only. <br/>
-          2. Mobile phones, Calculators, Smart watches and  any form of electronic gadgets are not allowed in any round.  <br/>
-          3. Three winners will be declared after clearing all rounds.  <br/>
-          4. Incase of any changes will be communicated priorly.
-          </p>
-          <h1 className="pt-8">Judging Criteria:</h1>
-          <p className="leading-7">
-          1. Sumbission Time <br/>
-          2. Correct Answers
-          </p>
-        </div>
+      <div className="text-gray-700 leading-7 mb-4 p-2 lg:p-8">
+    <h1>Rules and Regulations of the events: </h1>
+      <p className="leading-7">
+      1. Total 15 questions will be asked.. <br/>
+      2. If the question is related to an established word/ proverb/ or a saying, participant need to 
+answer perfectly. Or else no point would be awarded.<br/>
+      3. Negative marking is applicable for the participant pressing the buzzer and not answering even  
+after 5 secs. 
+<br/>
+      4. If there&apos;s a tie, another set of 5 difficult question (with varying points) will be displayed and 
+accordingly, the winner would be selected. 
+      </p>
+      <h1 className="pt-8">Judging Criteria:</h1>
+      <p className="leading-7">
+      1. Sumbission Time <br/>
+      2. Correct Answers
+      </p>
+    </div>
     </main>
   );
 
