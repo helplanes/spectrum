@@ -186,6 +186,25 @@ export default function DashboardPage() {
           </div>
         </div>
 
+        {/* Payment Card - Full Width */}
+        <div className="mb-4 sm:mb-6">
+          <div className="bg-white/80 backdrop-blur p-4 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+            <div className="flex items-center justify-between">
+              <div>
+                <h2 className="font-semibold text-lg">Payments</h2>
+                <p className="text-sm text-gray-600">View and manage your payments</p>
+              </div>
+              <Button
+                variant="outline"
+                className="bg-orange-50 hover:bg-orange-100 border-orange-200"
+                onClick={() => router.push('/dashboard/events/payment')}
+              >
+                Manage Payments
+              </Button>
+            </div>
+          </div>
+        </div>
+
         <div className="p-1 sm:p-4 border-4 border-dashed border-gray-300 rounded-3xl">
           <div className="bg-white rounded-3xl shadow-lg overflow-hidden relative">
             {/* Dots for ticket effect */}
@@ -258,22 +277,33 @@ export default function DashboardPage() {
         </div>
 
         {/* Info Box */}
-        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mt-6">
-          <p className="text-sm text-yellow-800">
-            We&apos;re constantly improving our platform. If you encounter any issues:
-            <br />
-            • For API endpoints, backend, or data-related bugs, contact{' '}
-            <a href="mailto:kartik.kulloli23@pccoepune.org" className="font-medium underline hover:text-yellow-900">
-              kartik.kulloli23@pccoepune.org
-            </a>
-            <br />
-            • For UI/UX issues, visual glitches, or frontend concerns, contact{' '}
-            <a href="mailto:mayank.kadam23@pccoepune.org" className="font-medium underline hover:text-yellow-900">
-              mayank.kadam23@pccoepune.org
-            </a>
-            <br />
-            For critical bugs or security vulnerabilities, please report them immediately with [COOKED] in the title.
-          </p>
+        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 sm:p-4 md:p-5 mt-4 sm:mt-6">
+          <div className="space-y-2 sm:space-y-3">
+            <p className="text-xs sm:text-sm text-yellow-800 leading-relaxed">
+              We&apos;re constantly improving our platform. 
+              <span className="hidden sm:inline">&nbsp;</span>
+              <span className="block sm:inline mt-1 sm:mt-0">If you encounter any issues:</span>
+            </p>
+            <div className="space-y-3 sm:space-y-2 mt-2">
+              <div className="text-xs sm:text-sm text-yellow-800">
+                <p className="font-medium mb-1">• For API endpoints, backend, or data-related bugs:</p>
+                <a href="mailto:kartik.kulloli23@pccoepune.org" 
+                   className="block pl-3 font-medium text-yellow-700 hover:text-yellow-900 break-all">
+                  kartik.kulloli23@pccoepune.org
+                </a>
+              </div>
+              <div className="text-xs sm:text-sm text-yellow-800">
+                <p className="font-medium mb-1">• For UI/UX issues, visual glitches, or frontend concerns:</p>
+                <a href="mailto:mayank.kadam23@pccoepune.org" 
+                   className="block pl-3 font-medium text-yellow-700 hover:text-yellow-900 break-all">
+                  mayank.kadam23@pccoepune.org
+                </a>
+              </div>
+            </div>
+            <p className="text-xs sm:text-sm text-yellow-800 italic mt-3 sm:mt-2">
+              For critical bugs or security vulnerabilities, please report them immediately with [COOKED] in the title.
+            </p>
+          </div>
         </div>
       </div>
     </main>

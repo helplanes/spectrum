@@ -80,7 +80,7 @@ declare module '@cashfreepayments/cashfree-js' {
   export interface CashfreeCheckoutConfig {
     paymentSessionId: string;
     redirectTarget?: string;
-    returnUrl?: string;
+    returnUrl: string; // Make this required instead of optional
     onPaymentSuccess?: (data: any) => void;
     onPaymentFailure?: (data: any) => void;
     onError?: (error: any) => void;

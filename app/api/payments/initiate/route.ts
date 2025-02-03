@@ -14,6 +14,23 @@ export async function POST(request: Request) {
 
     const { eventId, teamId, type, amount } = await request.json();
 
+    // First create registration record
+    const { data: registration, error: registrationError } = await supabase
+      .from('registrations')
+      .insert({
+        event_id: eventId,
+        team_id: type === 'team' ? teamId : null,
+        individual_id: type === 'solo' ? user.id : null,
+        registration_status: 'pending',
+        payment_status: 'pending'
+      })
+      .select()
+      .single();
+
+    if (registrationError) {
+      throw new Error(`Failed to create registration: ${registrationError.message}`);
+    }
+
     // Validate payment amount for team
     if (type === 'team' && teamId) {
       // Get team details
@@ -67,7 +84,7 @@ export async function POST(request: Request) {
     // Generate order ID
     const orderId = await generateOrderId();
 
-    // Create payment record
+    // Create payment record with registration_id
     const { data: payment, error: paymentError } = await supabase
       .from('payments')
       .insert({
@@ -76,12 +93,19 @@ export async function POST(request: Request) {
         team_id: teamId,
         event_id: eventId,
         amount: amount,
-        status: 'pending'
+        status: 'pending',
+        registration_id: registration.id // Link to registration
       })
       .select()
       .single();
 
     if (paymentError || !payment) {
+      // Cleanup registration if payment creation fails
+      await supabase
+        .from('registrations')
+        .delete()
+        .eq('id', registration.id);
+      
       throw paymentError || new Error('Failed to create payment record');
     }
 
@@ -96,7 +120,8 @@ export async function POST(request: Request) {
         customerEmail: profile.email || user.email,
         customerPhone: profile.phone,
         customerName: profile.full_name
-      }
+      },
+      returnUrl: `${process.env.NEXT_PUBLIC_APP_URL}/dashboard/events/registrations` // Add this line
     });
 
     return NextResponse.json({

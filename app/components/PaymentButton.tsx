@@ -59,9 +59,9 @@ export default function PaymentButton({
         mode: process.env.NODE_ENV === "production" ? "production" : "sandbox"
       });
 
-      // Use proper types for checkout options
       await cashfree.checkout({
         paymentSessionId,
+        returnUrl: window.location.origin + "/dashboard/events/registrations",
         redirectTarget: "_self",
         onPaymentSuccess: (data) => {
           console.log("Payment success", data);

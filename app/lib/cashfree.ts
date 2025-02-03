@@ -10,6 +10,7 @@ interface PaymentSessionRequest {
   amount: number;
   currency: string;
   customerDetails: CustomerDetails;
+  returnUrl?: string; // Add this line
 }
 
 interface CashfreeResponse {
@@ -236,6 +237,9 @@ export class Cashfree {
               customer_phone: params.customerDetails.customerPhone,
               customer_name: params.customerDetails.customerName,
             },
+            order_meta: {
+              return_url: params.returnUrl // Add this line
+            }
           }),
         }
       );
