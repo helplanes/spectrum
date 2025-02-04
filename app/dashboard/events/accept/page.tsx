@@ -74,34 +74,133 @@ export default function AcceptPage() {
       const data = await res.json();
       
       if (!res.ok) {
-        if (data.error === 'existing_team') {
-          setErrorAlert({
-            title: "Team Membership Conflict",
-            message: data.message || "You are already part of a team for this event"
-          });
-        } else {
-          setErrorAlert({
-            title: `Failed to ${action} invitation`,
-            message: data.message || "Please try again later"
-          });
+        switch (data.error) {
+          case 'category_mismatch':
+            // First show the error toast
+            toast.error("Team Categories", {
+              description: data.message,
+              duration: 5000,
+              action: {
+                label: "Learn More",
+                onClick: () => {
+                  toast.info("About Team Categories", {
+                    description: "To ensure fair competition, teams are divided into PCCOE and non-PCCOE categories. This helps maintain a level playing field for all participants.",
+                    duration: 8000,
+                  });
+                }
+              }
+            });
+            
+            // Show in the error dialog with clearer explanation
+            setErrorAlert({
+              title: "Important Team Rule",
+              message: "For fair competition:\n\n• PCCOE students can only join PCCOE teams\n• Non-PCCOE participants can only join non-PCCOE teams\n\nThis ensures all participants compete in their respective categories."
+            });
+            break;
+
+          case 'team_not_found':
+            toast.error("Team Not Found", {
+              description: "This team no longer exists or was deleted",
+              action: {
+                label: "View Events",
+                onClick: () => window.location.href = '/dashboard/events'
+              }
+            });
+            break;
+
+          case 'existing_team':
+            // First show the error toast
+            toast.error("Already in a team", {
+              description: data.message,
+              action: {
+                label: "View Events",
+                onClick: () => window.location.href = '/dashboard/events'
+              }
+            });
+            
+            // Show in the error dialog with clearer explanation
+            setErrorAlert({
+              title: "Cannot Join Multiple Teams",
+              message: "You are already a member of a team for this event. To maintain fair competition, participants can only be part of one team per event."
+            });
+            break;
+          
+          case 'team_full':
+            // First show the error toast
+            toast.error("Team is Full", {
+              description: data.message,
+              action: {
+                label: "Find Teams",
+                onClick: () => window.location.href = '/dashboard/events'
+              }
+            });
+            
+            // Show in the error dialog with clearer explanation
+            setErrorAlert({
+              title: "Team Registration Complete",
+              message: "This team has already reached its maximum capacity and is no longer accepting new members.\n\nYou can:\n\n• Create your own team\n• Join another team that's still accepting members"
+            });
+            break;
+          
+          case 'registration_closed':
+            toast.error("Registration Closed", {
+              description: data.message,
+              action: {
+                label: "View Event",
+                onClick: () => window.location.href = `/events/${invite.teams.events.id}`
+              }
+            });
+            break;
+
+          case 'team_registered':
+            // First show the error toast
+            toast.error("Team Already Registered", {
+              description: data.message,
+              duration: 5000
+            });
+            
+            // Show in the error dialog with clearer explanation
+            setErrorAlert({
+              title: "Registration Already Complete",
+              message: "This team has already completed their registration process and cannot accept new members.\n\nYou can:\n\n• Create your own team\n• Join another team that hasn't registered yet"
+            });
+            break;
+          
+          default:
+            toast.error("Failed to process invitation", {
+              description: data.message || "Please try again later"
+            });
         }
+        
         setSelectedInvite(null);
         setRejectInvite(null);
         return;
       }
       
-      toast.success(`Successfully ${action}ed the invitation!`, {
-        description: action === 'accept' 
-          ? `You've joined ${invite.teams.team_name}`
-          : `You've rejected the invitation to ${invite.teams.team_name}`,
-      });
+      if (action === 'accept') {
+        toast.success("Successfully joined team!", {
+          description: `You are now a member of ${invite.teams.team_name}`,
+          action: {
+            label: "View Team",
+            onClick: () => window.location.href = `/dashboard/events/teams/${invite.team_id}`
+          }
+        });
+      } else {
+        toast.success("Invitation rejected", {
+          description: `You've declined to join ${invite.teams.team_name}`
+        });
+      }
+
       setInvites((prev) => prev.filter((inv) => inv.team_id !== invite.team_id));
       setSelectedInvite(null);
       setRejectInvite(null);
     } catch (err: any) {
-      setErrorAlert({
-        title: `Error ${action}ing invitation`,
-        message: err.message || "An unexpected error occurred. Please try again."
+      toast.error("Error processing invitation", {
+        description: "An unexpected error occurred. Please try again.",
+        action: {
+          label: "Retry",
+          onClick: () => handleInviteAction(invite, action)
+        }
       });
     } finally {
       setProcessing(null);
@@ -394,19 +493,21 @@ export default function AcceptPage() {
         </AlertDialog>
 
         <AlertDialog open={!!errorAlert} onOpenChange={() => setErrorAlert(null)}>
-          <AlertDialogContent>
+          <AlertDialogContent className="max-w-md">
             <AlertDialogHeader>
-              <AlertDialogTitle className="text-red-600">{errorAlert?.title}</AlertDialogTitle>
-              <AlertDialogDescription>
+              <AlertDialogTitle className="text-xl font-semibold text-red-600">
+                {errorAlert?.title}
+              </AlertDialogTitle>
+              <AlertDialogDescription className="text-base whitespace-pre-line">
                 {errorAlert?.message}
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
               <AlertDialogAction
                 onClick={() => setErrorAlert(null)}
-                className="bg-gray-600 hover:bg-gray-700"
+                className="bg-red-600 hover:bg-red-700 text-white"
               >
-                Ok, got it
+                I understand
               </AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>

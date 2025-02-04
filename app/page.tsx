@@ -3,6 +3,9 @@ import React from "react";
 import Hero from "@/components/hero";
 import Cards from "@/components/cards";
 import Link from 'next/link';
+import { EmblaOptionsType } from "embla-carousel";
+import "@/components/parallax/embla.css";
+import EmblaCarousels from "@/components/thumbs/EmblaCarousels";
 
 export default function Home() {
   return (
