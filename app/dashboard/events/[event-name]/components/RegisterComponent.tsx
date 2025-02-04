@@ -325,18 +325,20 @@ export default function RegisterComponent({ eventDetails }: { eventDetails: Even
             Registration successful. Good luck!
           </p>
         </div>
-        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 sm:p-4">
-          <p className="text-yellow-800 text-sm flex items-center gap-2">
-            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-2.5 sm:p-4">
+          <p className="text-yellow-800 text-[13px] sm:text-sm flex flex-wrap items-center gap-1.5 sm:gap-2">
+            <svg className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            View your registrations at{' '}
-            <Link 
-              href="/dashboard/events/registrations" 
-              className="font-medium text-yellow-900 hover:text-yellow-700 underline decoration-dashed underline-offset-4"
-            >
-              /dashboard/events/registrations
-            </Link>
+            <span className="inline-flex gap-1.5 sm:gap-2 items-center flex-wrap">
+              View your registrations at
+              <Link 
+                href="/dashboard/events/registrations" 
+                className="font-medium text-yellow-900 hover:text-yellow-700 underline decoration-dashed underline-offset-4 break-words"
+              >
+                /dashboard/events/registrations
+              </Link>
+            </span>
           </p>
         </div>
       </div>
@@ -1012,7 +1014,7 @@ export default function RegisterComponent({ eventDetails }: { eventDetails: Even
             Important Notice
           </p>
           <p className="text-red-600 text-sm">
-            Creating a team is a permanent decision. Once created, you won&apos;t be able to join any other teams for this event.
+            Creating a team is a permanent decision. Once created, you won&apos;t be able to join any other teams for this event!
             Please make sure you want to proceed before creating a team.
           </p>
         </div>

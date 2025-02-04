@@ -157,12 +157,24 @@ export default function RegistrationsPage() {
         <div className="max-w-4xl mx-auto">
           {activeRegistrationsCount > 0 && (
             <div className="space-y-4 mb-6">
-              <div className="bg-yellow-50/60 border border-yellow-100 rounded-lg p-2.5 sm:p-3">
-                <p className="text-yellow-700 text-sm flex items-center gap-2">
-                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              <div className="bg-yellow-50/60 border border-yellow-100 rounded-lg p-3 sm:p-4">
+                <p className="text-yellow-700 text-[13px] sm:text-sm flex items-start sm:items-center gap-2.5 sm:gap-3">
+                  <svg 
+                    className="h-5 w-5 shrink-0 mt-0.5 sm:mt-0" 
+                    fill="none" 
+                    viewBox="0 0 24 24" 
+                    stroke="currentColor"
+                  >
+                    <path 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      strokeWidth="2" 
+                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" 
+                    />
                   </svg>
-                  <span>Recent registrations may take up to 15 minutes to appear. Please refresh the page to see updates.</span>
+                  <span className="leading-tight sm:leading-normal">
+                    Registrations are processed instantly. Few registrations may take up to 15 minutes to show up. Refresh to see updates.
+                  </span>
                 </p>
               </div>
             </div>

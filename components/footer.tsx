@@ -6,7 +6,7 @@ export default function Footer() {
     <div className="w-full overflow-x-hidden">  {/* Changed from w-screen to w-full and added overflow-x-hidden */}
         <div className="relative mx-auto w-full max-w-6xl px-4 pt-16">
           <div className="relative rounded-3xl border-2 border-slate-400/30 p-8 shadow-2xl md:h-[300px] h-[400px] overflow-hidden mx-[10px]">
-            <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
+            <div className="flex flex-col items-center justify-between gap-8 md:flex-row relative z-10">
               <div className="text-center md:text-left md:w-[50%] ">
                 <h3 className="text-2xl font-bold text-white">
                   Open Source Project
