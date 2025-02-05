@@ -40,7 +40,7 @@ import PaymentButton from "@/app/components/PaymentButton";
 const createTeamSchema = z.object({
   teamName: z.string()
     .min(3, "Team name must be at least 3 characters")
-    .max(50, "Team name must not exceed 50 characters")
+    .max(40, "Team name must not exceed 40 characters")
     .regex(/^[a-zA-Z0-9\s\-_]+$/, "Team name can only contain letters, numbers, spaces, hyphens, and underscores"),
 });
 
@@ -158,6 +158,9 @@ export default function RegisterComponent({ eventDetails }: { eventDetails: Even
       toast.success("Team created successfully!", {
         description: `Team "${data.teamName}" has been created`,
       });
+
+      window.location.reload();
+
     } catch (error: any) {
       toast.error("Failed to create team", {
         description: error.message || "Please try again",

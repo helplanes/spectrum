@@ -20,18 +20,22 @@ export default function DashboardPage() {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
+        setLoading(true);
         const response = await fetch('/api/user');
+        const data = await response.json();
+        
         if (!response.ok) {
-          const data = await response.json();
           throw new Error(data.error || 'Failed to fetch user data');
         }
-        const data = await response.json();
+        
         setUserData(data);
+        setError(null);
       } catch (err: any) {
+        console.error('Error fetching user data:', err);
+        setError(err.message);
         toast.error("Failed to load user data", {
           description: err.message || "Please try again later",
         });
-        setError(err.message);
       } finally {
         setLoading(false);
       }
@@ -43,11 +47,19 @@ export default function DashboardPage() {
   const refreshUserData = async () => {
     try {
       const response = await fetch('/api/user');
-      if (!response.ok) throw new Error('Failed to fetch user data');
       const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to fetch user data');
+      }
+      
       setUserData(data);
-    } catch (error) {
+      setError(null);
+    } catch (error: any) {
       console.error('Failed to refresh user data:', error);
+      toast.error("Failed to refresh data", {
+        description: "Your changes may not be reflected. Please refresh the page.",
+      });
     }
   };
 

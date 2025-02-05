@@ -74,6 +74,32 @@ export default function AcceptPage() {
       const data = await res.json();
       
       if (!res.ok) {
+        if (data.error === 'server_error') {
+          // Show toast for immediate feedback
+          toast.error("Server Error", {
+            description: "An unexpected error occurred",
+            action: {
+              label: "Retry",
+              onClick: () => handleInviteAction(invite, action)
+            }
+          });
+
+          // Show detailed error dialog
+          setErrorAlert({
+            title: "Server Error",
+            message: "Something went wrong! This could be because:\n\n" +
+              "• You're trying to accept an invite you previously rejected\n" +
+              "• Our server is having issues (just like us)\n" +
+              "• Something unexpected happened (probably your fault)\n\n" +
+              "Please try again or contact support if the issue persists."
+          });
+          
+          setSelectedInvite(null);
+          setRejectInvite(null);
+          return;
+        }
+
+        // Handle other error cases...
         switch (data.error) {
           case 'category_mismatch':
             // First show the error toast
@@ -493,21 +519,33 @@ export default function AcceptPage() {
         </AlertDialog>
 
         <AlertDialog open={!!errorAlert} onOpenChange={() => setErrorAlert(null)}>
-          <AlertDialogContent className="max-w-md">
-            <AlertDialogHeader>
+          <AlertDialogContent className="max-w-md mx-auto">
+            <AlertDialogHeader className="space-y-3">
               <AlertDialogTitle className="text-xl font-semibold text-red-600">
                 {errorAlert?.title}
               </AlertDialogTitle>
-              <AlertDialogDescription className="text-base whitespace-pre-line">
-                {errorAlert?.message}
+              
+              <AlertDialogDescription asChild>
+                <div className="space-y-4">
+                  <div className="text-base text-gray-600 space-y-4">
+                    <p>Something went wrong! This could be because:</p>
+                    <ul className="list-disc pl-4 space-y-2">
+                      <li>You&apos;re trying to accept an invite you previously rejected</li>
+                      <li>Our server is having issues (just like us)</li>
+                      <li>Something unexpected happened (probably your fault)</li>
+                    </ul>
+                    <p>Please try again or contact support if the issue persists.</p>
+                  </div>
+                </div>
               </AlertDialogDescription>
             </AlertDialogHeader>
-            <AlertDialogFooter>
+
+            <AlertDialogFooter className="sm:justify-center">
               <AlertDialogAction
                 onClick={() => setErrorAlert(null)}
-                className="bg-red-600 hover:bg-red-700 text-white"
+                className="bg-red-600 hover:bg-red-700 text-white px-8"
               >
-                I understand
+                Got it
               </AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>

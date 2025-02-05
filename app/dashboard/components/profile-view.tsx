@@ -35,6 +35,19 @@ interface ProfileViewProps {
 }
 
 export function ProfileView({ profile, onEditClick }: ProfileViewProps) {
+  // Add null check for profile
+  if (!profile) {
+    return (
+      <div className="text-center py-6 px-4 sm:px-6 md:px-8">
+        <h3 className="text-xl font-medium text-gray-900">Profile Not Found</h3>
+        <p className="mt-2 text-gray-600">Unable to load profile information.</p>
+        <Button onClick={onEditClick} className="mt-4">
+          Create Profile
+        </Button>
+      </div>
+    );
+  }
+
   // Helper function to get full college name
   const getFullCollegeName = (collegeName: string) => {
     // Check if it's a key in COLLEGE_OPTIONS
@@ -61,11 +74,15 @@ export function ProfileView({ profile, onEditClick }: ProfileViewProps) {
     );
   };
 
-  if (!Object.values(profile).some(value => value)) {
+  // Update the empty profile check
+  if (!Object.values(profile).filter(Boolean).length) {
     return (
       <div className="text-center py-6 px-4 sm:px-6 md:px-8">
         <h3 className="text-xl font-medium text-gray-900">No Profile Details</h3>
         <p className="mt-2 text-gray-600">Please add your profile information to complete your profile.</p>
+        <Button onClick={onEditClick} className="mt-4">
+          Add Profile Details
+        </Button>
       </div>
     );
   }
