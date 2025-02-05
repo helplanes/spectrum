@@ -1,57 +1,120 @@
 import {
-    Accordion,
-    AccordionContent,
-    AccordionItem,
-    AccordionTrigger,
-  } from "@/components/ui/accordion"
-  
-  export function Rules() {
-    return (
-      <Accordion type="single" collapsible className="w-full text-gray-700 lg:p-8">
-        <h1 className="scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-5xl">Rules of Blind Coding: </h1>
-        <p className="leading-7 mb-4">
-        This event is going to be team-based. <br/>
-        A team should have a minimum of 2 and maximum of 5 members <br/>
-        Entry fee: Rs 100/- per person <br/>
-        Total 4 rounds <br/>
-        <hr className="pt-4"/>  
-        </p>
-        <AccordionItem value="item-1">
-          <AccordionTrigger>ROUND 1: RESISTANCE IS FUTILE</AccordionTrigger>
-          <AccordionContent>
-          1.	This round is going to be an Aptitude Test. <br/>
-          2.	You&apos;ve got a half-hour to tackle 30 multiple-choice questions. <br/>
-          3.	1 mark for correct question. There will not be any negative marking. <br/>
-          4.	Questions will be based on basic concepts of electronics and few logic-based questions. <br/>
-          5.	The use of a scientific calculator is allowed. <br/>
-          6.	Use of smart phones, laptops, smart watches, etc. is strictly prohibited. <br/>
-          7.	The examination will be conducted using pen and paper. <br/>
-          8.	Judging Criteria: <br/>
-          Teams would be selected on the basis of number of questions answered correctly.  <br/>v
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-2">
-          <AccordionTrigger>ROUND 2: FAST AND FURIOUS</AccordionTrigger>
-          <AccordionContent>
-          1.	In this round, teams will engage in a Buzzer Battle, aiming to respond swiftly and accurately to the questions. <br/>
-          2.	Teams earn points for quickly answering correctly by hitting the button first, but incorrect responses result in point deductions. <br/>
-          3.	Number of questions will be a surprise. <br/>
-          4.	Team with the most points in a group will advance into the next round. <br/>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-3">
-          <AccordionTrigger>ROUND 3: CIRCUIT SAFARI</AccordionTrigger>
-          <AccordionContent>
-          1.	This will be the Final Showdown of the event. <br/>
-          2.	Each team has to send one member to play in a game of real-life snakes and ladders with a twist of electronics. <br/>
-          3.	Players would act as pawns who must collect electronic components from the board. <br/>
-          4.	Teams can change their playing member during half-time. <br/>
-          5.	Each team will have to start building a physical circuit using the components collected from the board. <br/>
-          6.	The First three teams who successfully build a working circuit as per the requirements wins the game! <br/>
-          7.	This round comes with some unexpected surprises too! <br/>
-          </AccordionContent>
-        </AccordionItem>
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+
+export function Rules() {
+  return (
+    <div className="w-full text-gray-700 p-2 sm:p-4 lg:p-8">
+      <h1 className="scroll-m-20 text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight lg:text-5xl px-2 sm:px-4 md:px-0">
+        Rules of Blind Coding Competition
+      </h1>
+      <p className="leading-7 mb-6 sm:mb-8 px-2 sm:px-4 md:px-0 text-sm sm:text-base">
+        Test your programming skills without visual feedback
+      </p>
+
+      <Accordion type="single" collapsible className="space-y-3 sm:space-y-4 md:space-y-6">
+        {sections.map((section, index) => (
+          <AccordionItem 
+            key={index} 
+            value={`item-${index + 1}`} 
+            className="border-none rounded-lg sm:rounded-xl md:rounded-2xl bg-white shadow-sm hover:shadow-md transition-all duration-300 mx-1 sm:mx-2 md:mx-0"
+          >
+            <AccordionTrigger className="px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 hover:no-underline data-[state=open]:bg-[#EBE9E0] rounded-lg shadow-md sm:rounded-xl md:rounded-2xl group transition-all duration-300 w-full">
+              <div className="flex items-center gap-2 sm:gap-3 md:gap-6 w-full">
+                <span className="flex-shrink-0 flex items-center justify-center w-8 h-8 sm:w-8 sm:h-8 md:w-12 md:h-12 rounded-full bg-[#EBE9E0] group-data-[state=open]:bg-white text-gray-800 font-bold text-sm sm:text-base md:text-lg transition-all duration-300">
+                  {index + 1}
+                </span>
+                <h3 className="text-sm sm:text-base md:text-xl font-semibold group-hover:text-gray-900 text-left flex-1">
+                  {section.title}
+                </h3>
+              </div>
+            </AccordionTrigger>
+            <AccordionContent className="px-4 md:px-6 pb-4 md:pb-6 pt-3 md:pt-4">
+              <div className="space-y-4 md:space-y-6">
+                <p className="text-gray-600 leading-relaxed text-sm md:text-lg">
+                  {section.description}
+                </p>
+                <div className="bg-[#EBE9E0] rounded-xl md:rounded-2xl p-4 md:p-6 space-y-3 md:space-y-4">
+                  <h4 className="font-semibold text-gray-900 text-base md:text-lg">Guidelines:</h4>
+                  <ul className="space-y-2 md:space-y-3">
+                    {section.rules.map((rule, idx) => (
+                      <li key={idx} className="flex items-start gap-2 md:gap-3 text-gray-700">
+                        <span className="font-medium min-w-[16px] md:min-w-[20px] text-sm md:text-base">
+                          {idx + 1}.
+                        </span>
+                        <span className="leading-relaxed text-sm md:text-base">
+                          {rule}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+        ))}
       </Accordion>
-    )
+    </div>
+  )
+}
+
+const sections = [
+  {
+    title: "Overview",
+    description: "Basic requirements and eligibility:",
+    rules: [
+      "Competition is open to first-year students only",
+      "Event will be divided into 2 levels: Quiz Round and Blind Coding",
+      "Programming languages allowed: C, C++, Java, and Python",
+      "Teams must have 2-3 members",
+      "Scientific calculators allowed for first round"
+    ]
+  },
+  {
+    title: "General Rules",
+    description: "Competition guidelines and restrictions:",
+    rules: [
+      "Participants must bring their own stationery (calculators, pens, etc)",
+      "No personal computers or electronic components allowed",
+      "Use of AI chatbots like ChatGPT is strictly prohibited",
+      "No mobile phones, smartwatches, or other electronic devices",
+      "Participants will be strictly monitored with volunteer assistance available"
+    ]
+  },
+  {
+    title: "Level 1: Quiz Round",
+    description: "First stage of the competition:",
+    rules: [
+      "Duration: 30 minutes",
+      "Format: Multiple Choice Questions (MCQs)",
+      "Topics: Basic Programming Concepts and Data Structures",
+      "Scoring: +1 for correct answers, 0 for incorrect",
+      "Top performers qualify for Level 2"
+    ]
+  },
+  {
+    title: "Level 2: Blind Coding",
+    description: "Final stage with evaluation criteria:",
+    rules: [
+      "Duration: 60 minutes",
+      "1-3 coding problems to solve",
+      "Monitor will be turned off during coding",
+      "Basic text editor provided",
+      "No internet access or external resources allowed"
+    ]
+  },
+  {
+    title: "Evaluation & Results",
+    description: "Judging criteria and decision process:",
+    rules: [
+      "Correctness (50%), Code Quality (20%)",
+      "Efficiency (20%), Logical Approach (10%)",
+      "Tie-breakers: Speed of submission, code quality, quiz performance",
+      "Event coordinators' decision is final and binding",
+      "Winners announced at end with prizes for top performers"
+    ]
   }
-    
+];
