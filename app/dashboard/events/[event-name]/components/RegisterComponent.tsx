@@ -373,7 +373,7 @@ export default function RegisterComponent({ eventDetails }: { eventDetails: Even
           <PaymentButton
             eventId={eventDetails.id}
             type="solo"
-            amount={100}
+            amount={5}
             onSuccess={checkRegistrationStatus}
           />
         </div>
@@ -514,7 +514,7 @@ export default function RegisterComponent({ eventDetails }: { eventDetails: Even
     const paymentRequired = registrationStatus?.payment?.required;
     
     if (isNonPccoeLeader && paymentRequired) {
-      const amount = registrationStatus.payment.amount || (acceptedMembersCount * 100);
+      const amount = registrationStatus.payment.amount || (acceptedMembersCount * 5);
       return (
         <PaymentButton
           eventId={eventDetails.id}
@@ -563,7 +563,7 @@ export default function RegisterComponent({ eventDetails }: { eventDetails: Even
     if (registrationStatus?.isLeader && !registrationStatus?.profile?.is_pccoe_student) {
       // Calculate amount based on total accepted members
       const acceptedMembersCount = acceptedMembers.length;
-      const totalAmount = acceptedMembersCount * 100; // ₹100 per member
+      const totalAmount = acceptedMembersCount * 5; // ₹100 per member
     
       return (
         <div className="space-y-4">
