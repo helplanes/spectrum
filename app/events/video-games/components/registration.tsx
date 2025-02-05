@@ -3,11 +3,7 @@ import { Button } from "@/components/ui/button"
 
 export function Electrica_registarion() {
     return (
-<<<<<<< HEAD
-        <div className="p-2 sm:p-4 lg:p-8 mx-auto">
-=======
         <div className="p-2 sm:p-4 lg:p-8 my-auto mx-auto">
->>>>>>> b19951ad898673129e076c1a80ac4f36bda5c306
             <div className="p-3 sm:p-4 border-4 border-dashed border-gray-300 rounded-[2rem]">
                 <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200 relative">
                     {/* Dots for ticket effect */}
