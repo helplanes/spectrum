@@ -56,7 +56,7 @@ export default function PaymentButton({
       toast.dismiss(toastId);
 
       const cashfree = await load({
-        mode: process.env.NODE_ENV === "production" ? "production" : "sandbox"
+        mode: process.env.NODE_ENV === "production" ? "production" : "production"
       });
 
       await cashfree.checkout({

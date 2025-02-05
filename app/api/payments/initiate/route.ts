@@ -128,7 +128,7 @@ export async function POST(request: Request) {
     });
 
     if (!appId || !secretKey) {
-      throw new Error(`Missing Cashfree credentials for ${process.env.NODE_ENV} environment`);
+      throw new Error("Missing or invalid Cashfree credentials.");
     }
 
     const cashfree = new Cashfree(appId, secretKey);
@@ -138,29 +138,47 @@ export async function POST(request: Request) {
       hasCredentials: !!appId && !!secretKey
     });
 
+    // Ensure HTTPS for return URL
+    const rawAppUrl = process.env.NEXT_PUBLIC_APP_URL || '';
+    const safeAppUrl = rawAppUrl.startsWith('https://')
+      ? rawAppUrl
+      : rawAppUrl.replace('http://', 'https://');
+
+    // Add order ID to return URL for tracking
+    const returnUrl = `${safeAppUrl}/dashboard/events/registrations?order_id=${orderId}`;
+
     // Add error handling for payment session
     const paymentSession = await cashfree.createPaymentSession({
       orderId,
       amount,
       currency: "INR",
       customerDetails: {
-        customerId: user.id,
-        customerEmail: profile.email || user.email,
-        customerPhone: profile.phone || '0000000000', // Provide fallback
-        customerName: profile.full_name || 'Unknown'
+        customerId: user.id,  // Ensure this is always set
+        customerEmail: profile.email || user.email || '',
+        customerPhone: profile.phone?.replace(/\D/g, '') || '0000000000', // Remove non-digits
+        customerName: profile.full_name || user.email?.split('@')[0] || 'Guest'
       },
-      returnUrl: `${process.env.NEXT_PUBLIC_APP_URL}/dashboard/events/registrations`
+      returnUrl
     });
 
-    if (!paymentSession.success || !paymentSession.payment_session_id) {
-      throw new Error(paymentSession.error?.message || 'Failed to create payment session');
-    }
+    // Update database with session details
+    await supabase
+      .from('payments')
+      .update({
+        payment_session_id: paymentSession.payment_session_id,
+        metadata: {
+          ...payment.metadata,
+          session_details: paymentSession.data
+        }
+      })
+      .eq('id', payment.id);
 
     return NextResponse.json({
       orderId,
       paymentSessionId: paymentSession.payment_session_id,
       amount,
-      environment: process.env.NODE_ENV
+      environment: process.env.NODE_ENV,
+      sessionData: paymentSession.data
     });
 
   } catch (error: any) {
