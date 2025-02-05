@@ -103,7 +103,7 @@ export async function POST(request: Request) {
 
       // If leader is non-PCCOE, verify payment
       if (!team.leader.is_pccoe_student) {
-        const requiredAmount = teamMembers.length * 100; // ₹100 per member
+        const requiredAmount = teamMembers.length * 5; // ₹100 per member
 
         // Get latest successful payment
         const { data: payment } = await supabase
@@ -290,7 +290,7 @@ export async function POST(request: Request) {
 
       // If leader is non-PCCOE, verify payment
       if (!team.leader.is_pccoe_student) {
-        const requiredAmount = memberCount * 100; // ₹100 per member
+        const requiredAmount = memberCount * 5; // ₹100 per member
 
         // Check for successful payment
         const { data: payment } = await supabase

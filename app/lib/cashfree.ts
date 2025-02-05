@@ -87,13 +87,46 @@ export class Cashfree {
 
   constructor(appId: string, secretKey: string) {
     if (!appId || !secretKey) {
-      throw new Error('Cashfree credentials are missing');
+      const env = process.env.NODE_ENV || 'development';
+      throw new Error(`Missing Cashfree credentials for ${env} environment. Please check your environment variables.`);
     }
+
+    // Validate credential format
+    if (!this.validateCredentials(appId, secretKey)) {
+      throw new Error('Invalid Cashfree credentials format');
+    }
+
     this.appId = appId;
     this.secretKey = secretKey;
-    this.baseUrl = process.env.NODE_ENV === 'production' 
-      ? 'https://api.cashfree.com/pg'
-      : 'https://sandbox.cashfree.com/pg';
+    this.baseUrl = this.getBaseUrl();
+  }
+
+  private validateCredentials(appId: string, secretKey: string): boolean {
+    if (!appId || !secretKey) return false;
+    
+    const isDev = process.env.NODE_ENV !== 'production';
+    if (isDev) {
+      // In development, just check if the credentials exist and are strings
+      // Remove the TEST prefix requirement as Cashfree sandbox creds don't always have it
+      return typeof appId === 'string' && typeof secretKey === 'string';
+    }
+    
+    // In production, ensure credentials don't have TEST prefix
+    return !appId.startsWith('TEST') && !secretKey.startsWith('TEST');
+  }
+
+  private getBaseUrl(): string {
+    const isDev = process.env.NODE_ENV !== 'production';
+    const baseUrl = isDev 
+      ? 'https://sandbox.cashfree.com/pg'
+      : 'https://api.cashfree.com/pg';
+      
+    console.log('Using Cashfree baseUrl:', {
+      env: process.env.NODE_ENV,
+      url: baseUrl
+    });
+    
+    return baseUrl;
   }
 
   private async wait(ms: number): Promise<void> {
@@ -116,6 +149,15 @@ export class Cashfree {
   }
 
   private async makeRequest(url: string, options: RequestInit, attempt = 1): Promise<Response> {
+    // Add proper headers for authentication
+    const headers = {
+      'x-api-version': '2022-09-01',
+      'x-client-id': this.appId,
+      'x-client-secret': this.secretKey,
+      'Content-Type': 'application/json',
+      ...options.headers,
+    };
+
     const timeSinceLastRequest = Date.now() - this.lastRequestTime;
     if (timeSinceLastRequest < this.rateLimitDelay) {
       await this.wait(this.rateLimitDelay - timeSinceLastRequest);
@@ -128,13 +170,23 @@ export class Cashfree {
       this.lastRequestTime = Date.now();
       const response = await fetch(url, {
         ...options,
+        headers,
         signal: controller.signal
       });
 
-      if (!response.ok && attempt < this.maxRetries) {
-        const backoff = Math.min(1000 * Math.pow(2, attempt), 5000);
-        await this.wait(backoff);
-        return this.makeRequest(url, options, attempt + 1);
+      // Enhanced error handling
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        if (response.status === 401) {
+          throw new Error(`Authentication failed: Please check Cashfree credentials (${errorData.message || 'Unknown error'})`);
+        }
+        if (attempt < this.maxRetries) {
+          console.warn(`Request failed (attempt ${attempt}/${this.maxRetries}):`, errorData);
+          const backoff = Math.min(1000 * Math.pow(2, attempt), 5000);
+          await this.wait(backoff);
+          return this.makeRequest(url, options, attempt + 1);
+        }
+        throw new Error(`Cashfree API error: ${errorData.message || response.statusText}`);
       }
 
       return response;
@@ -210,12 +262,19 @@ export class Cashfree {
         };
       }
 
-      console.log('Creating payment session with Cashfree:', {
+      // Enhanced logging
+      console.log('Initiating Cashfree payment session:', {
         baseUrl: this.baseUrl,
         orderId: params.orderId,
         env: process.env.NODE_ENV,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
+        appId: this.appId.substring(0, 8) + '***', // Log partial appId for debugging
       });
+
+      // Validate environment configuration
+      if (!this.baseUrl.includes('sandbox') && process.env.NODE_ENV !== 'production') {
+        console.warn('Using production Cashfree endpoint in non-production environment');
+      }
 
       const response = await this.makeRequest(
         `${this.baseUrl}/orders`,
@@ -238,13 +297,21 @@ export class Cashfree {
               customer_name: params.customerDetails.customerName,
             },
             order_meta: {
-              return_url: params.returnUrl // Add this line
+              return_url: params.returnUrl,
+              notify_url: process.env.NEXT_PUBLIC_APP_URL + '/api/payments/webhook'
             }
           }),
         }
       );
 
       const data = await response.json();
+
+      // Enhanced success logging
+      console.log('Payment session created successfully:', {
+        orderId: params.orderId,
+        sessionId: data.payment_session_id,
+        timestamp: new Date().toISOString()
+      });
 
       if (!response.ok) {
         console.error('Cashfree API error:', {
@@ -273,21 +340,26 @@ export class Cashfree {
         payment_session_id: data.payment_session_id
       };
     } catch (error: any) {
+      // Enhanced error logging
       console.error('Cashfree payment session creation failed:', {
         error: error.message,
-        stack: error.stack,
+        code: error.code,
+        type: error.type,
+        orderId: params.orderId,
         timestamp: new Date().toISOString()
       });
+
       // Remove from pending orders if request fails
       this.pendingOrders.delete(params.orderId);
+
       return {
         success: false,
         error: {
           message: error.message,
-          code: 'INTERNAL_ERROR',
-          type: 'SYSTEM_ERROR'
+          code: error.code || 'INTERNAL_ERROR',
+          type: error.type || 'SYSTEM_ERROR'
         },
-        status: 500,
+        status: error.status || 500,
         payment_session_id: undefined
       };
     }
