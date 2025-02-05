@@ -321,9 +321,58 @@ export default function RegisterComponent({ eventDetails }: { eventDetails: Even
     toast.info("Payment functionality will be implemented soon");
   };
 
-  // If registration status is null or team status is still loading, show loading
+  // Modify the condition that checks registration status
   if (registrationStatus === null || isTeamStatusLoading) {
-    return <Button disabled className="w-full">Loading...</Button>;
+    return (
+      <div className="space-y-4">
+        <div className="bg-blue-50/80 border border-blue-200 rounded-lg p-4 sm:p-6">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
+            <div className="flex-shrink-0">
+              <Loader2 className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600 animate-spin" />
+            </div>
+            <div className="space-y-2">
+              <h3 className="text-blue-800 font-medium text-sm sm:text-base">
+                Checking Registration Status
+              </h3>
+              <p className="text-blue-700 text-xs sm:text-sm">
+                This may take a few moments. Please wait while we verify your registration details.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Update the registration status check to handle null registration/payment status
+  if (registrationStatus.isRegistered && 
+      (registrationStatus.registrationStatus === null || 
+       registrationStatus.paymentStatus === null)) {
+    return (
+      <div className="space-y-4">
+        <div className="bg-blue-50/80 border border-blue-200 rounded-lg p-4 sm:p-6">
+          {/* Use the same loading UI as above */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
+            <div className="flex-shrink-0">
+              <Loader2 className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600 animate-spin" />
+            </div>
+            <div className="space-y-2">
+              <h3 className="text-blue-800 font-medium text-sm sm:text-base">
+                Checking Registration Status
+              </h3>
+              <p className="text-blue-700 text-xs sm:text-sm">
+                This may take a few moments. Please wait while we verify your registration details.
+              </p>
+              <ul className="text-xs sm:text-sm text-blue-700 space-y-1.5 list-disc pl-4">
+                <li>If you&apos;re registration went through without payment, it will be auto cancelled after 30 mintues!</li>
+                <li>Network connectivity issues, please try again in a bit, with better internet connection.</li>
+            </ul>
+            </div>
+          </div>
+          {/* Rest of the loading UI */}
+        </div>
+      </div>
+    );
   }
 
   if (registrationStatus.isRegistered) {
@@ -354,6 +403,52 @@ export default function RegisterComponent({ eventDetails }: { eventDetails: Even
               </Link>
             </span>
           </p>
+        </div>
+      </div>
+    );
+  }
+
+  if (registrationStatus.status === 'pending') {
+    return (
+      <div className="space-y-4">
+        <div className="bg-yellow-50/80 border border-yellow-200 rounded-lg p-4 sm:p-6">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
+            <div className="flex-shrink-0">
+              <Loader2 className="h-5 w-5 sm:h-6 sm:w-6 text-yellow-600 animate-spin" />
+            </div>
+            <div className="space-y-2">
+              <h3 className="text-yellow-800 font-medium text-sm sm:text-base">
+                Payment Verification in Progress
+              </h3>
+              <p className="text-yellow-700 text-xs sm:text-sm">
+                The bank will verify and update your payment status within 15 minutes. Please check back later.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-4 sm:mt-6 space-y-2">
+            <p className="text-sm font-medium text-yellow-800">Common reasons for delay:</p>
+            <ul className="text-xs sm:text-sm text-yellow-700 space-y-1.5 list-disc pl-4">
+              <li>Network connectivity issues during payment processing</li>
+              <li>High transaction volume at the payment gateway</li>
+              <li>Bank server maintenance or temporary downtime</li>
+              <li>Internet connection interruption during payment confirmation</li>
+            </ul>
+          </div>
+
+          <div className="mt-4 sm:mt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs sm:text-sm">
+            <p className="text-yellow-600">
+              Transaction ID: <span className="font-mono">{registrationStatus.transactionId}</span>
+            </p>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={checkRegistrationStatus}
+              className="w-full sm:w-auto bg-yellow-100/50 border-yellow-200 text-yellow-700 hover:bg-yellow-100"
+            >
+              Check Status Again
+            </Button>
+          </div>
         </div>
       </div>
     );
@@ -721,13 +816,38 @@ export default function RegisterComponent({ eventDetails }: { eventDetails: Even
                       <li>• Non-PCCOE students can only team up with other non-PCCOE students</li>
                     </ul>
                   </div>
-                  <div className="mb-4 p-3 sm:p-4 bg-yellow-50/50 border border-yellow-100 rounded-md">
-                        <p className="text-yellow-700 text-xs sm:text-sm">
-                          <strong>How to accept invite:</strong>
+                  <div className="mb-4 p-3 sm:p-4 bg-blue-50/50 border border-blue-100 rounded-lg">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4">
+                      <div className="shrink-0">
+                        <svg 
+                          className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path 
+                            strokeLinecap="round" 
+                            strokeLinejoin="round" 
+                            strokeWidth="2" 
+                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" 
+                          />
+                        </svg>
+                      </div>
+                      <div>
+                        <p className="text-blue-800 font-medium text-sm sm:text-base mb-1">
+                          Team Invitation Instructions
                         </p>
-                      <ul className="mt-1 text-[11px] sm:text-sm text-yellow-600 space-y-1">
-                        <li>• Ask your friend to visit <Link href="/dashboard/events/accept" className="font-medium underline hover:text-yellow-800">/dashboard/events/accept</Link> from their account to accept the invitation</li>
-                      </ul>
+                        <p className="text-blue-600 text-xs sm:text-sm">
+                          Share this link with your team members:
+                          <Link 
+                            href="/dashboard/events/accept" 
+                            className="ml-1.5 font-medium underline decoration-dashed underline-offset-4 hover:text-blue-700"
+                          >
+                            /dashboard/events/accept
+                          </Link>
+                        </p>
+                      </div>
+                    </div>
                   </div>
                   <CardDescription className="space-y-1 text-xs sm:text-sm">
                     {!canInvite ? (
@@ -968,14 +1088,39 @@ export default function RegisterComponent({ eventDetails }: { eventDetails: Even
                     <li>• Non-PCCOE students can only team up with other non-PCCOE students</li>
                   </ul>
                 </div>
-                <div className="mb-4 p-3 sm:p-4 bg-yellow-50/50 border border-yellow-100 rounded-md">
-                        <p className="text-yellow-700 text-xs sm:text-sm">
-                          <strong>How to accept invite:</strong>
-                        </p>
-                      <ul className="mt-1 text-[11px] sm:text-sm text-yellow-600 space-y-1">
-                        <li>• Ask your friend to visit <Link href="/dashboard/events/accept" className="font-medium underline hover:text-yellow-800">/dashboard/events/accept</Link> from their account to accept the invitation</li>
-                      </ul>
+                <div className="mb-4 p-3 sm:p-4 bg-blue-50/50 border border-blue-100 rounded-lg">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4">
+                    <div className="shrink-0">
+                      <svg 
+                        className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path 
+                          strokeLinecap="round" 
+                          strokeLinejoin="round" 
+                          strokeWidth="2" 
+                          d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" 
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-blue-800 font-medium text-sm sm:text-base mb-1">
+                        Team Invitation Instructions
+                      </p>
+                      <p className="text-blue-600 text-xs sm:text-sm">
+                        Share this link with your team members:
+                        <Link 
+                          href="/dashboard/events/accept" 
+                          className="ml-1.5 font-medium underline decoration-dashed underline-offset-4 hover:text-blue-700"
+                        >
+                          /dashboard/events/accept
+                        </Link>
+                      </p>
+                    </div>
                   </div>
+                </div>
             <Card>
               <CardHeader className="p-4 sm:p-6">
                 <CardTitle className="text-lg sm:text-xl">Invite Members</CardTitle>
