@@ -6,14 +6,14 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 
-export function Rules() {
+export function RulesFreefire() {
   return (
     <div className="w-full text-gray-700 p-2 sm:p-4 lg:p-8">
       <h1 className="scroll-m-20 text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight lg:text-5xl px-2 sm:px-4 md:px-0">
-        Rules of Blind Coding Competition
+        Free Fire Tournament Rules
       </h1>
       <p className="leading-7 mb-6 sm:mb-8 px-2 sm:px-4 md:px-0 text-sm sm:text-base">
-        Test your programming skills without visual feedback
+        Official Tournament Guidelines
       </p>
 
       <Accordion type="single" collapsible className="space-y-3 sm:space-y-4 md:space-y-6">
@@ -64,58 +64,49 @@ export function Rules() {
 
 const sections = [
   {
-    title: "Overview",
-    description: "Basic requirements and eligibility:",
+    title: "Registration & Eligibility",
+    description: "Essential requirements for tournament participation:",
     rules: [
-      "Competition is open to first-year students only",
-      "Event will be divided into 2 levels: Quiz Round and Blind Coding",
-      "Programming languages allowed: C, C++, Java, and Python",
-      "Teams must have 2-3 members",
-      "Scientific calculators allowed for first round"
+      "All players must be at least Level 10 to participate",
+      "Players must use their own accounts with unique survivor names",
+      "Only smartphones running Android or iOS are allowed - no emulators, tablets, triggers or other devices",
+      "Players cannot switch accounts during the tournament",
+      "Teams must join 10 minutes before scheduled time or risk disqualification"
     ]
   },
   {
-    title: "General Rules",
-    description: "Competition guidelines and restrictions:",
+    title: "Tournament Rules",
+    description: "Official tournament guidelines and compliance:",
     rules: [
-      "Participants must bring their own stationery (calculators, pens, etc)",
-      "No personal computers or electronic components allowed",
-      "Use of AI chatbots like ChatGPT is strictly prohibited",
-      "No mobile phones, smartwatches, or other electronic devices",
-      "Participants will be strictly monitored with volunteer assistance available"
+      "All players must comply with tournament rules and staff decisions",
+      "Ignorance of rules is not an acceptable excuse for violations",
+      "Tournament staff decisions are final and binding",
+      "For LAN events, players must bring their own peripherals (headsets, battery packs)",
+      "No rank requirements are imposed for registration"
     ]
   },
   {
-    title: "Level 1: Quiz Round",
-    description: "First stage of the competition:",
+    title: "Fair Play",
+    description: "Guidelines ensuring fair competition:",
     rules: [
-      "Duration: 30 minutes",
-      "Format: Multiple Choice Questions (MCQs)",
-      "Topics: Basic Programming Concepts and Data Structures",
-      "Scoring: +1 for correct answers, 0 for incorrect",
-      "Top performers qualify for Level 2"
+      "Use of hacks, cheats, or exploits will result in immediate disqualification",
+      "Players must maintain respectful behavior throughout the tournament",
+      "Report suspicious behavior or technical issues immediately",
+      "Follow official tournament communication channels",
+      "Teams must comply with all match scheduling and timing requirements"
     ]
   },
   {
-    title: "Level 2: Blind Coding",
-    description: "Final stage with evaluation criteria:",
+    title: "Technical Requirements",
+    description: "Device and technical specifications:",
     rules: [
-      "Duration: 60 minutes",
-      "1-3 coding problems to solve",
-      "Monitor will be turned off during coding",
-      "Basic text editor provided",
-      "No internet access or external resources allowed"
-    ]
-  },
-  {
-    title: "Evaluation & Results",
-    description: "Judging criteria and decision process:",
-    rules: [
-      "Correctness (50%), Code Quality (20%)",
-      "Efficiency (20%), Logical Approach (10%)",
-      "Tie-breakers: Speed of submission, code quality, quiz performance",
-      "Event coordinators' decision is final and binding",
-      "Winners announced at end with prizes for top performers"
+      "Only smartphones are permitted - no PCs, consoles, or tablets",
+      "Official emulators are not allowed under any circumstances",
+      "Devices must run on either Android or iOS operating systems",
+      "External triggers or unauthorized peripherals are prohibited",
+      "Players are responsible for their device's performance and connectivity"
     ]
   }
 ];
+
+export default RulesFreefire;

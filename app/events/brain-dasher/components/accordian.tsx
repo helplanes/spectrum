@@ -12,7 +12,7 @@ export function Rules() {
         Rules of Braindasher
       </h1>
       <p className="leading-7 mb-6 sm:mb-8 px-2 sm:px-4 md:px-0 text-sm sm:text-base">
-        Total 3 rounds
+        Total 3 rounds, rest to be updated soon!
       </p>
 
       <Accordion type="single" collapsible className="space-y-3 sm:space-y-4 md:space-y-6">
@@ -71,33 +71,33 @@ const rounds = [
       "Demo videos will be shown before the competition begins"
     ]
   },
-  {
-    title: "ROUND 2: Memory Games",
-    description: "This round consists of two parts: 'Flip in Order' and 'Arrange in Order'. In Part 1, teams compete to flip numbered cards in sequence. In Part 2, teams memorize and recreate card sequences. Winners from both parts advance to the final round.",
-    rules: [
-      "Part 1 - Flip in Order:",
-      "Teams of 2 participants each",
-      "30 cards numbered 1-30 will be arranged face down",
-      "Teams must flip cards in numerical order",
-      "10-minute time limit per game",
-      "Maximum 5 seconds allowed per card flip",
-      "8 teams will be selected for Part 2",
-      "Part 2 - Arrange in Order:",
-      "Teams memorize 10-card sequence in 45 seconds",
-      "90 seconds to recreate the sequence",
-      "Both number and suit must match perfectly",
-      "4 teams advance to the final round"
-    ]
-  },
-  {
-    title: "ROUND 3: Word Game (Buzzer Round)",
-    description: "The final round is an individual competition featuring diagrammatic representations of words/phrases, riddles, word unscrambling, and hangman. All 8 qualified participants compete using buzzers to answer questions displayed on a projector.",
-    rules: [
-      "Individual competition with buzzer system",
-      "Questions include pictorial representations, riddles, scrambled words, and hangman",
-      "First to buzz with correct answer earns one point",
-      "Top three scorers will be declared winners",
-      "Questions will be displayed via projector"
-    ]
-  }
+  // {
+  //   title: "ROUND 2: Memory Games",
+  //   description: "This round consists of two parts: 'Flip in Order' and 'Arrange in Order'. In Part 1, teams compete to flip numbered cards in sequence. In Part 2, teams memorize and recreate card sequences. Winners from both parts advance to the final round.",
+  //   rules: [
+  //     "Part 1 - Flip in Order:",
+  //     "Teams of 2 participants each",
+  //     "30 cards numbered 1-30 will be arranged face down",
+  //     "Teams must flip cards in numerical order",
+  //     "10-minute time limit per game",
+  //     "Maximum 5 seconds allowed per card flip",
+  //     "8 teams will be selected for Part 2",
+  //     "Part 2 - Arrange in Order:",
+  //     "Teams memorize 10-card sequence in 45 seconds",
+  //     "90 seconds to recreate the sequence",
+  //     "Both number and suit must match perfectly",
+  //     "4 teams advance to the final round"
+  //   ]
+  // },
+  // {
+  //   title: "ROUND 3: Word Game (Buzzer Round)",
+  //   description: "The final round is an individual competition featuring diagrammatic representations of words/phrases, riddles, word unscrambling, and hangman. All 8 qualified participants compete using buzzers to answer questions displayed on a projector.",
+  //   rules: [
+  //     "Individual competition with buzzer system",
+  //     "Questions include pictorial representations, riddles, scrambled words, and hangman",
+  //     "First to buzz with correct answer earns one point",
+  //     "Top three scorers will be declared winners",
+  //     "Questions will be displayed via projector"
+  //   ]
+  // }
 ];

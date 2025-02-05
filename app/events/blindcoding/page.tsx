@@ -35,7 +35,7 @@ export default function Home() {
     <main className="overflow-hidden max-w-7xl mx-auto px-8 bg-[#EBE9E0]">
       <div className={korna.className}>
         <h1 className="font-jacques_francois_shadow scroll-m-20 pt-8 text-4xl md:text-7xl font-extrabold text-gray-800 tracking-tight lg:text-9xl">
-        Blind Coding &apos;24
+        Blind Coding &apos;25
         </h1>
         <br/>
         <h2 className="font-jacques_francois_shadow scroll-m-20 pl-2 text-2xl font-extrabold text-gray-800 tracking-tight lg:text-5xl">
@@ -61,11 +61,11 @@ export default function Home() {
     <picture> 
       <img className="mx-auto my-8" width="800" height="50" alt="image" src="https://res.cloudinary.com/dfyrk32ua/image/upload/v1705931875/Spectrum/global/lbNfJM2-min_n0yrof.webp" />
     </picture> 
-    <div className="text-gray-700 leading-7 mb-4 p-2 lg:p-8">
+    {/* <div className="text-gray-700 leading-7 mb-4 p-2 lg:p-8">
         <h1>Note :</h1>
         <p className="leading-7">
         •	Event will be team-based (Each team can have a minimum of 2 members and maximum of 3) <br/>
-        •	Event will be divided into 3 rounds. <br/>
+        •	Event will be divided into 5 rounds. <br/>
         •	Scientific Calculators are allowed for the first round of the event. <br/>
         •	Participants will have to carry their own stationary (Calculators, pens, etc). <br/>
         •	Personal computers, electronic/Blind Codingl components are not allowed for use during the event. <br/>
@@ -81,7 +81,7 @@ export default function Home() {
         •	The team would be held responsible for any damage caused to Blind Codingl components due to mishandling or carelessness, and would be required to pay a fine. <br/>
         •	Spot entries will be accepted until the team registration limit is reached. <br/>
         </p>
-        </div>
+        </div> */}
         {/* <TableInfo /> */}
     </main>
   );
