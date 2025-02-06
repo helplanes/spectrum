@@ -36,6 +36,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import Link from 'next/link';
 import PaymentButton from "@/app/components/PaymentButton";
+import InviteMembersComponent from "./InviteMembersComponent";
 
 const createTeamSchema = z.object({
   teamName: z.string()
@@ -879,104 +880,14 @@ export default function RegisterComponent({ eventDetails }: { eventDetails: Even
             </TabsContent>
     
             <TabsContent value="invite">
-              <Card>
-                <CardHeader className="p-4 sm:p-6">
-                  <CardTitle className="text-lg sm:text-xl">Invite Members</CardTitle>
-                  <div className="mb-4 p-3 sm:p-4 bg-red-50/50 border border-red-100 rounded-md">
-                    <p className="text-red-700 text-xs sm:text-sm">
-                      <strong>Important:</strong>
-                    </p>
-                    <ul className="mt-1 text-[11px] sm:text-sm text-red-600 space-y-1">
-                      <li>• PCCOE students can only team up with other PCCOE students</li>
-                      <li>• Non-PCCOE students can only team up with other non-PCCOE students</li>
-                    </ul>
-                  </div>
-                  <div className="mb-4 p-3 sm:p-4 bg-blue-50/50 border border-blue-100 rounded-lg">
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4">
-                      <div className="shrink-0">
-                        <svg 
-                          className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path 
-                            strokeLinecap="round" 
-                            strokeLinejoin="round" 
-                            strokeWidth="2" 
-                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" 
-                          />
-                        </svg>
-                      </div>
-                      <div>
-                        <p className="text-blue-800 font-medium text-sm sm:text-base mb-1">
-                          Team Invitation Instructions
-                        </p>
-                        <p className="text-blue-600 text-xs sm:text-sm">
-                          Share this link with your team members:
-                          <Link 
-                            href="/dashboard/events/accept" 
-                            className="ml-1.5 font-medium underline decoration-dashed underline-offset-4 hover:text-blue-700"
-                          >
-                            /dashboard/events/accept
-                          </Link>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <CardDescription className="space-y-1 text-xs sm:text-sm">
-                    {!canInvite ? (
-                      <p className="text-yellow-600">Maximum team size reached ({maxAllowed} members)</p>
-                    ) : (
-                      <>
-                        <p>You can add up to {maxAllowed - totalMembers} more members</p>
-                        {pendingMembers.length > 0 && (
-                          <p className="text-yellow-600 text-[11px] sm:text-xs">
-                            {pendingMembers.length} invitation{pendingMembers.length !== 1 ? 's' : ''} have been sent out and are pending.
-                          </p>
-                        )}
-                      </>
-                    )}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="p-4 sm:p-6">
-                  <Form {...inviteMemberForm}>
-                    <form onSubmit={inviteMemberForm.handleSubmit(onInviteMember)} className="space-y-4">
-                      <FormField
-                        control={inviteMemberForm.control}
-                        name="email"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormControl>
-                              <div className="flex flex-col sm:flex-row gap-2">
-                                <Input 
-                                  placeholder="member@email.com" 
-                                  {...field} 
-                                  disabled={!canInvite || isLoading}
-                                  className="text-sm"
-                                />
-                                <Button 
-                                  type="submit" 
-                                  disabled={!canInvite || isLoading}
-                                  className="sm:w-auto"
-                                >
-                                  {isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Invite"}
-                                </Button>
-                              </div>
-                            </FormControl>
-                            {!canInvite && (
-                              <p className="text-[11px] sm:text-xs text-red-500 mt-1">
-                                Cannot send more invites: maximum team size would be exceeded
-                              </p>
-                            )}
-                            <FormMessage className="text-[11px] sm:text-xs" />
-                          </FormItem>
-                        )}
-                      />
-                    </form>
-                  </Form>
-                </CardContent>
-              </Card>
+              <InviteMembersComponent
+                currentTeamId={currentTeamId}
+                canInvite={canInvite}
+                maxAllowed={eventDetails.max_team_size}
+                totalMembers={totalMembers}
+                pendingMembers={pendingMembers}
+                onInviteSuccess={fetchTeamMembers}
+              />
             </TabsContent>
           </Tabs>
     
@@ -1154,104 +1065,14 @@ export default function RegisterComponent({ eventDetails }: { eventDetails: Even
           </TabsContent>
   
           <TabsContent value="invite">
-          <div className="mb-4 p-3 sm:p-4 bg-red-50/50 border border-red-100 rounded-md">
-                  <p className="text-red-700 text-xs sm:text-sm">
-                    <strong>Important:</strong>
-                  </p>
-                  <ul className="mt-1 text-[11px] sm:text-sm text-red-600 space-y-1">
-                    <li>• PCCOE students can only team up with other PCCOE students</li>
-                    <li>• Non-PCCOE students can only team up with other non-PCCOE students</li>
-                  </ul>
-                </div>
-                <div className="mb-4 p-3 sm:p-4 bg-blue-50/50 border border-blue-100 rounded-lg">
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4">
-                    <div className="shrink-0">
-                      <svg 
-                        className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path 
-                          strokeLinecap="round" 
-                          strokeLinejoin="round" 
-                          strokeWidth="2" 
-                          d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" 
-                        />
-                      </svg>
-                    </div>
-                    <div>
-                      <p className="text-blue-800 font-medium text-sm sm:text-base mb-1">
-                        Team Invitation Instructions
-                      </p>
-                      <p className="text-blue-600 text-xs sm:text-sm">
-                        Share this link with your team members:
-                        <Link 
-                          href="/dashboard/events/accept" 
-                          className="ml-1.5 font-medium underline decoration-dashed underline-offset-4 hover:text-blue-700"
-                        >
-                          /dashboard/events/accept
-                        </Link>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-            <Card>
-              <CardHeader className="p-4 sm:p-6">
-                <CardTitle className="text-lg sm:text-xl">Invite Members</CardTitle>
-                <CardDescription className="space-y-1 text-xs sm:text-sm">
-                  {!canInvite ? (
-                    <p className="text-yellow-600">Maximum team size reached ({maxAllowed} members)</p>
-                  ) : (
-                    <>
-                      <p>You can add up to {maxAllowed - totalMembers} more members</p>
-                      {pendingMembers.length > 0 && (
-                        <p className="text-yellow-600 text-[11px] sm:text-xs">
-                          {pendingMembers.length} invitation{pendingMembers.length !== 1 ? 's' : ''} have been sent out and are pending.
-                        </p>
-                      )}
-                    </>
-                  )}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="p-4 sm:p-6">
-                <Form {...inviteMemberForm}>
-                  <form onSubmit={inviteMemberForm.handleSubmit(onInviteMember)} className="space-y-4">
-                    <FormField
-                      control={inviteMemberForm.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormControl>
-                            <div className="flex flex-col sm:flex-row gap-2">
-                              <Input 
-                                placeholder="member@email.com" 
-                                {...field} 
-                                disabled={!canInvite || isLoading}
-                                className="text-sm"
-                              />
-                              <Button 
-                                type="submit" 
-                                disabled={!canInvite || isLoading}
-                                className="sm:w-auto"
-                              >
-                                {isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Invite"}
-                              </Button>
-                            </div>
-                          </FormControl>
-                          {!canInvite && (
-                            <p className="text-[11px] sm:text-xs text-red-500 mt-1">
-                              Cannot send more invites: maximum team size would be exceeded
-                            </p>
-                          )}
-                          <FormMessage className="text-[11px] sm:text-xs" />
-                        </FormItem>
-                      )}
-                    />
-                  </form>
-                </Form>
-              </CardContent>
-            </Card>
+            <InviteMembersComponent
+              currentTeamId={currentTeamId}
+              canInvite={canInvite}
+              maxAllowed={eventDetails.max_team_size}
+              totalMembers={totalMembers}
+              pendingMembers={pendingMembers}
+              onInviteSuccess={fetchTeamMembers}
+            />
           </TabsContent>
         </Tabs>
   
