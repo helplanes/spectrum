@@ -904,7 +904,6 @@ export default function RegisterComponent({ eventDetails }: { eventDetails: Even
                 Payment Details:
               </p>
               <ul className="text-sm text-yellow-800">
-                <li>• Total team members: {acceptedMembers.length}</li>
                 <li>• Registration fee: ₹100 per member</li>
                 <li className="font-medium border-t border-yellow-200 mt-2 pt-2">
                   • Total amount: ₹{totalAmount}
