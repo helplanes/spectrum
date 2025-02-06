@@ -90,6 +90,8 @@ export default function InviteMembersComponent({
   const [showNewUserForm, setShowNewUserForm] = useState(false);
   const [activeTab, setActiveTab] = useState("invite");
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+  const [invitingUserId, setInvitingUserId] = useState<string | null>(null);
+  const [confirmInvite, setConfirmInvite] = useState<{ id: string; email: string } | null>(null);
 
   const inviteMemberForm = useForm<z.infer<typeof inviteMemberSchema>>({
     resolver: zodResolver(inviteMemberSchema),
@@ -171,8 +173,9 @@ export default function InviteMembersComponent({
   const handleInviteExisting = async (userId: string, email: string) => {
     if (!currentTeamId) return;
     
-    setIsLoading(true);
+    setInvitingUserId(userId);
     try {
+      toast.loading("Sending invitation...");
       const response = await fetch(`/api/teams/${currentTeamId}/invite`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -191,7 +194,7 @@ export default function InviteMembersComponent({
         description: `An invitation has been sent to ${email}`,
       });
       
-      // Clear search
+      // Clear search and reset form.
       setSearchResults([]);
       inviteMemberForm.reset();
     } catch (error: any) {
@@ -199,7 +202,8 @@ export default function InviteMembersComponent({
         description: error.message
       });
     } finally {
-      setIsLoading(false);
+      setInvitingUserId(null);
+      setConfirmInvite(null);
     }
   };
 
@@ -377,7 +381,7 @@ export default function InviteMembersComponent({
                         name="email"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-sm font-medium">Search User</FormLabel>
+                            <FormLabel className="text-sm font-medium">Search User & Create Account for Friends!</FormLabel>
                             <FormControl>
                               <div className="relative">
                                 <Input 
@@ -425,16 +429,16 @@ export default function InviteMembersComponent({
                           <Button
                             type="button"
                             size="sm"
-                            onClick={() => handleInviteExisting(user.id, user.email)}
-                            disabled={isLoading}
+                            onClick={() => setConfirmInvite({ id: user.id, email: user.email })}
+                            disabled={invitingUserId === user.id}
                             className="ml-3 shrink-0"
                           >
-                            {isLoading ? (
+                            {invitingUserId === user.id ? (
                               <Loader2 className="h-4 w-4 animate-spin" />
                             ) : (
                               "Invite"
                             )}
-                          </Button>
+                          </Button> 
                         </div>
                       ))}
                     </div>
@@ -577,6 +581,34 @@ export default function InviteMembersComponent({
           <AlertDialogFooter>
             <AlertDialogAction onClick={() => setShowSuccessPopup(false)}>
               OK
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      {/* Invitation Confirmation Modal */}
+      <AlertDialog open={!!confirmInvite} onOpenChange={() => setConfirmInvite(null)}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Confirm Invitation</AlertDialogTitle>
+            <AlertDialogDescription>
+              {`Are you sure you want to send an invitation to ${confirmInvite?.email}?`}
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>
+              Cancel
+            </AlertDialogCancel>
+            <AlertDialogAction
+              onClick={() => confirmInvite && handleInviteExisting(confirmInvite.id, confirmInvite.email)}
+              disabled={invitingUserId === confirmInvite?.id}
+              className="bg-blue-600 hover:bg-blue-700 text-white"
+            >
+              {invitingUserId === confirmInvite?.id ? (
+                <Loader2 className="h-4 w-4 animate-spin" />
+              ) : (
+                "Confirm"
+              )}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

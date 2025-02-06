@@ -131,13 +131,29 @@ export async function POST(request: NextRequest) {
       .select('*')
       .eq('team_id', teamId)
       .eq('member_email', normalizedEmail)
-      .not('invitation_status', 'eq', 'rejected')
       .maybeSingle();
 
     if (existingInvite) {
-      return NextResponse.json({
-        error: "An active invitation already exists for this email"
-      }, { status: 400 });
+      if (existingInvite.invitation_status !== 'rejected') {
+        return NextResponse.json({
+          error: "An active invitation already exists for this email"
+        }, { status: 400 });
+      } else {
+        // Update a previously rejected invitation back to pending
+        const { error: updateError } = await supabase
+          .from('team_members')
+          .update({
+            invitation_status: 'pending',
+            updated_at: new Date().toISOString()
+          })
+          .eq('id', existingInvite.id);
+        if (updateError) throw updateError;
+        return NextResponse.json({ 
+          success: true,
+          message: "Invitation re-sent successfully",
+          tabToShow: "members"
+        });
+      }
     }
 
     // For new users, create auth user first, then profile
@@ -215,7 +231,9 @@ export async function POST(request: NextRequest) {
           member_id: authUser.user.id,
           member_email: normalizedEmail,
           invitation_status: 'pending',
-          invited_by: user.id
+          invited_by: user.id,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         });
 
       if (teamMemberError) {
@@ -242,7 +260,9 @@ export async function POST(request: NextRequest) {
           member_id: userId,
           member_email: normalizedEmail,
           invitation_status: 'pending',
-          invited_by: user.id
+          invited_by: user.id,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         });
 
       if (inviteError) throw inviteError;

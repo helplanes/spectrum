@@ -84,6 +84,17 @@ export async function POST(request: Request) {
     const supabase = await createClient();
     const { eventId, type, teamId } = await request.json();
 
+    // Get event details at the beginning
+    const { data: eventDetails } = await supabase
+      .from('events')
+      .select('*')
+      .eq('id', eventId)
+      .single();
+
+    if (!eventDetails) {
+      return NextResponse.json({ error: "Event not found" }, { status: 404 });
+    }
+
     // Get current user
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) {
@@ -291,6 +302,76 @@ export async function POST(request: Request) {
           error: "Already in team",
           message: "You are already part of a team for this event"
         }, { status: 400 });
+      }
+    }
+
+    // For team registrations, check total member count (accepted + pending)
+    if (type === 'team' && teamId) {
+      // Get both accepted and pending members
+      const { data: allMembers } = await supabase
+        .from('team_members')
+        .select('invitation_status')
+        .eq('team_id', teamId);
+
+      const totalMembers = allMembers?.length || 0;
+      
+      // For non-PCCOE teams, verify payment for total members
+      if (!profile?.is_pccoe_student) {
+        const totalAmount = totalMembers * 100; // ₹100 per member
+
+        // Get latest successful payment
+        const { data: payment } = await supabase
+          .from('payments')
+          .select('*')
+          .eq('team_id', teamId)
+          .eq('status', 'success')
+          .order('created_at', { ascending: false })
+          .limit(1)
+          .single();
+
+        if (!payment) {
+          return NextResponse.json({ 
+            error: "Payment required",
+            requiredAmount: totalAmount,
+            message: `Payment of ₹${totalAmount} required for team registration (includes pending invitations)`
+          }, { status: 402 });
+        }
+
+        if (payment.amount < totalAmount) {
+          return NextResponse.json({ 
+            error: "Insufficient payment",
+            requiredAmount: totalAmount,
+            paidAmount: payment.amount,
+            message: `Additional payment of ₹${totalAmount - payment.amount} required`
+          }, { status: 402 });
+        }
+
+        // If payment is verified, approve all pending members
+        if (payment.status === 'success') {
+          await supabase
+            .from('team_members')
+            .update({ invitation_status: 'accepted' })
+            .eq('team_id', teamId)
+            .eq('invitation_status', 'pending');
+        }
+      }
+
+      if (totalMembers < eventDetails.min_team_size) {
+        return NextResponse.json({
+          error: "Not enough team members",
+          message: `Team needs at least ${eventDetails.min_team_size} members (including pending invitations)`
+        }, { status: 400 });
+      }
+
+      // For non-PCCOE teams, prepare registration data
+      if (!profile?.is_pccoe_student) {
+        const totalAmount = totalMembers * 100; // ₹100 per member
+        return NextResponse.json({
+          error: "Payment required",
+          required: true,
+          requiredAmount: totalAmount,
+          message: `Payment of ₹${totalAmount} required for team registration`
+        }, { status: 402 });
       }
     }
 
