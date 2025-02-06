@@ -160,7 +160,7 @@ export default function DashboardPage() {
 
   return (
     <main className="min-h-screen bg-[#EBE9E0] overflow-auto">
-      <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:p-8">
+      <div className="w-full max-w-screen-xl mx-auto p-4 sm:px-6 lg:p-8">
         <Breadcrumbs
           items={[
             { label: 'Home', href: '/' },

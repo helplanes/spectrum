@@ -78,4 +78,5 @@ interface PaymentInfo {
   acceptedMembers?: number;
   perMemberAmount?: number; // e.g., set to 100 in your logic
   totalMembers?: number;  // New field
+  totalAmount?: number;  // Add this for total amount including pending members
 }
