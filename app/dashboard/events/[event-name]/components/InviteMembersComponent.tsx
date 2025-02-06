@@ -179,8 +179,7 @@ export default function InviteMembersComponent({
         body: JSON.stringify({ 
           email,
           userId,
-          isExisting: true,
-          sendEmail: false      // Added flag to not send email
+          isExisting: true
         })
       });
 
@@ -254,8 +253,7 @@ export default function InviteMembersComponent({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ 
           ...data,
-          isExisting: false,
-          sendEmail: false      // Added flag to not send email
+          isExisting: false
         })
       });
 
@@ -370,152 +368,162 @@ export default function InviteMembersComponent({
           </CardHeader>
           <CardContent className="p-4 sm:p-6">
             <div className="space-y-6">
-              <Form {...inviteMemberForm}>
-                <form className="space-y-4">
-                  <FormField
-                    control={inviteMemberForm.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-sm font-medium">Search User</FormLabel>
-                        <FormControl>
-                          <div className="relative">
-                            <Input 
-                              {...field}
-                              placeholder="Search by email..."
-                              onChange={(e) => {
-                                field.onChange(e);
-                                debouncedSearch(e.target.value);
-                              }}
-                              className="pr-8"
-                            />
-                            <div className="absolute right-2 top-1/2 -translate-y-1/2">
-                              {isSearching ? (
-                                <Loader2 className="h-4 w-4 animate-spin text-gray-400" />
-                              ) : (
-                                <Search className="h-4 w-4 text-gray-400" />
-                              )}
-                            </div>
-                          </div>
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </form>
-              </Form>
-
-              {/* Search Results */}
-              {searchResults.length > 0 && (
-                <div className="border rounded-lg divide-y">
-                  {searchResults.map((user) => (
-                    <div 
-                      key={user.id}
-                      className="p-3 hover:bg-gray-50 flex items-center justify-between transition-colors"
-                    >
-                      <div className="min-w-0 flex-1">
-                        <p className="font-medium text-sm truncate">{user.full_name}</p>
-                        <p className="text-sm text-gray-500 truncate">{user.email}</p>
-                        {user.college_name && (
-                          <p className="text-xs text-gray-400 truncate mt-0.5">
-                            {user.college_name}
-                          </p>
-                        )}
-                      </div>
-                      <Button
-                        type="button"
-                        size="sm"
-                        onClick={() => handleInviteExisting(user.id, user.email)}
-                        disabled={isLoading}
-                        className="ml-3 shrink-0"
-                      >
-                        {isLoading ? (
-                          <Loader2 className="h-4 w-4 animate-spin" />
-                        ) : (
-                          "Invite"
-                        )}
-                      </Button>
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              {/* No Results - Show New User Form */}
-              {showNewUserForm && !isSearching && (
-                <div className="border rounded-lg">
-                  <div className="p-4 bg-gray-50 border-b">
-                    <div className="flex items-start">
-                      <div className="flex-shrink-0">
-                        <UserPlus className="h-5 w-5 text-gray-400" />
-                      </div>
-                      <div className="ml-3">
-                        <p className="text-sm text-gray-900 font-medium">
-                          New User Details
-                        </p>
-                        <p className="text-sm text-gray-500">
-                          Fill in the details to invite {inviteMemberForm.watch('email')}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="p-4">
-                    <Form {...nonRegisteredForm}>
-                      <form onSubmit={nonRegisteredForm.handleSubmit(handleInviteNew)} className="space-y-6">
-                        <FormField
-                          control={nonRegisteredForm.control}
-                          name="email"
-                          render={({ field }) => (
-                            <FormItem className="space-y-2">
-                              <FormLabel className="text-sm font-medium">Email Address</FormLabel>
-                              <FormControl>
+              {canInvite ? (
+                <>
+                  <Form {...inviteMemberForm}>
+                    <form className="space-y-4">
+                      <FormField
+                        control={inviteMemberForm.control}
+                        name="email"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-sm font-medium">Search User</FormLabel>
+                            <FormControl>
+                              <div className="relative">
                                 <Input 
-                                  {...field} 
-                                  value={inviteMemberForm.watch('email')} 
-                                  readOnly 
-                                  className="bg-gray-50" 
+                                  {...field}
+                                  placeholder="Search by email..."
+                                  onChange={(e) => {
+                                    field.onChange(e);
+                                    debouncedSearch(e.target.value);
+                                  }}
+                                  className="pr-8"
                                 />
-                              </FormControl>
-                              <p className="text-xs text-gray-500">
-                                This email will be used to send the invitation
+                                <div className="absolute right-2 top-1/2 -translate-y-1/2">
+                                  {isSearching ? (
+                                    <Loader2 className="h-4 w-4 animate-spin text-gray-400" />
+                                  ) : (
+                                    <Search className="h-4 w-4 text-gray-400" />
+                                  )}
+                                </div>
+                              </div>
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </form>
+                  </Form>
+
+                  {/* Search Results */}
+                  {searchResults.length > 0 && (
+                    <div className="border rounded-lg divide-y">
+                      {searchResults.map((user) => (
+                        <div 
+                          key={user.id}
+                          className="p-3 hover:bg-gray-50 flex items-center justify-between transition-colors"
+                        >
+                          <div className="min-w-0 flex-1">
+                            <p className="font-medium text-sm truncate">{user.full_name}</p>
+                            <p className="text-sm text-gray-500 truncate">{user.email}</p>
+                            {user.college_name && (
+                              <p className="text-xs text-gray-400 truncate mt-0.5">
+                                {user.college_name}
                               </p>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-
-                        <UserDetailsForm form={nonRegisteredForm} />
-
-                        <div className="flex flex-col sm:flex-row justify-end gap-3">
+                            )}
+                          </div>
                           <Button
                             type="button"
-                            variant="outline"
-                            onClick={resetForms}
+                            size="sm"
+                            onClick={() => handleInviteExisting(user.id, user.email)}
                             disabled={isLoading}
-                          >
-                            Cancel
-                          </Button>
-                          <Button 
-                            type="submit" 
-                            disabled={isLoading}
-                            className="bg-blue-600 hover:bg-blue-700 text-white gap-2"
+                            className="ml-3 shrink-0"
                           >
                             {isLoading ? (
-                              <>
-                                <Loader2 className="h-4 w-4 animate-spin" />
-                                Sending...
-                              </>
+                              <Loader2 className="h-4 w-4 animate-spin" />
                             ) : (
-                              <>
-                                <UserPlus className="h-4 w-4" />
-                                Send Invitation
-                              </>
+                              "Invite"
                             )}
                           </Button>
                         </div>
-                      </form>
-                    </Form>
-                  </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* No Results - Show New User Form */}
+                  {showNewUserForm && !isSearching && (
+                    <div className="border rounded-lg">
+                      <div className="p-4 bg-gray-50 border-b">
+                        <div className="flex items-start">
+                          <div className="flex-shrink-0">
+                            <UserPlus className="h-5 w-5 text-gray-400" />
+                          </div>
+                          <div className="ml-3">
+                            <p className="text-sm text-gray-900 font-medium">
+                              New User Details
+                            </p>
+                            <p className="text-sm text-gray-500">
+                              Fill in the details to invite {inviteMemberForm.watch('email')}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="p-4">
+                        <Form {...nonRegisteredForm}>
+                          <form onSubmit={nonRegisteredForm.handleSubmit(handleInviteNew)} className="space-y-6">
+                            <FormField
+                              control={nonRegisteredForm.control}
+                              name="email"
+                              render={({ field }) => (
+                                <FormItem className="space-y-2">
+                                  <FormLabel className="text-sm font-medium">Email Address</FormLabel>
+                                  <FormControl>
+                                    <Input 
+                                      {...field} 
+                                      value={inviteMemberForm.watch('email')} 
+                                      readOnly 
+                                      className="bg-gray-50" 
+                                    />
+                                  </FormControl>
+                                  <p className="text-xs text-gray-500">
+                                    This email will be used to send the invitation
+                                  </p>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+
+                            <UserDetailsForm form={nonRegisteredForm} />
+
+                            <div className="flex flex-col sm:flex-row justify-end gap-3">
+                              <Button
+                                type="button"
+                                variant="outline"
+                                onClick={resetForms}
+                                disabled={isLoading}
+                              >
+                                Cancel
+                              </Button>
+                              <Button 
+                                type="submit" 
+                                disabled={isLoading}
+                                className="bg-blue-600 hover:bg-blue-700 text-white gap-2"
+                              >
+                                {isLoading ? (
+                                  <>
+                                    <Loader2 className="h-4 w-4 animate-spin" />
+                                    Sending...
+                                  </>
+                                ) : (
+                                  <>
+                                    <UserPlus className="h-4 w-4" />
+                                    Send Invitation
+                                  </>
+                                )}
+                              </Button>
+                            </div>
+                          </form>
+                        </Form>
+                      </div>
+                    </div>
+                  )}
+                </>
+              ) : (
+                <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                  <p className="text-sm text-yellow-800">
+                    You have reached the maximum number of team members allowed. Remove existing invites to add new members.
+                  </p>
                 </div>
               )}
             </div>

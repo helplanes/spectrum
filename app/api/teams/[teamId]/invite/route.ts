@@ -1,5 +1,5 @@
 import { createClient } from "@/app/utils/supabase/super-server";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import crypto from 'crypto';
 
 // Import COLLEGE_OPTIONS
@@ -51,9 +51,10 @@ function determineIsPccoeStudent(collegeName: string): boolean {
   return pccoeVariations.some(variation => normalizedName.includes(variation));
 }
 
-export async function POST(request: Request, context: any) {
-  // Use context.params to get teamId
-  const { teamId } = context.params;
+export async function POST(request: NextRequest) {
+  const { pathname } = new URL(request.url);
+  const match = pathname.match(/\/teams\/([^/]+)\/invite/);
+  const teamId = match ? match[1] : '';
 
   try {
     // Validate teamId after getting it
