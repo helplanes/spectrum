@@ -142,7 +142,6 @@ export default function RegisterComponent({ eventDetails }: { eventDetails: Even
   const onCreateTeam = async (data: z.infer<typeof createTeamSchema>) => {
     setIsLoading(true);
     try {
-      toast.loading("Creating team...");
       const response = await fetch("/api/teams", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -153,7 +152,22 @@ export default function RegisterComponent({ eventDetails }: { eventDetails: Even
       });
 
       const result = await response.json();
-      if (!response.ok) throw new Error(result.error || "Failed to create team");
+      
+      if (!response.ok) {
+        if (response.status === 409 || result.error === "Team name already exists for this event") {
+          toast.error("Team name already exists for this event", {
+            description: "Please choose a different name",
+            // Styling for subtle red toast
+            className: "bg-red-50 border-red-200",
+            descriptionClassName: "text-red-600",
+            duration: 5000,
+            icon: <AlertTriangle className="h-5 w-5 text-red-500" />
+          });
+          setIsLoading(false);
+          return;
+        }
+        throw new Error(result.error || "Failed to create team");
+      }
       
       setCurrentTeamId(result.teamId);
       toast.success("Team created successfully!", {
@@ -586,7 +600,7 @@ export default function RegisterComponent({ eventDetails }: { eventDetails: Even
                         viewBox="0 0 20 20"
                         fill="currentColor"
                       >
-                        <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM9 6a1 1 0 100 2h2a1 1 0 100-2H9zM9 9a1 1 0 000 2h2a1 1 0 000-2H9z" clipRule="evenodd" />
+                        <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM9 6a1 1 100 2h2a1 1 100-2H9zM9 9a1 1 000 2h2a1 1 000-2H9z" clipRule="evenodd" />
                       </svg>
                       Important Information
                     </h4>

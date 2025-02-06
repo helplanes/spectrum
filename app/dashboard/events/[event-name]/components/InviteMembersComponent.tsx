@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 import Link from 'next/link';
 import { toast } from "sonner";
-import { Loader2, X, Search, UserPlus } from "lucide-react";
+import { Loader2, X, Search, UserPlus, XCircleIcon } from "lucide-react";
 import {
   Form,
   FormControl,
@@ -92,6 +92,8 @@ export default function InviteMembersComponent({
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [invitingUserId, setInvitingUserId] = useState<string | null>(null);
   const [confirmInvite, setConfirmInvite] = useState<{ id: string; email: string } | null>(null);
+  const [alertMessage, setAlertMessage] = useState<string | null>(null);
+  const [showAlreadyTeamPopup, setShowAlreadyTeamPopup] = useState(false);
 
   const inviteMemberForm = useForm<z.infer<typeof inviteMemberSchema>>({
     resolver: zodResolver(inviteMemberSchema),
@@ -173,37 +175,35 @@ export default function InviteMembersComponent({
   const handleInviteExisting = async (userId: string, email: string) => {
     if (!currentTeamId) return;
     
+    const toastId = toast.loading("Sending invitation...");
     setInvitingUserId(userId);
     try {
-      toast.loading("Sending invitation...");
       const response = await fetch(`/api/teams/${currentTeamId}/invite`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ 
-          email,
-          userId,
-          isExisting: true
-        })
+        body: JSON.stringify({ email, userId })
       });
-
-      const result = await response.json();
-      if (!response.ok) throw new Error(result.error);
-      
-      await onInviteSuccess();
-      toast.success("Invitation sent!", {
-        description: `An invitation has been sent to ${email}`,
-      });
-      
-      // Clear search and reset form.
-      setSearchResults([]);
-      inviteMemberForm.reset();
+      const data = await response.json();
+      toast.dismiss(toastId);
+      if (!response.ok) {
+        if (data.error && data.error.includes("Member is already part of a team")) {
+          // Trigger popup with updated message
+          setShowAlreadyTeamPopup(true);
+        } else {
+          toast.error(data.message || "Invitation failed");
+        }
+      } else {
+        toast.success("Invitation sent successfully");
+        // Reset UI state on success
+        resetForms();
+        setConfirmInvite(null);
+        setInvitingUserId(null);
+        await onInviteSuccess();
+      }
     } catch (error: any) {
-      toast.error("Failed to invite member", {
-        description: error.message
-      });
-    } finally {
+      toast.dismiss(toastId);
+      toast.error("Failed to send invitation");
       setInvitingUserId(null);
-      setConfirmInvite(null);
     }
   };
 
@@ -277,6 +277,10 @@ export default function InviteMembersComponent({
       setShowNewUserDialog(false);
       nonRegisteredForm.reset();
       inviteMemberForm.reset();
+      // Reset UI for new user invite
+      resetForms();
+      setShowNewUserDialog(false);
+      setConfirmInvite(null);
     } catch (error: any) {
       toast.error("Failed to invite member", {
         description: error.message
@@ -307,6 +311,19 @@ export default function InviteMembersComponent({
 
   return (
     <>
+      {/* Alert UI for "Member is already part of a team" error */}
+      {alertMessage && (
+        <div className="flex items-center p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg" role="alert">
+          <XCircleIcon className="w-5 h-5 mr-2" />
+          <span>{alertMessage}</span>
+          <button
+            onClick={() => setAlertMessage(null)}
+            className="ml-auto text-red-700 font-bold"
+          >
+            X
+          </button>
+        </div>
+      )}
       <div className="space-y-4">
         <div className="mb-4 p-3 sm:p-4 bg-red-50/50 border border-red-100 rounded-md">
           <p className="text-red-700 text-xs sm:text-sm">
@@ -609,6 +626,23 @@ export default function InviteMembersComponent({
               ) : (
                 "Confirm"
               )}
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      {/* New popup for already in team error */}
+      <AlertDialog open={showAlreadyTeamPopup} onOpenChange={setShowAlreadyTeamPopup}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Error</AlertDialogTitle>
+            <AlertDialogDescription>
+              The member is already part of a team for this event.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogAction onClick={() => setShowAlreadyTeamPopup(false)}>
+              OK
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
