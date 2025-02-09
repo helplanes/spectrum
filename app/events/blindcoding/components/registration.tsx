@@ -61,7 +61,7 @@ export function BlindCoding_registarion() {
                                         </div>
                                     </div>
                                     
-                                    {/* Pricing section */}
+                                    {/* Pricing section updated to match e-paradox */}
                                     <div className="flex flex-row sm:flex-col justify-between items-center sm:items-end border-t sm:border-t-0 pt-3 sm:pt-0 mt-2 sm:mt-0">
                                         <div className="space-y-2 w-full">
                                             <div className="flex justify-between items-center">
@@ -72,10 +72,11 @@ export function BlindCoding_registarion() {
                                                 </div>
                                             </div>
                                             <div className="flex justify-between items-center">
-                                                <div className="text-2xl sm:text-4xl md:text-5xl font-bold text-gray-900">₹100</div>
+                                                {/* Updated Non PCCOEians pricing block with even smaller responsive fonts */}
+                                                <div className="text-base sm:text-lg md:text-xl font-bold text-gray-900">₹100</div>
                                                 <div className="flex flex-col items-end">
-                                                    <div className="text-[11px] sm:text-sm text-gray-500">Non PCCOEians</div>
-                                                    <div className="text-[9px] sm:text-xs text-blue-600 font-medium">Register Now!</div>
+                                                    <div className="text-[8px] sm:text-[9px] md:text-[10px] text-gray-500">Non PCCOEians</div>
+                                                    <div className="text-[7px] sm:text-[8px] md:text-[9px] text-blue-600 font-medium">Register Now!</div>
                                                 </div>
                                             </div>
                                         </div>

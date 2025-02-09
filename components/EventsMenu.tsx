@@ -157,14 +157,6 @@ export default function EventsMenu() {
               />
             ))}
           </motion.div>
-
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="fixed bottom-0 left-0 right-0 p-4 text-center bg-white/10 backdrop-blur-sm"
-          >
-            <p className="text-sm text-white/80">Spectrum 2025 - Annual Technical Festival</p>
-          </motion.div>
         </div>
       </DialogContent>
     </Dialog>

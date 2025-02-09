@@ -79,7 +79,7 @@ export default function Cards() {
     },
     {
       href: "/events/bottle-rocket",
-      image: "https://i.postimg.cc/YSNgZ19j/6.png",
+      image: "https://i.postimg.cc/Wzs7zpZf/s.webp",
       alt: "image",
       title: "Water Rocket '25",
       description: "A physics-driven contest to design and launch water-propelled rockets.",

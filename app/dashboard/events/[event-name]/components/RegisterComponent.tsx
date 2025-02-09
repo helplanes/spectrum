@@ -66,6 +66,7 @@ export default function RegisterComponent({ eventDetails }: { eventDetails: Even
   const [removingInvite, setRemovingInvite] = useState<string | null>(null);
   const [isRemovingInvite, setIsRemovingInvite] = useState(false);
   const [disqualificationAck, setDisqualificationAck] = useState(false);
+  const [confirmMembers, setConfirmMembers] = useState(false);
   
   const createTeamForm = useForm<z.infer<typeof createTeamSchema>>({
     resolver: zodResolver(createTeamSchema),
@@ -1138,24 +1139,40 @@ export default function RegisterComponent({ eventDetails }: { eventDetails: Even
         </Tabs>
   
         {registrationStatus?.profile?.is_pccoe_student ? (
-          <Button
-            className="w-full"
-            disabled={!canRegister || isLoading}
-            onClick={onTeamSubmit}
-          >
-            {isLoading ? (
-              <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Processing...
-              </>
-            ) : !canRegister ? (
-              `Need ${totalRequired - acceptedMembers.length} More Accepted ${
-                totalRequired - acceptedMembers.length === 1 ? 'Member' : 'Members'
-              }`
-            ) : (
-              "Complete Registration"
-            )}
-          </Button>
+          <div className="space-y-4">
+            <label className="flex items-start space-x-3 text-sm p-3 bg-blue-50/50 rounded-lg border border-blue-100">
+              <input
+                type="checkbox"
+                checked={confirmMembers}
+                onChange={(e) => setConfirmMembers(e.target.checked)}
+                className="w-6 h-6 mt-0.5 accent-blue-500 rounded"
+              />
+              <span className="text-blue-700">
+                I confirm that all team members are currently my teammates, and any changes to the current team won&apos;t be allowed later on.
+              </span>
+            </label>
+      
+            <Button
+              className="w-full"
+              disabled={!canRegister || isLoading || !confirmMembers}
+              onClick={onTeamSubmit}
+            >
+              {isLoading ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Processing...
+                </>
+              ) : !canRegister ? (
+                `Need ${totalRequired - acceptedMembers.length} More Accepted ${
+                  totalRequired - acceptedMembers.length === 1 ? 'Member' : 'Members'
+                }`
+              ) : !confirmMembers ? (
+                "Please Confirm Team Members"
+              ) : (
+                "Complete Registration"
+              )}
+            </Button>
+          </div>
         ) : (
           renderTeamActionButton(canRegister, totalRequired, acceptedMembers, pendingMembers)
         )}
