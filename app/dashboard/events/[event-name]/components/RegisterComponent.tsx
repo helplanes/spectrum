@@ -1148,7 +1148,7 @@ export default function RegisterComponent({ eventDetails }: { eventDetails: Even
                 className="w-6 h-6 mt-0.5 accent-blue-500 rounded"
               />
               <span className="text-blue-700">
-                I confirm that all team members are currently my teammates, and any changes to the current team won&apos;t be allowed later on.
+                I confirm that all team members are currently my teammates, and any changes to the current team won&apos;t be allowed later on. <b> <u>The pending invitations will be invalidated.</u>  </b> 
               </span>
             </label>
       
