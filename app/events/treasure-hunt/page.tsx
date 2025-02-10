@@ -6,10 +6,10 @@ import Image from "next/image";
 import { Metadata } from 'next'
  
 export const metadata: Metadata = {
-  title: 'Spectrum x Treasure Hunt',
+  title: 'Spectrum x Tech Treasure Hunt',
   description: "Tech event for first year students",  
   openGraph: {
-    title: 'Spectrum x Treasure Hunt',
+    title: 'Spectrum x Tech Treasure Hunt',
     description: "Tech event for first year students",  
     url: "https://spectrumpccoe25.tech",
     siteName: "spectrumpccoe25.tech",
@@ -57,7 +57,7 @@ export default function Home() {
             <div className="w-full md:w-1/2">
               <div className={`${krona.className} space-y-4`}>
                 <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-[#ece9e0]">
-                  Treasure Hunt &apos;25
+                  Tech Treasure Hunt &apos;25
                 </h1>
                 <h2 className="text-xl md:text-2xl text-white/90">
                   brought to you by AS&H, PCCOE

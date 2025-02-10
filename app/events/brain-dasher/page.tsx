@@ -33,7 +33,7 @@ const krona = Krona_One({
 const ruleList = [
   "Maximum registration for this event is 150",
   "Strictly no on spot registrations",
-  "Top 30 - 40 students will be selected for 2nd round based on their marks and timely submission of the quiz",
+  "Top 32 students will be selected for 2nd round based on their marks and timely submission of the quiz",
   "In case of a tie, the results will be declared on the basis of number of difficult questions solved and the time taken to finish the quiz",
   "The decision of the event organizers will be final and binding",
   "Rules for every round will be communicated prior to each round"

@@ -35,10 +35,10 @@ export function Bottle_rocket_registarion() {
                                             Limited Spots Available
                                         </span>
                                         <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-black mb-1.5 sm:mb-2">
-                                            Bottle Rocket &apos;25
+                                            Water Rocket &apos;25
                                         </h1>
                                         <p className="text-[11px] sm:text-sm text-gray-600 leading-relaxed">
-                                            Experience the thrill of scientific exploration with &quot;Bottle Rocket.&quot; Dive into the realm of rocket science as you design, build, and launch innovative models, showcasing your creativity and engineering prowess in this dynamic competition.
+                                            Experience the thrill of scientific exploration with &quot;Water Rocket.&quot; Dive into the realm of rocket science as you design, build, and launch innovative models, showcasing your creativity and engineering prowess in this dynamic competition.
                                         </p>
                                     </div>
 

@@ -35,10 +35,10 @@ export function Treasurehunt_registarion() {
                                     ₹100 - Non PCCOEians
                                     </span>
                                     <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-black mb-1.5 sm:mb-2">
-                                        Treasure Hunt &apos;25
+                                        Tech Treasure Hunt &apos;25
                                     </h1>
                                     <p className="text-[11px] sm:text-sm text-gray-600 leading-relaxed">
-                                    Join our thrilling Treasure Hunt event as part of Spectrum 2025! Solve clues, face challenges, and showcase your problem-solving skills to emerge victorious.
+                                    Join our thrilling Tech Treasure Hunt event as part of Spectrum 2025! Solve clues, face challenges, and showcase your problem-solving skills to emerge victorious.
                                     </p>
                                 </div>
 

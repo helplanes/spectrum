@@ -47,7 +47,7 @@ export function BlindCoding_registarion() {
                                             </svg>
                                             <div>
                                                 <p className="text-[11px] sm:text-sm font-semibold text-gray-900">Event Format</p>
-                                                <p className="text-[9px] sm:text-xs text-gray-500">5 Challenging Rounds</p>
+                                                <p className="text-[9px] sm:text-xs text-gray-500">2 Challenging Rounds</p>
                                             </div>
                                         </div>
                                         <div className="flex items-center gap-1.5 sm:gap-3">
