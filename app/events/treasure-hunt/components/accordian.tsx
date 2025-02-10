@@ -9,7 +9,7 @@ export function Rules() {
   return (
     <div className="w-full text-white">
       <h1 className="scroll-m-20 text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight lg:text-5xl mb-4">
-        Rules of Treasure Hunt
+        Rules of Tech Treasure Hunt
       </h1>
       <p className="leading-7 mb-8 text-white/80 text-sm sm:text-base">
         Total 3 rounds

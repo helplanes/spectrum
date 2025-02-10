@@ -222,14 +222,14 @@ export default function TeamBehindSpectrum() {
             },
             {
                 name: "Asmi Palekar",
-                role: "Treasure Hunt",
+                role: "Tech Treasure Hunt",
                 image: "https://i.postimg.cc/j2t8kLpM/63763386-35f4-4140-a262-4f84df76fa0d.jpg",
                 linkedin: "https://www.linkedin.com/in/asmi-palekar-1a931230a/",
                 instagram: "https://www.instagram.com/asmi_palekar/",
             },
             {
                 name: "Debottam Debnath",
-                role: "Treasure Hunt",
+                role: "Tech Treasure Hunt",
                 image: "https://i.postimg.cc/mrd2rHwH/b679415d-4ac1-4705-9f19-1c91466dd825.jpg",
                 linkedin:
                     "https://www.linkedin.com/in/debottam-debnath-1b747b32b/",

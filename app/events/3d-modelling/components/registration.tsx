@@ -35,7 +35,7 @@ export function ThreeModelling() {
                                     ₹100 - Non PCCOEians
                                     </span>
                                     <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-black mb-1.5 sm:mb-2">
-                                    3D Modelling &apos;25
+                                    Model Making &apos;25
                                     </h1>
                                     <p className="text-[11px] sm:text-sm text-gray-600 leading-relaxed">
                                     Put your engineering skills to the test in the Tower Construction Challenge!</p>

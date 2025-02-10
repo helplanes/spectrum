@@ -66,7 +66,7 @@ export default function Home() {
                   brought to you by AS&H, PCCOE
                 </h2>
                 <p className="text-lg text-white/80 font-light max-w-xl mt-6">
-                  Tagline - Innovate for Sustainability: Where Chemistry Meets Tomorrow&apos;s Solutions
+                  Innovate for Sustainability: Where Chemistry Meets Tomorrow&apos;s Solutions
                   <br />Theme - Green Chemistry for a Better Future
                 </p>
               </div>
