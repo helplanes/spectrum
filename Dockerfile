@@ -26,9 +26,6 @@ WORKDIR /app
 RUN addgroup -S nonroot && adduser -S nonroot -G nonroot
 USER nonroot
 
-# Copy the env file to the production image
-COPY --from=builder --chown=nonroot:nonroot /app/.env ./
-
 # Copy the standalone output from the builder image
 COPY --from=builder --chown=nonroot:nonroot /app/.next/standalone ./
 COPY --from=builder --chown=nonroot:nonroot /app/public ./public
