@@ -7,9 +7,6 @@ WORKDIR /app
 RUN apk update && apk upgrade
 RUN apk add curl
 
-# Copy env file first
-COPY .env ./
-
 COPY package.json package-lock.json ./
 RUN npm install --force
 
