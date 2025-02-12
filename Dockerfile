@@ -18,7 +18,7 @@ WORKDIR /app
 COPY package.json yarn.lock .yarnrc.yml ./
 
 # Install packages
-RUN yarn install --immutable --inline-builds
+RUN yarn install --force --immutable --inline-builds
 
 
 
