@@ -1,38 +1,65 @@
-FROM node:22-alpine AS deps
-WORKDIR /app
-COPY package*.json ./
-RUN npm ci --force --only=production
+# Builder image
+FROM node:18-alpine AS builder
 
-FROM node:22-alpine AS builder
 WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
+
+# First install dependencies so we can cache them
+RUN apk update && apk upgrade
+RUN apk add curl
+
+COPY package.json package-lock.json ./
+RUN npm install --force
+
+# Now copy the rest of the app and build it
 COPY . .
+
+# Define build arguments
 ARG NEXT_PUBLIC_SUPABASE_URL
 ARG NEXT_PUBLIC_SUPABASE_ANON_KEY
+ARG DATABASE_URL
+ARG DIRECT_URL
 ARG CASHFREE_BASE_URL
-ARG CASHFREE_SECRET_KEY
-ARG CASHFREE_APP_ID
+ARG CASHFREE_SECRET_KEY_PROD
+ARG CASHFREE_APP_ID_PROD
 ARG SUPABASE_SERVICE_KEY
 ARG NEXT_PUBLIC_APP_URL
-ENV NEXT_PUBLIC_SUPABASE_URL=$NEXT_PUBLIC_SUPABASE_URL \
+
+# Set environment variables before build
+ENV NODE_ENV=production \
+    NEXT_TELEMETRY_DISABLED=1 \
+    NEXT_PUBLIC_SUPABASE_URL=$NEXT_PUBLIC_SUPABASE_URL \
     NEXT_PUBLIC_SUPABASE_ANON_KEY=$NEXT_PUBLIC_SUPABASE_ANON_KEY \
     DATABASE_URL=$DATABASE_URL \
     DIRECT_URL=$DIRECT_URL \
     CASHFREE_BASE_URL=$CASHFREE_BASE_URL \
-    CASHFREE_SECRET_KEY=$CASHFREE_SECRET_KEY \
-    CASHFREE_APP_ID=$CASHFREE_APP_ID \
+    CASHFREE_SECRET_KEY_PROD=$CASHFREE_SECRET_KEY_PROD \
+    CASHFREE_APP_ID_PROD=$CASHFREE_APP_ID_PROD \
     SUPABASE_SERVICE_KEY=$SUPABASE_SERVICE_KEY \
     NEXT_PUBLIC_APP_URL=$NEXT_PUBLIC_APP_URL
-RUN npx next build
 
-FROM node:22-alpine AS runner
+# Run build after environment setup
+RUN npm run build
+
+# Production image
+FROM node:18-alpine AS runner
+
 WORKDIR /app
-ENV NODE_ENV=production \
-    HOSTNAME=0.0.0.0 \
-    PORT=3000
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/.next/standalone ./
-COPY --from=builder /app/.next/static ./.next/static
+
+# Create a non-root user
+RUN addgroup -S nonroot && adduser -S nonroot -G nonroot
+USER nonroot
+
+# Copy the standalone output from the builder image
+COPY --from=builder --chown=nonroot:nonroot /app/.next/standalone ./
+COPY --from=builder --chown=nonroot:nonroot /app/public ./public
+COPY --from=builder --chown=nonroot:nonroot /app/.next/static ./.next/static
+
+# Prepare the app for production
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV NODE_ENV=production
+ENV HOSTNAME="0.0.0.0"
 
 EXPOSE 3000
+
+# Start the app
 CMD ["node", "server.js"]
