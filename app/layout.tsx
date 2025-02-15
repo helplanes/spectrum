@@ -6,7 +6,6 @@ import Footer  from '@/components/footer'
 import './globals.css'
 import Script from 'next/script'
 import { cn } from "@/app/libs/utils"
-import MaintenanceMessage from '@/components/maintenance-message'
 
 const inter = Inter({
   subsets: ["latin"],
@@ -84,7 +83,6 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
-        <MaintenanceMessage />
         <main className="mt-2">
           <Navigation />
           <Script src='https://www.cssscript.com/demo/cat-follow-cursor-oneko/oneko.js' />
