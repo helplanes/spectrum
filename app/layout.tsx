@@ -83,7 +83,7 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
-        <main className="mt-2">
+        <main>
           <Navigation />
           <Script src='https://www.cssscript.com/demo/cat-follow-cursor-oneko/oneko.js' />
           {children}
