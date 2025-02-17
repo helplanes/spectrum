@@ -24,10 +24,10 @@ export const metadata: Metadata = {
     default: "PCCOE Spectrum'25",
     template: "%s | spectrumpccoe25.tech",
   },
-  description: "PCCOE Spectrum'25 | PCET's PIMPRI CHINCHWAD COLLEGE OF ENGINEERING, Pune | Department of Applied Sciences and Humanities presents | Tech event for first year students | Annual State Level Technical Symposium for Extra Oridinary First Year Engineering Students!",
+  description: "PCCOE Spectrum'25 | PCET'S PIMPRI CHINCHWAD COLLEGE OF ENGINEERING, PUNE | Department of Applied Sciences and Humanities presents | Tech event for first year students | Annual State Level Technical Symposium for Extra Oridinary First Year Engineering Students!",
   openGraph: {
     title: "PCCOE Spectrum'25",
-    description: "PCCOE Spectrum'25 | PCET's PIMPRI CHINCHWAD COLLEGE OF ENGINEERING, Pune | Department of Applied Sciences and Humanities presents | Tech event for first year students | Annual State Level Technical Symposium for Extra Oridinary First Year Engineering Students!",
+    description: "PCCOE Spectrum'25 | PCET's PIMPRI CHINCHWAD COLLEGE OF ENGINEERING, PUNE | Department of Applied Sciences and Humanities presents | Tech event for first year students | Annual State Level Technical Symposium for Extra Oridinary First Year Engineering Students!",
     url: "https://pccoespectrum25.tech",
     siteName: "spectrumpccoe25.tech",
     images: [
