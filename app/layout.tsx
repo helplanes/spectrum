@@ -85,7 +85,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <main>
           <div style={{ backgroundColor: '#ffcccc', color: '#900', padding: '10px', textAlign: 'center', fontWeight: 'bold' }}>
-            Payment gateway is down and will be back in a few hours! Sorry for the inconvenience.
+            Payment gateway for NON-PCCoE Students is down and will be back in a few hours! Sorry for the inconvenience.
           </div>
           <Navigation />
           <Script src='https://www.cssscript.com/demo/cat-follow-cursor-oneko/oneko.js' />
