@@ -22,7 +22,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Loader2, X, AlertTriangle, ImageIcon, Download } from "lucide-react";
+import { Loader2, X, AlertTriangle, ImageIcon, Download, InfoIcon, CheckCircle, Clock } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { EventDetails, RegistrationStatusResponse, TeamMember } from "@/app/types/events";
@@ -434,6 +434,24 @@ export default function RegisterComponent({ eventDetails }: { eventDetails: Even
     return null;
   };
 
+  const items = [
+    {
+      icon: <CheckCircle className="h-5 w-5 shrink-0" />,
+      text: "By registering, you agree to follow all event guidelines",
+      type: "success"
+    },
+    {
+      icon: <Clock className="h-5 w-5 shrink-0" />,
+      text: "Make sure you can attend on the specified dates",
+      type: "info"
+    },
+    {
+      icon: <AlertTriangle className="h-5 w-5 shrink-0" />,
+      text: "This action cannot be undone or withdrawn",
+      type: "warning"
+    }
+  ];
+
   // Modify the condition that checks registration status
   if (registrationStatus === null || isTeamStatusLoading) {
     return (
@@ -699,38 +717,36 @@ export default function RegisterComponent({ eventDetails }: { eventDetails: Even
                     </span>{" "}
                     as an individual participant.
                   </div>
-                  <div className="bg-green-50/50 border border-green-100 p-4 rounded-lg">
-                    <h4 className="font-medium mb-3 text-sm sm:text-base flex items-center gap-2 text-green-800">
-                      <svg 
-                        className="h-5 w-5"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM9 6a1 1 100 2h2a1 1 100-2H9zM9 9a1 1 000 2h2a1 1 000-2H9z" clipRule="evenodd" />
-                      </svg>
-                      Important Information
-                    </h4>
-                    <ul className="list-none text-xs sm:text-sm space-y-2.5 text-green-800">
-                      <li className="flex items-start gap-2">
-                        <svg className="h-4 w-4 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <span>By registering, you agree to follow all event guidelines</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <svg className="h-4 w-4 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <span>Make sure you can attend on the specified dates</span>
-                      </li>
-                      <li className="flex items-start gap-2 text-red-700">
-                        <svg className="h-4 w-4 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                        </svg>
-                        <span>This action cannot be undone or withdrawn</span>
-                      </li>
-                    </ul>
-                  </div>
+                  <Card className="max-w-2xl mx-auto">
+                    <CardHeader className="pb-3">
+                      <div className="flex items-center gap-2 text-emerald-700">
+                        <InfoIcon className="h-5 w-5" />
+                        <h4 className="font-medium text-base sm:text-lg">
+                          Important Information
+                        </h4>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="space-y-4">
+                        {items.map((item, index) => (
+                          <li 
+                            key={index}
+                            className={`
+                              flex items-start gap-3 p-2 rounded-md transition-colors
+                              ${item.type === 'success' && 'text-emerald-700 bg-emerald-50/50'}
+                              ${item.type === 'info' && 'text-blue-700 bg-blue-50/50'}
+                              ${item.type === 'warning' && 'text-red-700 bg-red-50/50'}
+                            `}
+                          >
+                            {item.icon}
+                            <span className="text-sm sm:text-base leading-tight">
+                              {item.text}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
                 </div>
               </DialogDescription>
             </DialogHeader>

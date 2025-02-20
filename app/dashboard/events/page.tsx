@@ -41,18 +41,16 @@ export default async function EventsPage() {
     }
 
     return (
-      <main className="min-h-screen bg-[#EBE9E0] px-2 py-3 sm:p-4 lg:p-6 xl:p-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-3 sm:mb-6">
-            <Breadcrumbs
-              items={[
-                { label: 'Home', href: '/' },
-                { label: 'Dashboard', href: '/dashboard' },
-                { label: 'Events' },
-              ]}
-              className="text-sm sm:text-base"
-            />
-          </div>
+      <main className="min-h-screen bg-[#EBE9E0] overflow-auto">
+        <div className="w-full max-w-screen-xl mx-auto p-4 sm:px-6 lg:p-8">
+          <Breadcrumbs
+            items={[
+              { label: 'Home', href: '/' },
+              { label: 'Dashboard', href: '/dashboard' },
+              { label: 'Events' },
+            ]}
+            className="mb-6"
+          />
           <EventList events={events} />
         </div>
       </main>

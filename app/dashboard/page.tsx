@@ -6,10 +6,35 @@ import { Button } from "@/components/ui/button";
 import { useRouter } from 'next/navigation';
 import { Breadcrumbs } from "@/app/components/breadcrumbs";
 import { toast } from "sonner";
-import { Loader2, Pencil, X } from "lucide-react";
-import { ProfileForm } from "./components/profile-form";
-import { ProfileView } from "./components/profile-view";
-import { CompleteProfilePopup } from '@/components/CompleteProfilePopup'; // new import
+import { Pencil, Mail, Phone, GraduationCap, LogOut, ChevronRight } from "lucide-react";
+import { CompleteProfilePopup } from '@/components/CompleteProfilePopup';
+import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/components/ui/tooltip";
+import { AlertCircle } from "lucide-react";
+
+// Add COLLEGE_OPTIONS constant
+const COLLEGE_OPTIONS = {
+  pccoe: "Pimpri Chinchwad College of Engineering, Pune",
+  pccoer: "Pimpri Chinchwad College of Engineering & Research, Ravet",
+  pcu: "Pimpri Chinchwad University",
+  nutan: "Nutan Maharashtra Institute of Engineering & Technology, Pune",
+  nmit: "Nutan College of Engineering & Research (NCER)",
+  ait: "Army Institute of Technology",
+  aissms: "All India Shri Shivaji Memorial Society's College of Engineering",
+  bvp: "Bharati Vidyapeeth College of Engineering",
+  coep: "College of Engineering Pune",
+  cummins: "Cummins College of Engineering",
+  dyp: "Dr. D.Y. Patil Institute of Technology, Akurdi",
+  iiit: "Indian Institute of Information Technology, Pune",
+  jspm: "JSPM's Rajarshi Shahu College of Engineering",
+  mit: "MIT World Peace University (MIT-WPU)",
+  mit_adt: "MIT Art, Design and Technology University",
+  pict: "SCTR'S Pune Institute of Computer Technology",
+  pvg: "PVG's College of Engineering and Technology",
+  scoe: "Sinhgad College of Engineering",
+  sit_lavle: "Symbiosis Institute of Technology, Lavle",
+  viit: "BRACT's, Vishwakarma Institute of Information Technology",
+  vit: "Vishwakarma Institute of Technology",
+} as const;
 
 export default function DashboardPage() {
   const [userData, setUserData] = useState<any>(null);
@@ -159,203 +184,237 @@ export default function DashboardPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#EBE9E0] overflow-auto">
-      <div className="w-full max-w-screen-xl mx-auto p-4 sm:px-6 lg:p-8">
-        <Breadcrumbs
-          items={[
-            { label: 'Home', href: '/' },
-            { label: 'Dashboard' },
-          ]}
-          className="mb-6"
-        />
-        
-        {/* Quick Action Cards */}
-        <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-4 sm:mb-6 px-4 sm:px-0">
-          <div className="bg-white/80 backdrop-blur p-6 sm:p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
-            <h2 className="font-semibold text-lg mb-2">Events</h2>
-            <p className="text-sm text-gray-600 mb-4">View and manage available events.</p>
-            <Button
-              variant="outline"
-              className="w-full bg-purple-50 hover:bg-purple-100 border-purple-200"
-              onClick={() => router.push('/dashboard/events')}
-            >
-              View Events
-            </Button>
-          </div>
-          <div className="bg-white/80 backdrop-blur p-6 sm:p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
-            <h2 className="font-semibold text-lg mb-2">Check Registration</h2>
-            <p className="text-sm text-gray-600 mb-4">View or verify active registrations.</p>
-            <Button
-              variant="outline"
-              className="w-full bg-blue-50 hover:bg-blue-100 border-blue-200"
-              onClick={() => router.push('/dashboard/events/registrations')}
-            >
-              View Registrations
-            </Button>
-          </div>
-          <div className="bg-white/80 backdrop-blur p-6 sm:p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
-            <h2 className="font-semibold text-lg mb-2">Accept Invites</h2>
-            <p className="text-sm text-gray-600 mb-4">Review and accept pending invitations.</p>
-            <Button
-              variant="outline"
-              className="w-full bg-green-50 hover:bg-green-100 border-green-200"
-              onClick={() => router.push('/dashboard/events/accept')}
-            >
-              Manage Invites
-            </Button>
-          </div>
-        </div>
+    <main className="min-h-screen bg-[#EBE9E0]">
+      <TooltipProvider>
+        <div className="w-full max-w-screen-xl mx-auto p-4 sm:px-6 lg:p-8">
+          {/* Remove the extra padding/margin adjustments */}
+          <Breadcrumbs
+            items={[
+              { label: 'Home', href: '/' },
+              { label: 'Dashboard' },
+            ]}
+            className="mb-6"
+          />
 
-        {/* Payment Card - Full Width */}
-        <div className="mb-4 sm:mb-6 px-4 sm:px-0">
-          <div className="bg-white/80 backdrop-blur p-6 sm:p-4 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
-            <div className="flex items-center justify-between">
-              <div>
-                <h2 className="font-semibold text-lg">Payments</h2>
-                <p className="text-sm text-gray-600">View and manage your payments</p>
+          {/* Enhanced User Profile Header with improved styling */}
+          <div className="relative mb-8 sm:mb-10 mt-2">
+            {/* Background pattern */}
+            <div className="absolute inset-0 -m-2 sm:-m-4">
+              <div className="w-full h-full border-4 border-dashed border-gray-300/70 rounded-3xl" />
+            </div>
+
+            {/* Card container with improved shadow */}
+            <div className="relative">
+              <div className="bg-white rounded-2xl shadow-sm ring-1 ring-gray-950/5 overflow-hidden">
+                {/* Decorative elements */}
+                <div className="absolute left-0 top-1/2 -translate-y-1/2 w-3 sm:w-4 h-6 sm:h-8 bg-[#EBE9E0] rounded-r-full" />
+                <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 sm:w-4 h-6 sm:h-8 bg-[#EBE9E0] rounded-l-full" />
+                
+                <div className="p-5 sm:p-7">
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                    {/* Profile Info */}
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-2">
+                        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">
+                          {profile?.full_name || 'Anonymous User'}
+                        </h1>
+                        {!profile?.full_name && (
+                          <Tooltip>
+                            <TooltipTrigger>
+                              <AlertCircle className="h-5 w-5 text-amber-500" />
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p>Please complete your profile</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        )}
+                      </div>
+                      <div className="space-y-2">
+                        <div className="flex items-center gap-2">
+                          <Mail className="h-4 w-4 text-gray-400 shrink-0" />
+                          <Tooltip>
+                            <TooltipTrigger className="max-w-[300px] truncate text-left">
+                              <span className="text-sm sm:text-base text-gray-600">
+                                {profile?.email || 'Email not provided'}
+                              </span>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p>{profile?.email || 'Email not provided'}</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Phone className="h-4 w-4 text-gray-400 shrink-0" />
+                          {profile?.phone ? (
+                            <span className="text-sm sm:text-base text-gray-600">
+                              {profile.phone}
+                            </span>
+                          ) : (
+                            <span className="text-sm sm:text-base text-gray-400 italic">
+                              Phone number not added
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                      <div className="pt-1 flex items-center gap-2 w-full pr-4">
+                        <GraduationCap className="h-4 w-4 text-blue-500 shrink-0" />
+                        {profile?.college_name ? (
+                          <Tooltip>
+                            <TooltipTrigger className="w-full truncate text-left">
+                              <p className="text-sm sm:text-base font-medium text-blue-600">
+                                {Object.values(COLLEGE_OPTIONS).includes(profile.college_name)
+                                  ? profile.college_name
+                                  : `${profile.college_name} (Other)`}
+                              </p>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p>{profile.college_name}</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        ) : (
+                          <span className="text-sm sm:text-base text-gray-400 italic">
+                            College not specified
+                          </span>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Actions */}
+                    <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-3">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => router.push('/dashboard/profile/edit')}
+                        className={`h-9 transition-colors duration-200 group w-full sm:w-auto
+                          ${!isProfileComplete(profile) 
+                            ? 'bg-amber-50 hover:bg-amber-100 text-amber-600 hover:text-amber-700 border-amber-200 hover:border-amber-300'
+                            : 'bg-blue-50 hover:bg-blue-100 text-blue-600 hover:text-blue-700 border-blue-200 hover:border-blue-300'
+                          }`}
+                      >
+                        <Pencil className="h-4 w-4 mr-2 shrink-0" />
+                        <span>{!isProfileComplete(profile) ? 'Complete Profile' : 'Edit Profile'}</span>
+                        <ChevronRight className="w-4 h-4 ml-2 transition-transform duration-200 group-hover:translate-x-1" />
+                      </Button>
+                      <form onSubmit={handleSignOut} className="flex-1 sm:flex-initial">
+                        <Button 
+                          type="submit" 
+                          variant="outline"
+                          size="sm"
+                          className="h-9 px-4 bg-red-50 hover:bg-red-100 text-red-600 hover:text-red-700 border border-red-200 hover:border-red-300 transition-colors duration-200 w-full sm:w-auto"
+                        >
+                          <LogOut className="h-4 w-4 mr-2" />
+                          <span>Sign out</span>
+                        </Button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+
               </div>
-              <Button
-                variant="outline"
-                className="bg-orange-50 hover:bg-orange-100 border-orange-200"
-                onClick={() => router.push('/dashboard/events/payment')}
-              >
-                Manage Payments
-              </Button>
             </div>
           </div>
-        </div>
 
-        <div className="p-4 sm:p-4 border-4 border-dashed border-gray-300 rounded-3xl">
-          <div className="bg-white rounded-2xl sm:rounded-3xl shadow-lg overflow-hidden relative">
-            {/* Dots for ticket effect */}
-            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-3 sm:w-4 h-6 sm:h-8 bg-[#EBE9E0] rounded-r-full"></div>
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 sm:w-4 h-6 sm:h-8 bg-[#EBE9E0] rounded-l-full"></div>
+          {/* Rest of the content */}
+          <div className="space-y-6">
+            {/* Quick Actions Grid - adjusted spacing */}
+            <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="bg-white/80 backdrop-blur p-6 sm:p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                <h2 className="font-semibold text-lg mb-2">Events</h2>
+                <p className="text-sm text-gray-600 mb-4">View and manage available events.</p>
+                <Button
+                  variant="outline"
+                  className="w-full bg-purple-50 hover:bg-purple-100 border-purple-200"
+                  onClick={() => router.push('/dashboard/events')}
+                >
+                  View Events
+                </Button>
+              </div>
+              <div className="bg-white/80 backdrop-blur p-6 sm:p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                <h2 className="font-semibold text-lg mb-2">Check Registration</h2>
+                <p className="text-sm text-gray-600 mb-4">View or verify active registrations.</p>
+                <Button
+                  variant="outline"
+                  className="w-full bg-blue-50 hover:bg-blue-100 border-blue-200"
+                  onClick={() => router.push('/dashboard/events/registrations')}
+                >
+                  View Registrations
+                </Button>
+              </div>
+              <div className="bg-white/80 backdrop-blur p-6 sm:p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                <h2 className="font-semibold text-lg mb-2">Accept Invites</h2>
+                <p className="text-sm text-gray-600 mb-4">Review and accept pending invitations.</p>
+                <Button
+                  variant="outline"
+                  className="w-full bg-green-50 hover:bg-green-100 border-green-200"
+                  onClick={() => router.push('/dashboard/events/accept')}
+                >
+                  Manage Invites
+                </Button>
+              </div>
+            </div>
 
-            <div className="px-6 sm:px-8 lg:px-10 py-6 sm:py-8 lg:py-10">
-              <div className="flex items-start justify-between mb-6 pb-4 border-b border-gray-100">
-                <div>
-                  <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">
-                    Welcome back, {profile?.full_name || 'User'}!
-                  </h1>
-                  <p className="text-gray-600 text-sm sm:text-base mt-2">
-                    Manage your profile and check your event registrations
+            {/* Payment Card - adjusted spacing */}
+            <div className="my-6">
+              <div className="bg-white/80 backdrop-blur p-6 sm:p-4 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h2 className="font-semibold text-lg">Payments</h2>
+                    <p className="text-sm text-gray-600">View and manage your payments</p>
+                  </div>
+                  <Button
+                    variant="outline"
+                    className="bg-orange-50 hover:bg-orange-100 border-orange-200"
+                    onClick={() => router.push('/dashboard/events/payment')}
+                  >
+                    Manage Payments
+                  </Button>
+                </div>
+              </div>
+            </div>
+
+            {/* Info Box - Updated message */}
+            <div className="mt-12">
+              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 sm:p-4 md:p-5 mt-4 sm:mt-6 mx-4 sm:mx-0">
+                <div className="space-y-2 sm:space-y-3">
+                  <p className="text-xs sm:text-sm text-yellow-800 leading-relaxed">
+                    Thank you for using our platform. To ensure the best possible experience:
+                  </p>
+                  <div className="space-y-3 sm:space-y-2 mt-2">
+                    <div className="text-xs sm:text-sm text-yellow-800">
+                      <p className="font-medium mb-1">• For Queries, payment issues, or other concerns:</p>
+                      <a href="mailto:pccoe.spectrum.25@gmail.com" 
+                        className="block pl-3 font-medium text-yellow-700 hover:text-yellow-900 break-all">
+                        pccoe.spectrum.25@gmail.com
+                      </a>
+                    </div>
+                    <div className="text-xs sm:text-sm text-yellow-800">
+                      <p className="font-medium mb-1">• For Website, or data-related bugs:</p>
+                      <a href="mailto:kartik.kulloli23@pccoepune.org" 
+                        className="block pl-3 font-medium text-yellow-700 hover:text-yellow-900 break-all">
+                        kartik.kulloli23@pccoepune.org
+                      </a>
+                    </div>
+                  </div>
+                  <p className="text-xs sm:text-sm text-yellow-800 italic mt-3 sm:mt-2">
+                    For critical bugs or security vulnerabilities, please report them immediately with [COOKED] in the title.
                   </p>
                 </div>
-                {isEditing ? (
-                  <>
-                    <Button
-                      onClick={() => setIsEditing(false)}
-                      variant="outline"
-                      size="icon"
-                      className="sm:hidden h-10 w-10 text-red-500 hover:text-red-600 border-red-200 hover:border-red-300 hover:bg-red-50/50"
-                    >
-                      <X className="h-5 w-5" />
-                    </Button>
-                    <Button
-                      onClick={() => setIsEditing(false)}
-                      variant="outline"
-                      size="lg"
-                      className="hidden sm:inline-flex shrink-0 px-6 text-red-500 hover:text-red-600 border-red-200 hover:border-red-300 hover:bg-red-50/50"
-                    >
-                      <X className="h-5 w-5 mr-2" />
-                      <span className="font-medium">Close Editor</span>
-                    </Button>
-                  </>
-                ) : (
-                  <>
-                    <Button
-                      onClick={() => setIsEditing(true)}
-                      variant="outline"
-                      size="icon"
-                      className="sm:hidden h-10 w-10 text-green-600 hover:text-green-700 border-green-200 hover:border-green-300 hover:bg-green-50/50"
-                    >
-                      <Pencil className="h-5 w-5" />
-                    </Button>
-                    <Button
-                      onClick={() => setIsEditing(true)}
-                      variant="outline"
-                      size="lg"
-                      className="hidden sm:inline-flex shrink-0 px-6 text-green-600 hover:text-green-700 border-green-200 hover:border-green-300 hover:bg-green-50/50"
-                    >
-                      <Pencil className="h-5 w-5 mr-2" />
-                      <span className="font-medium">Edit Profile</span>
-                    </Button>
-                  </>
-                )}
-              </div>
-
-              <div className="space-y-6 p-2 sm:p-4 bg-gray-50/50 rounded-xl border border-gray-100">
-                {isEditing ? (
-                  <ProfileForm 
-                    profile={userData.profile} 
-                    onUpdate={() => {
-                      refreshUserData();
-                      setIsEditing(false);
-                    }} 
-                  />
-                ) : (
-                  <ProfileView 
-                    profile={userData.profile} 
-                    onEditClick={() => setIsEditing(true)}
-                  />
-                )}
-              </div>
-
-              <div className="mt-6 pt-6 border-t border-gray-200">
-                <form onSubmit={handleSignOut}>
-                  <Button 
-                    type="submit" 
-                    variant="destructive"
-                    className="w-full sm:w-auto"
-                  >
-                    Sign out
-                  </Button>
-                </form>
               </div>
             </div>
-          </div>
-        </div>
 
-        {/* Info Box */}
-        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 sm:p-4 md:p-5 mt-4 sm:mt-6 mx-4 sm:mx-0">
-          <div className="space-y-2 sm:space-y-3">
-            <p className="text-xs sm:text-sm text-yellow-800 leading-relaxed">
-              We&apos;re constantly improving our platform. 
-              <span className="hidden sm:inline">&nbsp;</span>
-              <span className="block sm:inline mt-1 sm:mt-0">If you encounter any issues:</span>
-            </p>
-            <div className="space-y-3 sm:space-y-2 mt-2">
-              <div className="text-xs sm:text-sm text-yellow-800">
-                <p className="font-medium mb-1">• For Queries, payment issues, or other concerns:</p>
-                <a href="mailto:pccoe.spectrum.25@gmail.com" 
-                   className="block pl-3 font-medium text-yellow-700 hover:text-yellow-900 break-all">
-                 pccoe.spectrum.25@gmail.com
-                </a>
-              </div>
-              <div className="text-xs sm:text-sm text-yellow-800">
-                <p className="font-medium mb-1">• For Website, Backend, or data-related bugs:</p>
-                <a href="mailto:kartik.kulloli23@pccoepune.org" 
-                   className="block pl-3 font-medium text-yellow-700 hover:text-yellow-900 break-all">
-                  kartik.kulloli23@pccoepune.org
-                </a>
-              </div>
-            </div>
-            <p className="text-xs sm:text-sm text-yellow-800 italic mt-3 sm:mt-2">
-              For critical bugs or security vulnerabilities, please report them immediately with [COOKED] in the title.
-            </p>
           </div>
-        </div>
 
-        {/* Render global popup if profile is incomplete */}
-        {!isProfileComplete(profile) && (
-          <CompleteProfilePopup 
-            profile={profile} 
-            onProfileUpdate={() => {
-              refreshUserData();
-            }} 
-          />
-        )}
-      </div>
+          {/* Render global popup if profile is incomplete */}
+          {!isProfileComplete(profile) && (
+            <CompleteProfilePopup 
+              profile={profile} 
+              onProfileUpdate={() => {
+                refreshUserData();
+              }} 
+            />
+          )}
+        </div>
+      </TooltipProvider>
     </main>
   );
 }
